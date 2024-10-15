@@ -59,6 +59,10 @@
     cursor: pointer;
 }
 
+.add-product-btn{
+	float: right; 
+}
+
 .delete-btn {
     background-color: #dc3545; /* 삭제 버튼 색상 */
     margin-left: 5px;

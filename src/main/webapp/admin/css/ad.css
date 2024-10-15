@@ -53,6 +53,10 @@
     cursor: pointer;
 }
 
+.add-ad-btn {
+	float: right; 
+}
+
 .edit-btn, .delete-btn {
     padding: 5px 10px;
     border: none;

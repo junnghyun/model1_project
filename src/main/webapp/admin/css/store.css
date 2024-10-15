@@ -49,6 +49,10 @@
     background-color: #f2f2f2;
 }
 
+.add-store-btn {
+	float: right; 
+}
+
 .action-btn {
     padding: 5px 10px;
     border: none;

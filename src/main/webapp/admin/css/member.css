@@ -1,7 +1,12 @@
 @charset "UTF-8";
 
 .member-filter {
-     margin-bottom: 20px;
+	display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: #f2f2f2;
 }
 
 .filter-input {
@@ -18,6 +23,10 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
+}
+
+.page-member {
+	float: right; 
 }
 
 .member-summary {

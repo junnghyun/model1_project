@@ -3,14 +3,17 @@
 
 <h1>매장관리</h1>
 <div class="store-summary">
-    <span>매장 수: <strong id="store-count">1</strong></span>
+    <span>매장 수: <strong id="store-count">null</strong></span>	<!-- 매장 수 -->
 </div>
-			
+<div class="order-management">
 <div class="store-filter">
     <input type="text" placeholder="매장명 검색" class="filter-input" id="store-name">
     <button class="filter-btn" onclick="searchStores()">검색</button>
     <button class="reset-btn" onclick="resetFilters()">초기화</button>
-    <button class="csv-download-btn">Excel로 다운로드</button>
+    <div class="add-store-btn">
+	    <button class="csv-download-btn">Excel로 다운로드</button>
+	    <button class="store-btn" onclick="openModel()">매장 정보 추가</button>
+    </div>
 </div>
 			
 <table class="store-table">
@@ -20,18 +23,24 @@
             <th>매장명</th>
             <th>매장연락처</th>
             <th>영업시간</th>
-            <th>네이버평점</th>
             <th>위도</th>
             <th>경도</th>
-            <th>액션</th>
+            <th>매장상태</th>
+            <th>
+            	<div class="pagination">
+				    <button class="prev-page">◀</button>
+				    <span>null / null</span>
+				    <button class="next-page">▶</button>
+				</div>
+            </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>STORE001</td>
-            <td>강남 매장</td>
-            <td>서울시 강남구</td>
-            <td>010-1234-5678</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -46,6 +55,7 @@
 			
 <div class="pagination">
     <button class="prev-page">◀</button>
-    <span>1 / 1</span>
+    <span>null / null</span>
     <button class="next-page">▶</button>
+</div>
 </div>

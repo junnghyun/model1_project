@@ -14,13 +14,18 @@
     <link rel="stylesheet" type="text/css" href="css/product.css">
     <link rel="stylesheet" type="text/css" href="css/store.css">
     <link rel="stylesheet" type="text/css" href="css/ad.css">
+    
+    <!-- Chart.js CDN 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="sidebar" id="sidebar">
-            <span class="toggle-btn" onclick="toggleSidebar()">&times;</span>
+            <span class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">&times;</span>
             <div class="sidebar-content">
                 <h2>관리자 메뉴</h2>
+                <div class="admin-text">
                 <ul>
                     <li><a href="#" onclick="showSection('dashboard')">대시보드</a></li>
                     <li><a href="#" onclick="showSection('orders')">주문관리</a></li>
@@ -29,6 +34,8 @@
                     <li><a href="#" onclick="showSection('store')">매장관리</a></li>
                     <li><a href="#" onclick="showSection('ad')">광고관리</a></li>
                 </ul>
+                </div>
+                <button class="logout-btn" onclick="logout()">로그아웃</button>
             </div>
         </div>
         
@@ -68,8 +75,18 @@
         }
 
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
+        	const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggle-btn');
+            
+            // 사이드바를 토글
             sidebar.classList.toggle('hidden');
+            
+            // 사이드바가 숨겨진 경우 ≡를 보여줌
+            if (sidebar.classList.contains('hidden')) {
+                toggleBtn.innerHTML = '&#9776;'; // 햄버거 메뉴
+            } else {
+                toggleBtn.innerHTML = '&times;'; // X 버튼
+            }
         }
 
     </script>

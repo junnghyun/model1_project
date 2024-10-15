@@ -5,22 +5,23 @@
 <div class="product-summary">
 	<div class="total-products">
     	<span>총 제품 수:</span>
-        <strong id="total-count">10</strong>
+        <strong id="total-count">null</strong>
     </div>
     <div class="total-stock">
-        <span>총 재고 수:</span>
-        <strong id="total-stock">8</strong>
+        <span>빵:</span>
+        <strong id="total-stock">null</strong>
     </div>
     <div class="total-categories">
-        <span>카테고리 수:</span>
-        <strong id="total-categories">2</strong>
+        <span>케이크:</span>
+        <strong id="total-categories">null</strong>
     </div>
 </div>
-			
+<div class="order-management">
 <div class="product-filter">
     <input type="text" placeholder="제품명 검색" class="filter-input" id="product-name">
     <button class="filter-btn" onclick="searchProducts()">검색</button>
     <button class="reset-btn" onclick="resetFilters()">초기화</button>
+    <button class="add-product-btn" onclick="openModal()">제품 정보 추가</button>
 </div>
 			
 <table class="product-table">
@@ -39,17 +40,17 @@
             <th>입력일</th>
             <th>가격</th>
             <th>제품이미지</th>
-            <th>액션</th>
+            <th>
+            	<div class="pagination">
+				    <button class="prev-page">◀</button>
+				    <span>null / null</span>
+				    <button class="next-page">▶</button>
+				</div>
+            </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>PROD001</td>
-            <td>고성능 노트북</td>
-            <td>전자기기</td>
-            <td>1,500,000원</td>
-            <td>5</td>
-            <td>삼성전자</td>
             <td></td>
             <td></td>
             <td></td>
@@ -57,6 +58,12 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button>확인</button></td>
             <td>
                 <button class="action-btn" onclick="editProduct('PROD001')">편집</button>
                 <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">삭제</button>
@@ -68,7 +75,8 @@
 			
 <div class="pagination">
     <button class="prev-page">◀</button>
-    <span>1 / 10</span>
+    <span>null / null</span>
     <button class="next-page">▶</button>
+</div>
 </div>
 			    

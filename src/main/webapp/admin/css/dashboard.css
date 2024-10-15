@@ -1,14 +1,23 @@
 @charset "UTF-8";
 
-.dashboard-box {
-   	border-radius: 5px; /* 모서리 둥글게 */
-   	padding: 20px; /* 내부 여백 */
-   	margin: 10px 0; /* 박스 간의 간격 */
-   	background-color: white; /* 배경색 */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
-
+.dashboard-item {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+.chart-container {
+    position: relative;
+    height: 200px;
+}
 #box1, #box2, #box3, #box4 {
-   	width: calc(50% - 10px); /* 두 박스가 가로로 나란히 배치되도록 설정 */
-   	display: inline-block; /* 인라인 블록으로 설정 */
-   	vertical-align: top; /* 위쪽 정렬 */
+   	background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
 }
