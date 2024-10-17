@@ -47,7 +47,7 @@
         	<td>
         		<button class="action-btn" id="start_btn" onclick="editProduct('PROD001')">배송 시작</button>
         		<button class="action-btn" onclick="editProduct('PROD001')">배송 완료</button>
-                <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">취소</button>
+                <button class="action-btn delete-btn" onclick="deleteProduct()">취소</button>
         	</td>
         </tr>
         </tbody>

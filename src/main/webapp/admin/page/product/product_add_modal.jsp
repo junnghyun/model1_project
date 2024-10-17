@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay" onclick="closeProductModal()">
         <div class="modal-content shadow-xl">
             <div class="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
                 <h2 class="text-xl font-semibold">제품 정보 추가</h2>
@@ -69,7 +69,7 @@
                     <div class="input-group md:col-span-2">
                         <label for="product_image" class="block text-sm font-medium text-gray-700 mb-1">제품 이미지</label>
                         <div class="flex items-center space-x-4">
-                            <img src="/api/placeholder/150/150" alt="현재 제품 이미지" class="w-32 h-32 object-cover rounded-md">
+                            <img src="" alt="현재 제품 이미지" class="w-32 h-32 object-cover rounded-md">
                             <input type="file" id="product_image" name="product_image" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                     </div>

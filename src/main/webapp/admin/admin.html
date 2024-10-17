@@ -3,158 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 대시보드</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <title>관리자 페이지</title>
     <style>
+        @charset "UTF-8";
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info span {
+            margin-right: 10px;
+        }
+
+        .logouts-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logouts-btn:hover {
+            background-color: #c0392b;
+        }
+
         .container {
             display: flex;
-            height: 100vh;
+            height: calc(100vh - 60px);
         }
+
         .sidebar {
             width: 200px;
             background-color: #333;
             color: white;
             padding: 20px;
+            transition: all 0.3s;
+            position: relative;
         }
+
+        .sidebar.hidden {
+            width: 60px;
+            padding: 20px 0;
+        }
+
+        .sidebar.hidden .sidebar-content {
+            display: none;
+        }
+
         .sidebar h2 {
             margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .sidebar ul { 
+
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transition: all 0.3s;
+        }
+
+        .hidden .toggle-btn {
+            transform: rotate(180deg);
+            right: 20px;
+        }
+
+        .sidebar ul {
             list-style-type: none;
             padding: 0;
         }
+
         .sidebar ul li {
             margin-bottom: 10px;
         }
+
         .sidebar ul li a {
             color: white;
             text-decoration: none;
         }
+
         .main-content {
             flex-grow: 1;
             padding: 20px;
-            overflow-y: auto;
         }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .dashboard-item {
+
+        .card {
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 20px;
+            margin-bottom: 20px;
         }
-        .chart-container {
-            position: relative;
-            height: 200px;
+
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <h2>관리자 메뉴</h2>
-            <ul>
-                <li><a href="#" onclick="showSection('dashboard')">대시보드</a></li>
-                <li><a href="#" onclick="showSection('orders')">주문관리</a></li>
-                <li><a href="#" onclick="showSection('products')">제품관리</a></li>
-                <li><a href="#" onclick="showSection('customers')">고객관리</a></li>
-            </ul>
+    <header class="header">
+        <div class="user-info">
+            <button class="logouts-btn" onclick="logout()">로그아웃</button>
+            <span>admin 관리자님</span>
         </div>
+    </header>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <span class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">&times;</span>
+            <div class="sidebar-content">
+                <h2>관리자 메뉴</h2>
+                <div class="admin-text">
+                <ul>
+                    <li><a href="#" onclick="showSection('dashboard')">대시보드</a></li>
+                    <li><a href="#" onclick="showSection('orders')">주문관리</a></li>
+                    <li><a href="#" onclick="showSection('member')">회원관리</a></li>
+                    <li><a href="#" onclick="showSection('product')">제품관리</a></li>
+                    <li><a href="#" onclick="showSection('store')">매장관리</a></li>
+                    <li><a href="#" onclick="showSection('ad')">광고관리</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        
         <div class="main-content">
             <div id="dashboard" class="section">
-                <h1>대시보드</h1>
-                <div class="dashboard-grid">
-                    <div class="dashboard-item">
-                        <h3>매출 현황</h3>
-                        <div class="chart-container">
-                            <canvas id="salesChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="dashboard-item">
-                        <h3>주문 통계</h3>
-                        <div class="chart-container">
-                            <canvas id="ordersChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="dashboard-item">
-                        <h3>인기 제품</h3>
-                        <ul id="popularProducts"></ul>
-                    </div>
-                    <div class="dashboard-item">
-                        <h3>최근 활동</h3>
-                        <ul id="recentActivities"></ul>
-                    </div>
-                </div>
+                <h2>대시보드</h2>
+                <p>여기에 대시보드 내용이 들어갑니다.</p>
+            </div>
+            
+            <div id="orders" class="section" style="display:none;">
+                <h2>주문관리</h2>
+                <p>여기에 주문관리 내용이 들어갑니다.</p>
+            </div>
+            
+            <div id="member" class="section" style="display:none;">
+                <h2>회원관리</h2>
+                <p>여기에 회원관리 내용이 들어갑니다.</p>
+            </div>
+            
+            <div id="product" class="section" style="display:none;">
+                <h2>제품관리</h2>
+                <p>여기에 제품관리 내용이 들어갑니다.</p>
+            </div>
+            
+            <div id="store" class="section" style="display:none;">
+                <h2>매장관리</h2>
+                <p>여기에 매장관리 내용이 들어갑니다.</p>
+            </div>
+            
+            <div id="ad" class="section" style="display:none;">
+                <h2>광고관리</h2>
+                <p>여기에 광고관리 내용이 들어갑니다.</p>
             </div>
         </div>
     </div>
 
     <script>
         function showSection(sectionId) {
-            // 현재는 대시보드만 있으므로 아무 작업도 하지 않습니다.
-            console.log("Showing section:", sectionId);
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
         }
 
-        // 매출 차트
-        const salesCtx = document.getElementById('salesChart').getContext('2d');
-        new Chart(salesCtx, {
-            type: 'line',
-            data: {
-                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
-                datasets: [{
-                    label: '매출 (백만원)',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggle-btn');
+            
+            sidebar.classList.toggle('hidden');
+            
+            if (sidebar.classList.contains('hidden')) {
+                toggleBtn.innerHTML = '&#9776;';
+            } else {
+                toggleBtn.innerHTML = '&times;';
             }
-        });
+        }
 
-        // 주문 차트
-        const ordersCtx = document.getElementById('ordersChart').getContext('2d');
-        new Chart(ordersCtx, {
-            type: 'bar',
-            data: {
-                labels: ['월', '화', '수', '목', '금', '토', '일'],
-                datasets: [{
-                    label: '주문 수',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgb(54, 162, 235)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        
-        const activitiesList = document.getElementById('recentActivities');
-        recentActivities.forEach(activity => {
-            const li = document.createElement('li');
-            li.textContent = activity;
-            activitiesList.appendChild(li);
-        });
+        function logout() {
+            alert('로그아웃되었습니다.');
+        }
     </script>
 </body>
 </html>

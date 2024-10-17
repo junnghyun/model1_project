@@ -27,13 +27,14 @@
 <table class="product-table">
     <thead>
         <tr>
-            <th>제품 ID</th>
-            <th>카테고리명</th>
+            <th style="width: 100px;">제품 ID</th>
+            <th style="width: 120px;">카테고리명</th>
             <th>제품명</th>
             <th>알레르기정보</th>
-            <th>입력일</th>
-            <th>가격</th>
-            <th>
+            <th style="width: 120px;">입력일</th>
+            <th style="width: 100px;">가격</th>
+            <th style="width: 90px;">제품 상태</th>
+            <th style="width: 150px;">
             	<div class="pagination">
 				    <button class="prev-page">◀</button>
 				    <span>null / null</span>
@@ -50,9 +51,10 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td>
                 <button class="action-btn" onclick="openEditProductModal('PROD001')">편집</button>
-                <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">삭제</button>
+                <button class="action-btn delete-btn" onclick="deleteProduct()">삭제</button>
             </td>
         </tr>
         <!-- 추가 제품 항목은 여기 추가 -->

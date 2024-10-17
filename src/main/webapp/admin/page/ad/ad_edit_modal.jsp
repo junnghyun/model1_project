@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   
-    <div class="modal-overlay">
+    <div class="modal-overlay" onclick="closeAdModal()">
         <div class="modal-content shadow-xl">
             <div class="bg-green-600 text-white px-6 py-4 flex justify-between items-center">
                 <h2 class="text-xl font-semibold">광고 정보 추가</h2>

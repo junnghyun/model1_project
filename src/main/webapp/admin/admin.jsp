@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="css/orders.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css?after">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css?after">
+    <link rel="stylesheet" type="text/css" href="css/orders.css?after">
     <link rel="stylesheet" type="text/css" href="css/member.css">
     <link rel="stylesheet" type="text/css" href="css/product.css">
     <link rel="stylesheet" type="text/css" href="css/store.css">
@@ -18,16 +18,24 @@
     <!-- Chart.js CDN 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/dashboard.js" defer></script>
+    <script src="js/orders.js" defer></script>
     <script src="js/member.js" defer></script>
     <script src="js/product.js" defer></script>
-    <script src="js/store.js" defer></script>
+    <script src="js/store.js?after" defer></script>
     <script src="js/ad.js" defer></script>
 </head>
-<body> 
+
+<body>
+	<header class="header fixed">
+        <div class="user-info">
+        	<button class="logout-btn" onclick="logout()">로그아웃</button>
+            <span>admin 관리자님</span>
+        </div>
+    </header>
     <div class="container">
         <div class="sidebar" id="sidebar">
             <span class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">&times;</span>
-            <div class="sidebar-content">
+            <div class="sidebar-content fixed">
                 <h2>관리자 메뉴</h2>
                 <div class="admin-text">
                 <ul>
@@ -39,7 +47,6 @@
                     <li><a href="#" onclick="showSection('ad')">광고관리</a></li>
                 </ul>
                 </div>
-                <button class="logout-btn" onclick="logout()">로그아웃</button>
             </div>
         </div>
         
