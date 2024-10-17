@@ -21,25 +21,18 @@
     <input type="text" placeholder="제품명 검색" class="filter-input" id="product-name">
     <button class="filter-btn" onclick="searchProducts()">검색</button>
     <button class="reset-btn" onclick="resetFilters()">초기화</button>
-    <button class="add-product-btn" onclick="openModal()">제품 정보 추가</button>
+    <button class="add-product-btn" onclick="openAddProductModal()">제품 정보 추가</button>
 </div>
 			
 <table class="product-table">
     <thead>
         <tr>
             <th>제품 ID</th>
-            <th>카테고리번호</th>
+            <th>카테고리명</th>
             <th>제품명</th>
-            <th>설명</th>
-            <th>총중량</th>
-            <th>열량</th>
-            <th>당류</th>
-            <th>단백질</th>
-            <th>나트륨</th>
             <th>알레르기정보</th>
             <th>입력일</th>
             <th>가격</th>
-            <th>제품이미지</th>
             <th>
             	<div class="pagination">
 				    <button class="prev-page">◀</button>
@@ -57,15 +50,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button>확인</button></td>
             <td>
-                <button class="action-btn" onclick="editProduct('PROD001')">편집</button>
+                <button class="action-btn" onclick="openEditProductModal('PROD001')">편집</button>
                 <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">삭제</button>
             </td>
         </tr>
@@ -79,4 +65,10 @@
     <button class="next-page">▶</button>
 </div>
 </div>
-			    
+
+<div id="editProductModal" style="display: none;">
+    <jsp:include page="product_edit_modal.jsp" />
+</div>
+<div id="addProductModal" style="display: none;">
+    <jsp:include page="product_add_modal.jsp" />
+</div>

@@ -73,7 +73,9 @@
     background-color: #007bff;
     cursor: pointer;
 }
-
+#start_btn {
+	background-color: #00f900;
+}
 .action-btn:last-child {
     background-color: #dc3545; /* 주문 취소 버튼 색상 */
 }

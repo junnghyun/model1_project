@@ -21,6 +21,8 @@
 </div>
 <div class="dashboard-item" id="box4">
     <h2>인기 제품</h2>
-    <p>관리할 제품이 없습니다.</p>
+    <div class="chart-container">
+        <canvas id="ordersChart"></canvas>
+    </div>
 </div>
 </div>

@@ -25,13 +25,9 @@
                 <th>고객 ID</th>
                 <th>결제일</th>
                 <th>결제금액</th>
-                <th>요구사항</th>
-                <th>총주문금액</th>
-                <th>주문우편번호</th>
                 <th>주문주소</th>
-                <th>주문상세주소</th>
                 <th>주문상태</th>
-                <th>
+                <th style="width: 230px;">
                 	<div class="pagination">
 				        <button class="prev-page">◀</button>
 				        <span>null / null</span>
@@ -48,12 +44,9 @@
         	<td></td>
         	<td></td>
         	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
         	<td>
-        		<button class="action-btn" onclick="editProduct('PROD001')">완료</button>
+        		<button class="action-btn" id="start_btn" onclick="editProduct('PROD001')">배송 시작</button>
+        		<button class="action-btn" onclick="editProduct('PROD001')">배송 완료</button>
                 <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">취소</button>
         	</td>
         </tr>

@@ -1,50 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제품 정보 추가 모달</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            border-radius: 1rem;
-            width: 100%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .input-group {
-            transition: all 0.3s ease;
-        }
-        .input-group:focus-within {
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
+
     <div class="modal-overlay">
         <div class="modal-content shadow-xl">
             <div class="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
                 <h2 class="text-xl font-semibold">제품 정보 추가</h2>
-                <button class="text-white hover:text-gray-200 transition duration-150">
+                <button class="text-white hover:text-gray-200 transition duration-150" onclick="closeProductModal()">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -57,8 +18,17 @@
                         <input type="text" id="product_id" name="product_id" class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="P12345" readonly>
                     </div>
                     <div class="input-group">
-                        <label for="category_number" class="block text-sm font-medium text-gray-700 mb-1">카테고리 번호</label>
-                        <input type="number" id="category_number" name="category_number" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="100">
+                        <label for="category_number" class="block text-sm font-medium text-gray-700 mb-1">카테고리</label>
+                        <div class="flex space-x-4">
+	                        <label class="inline-flex items-center">
+	                            <input type="radio" name="category" value="bread" class="form-radio text-indigo-600 focus:ring-indigo-500" checked>
+	                            <span class="ml-2">빵</span>
+	                        </label>
+	                        <label class="inline-flex items-center">
+	                            <input type="radio" name="category" value="cake" class="form-radio text-indigo-600 focus:ring-indigo-500">
+	                            <span class="ml-2">케이크</span>
+	                        </label>
+	                    </div>
                     </div>
                     <div class="input-group md:col-span-2">
                         <label for="product_name" class="block text-sm font-medium text-gray-700 mb-1">제품명</label>
@@ -105,11 +75,9 @@
                     </div>
                 </div>
                 <div class="flex justify-end space-x-3">
-                    <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-150">취소</button>
+                    <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-150" onclick="closeProductModal()">취소</button>
                     <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-150">저장</button>
                 </div>
             </form>
         </div>
     </div>
-</body>
-</html>

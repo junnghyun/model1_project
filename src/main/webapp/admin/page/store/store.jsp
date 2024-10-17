@@ -12,7 +12,7 @@
     <button class="reset-btn" onclick="resetFilters()">초기화</button>
     <div class="add-store-btn">
 	    <button class="csv-download-btn">Excel로 다운로드</button>
-	    <button class="store-btn" onclick="openModel()">매장 정보 추가</button>
+	    <button class="store-btn" onclick="openStoreAddModal()">매장 정보 추가</button>
     </div>
 </div>
 			
@@ -45,7 +45,7 @@
             <td></td>
             <td></td>
             <td>
-                <button class="action-btn" onclick="editStore('STORE001')">편집</button>
+                <button class="action-btn" onclick="openStoreEditModal('STORE001')">편집</button>
                 <button class="action-btn delete-btn" onclick="deleteStore('STORE001')">삭제</button>
             </td>
         </tr>
@@ -58,4 +58,11 @@
     <span>null / null</span>
     <button class="next-page">▶</button>
 </div>
+</div>
+
+<div id="storeEditModal" style="display: none;">
+    <jsp:include page="store_edit_modal.jsp" />
+</div>
+<div id="storeAddModal" style="display: none;">
+    <jsp:include page="store_add_modal.jsp" />
 </div>

@@ -2,64 +2,72 @@
     pageEncoding="UTF-8"%>
 
 <h1>회원관리</h1>
+
+<%--
+    MemberDAO memberDAO = new MemberDAO();
+    int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+    String searchTerm = request.getParameter("search") != null ? request.getParameter("search") : "";
+    int membersPerPage = 20;
+    
+    List<Member> members = memberDAO.getMembers(currentPage, membersPerPage, searchTerm);
+    int totalMembers = memberDAO.getTotalMembersCount(searchTerm);
+    int totalPages = (int) Math.ceil((double) totalMembers / membersPerPage);
+--%>
+
 <div class="member-summary">
-    <span>회원 수: <strong id="member-count">null</strong></span>
+    <span>회원 수: <strong id="member-count"><%--= totalMembers --%></strong></span>
 </div>
 
 <div class="order-management">	
 <div class="product-filter">
-    <input type="text" placeholder="회원 ID or 이름 검색" class="filter-input" id="product-name">
-    <button class="filter-btn" onclick="searchProducts()">검색</button>
-    <button class="reset-btn" onclick="resetFilters()">초기화</button>
-    
+    <form action="" method="GET">
+        <input type="text" name="search" placeholder="회원 ID or 이름 검색" value="<%--= searchTerm --%>" class="filter-input">
+        <button type="submit" class="filter-btn">검색</button>
+        <a href="?page=1" class="reset-btn">초기화</a>
+    </form>
 </div>
     
 <table class="member-table">
     <thead>
         <tr>
-            <th>회원 ID</th>
-            <th>이름</th>
-            <th>비밀번호</th>
-            <th>생년월일</th>
-            <th>전화번호</th>
-            <th>이메일</th>
-            <th>우편번호</th>
+            <th style="width: 110px;">회원 ID</th>
+            <th style="width: 70px;">이름</th>
+            <th style="width: 100px;">생년월일</th>
+            <th style="width: 120px;">전화번호</th>
+            <th style="width: 170px;">이메일</th>
             <th>주소</th>
-            <th>상세주소</th>
-            <th>회원상태</th>
-            <th>
+            <th style="width: 80px;">회원상태</th>
+            <th style="width: 200px;">
             	<div class="pagination">
-				    <button class="prev-page">◀</button>
-				    <span>null / null</span>
-				    <button class="next-page">▶</button>
-				</div>
+		            <a href="?page=<%--= Math.max(1, currentPage - 1) --%>&search=<%--= searchTerm --%>" class="prev-page" <%--= currentPage == 1 ? "disabled" : "" --%>>◀</a>
+		            <span><%--= currentPage --%></span> / <span><%--= totalPages --%></span>
+		            <a href="?page=<%--= Math.min(totalPages, currentPage + 1) --%>&search=<%--= searchTerm --%>" class="next-page" <%--= currentPage == totalPages ? "disabled" : "" --%>>▶</a>
+		        </div>
             </th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="action-btn" onclick="viewMember('user01')">회원 정보 확인 및 수정</button>
-                <button class="action-btn delete-btn" onclick="deleteMember('user01')">삭제</button>
-            </td>
-        </tr>
-        <!-- 추가 회원 항목은 여기 추가 -->
+    <tbody id="memberTableBody">
+    	<%-- for (Member member : members) { --%>
+             <tr>
+                 <td><%--= member.getId() --%></td>
+                 <td><%--= member.getName() --%></td>
+                 <td><%--= member.getBirthDate() --%></td>
+                 <td><%--= member.getPhone() --%></td>
+                 <td><%--= member.getEmail() --%></td>
+                 <td><%--= member.getAddress() --%></td>
+                 <td><%--= member.getStatus() --%></td>
+                 <td>
+                     <button class="action-btn" onclick="openMemberModal('<%--= member.getId() --%>')">회원 정보 확인</button>
+                     <button class="action-btn delete-btn" onclick="deleteMember('<%--= member.getId() --%>')">삭제</button>
+                 </td>
+             </tr>
+         <%-- } --%>
     </tbody>
 </table>
 			    
 <div class="pagination">
-    <button class="prev-page">◀</button>
-    <span>null / null</span>
-    <button class="next-page">▶</button>
-</div>	
+    <a href="?page=<%--= Math.max(1, currentPage - 1) --%>&search=<%--= searchTerm --%>" class="prev-page" <%--= currentPage == 1 ? "disabled" : "" --%>>◀</a>
+    <span><%--= currentPage --%></span> / <span><%--= totalPages --%></span>
+    <a href="?page=<%--= Math.min(totalPages, currentPage + 1) --%>&search=<%--= searchTerm --%>" class="next-page" <%--= currentPage == totalPages ? "disabled" : "" --%>>▶</a>
+</div>
 </div>

@@ -18,6 +18,10 @@
     <!-- Chart.js CDN 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/dashboard.js" defer></script>
+    <script src="js/member.js" defer></script>
+    <script src="js/product.js" defer></script>
+    <script src="js/store.js" defer></script>
+    <script src="js/ad.js" defer></script>
 </head>
 <body>
     <div class="container">
