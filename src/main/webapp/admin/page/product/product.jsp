@@ -27,9 +27,9 @@
 <table class="product-table">
     <thead>
         <tr>
-            <th style="width: 100px;">제품 ID</th>
-            <th style="width: 120px;">카테고리명</th>
-            <th>제품명</th>
+            <th style="width: 150px;">제품 ID</th>
+            <th style="width: 150px;">카테고리명</th>
+            <th style="width: 200px;">제품명</th>
             <th>알레르기정보</th>
             <th style="width: 120px;">입력일</th>
             <th style="width: 100px;">가격</th>
