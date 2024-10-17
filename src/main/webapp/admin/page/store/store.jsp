@@ -57,7 +57,7 @@
     <button class="prev-page">◀</button>
     <span>null / null</span>
     <button class="next-page">▶</button>
-</div>
+</div> 
 </div>
 
 <div id="storeEditModal" style="display: none;">

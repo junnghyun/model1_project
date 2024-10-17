@@ -20,7 +20,7 @@
                     <div class="input-group">
                         <label for="advertiser_name" class="block text-sm font-medium text-gray-700 mb-1">광고주 이름</label>
                         <input type="text" id="advertiser_name" name="advertiser_name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="(주)행복한 광고">
-                    </div>
+                    </div> 
                     <div class="input-group">
                         <label for="ad_start_date" class="block text-sm font-medium text-gray-700 mb-1">광고 시작일</label>
                         <input type="date" id="ad_start_date" name="ad_start_date" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="2023-05-01">

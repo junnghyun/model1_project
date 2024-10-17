@@ -12,7 +12,7 @@ function openAddAdModal() {
 	
     document.getElementById('adModal').style.display = 'block';
 }
-
+ 
 function openEditAdModal() {
 	const tailwindLink = document.createElement('link');
     tailwindLink.rel = 'stylesheet';

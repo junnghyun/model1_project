@@ -19,7 +19,7 @@
     </div>
     
     <table class="order-table">
-        <thead>
+        <thead> 
             <tr>
                 <th>주문 ID</th>
                 <th>고객 ID</th>

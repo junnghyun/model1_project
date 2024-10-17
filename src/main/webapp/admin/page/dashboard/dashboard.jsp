@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="dashboard-item" id="box4">
-    <h2>인기 제품</h2>
+    <h2>인기 제품</h2> 
     <div class="chart-container">
         <canvas id="ordersChart"></canvas>
     </div>

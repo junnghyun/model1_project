@@ -16,7 +16,7 @@ function openMemberModal(memberId) {
 function closeMemverModal() {
     document.getElementById('memberModal').style.display = 'none';
     
-    // Tailwind CSS 제거
+    // Tailwind CSS 제거 
     const tailwindLink = document.getElementById('tailwindCSS');
     if (tailwindLink) {
         document.head.removeChild(tailwindLink);

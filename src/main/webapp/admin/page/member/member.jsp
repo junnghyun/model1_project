@@ -46,7 +46,7 @@
             </th>
         </tr>
     </thead>
-    <tbody id="memberTableBody">
+    <tbody id="memberTableBody"> 
     	<%-- for (Member member : members) { --%>
              <tr>
                  <td><%--= member.getId() --%></td>

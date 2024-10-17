@@ -73,7 +73,7 @@
     background-color: #007bff;
     cursor: pointer;
 }
-#start_btn {
+#start_btn { 
 	background-color: #00f900;
 }
 .action-btn:last-child {

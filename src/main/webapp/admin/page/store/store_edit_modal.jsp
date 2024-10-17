@@ -24,7 +24,7 @@
                     <div class="input-group">
                         <label for="store_contact" class="block text-sm font-medium text-gray-700 mb-1">매장 연락처</label>
                         <input type="tel" id="store_contact" name="store_contact" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" value="02-1234-5678">
-                    </div>
+                    </div> 
                     <div class="input-group">
                         <label for="store_status" class="block text-sm font-medium text-gray-700 mb-1">매장 상태</label>
                         <select id="store_status" name="store_status" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500">

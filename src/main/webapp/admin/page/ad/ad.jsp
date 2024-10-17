@@ -23,7 +23,7 @@
     <div class="add-ad-btn">
 	    <button class="csv-download-btn">Excel로 다운로드</button>
 	    <button class="ad-btn" onclick="openAddAdModal()">광고 추가</button>
-    </div>
+    </div> 
 </div>
 			
 <table class="ad-table">

@@ -29,7 +29,7 @@
 	                            <span class="ml-2">케이크</span>
 	                        </label>
 	                    </div>
-                    </div>
+                    </div>  
                     <div class="input-group md:col-span-2">
                         <label for="product_name" class="block text-sm font-medium text-gray-700 mb-1">제품명</label>
                         <input type="text" id="product_name" name="product_name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="맛있는 과자">

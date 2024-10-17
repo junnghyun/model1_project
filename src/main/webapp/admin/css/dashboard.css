@@ -12,7 +12,7 @@
     padding: 20px;
 }
 .chart-container {
-    position: relative;
+    position: relative; 
     height: 200px;
 }
 #box1, #box2, #box3, #box4 {

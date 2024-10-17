@@ -65,7 +65,7 @@
     <button class="next-page">▶</button>
 </div>
 </div>
-
+ 
 <div id="editProductModal" style="display: none;">
     <jsp:include page="product_edit_modal.jsp" />
 </div>

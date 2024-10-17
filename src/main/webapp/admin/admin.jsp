@@ -23,7 +23,7 @@
     <script src="js/store.js" defer></script>
     <script src="js/ad.js" defer></script>
 </head>
-<body>
+<body> 
     <div class="container">
         <div class="sidebar" id="sidebar">
             <span class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">&times;</span>

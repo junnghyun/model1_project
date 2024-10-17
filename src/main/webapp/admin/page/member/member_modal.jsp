@@ -20,7 +20,7 @@
                     <div class="input-group">
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">이름</label>
                         <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value="홍길동">
-                    </div>
+                    </div> 
                     <div class="input-group">
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-1">비밀번호</label>
                         <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value="********">

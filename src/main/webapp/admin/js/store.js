@@ -19,7 +19,7 @@ function openStoreEditModal() {
     tailwindLink.href = 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'; // Tailwind CSS CDN
     tailwindLink.id = 'tailwindCSS'; // ID를 추가하여 나중에 쉽게 찾을 수 있게 함
     document.head.appendChild(tailwindLink);
-	
+	 
     document.getElementById('storeEditModal').style.display = 'block';
 }
 

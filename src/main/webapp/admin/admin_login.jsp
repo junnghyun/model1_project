@@ -25,7 +25,7 @@
             --button-hover-bg-color: #003d82;
         }
 
-        body {
+        body { 
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
