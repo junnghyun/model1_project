@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.dashboard-item {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+.chart-container {
+    position: relative; 
+    height: 200px;
+}
+#box1, #box2, #box3, #box4 {
+   	background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+}
