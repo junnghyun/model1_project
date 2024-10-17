@@ -20,13 +20,10 @@
     <thead>
         <tr>
             <th>주소</th>
-            <th>매장명</th>
-            <th>매장연락처</th>
-            <th>영업시간</th>
-            <th>위도</th>
-            <th>경도</th>
-            <th>매장상태</th>
-            <th>
+            <th style="width: 250px;">매장명</th>
+            <th style="width: 250px;">매장연락처</th>
+            <th style="width: 100px;">매장상태</th>
+            <th style="width: 150px;">
             	<div class="pagination">
 				    <button class="prev-page">◀</button>
 				    <span>null / null</span>
@@ -41,12 +38,9 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
                 <button class="action-btn" onclick="openStoreEditModal('STORE001')">편집</button>
-                <button class="action-btn delete-btn" onclick="deleteStore('STORE001')">삭제</button>
+                <button class="action-btn delete-btn" onclick="deleteStore()">삭제</button>
             </td>
         </tr>
         <!-- 추가 매장 항목은 여기 추가 -->
@@ -60,9 +54,6 @@
 </div> 
 </div>
 
-<div id="storeEditModal" style="display: none;">
-    <jsp:include page="store_edit_modal.jsp" />
-</div>
-<div id="storeAddModal" style="display: none;">
-    <jsp:include page="store_add_modal.jsp" />
-</div>
+
+<jsp:include page="store_edit_modal.jsp" />
+<jsp:include page="store_add_modal.jsp" />

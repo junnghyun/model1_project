@@ -30,15 +30,14 @@
     <thead>
         <tr>
             <th>광고번호</th>
-            <th>광고 시작일</th>
-            <th>광고 종료일</th>
-            <th>광고주 이름</th>
-            <th>광고 내용</th>
+            <th style="width: 150px;">광고 기간</th>
+            <th style="width: 120px;">광고주 이름</th>
             <th>광고주 연락처</th>
             <th>광고비용</th>
             <th>클릭 수</th>
-            <th>입력일</th>
-            <th>
+            <th style="width: 90px;">입력일</th>
+            <th style="width: 80px;">광고상태</th>
+            <th style="width: 150px;">
             	<div class="pagination">
 				    <button class="prev-page">◀</button>
 				    <span>null / null</span>
@@ -58,10 +57,9 @@
         	<td></td>
         	<td></td>
         	<td></td>
-        	<td></td>
         	<td>
         		<button class="action-btn" onclick="openEditAdModal('PROD001')">편집</button>
-                <button class="action-btn delete-btn" onclick="deleteProduct('PROD001')">종료</button>
+                <button class="action-btn delete-btn" onclick="deleteProduct()">종료</button>
         	</td>
         </tr>
     </tbody>

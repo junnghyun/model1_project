@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    <div class="modal-overlay">
+<div id="storeAddModal" style="display: none;">
+    <div class="modal-overlay" onclick="closeStoreModal()">
         <div class="modal-content shadow-xl">
             <div class="bg-green-600 text-white px-6 py-4 flex justify-between items-center">
                 <h2 class="text-xl font-semibold" style="font-cloor: black;">매장 정보 추가</h2>
@@ -53,8 +53,10 @@
                 </div> 
                 <div class="flex justify-end space-x-3">
                     <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-150" onclick="closeStoreModal()">취소</button>
-                    <button type="submit" class="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition duration-150">저장</button>
+                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition duration-150">저장</button>
                 </div>
             </form>
         </div>
     </div>
+</div>
+    

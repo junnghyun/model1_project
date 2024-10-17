@@ -2,6 +2,13 @@
  * 
  */
 
+function deleteProduct() {
+    const userConfirmed = confirm("삭제하시겠습니까?");
+    if (userConfirmed) {
+        deleteItem(); // 삭제 기능 실행
+    }
+}
+
 function openAddAdModal() {
 	 // Tailwind CSS를 동적으로 로드
     const tailwindLink = document.createElement('link');
