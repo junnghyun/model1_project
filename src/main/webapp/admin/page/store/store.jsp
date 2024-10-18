@@ -19,9 +19,9 @@
 <table class="store-table">
     <thead>
         <tr>
-            <th>주소</th>
             <th style="width: 250px;">매장명</th>
             <th style="width: 250px;">매장연락처</th>
+            <th style="max-width: 250px;">주소</th>
             <th style="width: 100px;">매장상태</th>
             <th style="width: 150px;">
             	<div class="pagination">

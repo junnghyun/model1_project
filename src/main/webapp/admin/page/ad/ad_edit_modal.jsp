@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   
-    <div class="modal-overlay" onclick="closeAdModal()">
+    <div class="modal-overlay">
         <div class="modal-content shadow-xl">
             <div class="bg-green-600 text-white px-6 py-4 flex justify-between items-center">
-                <h2 class="text-xl font-semibold">광고 정보 추가</h2>
+                <h2 class="text-xl font-semibold">광고 정보 수정</h2>
                 <button class="text-white hover:text-gray-200 transition duration-150" onclick="closeAdModal()">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

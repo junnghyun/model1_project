@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div id="storeAddModal" style="display: none;">
-    <div class="modal-overlay" onclick="closeStoreModal()">
+    <div class="modal-overlay">
         <div class="modal-content shadow-xl">
             <div class="bg-green-600 text-white px-6 py-4 flex justify-between items-center">
                 <h2 class="text-xl font-semibold" style="font-cloor: black;">매장 정보 추가</h2>
@@ -31,16 +31,7 @@
                             <option value="open">영업 중</option>
                             <option value="closed">폐업</option>
                             <option value="temporary_closed">임시 휴업</option>
-                            <option value="coming_soon">오픈 예정</option>
                         </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="open_time" class="block text-sm font-medium text-gray-700 mb-1">매장 오픈 시간</label>
-                        <input type="time" id="open_time" name="open_time" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" value="09:00">
-                    </div>
-                    <div class="input-group">
-                        <label for="close_time" class="block text-sm font-medium text-gray-700 mb-1">매장 마감 시간</label>
-                        <input type="time" id="close_time" name="close_time" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" value="22:00">
                     </div>
                     <div class="input-group">
                         <label for="latitude" class="block text-sm font-medium text-gray-700 mb-1">위도</label>

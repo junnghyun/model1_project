@@ -31,12 +31,12 @@
         <tr>
             <th>광고번호</th>
             <th style="width: 150px;">광고 기간</th>
-            <th style="width: 120px;">광고주 이름</th>
+            <th style="width: 180px;">광고주 이름</th>
             <th>광고주 연락처</th>
             <th>광고비용</th>
             <th>클릭 수</th>
-            <th style="width: 90px;">입력일</th>
-            <th style="width: 80px;">광고상태</th>
+            <th style="width: 150px;">입력일</th>
+            <th style="width: 100px;">광고상태</th>
             <th style="width: 150px;">
             	<div class="pagination">
 				    <button class="prev-page">◀</button>
