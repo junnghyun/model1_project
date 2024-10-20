@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.order-management {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.order-header {
+    display: flex;
+    flex-direction: column; /* 수직 방향으로 정렬 */
+    margin-bottom: 10px;
+}
+
+.order-button {
+    display: flex;
+    margin-bottom: 10px; /* 버튼과 날짜 범위 사이의 간격 */
+}
+
+.order-button button {
+    margin-right: 10px; /* 버튼 간의 간격 */
+}
+
+.date-range {
+    display: flex;
+    align-items: center; /* 날짜 입력 필드 정렬 */
+    margin-bottom: 10px; /* 날짜 범위와 검색 바 사이의 간격 */
+}
+
+.order-header button, .order-header input, .order-header span {
+    margin-right: 10px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.ongoing {
+    color: orange;
+}
+
+.status.pending {
+    color: blue;
+}
+
+.status.delivered {
+    color: green;
+}
+
+.action-btn {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+}
+#start_btn { 
+	background-color: #509458;
+}
+.action-btn:last-child {
+    background-color: #dc3545; /* 주문 취소 버튼 색상 */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prev-page, .next-page {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
