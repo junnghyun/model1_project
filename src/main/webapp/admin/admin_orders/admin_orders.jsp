@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자 주문관리</title>
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin_orders.css">
+<script src="js/admin_orders.js" defer></script>
+</head>
+<body>
+<jsp:include page="../common/admin.jsp" />
+<div class="common_admin">
 <h1>주문관리</h1>
 <div class="order-management">
     <div class="order-header">
@@ -58,3 +70,7 @@
         <button class="next-page">▶</button>
     </div>
 </div>
+</div>
+<script src="../common/js/admin.js"></script>
+</body>
+</html>

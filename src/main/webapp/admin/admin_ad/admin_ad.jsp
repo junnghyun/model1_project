@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자_광고관리</title>
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin_ad.css">
+<script src="js/admin_ad.js" defer></script>
+</head>
+<body>
+<jsp:include page="../common/admin.jsp" />
+<div class="common_admin">
 <h1>광고관리</h1>
 <div class="ad-summary">
     <div class="ad-active">
@@ -58,7 +69,7 @@
         	<td></td>
         	<td></td>
         	<td>
-        		<button class="action-btn" onclick="openEditAdModal('PROD001')">편집</button>
+        		<button class="edit-btn" onclick="openEditAdModal('PROD001')">편집</button>
                 <button class="action-btn delete-btn" onclick="deleteProduct()">종료</button>
         	</td>
         </tr>
@@ -71,9 +82,13 @@
     <button class="next-page">▶</button>
 </div>
 </div>
+</div>
 <div id="editAdModal" style="display: none;">
     <jsp:include page="ad_edit_modal.jsp" />
 </div>
 <div id="adModal" style="display: none;">
     <jsp:include page="ad_modal.jsp" />
 </div>
+<script src="../common/js/admin.js"></script>
+</body>
+</html>

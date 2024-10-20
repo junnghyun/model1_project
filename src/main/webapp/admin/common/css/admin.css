@@ -14,6 +14,11 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: fixed; /* 헤더 고정 */
+    top: 0;
+    left: 0;
+    right: 0; /* 전체 너비 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
 }
 
 .user-info {
@@ -40,29 +45,36 @@ body {
     background-color: #c0392b;
 }
 
-
 .admin-text {
 	font-size: 20px;
-}
-.container {
-    display: flex;
-    height: calc(100vh - 60px);
-    align-items: stretch; /* 자식 요소의 높이를 부모 높이에 맞춤 */
 }
 .sidebar {
     width: 200px;
     background-color: #333;
     color: white;
     padding: 20px;
-    transition: all 0.3s;
-    position: relative;
-    justify-content: center;
-    height: 100%; /* 부모 요소와 같은 높이 */
+    position: fixed; /* 사이드바 고정 */
+    top: 50px; /* 헤더 아래에 위치 */
+    bottom: 0; /* 아래쪽 끝까지 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+    transition: width 0.3s;
 }
 .sidebar.hidden {
     width: 60px;
     padding: 20px 0;
 }
+
+.common_admin {
+    margin-top: 60px; /* 헤더 높이 */
+    margin-left: 230px; /* 사이드바 기본 너비 */
+    padding: 20px; /* 패딩 추가 */
+    transition: margin-left 0.3s; /* 여백 변화 애니메이션 */
+}
+
+.sidebar.hidden + .common_admin {
+    margin-left: 60px; /* 사이드바가 줄어들 때의 여백 */
+}
+
 .sidebar.hidden .sidebar-content {
     display: none;
 }

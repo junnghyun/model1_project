@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자 매장관리</title>
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin_store.css">
+<script src="js/admin_store.js" defer></script>
+</head>
+<body>
+<jsp:include page="../common/admin.jsp" />
+<div class="common_admin">
 <h1>매장관리</h1>
 <div class="store-summary">
     <span>매장 수: <strong id="store-count">null</strong></span>	<!-- 매장 수 -->
@@ -53,7 +64,9 @@
     <button class="next-page">▶</button>
 </div> 
 </div>
-
-
 <jsp:include page="store_edit_modal.jsp" />
 <jsp:include page="store_add_modal.jsp" />
+</div>
+<script src="../common/js/admin.js"></script>
+</body>
+</html>

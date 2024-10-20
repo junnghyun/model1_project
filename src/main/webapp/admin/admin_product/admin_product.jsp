@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자 제품관리</title>
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin_product.css">
+<script src="js/admin_product.js" defer></script>
+</head>
+<body>
+<jsp:include page="../common/admin.jsp" />
+<div class="common_admin">
 <h1>제품관리</h1>
 <div class="product-summary">
 	<div class="total-products">
@@ -74,3 +85,7 @@
 <div id="addProductModal" style="display: none;">
     <jsp:include page="product_add_modal.jsp" />
 </div>
+</div>
+<script src="../common/js/admin.js"></script>
+</body>
+</html>

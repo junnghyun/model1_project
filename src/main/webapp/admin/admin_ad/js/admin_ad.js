@@ -45,7 +45,7 @@ function closeAdModal() {
 window.onclick = function(event) {
     const modal = document.getElementById('.modal-overlay');
     if (event.target === modal) {
-        closeModal();
+        closeAdModal();
     }
 };
 

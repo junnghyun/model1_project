@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자 회원관리</title>
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin_member.css">
+<script src="js/admin_member.js" defer></script>
+</head>
+<body>
+<jsp:include page="../common/admin.jsp" />
+<div class="common_admin">
 <h1>회원관리</h1>
 
 <%--
@@ -71,3 +82,7 @@
     <a href="?page=<%--= Math.min(totalPages, currentPage + 1) --%>&search=<%--= searchTerm --%>" class="next-page" <%--= currentPage == totalPages ? "disabled" : "" --%>>▶</a>
 </div>
 </div>
+</div>
+<script src="../common/js/admin.js"></script>
+</body>
+</html>
