@@ -92,6 +92,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 .modal-content {
     background-color: white;
@@ -100,6 +101,7 @@
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
+    z-index: 1001;
 }
 .input-group {
     transition: all 0.3s ease;

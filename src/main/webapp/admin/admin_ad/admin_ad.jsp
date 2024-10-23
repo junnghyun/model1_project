@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자_광고관리</title>
-<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
-<link rel="stylesheet" type="text/css" href="css/admin_ad.css">
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css?after">
+<link rel="stylesheet" type="text/css" href="css/admin_ad.css?after">
 <script src="js/admin_ad.js" defer></script>
 </head>
 <body>
@@ -83,12 +83,12 @@
 </div>
 </div>
 </div>
+<script src="../common/js/admin.js"></script>
 <div id="editAdModal" style="display: none;">
     <jsp:include page="ad_edit_modal.jsp" />
 </div>
 <div id="adModal" style="display: none;">
     <jsp:include page="ad_modal.jsp" />
 </div>
-<script src="../common/js/admin.js"></script>
 </body>
 </html>

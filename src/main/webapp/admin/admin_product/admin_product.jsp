@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 제품관리</title>
-<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
-<link rel="stylesheet" type="text/css" href="css/admin_product.css">
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css?after">
+<link rel="stylesheet" type="text/css" href="css/admin_product.css?after">
 <script src="js/admin_product.js" defer></script>
 </head>
 <body>
@@ -41,7 +41,6 @@
             <th style="width: 150px;">제품 ID</th>
             <th style="width: 150px;">카테고리명</th>
             <th style="width: 200px;">제품명</th>
-            <th>알레르기정보</th>
             <th style="width: 120px;">입력일</th>
             <th style="width: 100px;">가격</th>
             <th style="width: 90px;">제품 상태</th>
@@ -56,7 +55,6 @@
     </thead>
     <tbody>
         <tr>
-            <td></td>
             <td></td>
             <td></td>
             <td></td>

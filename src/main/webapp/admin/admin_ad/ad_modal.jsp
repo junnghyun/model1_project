@@ -19,35 +19,35 @@
                     </div>
                     <div class="input-group">
                         <label for="advertiser_name" class="block text-sm font-medium text-gray-700 mb-1">광고주 이름</label>
-                        <input type="text" id="advertiser_name" name="advertiser_name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="(주)행복한 광고">
+                        <input type="text" id="advertiser_name" name="advertiser_name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="">
                     </div> 
                     <div class="input-group">
                         <label for="ad_start_date" class="block text-sm font-medium text-gray-700 mb-1">광고 시작일</label>
-                        <input type="date" id="ad_start_date" name="ad_start_date" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="2023-05-01">
+                        <input type="date" id="ad_start_date" name="ad_start_date" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="">
                     </div>
                     <div class="input-group">
                         <label for="ad_end_date" class="block text-sm font-medium text-gray-700 mb-1">광고 종료일</label>
-                        <input type="date" id="ad_end_date" name="ad_end_date" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="2023-05-31">
+                        <input type="date" id="ad_end_date" name="ad_end_date" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="">
                     </div>
                     
                     <div class="input-group">
                         <label for="advertiser_contact" class="block text-sm font-medium text-gray-700 mb-1">광고주 연락처</label>
-                        <input type="tel" id="advertiser_contact" name="advertiser_contact" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="02-1234-5678">
+                        <input type="tel" id="advertiser_contact" name="advertiser_contact" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="">
                     </div>
                     <div class="input-group">
                         <label for="ad_cost" class="block text-sm font-medium text-gray-700 mb-1">광고 비용</label>
-                        <input type="number" id="ad_cost" name="ad_cost" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="1000000">
+                        <input type="number" id="ad_cost" name="ad_cost" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" value="">
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="ad_content" class="block text-sm font-medium text-gray-700 mb-1">광고 내용</label>
-                    <textarea id="ad_content" name="ad_content" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">신제품 출시 기념 특별 할인 이벤트! 지금 바로 확인하세요.</textarea>
+                    <textarea id="ad_content" name="ad_content" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
                 </div>
                 <div class="input-group">
                     <label for="ad_image" class="block text-sm font-medium text-gray-700 mb-1">광고 이미지</label>
                     <div class="flex items-center space-x-4">
-                        <img src="" alt="현재 광고 이미지" class="w-40 h-auto object-cover rounded-md">
-                        <input type="file" id="ad_image" name="ad_image" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <img id="image_preview" src="/api/placeholder/160/160" alt="현재 광고 이미지" class="w-40 h-auto object-cover rounded-md">
+                        <input type="file" id="ad_image" name="ad_image" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" onchange="previewImage(this);">
                     </div>
                 </div>
                 <div class="flex justify-end space-x-3">

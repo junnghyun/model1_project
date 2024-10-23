@@ -4,7 +4,7 @@
 <div class="modal-overlay">
     <div class="modal-content shadow-xl max-w-3xl mx-auto">
         <div class="bg-indigo-600 text-white px-4 py-3 flex justify-between items-center">
-            <h2 class="text-lg font-semibold">제품 정보 수정</h2>
+            <h2 class="text-lg font-semibold">제품 정보 추가</h2>
             <button class="text-white hover:text-gray-200 transition duration-150" onclick="closeProductModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -21,18 +21,24 @@
                     <label for="category_number" class="block text-sm font-medium text-gray-700 mb-1">카테고리</label>
                     <div class="flex space-x-4">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="category" value="bread" class="form-radio text-indigo-600 focus:ring-indigo-500" checked>
+                            <input type="radio" name="category" value="bread" class="form-radio text-indigo-600 focus:ring-indigo-500" checked onchange="updateProductType(this.value)">
                             <span class="ml-2 text-sm">빵</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="radio" name="category" value="cake" class="form-radio text-indigo-600 focus:ring-indigo-500">
+                            <input type="radio" name="category" value="cake" class="form-radio text-indigo-600 focus:ring-indigo-500" onchange="updateProductType(this.value)">
                             <span class="ml-2 text-sm">케이크</span>
                         </label>
                     </div>
                 </div>
-                <div class="input-group md:col-span-2">
+                <div class="input-group">
                     <label for="product_name" class="block text-sm font-medium text-gray-700 mb-1">제품명</label>
                     <input type="text" id="product_name" name="product_name" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="맛있는 과자">
+                </div>
+                <div class="input-group">
+                    <label for="bread_type" class="block text-sm font-medium text-gray-700 mb-1">종류</label>
+                    <select id="product_type" name="product_type" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">선택하세요</option>
+                    </select>
                 </div>
                 <div class="input-group md:col-span-2">
                     <label for="description" class="block text-sm font-medium text-gray-700 mb-1">설명</label>

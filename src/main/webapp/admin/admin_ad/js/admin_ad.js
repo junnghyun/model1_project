@@ -53,5 +53,17 @@ window.onclick = function(event) {
 document.getElementById('editAdModal').onsubmit = function(event) {
     event.preventDefault(); // 기본 제출 방지
     // 추가 로직 (예: 데이터 전송)
-    closeModal(); // 모달 닫기
+    closeAdModal(); // 모달 닫기
 };
+
+function previewImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            document.getElementById('image_preview').src = e.target.result;
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
