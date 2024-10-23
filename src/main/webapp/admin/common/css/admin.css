@@ -21,6 +21,13 @@ body {
     z-index: 1000; /* 다른 요소 위에 표시 */
 }
 
+.order-management {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}	
+
 .user-info {
     display: flex;
     align-items: center;

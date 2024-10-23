@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 회원관리</title>
-<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css?after">
 <link rel="stylesheet" type="text/css" href="css/admin_member.css">
 <script src="js/admin_member.js" defer></script>
 </head>

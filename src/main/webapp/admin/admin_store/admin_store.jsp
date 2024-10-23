@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 매장관리</title>
-<link rel="stylesheet" type="text/css" href="../common/css/admin.css">
+<link rel="stylesheet" type="text/css" href="../common/css/admin.css?after">
 <link rel="stylesheet" type="text/css" href="css/admin_store.css">
 <script src="js/admin_store.js" defer></script>
 </head>
