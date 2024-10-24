@@ -1,0 +1,263 @@
+@charset "euc-kr";
+
+/* 공통 */
+.franchise-wrap .tab-cont {position:relative;padding:20px 20px 60px 250px;margin-top:20px;min-height:500px;background-color:#fff;}
+.franchise-wrap .tab-cont .side-menu {position:absolute;top:20px;left:20px;}
+.franchise-wrap .tab-cont .side-menu .snb {display:table;width:210px;height:316px;background:url("/static/images/franchise/bg_snb.gif") no-repeat 0 0;}
+.franchise-wrap .tab-cont .side-menu .snb ul {display:table-cell;width:100%;vertical-align:middle;}
+.franchise-wrap .tab-cont .side-menu .snb ul li {text-align:center;}
+.franchise-wrap .tab-cont .side-menu .snb ul li + li {margin-top:23px;}
+.franchise-wrap .tab-cont .side-menu .snb ul li a {padding-left:22px;margin-left:-22px;font-size:16px;font-weight:bold;line-height:20px;text-align:center;color:#d89873;}
+.franchise-wrap .tab-cont .side-menu .snb ul li.on a {color:#fff;background:url("/static/images/franchise/snb_menu_select.png") no-repeat 0 3px;}
+.franchise-wrap .tab-cont .side-menu .banner {margin-top:20px;}
+.franchise-wrap .tab-cont .cont-wrap .cont-intro{height:218px;text-align:center;background:url("/static/images/franchise/bg_intro.png") no-repeat 0 0;}
+.franchise-wrap .tab-cont .cont-wrap .cont-intro h3{padding-top:78px;font-size:30px;font-weight:normal;line-height:34px;color:#fff;}
+.franchise-wrap .tab-cont .cont-wrap .cont-intro p{margin-top:7px;font-size:16px;line-height:22px;color:#fff;}
+.franchise-wrap .fixed-banner {position:absolute;top:0;right:-122px;}
+.franchise-wrap .fixed-banner a {display:block;}
+/* 탭메뉴 */
+.franchise-wrap .tab-menu {width:1000px;height:72px;}
+.franchise-wrap .tab-menu:after {content:"";display:block;clear:both;}
+.franchise-wrap .tab-menu li {float:left;width:250px;height:72px;background:url("/static/images/franchise/tab_menu.png") no-repeat 0 0;}
+.franchise-wrap .tab-menu li span {overflow:hidden;position:absolute;width:1px;height:1px;font-size:1px;text-indent:101%;white-space:nowrap;}
+.franchise-wrap .tab-menu li a {display:block;width:100%;height:72px;}
+.franchise-wrap .tab-menu li.on a {cursor:default;}
+.franchise-wrap .tab-menu li:hover{background-color:#abc9bf;}
+.franchise-wrap .tab-menu li.on{background-position:0 -72px;background-color:#174e38;}
+.franchise-wrap .tab-menu li.menu2 {background-position:-250px 0;}
+.franchise-wrap .tab-menu li.menu2.on {background-position:-250px -72px;}
+.franchise-wrap .tab-menu li.menu3 {background-position:-500px 0;}
+.franchise-wrap .tab-menu li.menu3.on {background-position:-500px -72px;}
+.franchise-wrap .tab-menu li.menu4 {background-position:-750px 0;}
+.franchise-wrap .tab-menu li.menu4.on {background-position:-750px -72px;}
+/* 테이블 */
+.franchise-wrap .data-table {table-layout:fixed;width:100%;text-align:left;border-bottom:1px solid #eaeaea;}
+.franchise-wrap .data-table caption {margin:0;padding:0;width:1px;height:1px;line-height:0;font-size:0;visibility:hidden;}
+.franchise-wrap .data-table th, td {font-size:13px;line-height:18px;color:#666666;letter-spacing:-0.05em;}
+.franchise-wrap .data-table thead th {padding:18px 0;line-height:16px;font-size:14px;letter-spacing:-0.05em;color:#000;text-align:center;background-color:#ecefe4;}
+.franchise-wrap .data-table tfoot th {padding:14px 0 12px 17px;font-size:15px;line-height:19px;color:#000;text-align:left;border:2px solid #d6d1c9;border-right:0 none;}
+.franchise-wrap .data-table tfoot td {padding:14px 0 12px 0;font-size:15px;line-height:19px;color:#222;font-weight:bold;text-align:center;border-top:2px solid #d6d1c9;border-bottom:2px solid #d6d1c9;}
+.franchise-wrap .data-table tfoot td.last,
+.franchise-wrap .data-table tfoot td:last-child {border-right:2px solid #d6d1c9;}
+.franchise-wrap .data-table tbody th {padding:16px 0 13px 19px;line-height:16px;font-size:14px;letter-spacing:-0.05em;color:#000;vertical-align:top;border-top:1px solid #eaeaea;background-color:#fff;}
+.franchise-wrap .data-table tbody td {padding:16px 0 13px 0;text-align:center;border-top:1px solid #eaeaea;background-color:#fff;}
+.franchise-wrap .data-table tbody tr:first-child th,
+.franchise-wrap .data-table tbody tr:first-child td {border-top:0 none;}
+/* 달력 */
+.franchise-wrap .schedule-wrap {padding:40px 0 50px 0;border:1px solid #e8e6e2;}
+.franchise-wrap .schedule-wrap .month {overflow:hidden;padding:7px 0 9px 0;margin:0 auto;width:635px;text-align:center;font-size:17px;color:#000;}
+.franchise-wrap .schedule-wrap .prev_month {float:left;height:21px;padding:1px 0 0 14px;background:url("/static/images/franchise/btn_month.png") no-repeat 0 0;}
+.franchise-wrap .schedule-wrap .next_month {float:right;height:21px;padding:1px 14px 0 0;background:url("/static/images/franchise/btn_month.png") no-repeat 100% -21px;}
+.franchise-wrap .schedule-wrap .month a {line-height:21px;font-size:16px;color:#655245;}
+.franchise-wrap .schedule-wrap .tbl_calendar {width:635px;margin:0 auto 36px auto;padding:0 0 8px 0;border-bottom:1px solid #d7d4d0;}
+.franchise-wrap .schedule-wrap .tbl_calendar table {width:100%;}
+.franchise-wrap .schedule-wrap .tbl_calendar th {width:67px;height:42px;border-bottom:12px solid #fff;background-color:#eaeaea;font-size:14px;line-height:20px;color:#444;text-align:center}
+.franchise-wrap .schedule-wrap .tbl_calendar th.fst {color:#c52e00}
+.franchise-wrap .schedule-wrap .tbl_calendar th.lst {color:#708957}
+.franchise-wrap .schedule-wrap .tbl_calendar .fst .date {color:#c52e00}
+.franchise-wrap .schedule-wrap .tbl_calendar td {height:45px;padding:6px;border-right:1px solid #fff;border-bottom:1px solid #fff;vertical-align:top;color:#666;font-size:11px;}
+.franchise-wrap .schedule-wrap .tbl_calendar td div {position:relative;width:100%;height:50px;}
+.franchise-wrap .schedule-wrap .tbl_calendar .date {position:absolute;top:0;left:0;display:inline-block;height:12px;padding-right:1px;line-height:10px;letter-spacing:-1px;font-style:normal;}
+.franchise-wrap .schedule-wrap .tbl_calendar .fst .date {color:#ff0000}
+.franchise-wrap .schedule-wrap .tbl_calendar .lst .date {color:#708957}
+.franchise-wrap .schedule-wrap .tbl_calendar .holyday .date {color:#c52e00}
+.franchise-wrap .schedule-wrap .tbl_calendar .desc {position:absolute;right:0;bottom:0;width:100%;padding:0;font-weight:normal;font-size:11px;font-family:"돋움", Dotum;line-height:13px;text-align:right;color:#444;letter-spacing:-1px;}
+.franchise-wrap .schedule-wrap .remark_1 {background-color:#cb9169;}/* 소자본설명회 */
+.franchise-wrap .schedule-wrap .remark_2 {background-color:#f1e3b2;}/* 우리동네설명회 */
+.franchise-wrap .schedule-wrap .remark_3 {background-color:#f16b22;}/* 정기설명회 */
+.franchise-wrap .schedule-wrap .legend {margin:0 1px 0 0;padding:6px 13px;color:#444;}
+.franchise-wrap .schedule-wrap .list_1 {margin:0 0 0 47px;}
+/* select menu custom */
+.franchise-wrap .select-menu .dropdown,
+.franchise-wrap .select-menu .dropdown div,
+.franchise-wrap .select-menu .dropdown li,
+.franchise-wrap .select-menu .dropdown div::after {-webkit-transition:all 150ms ease-in-out;-moz-transition:all 150ms ease-in-out;-ms-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;}
+.franchise-wrap .select-menu .dropdown .selected::after,
+.franchise-wrap .select-menu .dropdown.scrollable div::after {-webkit-pointer-events:none;-moz-pointer-events:none;-ms-pointer-events:none;pointer-events:none;}
+.franchise-wrap .select-menu .dropdown {position:relative;width:100%;border:1px solid #114833;background:transparent url("/static/images/franchise/bg_select_menu.png") 0 0 repeat;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;}
+.franchise-wrap .select-menu .dropdown.open {z-index:2;}
+.franchise-wrap .select-menu .dropdown .arrow {position:absolute;right:15px;top:14px;width:15px;height:9px;background:transparent url("/static/images/franchise/select_arrow.png") 0 0 no-repeat;}
+.franchise-wrap .select-menu .dropdown.open .arrow {background-position:-15px 0;}
+.franchise-wrap .select-menu .dropdown .selected,
+.franchise-wrap .select-menu .dropdown li {display:block;padding:0 12px;height:38px;line-height:38px;font-size:16px;font-weight:bold;color:#114833;overflow:hidden;white-space:nowrap;}
+.franchise-wrap .select-menu .dropdown div {position:absolute;width:100%;height:0;top:38px;left:-1px;border:1px solid #114833;background:transparent;overflow:hidden;opacity:0;animation-duration:5s;animation-name:slidein;}
+.franchise-wrap .select-menu .dropdown.open div {display:block;opacity:1;z-index:2;}
+.franchise-wrap .select-menu .dropdown ul {position:absolute;left:0;top:0;height:100%;width:100%;overflow:hidden;}
+.franchise-wrap .select-menu .dropdown li {font-size:16px;color:#114833;border-top:1px solid #114833;background:transparent url("/static/images/franchise/bg_select_menu.png") 0 0 repeat;}
+.franchise-wrap .select-menu .dropdown li:first-child {border-top:0 none;}
+.franchise-wrap .select-menu .dropdown li.focus {position:relative;color:#fff;background:transparent url("/static/images/franchise/bg_select_menu_active.png") 0 0 repeat;z-index:3;}
+.franchise-wrap .select-menu .dropdown li.active {position:relative;color:#fff;background:transparent url("/static/images/franchise/bg_select_menu_active.png") 0 0 repeat;}
+/* OLD SELECT (HIDDEN) */
+.franchise-wrap .select-menu .dropdown .old {position:absolute;left:0;top:0;height:0;width:0;overflow:hidden;}
+.franchise-wrap .select-menu .dropdown select {position:absolute;left:0px;top:0px;}
+.franchise-wrap .select-menu .dropdown.touch .old {width:100%;height:100%;}
+.select-menu .dropdown.touch select {width:100%;height:100%;opacity:0;}
+/* 설명 박스 이중 border */
+.franchise-wrap .ex-wrap {border:2px solid #e8e6e2;background-color:#f6f5f4;}
+.franchise-wrap .ex-wrap .ex-box {margin:2px;border:1px solid #e8e6e2;background-color:#fff;}
+/* 서브 타이틀 */
+.franchise-wrap .cont-head h3 {position:relative;padding-left:14px;margin-top:40px;height:24px;background:url("/static/images/franchise/sub_tit.png") no-repeat 0 0;}
+.franchise-wrap .cont-head h3:after {content:"";display:block;position:absolute;top:0;left:0;width:4px;height:21px;background-color:#184f39;}
+.franchise-wrap .cont-head h3 span {overflow:hidden;position:absolute;width:1px;height:1px;font-size:1px;text-indent:101%;white-space:nowrap;}
+.franchise-wrap .cont-head p {margin-top:9px;font-size:13px;line-height:18px;color:#444;}
+.franchise-wrap .cont-head .stit-preparation01 {background-position:0 -120px;}/* 창업 준비 절차 */
+.franchise-wrap .cont-head .stit-preparation02 {background-position:0 -160px;}/* 창업 투자비 */
+.franchise-wrap .cont-head .stit-preparation03 {background-position:0 -200px;}/* 창업 대출안내 */
+.franchise-wrap .cont-head .stit-preparation04 {background-position:0 -240px;}/* 창업 FAQ */
+.franchise-wrap .cont-head .stit-preparation05 {background-position:0 -280px;}/* 창업 상담 */
+.franchise-wrap .cont-head .stit-preparation06 {background-position:0 -320px;}/* 창업 문의 연락처 */
+.franchise-wrap .cont-head .stit-briefing01 {background-position:0 -360px;}/* 정기 창업 설명회 */
+.franchise-wrap .cont-head .stit-briefing02 {background-position:0 -400px;}/* 우리동네 창업 설명회 */
+.franchise-wrap .cont-head .stit-briefing03 {background-position:0 -440px;}/* 주말 창업 설명회 */
+/* 상단 비주얼 슬라이드 */
+.franchise-wrap .cont-intro-visual .bxslider {position:relative;}
+.franchise-wrap .cont-intro-visual .bx-controls-direction {width:100%;}
+.franchise-wrap .cont-intro-visual .bx-controls-direction a {display:block;position:absolute;top:104px;width:48px;height:51px;text-indent:-9999px;background:url("/static/images/franchise/btn_slide.png") no-repeat 0 0;}
+.franchise-wrap .cont-intro-visual .bx-controls-direction a.bx-prev {left:0;background-position:0 0;}
+.franchise-wrap .cont-intro-visual .bx-controls-direction a.bx-next {right:0;background-position:100% 0;}
+.franchise-wrap .cont-intro-visual .bx-controls-direction a.disabled {display:none;}
+.franchise-wrap .cont-intro-visual .bx-pager {margin-top:20px;text-align:center;}
+.franchise-wrap .cont-intro-visual .bx-pager .bx-pager-item {display:inline-block;margin:0 5px;}
+.franchise-wrap .cont-intro-visual .bx-pager .bx-pager-item a {display:block;width:29px;height:5px;text-indent:-9999px;background-color:#eaeaea;}
+.franchise-wrap .cont-intro-visual .bx-pager .bx-pager-item a.active {background-color:#184f39;}
+
+/* 창업 안내 메인 */
+	.franchise-wrap.main .cont-wrap {margin-top:20px;}
+
+/* 뚜레쥬르 신(新) 모델 소개 */
+	.container.introduction {background:url("/static/images/franchise/bg_tlj_cafe.jpg") repeat-x 50% 148px;background-size:100% 720px;}
+	.container.introduction .franchise-wrap {min-height:720px;}
+	.container.introduction .franchise-wrap .tab-cont {padding:0;margin:0 0 50px 0;background-color:transparent;}
+	.container.introduction .franchise-wrap .select-menu {position:absolute;top:30px;right:2px;left:auto;width:200px;z-index:9;}
+	.container.introduction .franchise-wrap .select-menu .wrap {margin:0 auto;width:100%;}
+	.container.introduction .franchise-wrap .cont-head {padding:49px 0 0 0;height:517px;text-align:center;background:url("/static/images/franchise/img_tlj_cafe.png") no-repeat 0 182px;}
+	.container.introduction .franchise-wrap .cont-head h3 {padding:0;margin:0;height:auto;font-size:36px;line-height:40px;color:#174e38;background:none;}
+	.container.introduction .franchise-wrap .cont-head h3:after {content:"";display:block;clear:both;width:auto;height:auto;background-color:transparent;}
+	.container.introduction .franchise-wrap .cont-head p {margin-top:8px;font-size:16px;line-height:22px;color:#121212;}
+	.container.introduction .franchise-wrap .cont-box h4 {position:relative;padding-left:17px;margin:0;height:24px;background:url("/static/images/franchise/sub_tit.png") no-repeat 0 0;}
+	.container.introduction .franchise-wrap .cont-box h4:after {content:"";display:block;position:absolute;top:0;left:0;width:4px;height:19px;background-color:#2f6d56;}
+	.container.introduction .franchise-wrap .cont-box h4 span {overflow:hidden;position:absolute;width:1px;height:1px;font-size:1px;text-indent:101%;white-space:nowrap;}
+	.container.introduction .franchise-wrap .cont-box > div {margin-top:70px;}
+	.container.introduction .franchise-wrap .cont-box .summary {margin:15px 0 21px 0;font-size:13px;line-height:20px;color:#444;}
+	.container.introduction .franchise-wrap .cont-box .thumb-img {text-align:center;}
+	/* 새로워진 뚜레쥬르 */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new01 {background-position:0 -480px;}/* 새로워진 뚜레쥬르 매장 */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new02 {background-position:0 -520px;}/* 새로워진 뚜레쥬르 로고와 엠블럼 */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new03 {background-position:0 -560px;}/* 새로워진 뚜레쥬르 브랜드 컬러 */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new04 {background-position:0 -600px;}/* 새로워진 뚜레쥬르 패키지 */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new05 {background-position:0 -640px;}/* 새로워진 뚜레쥬르 유니폼 */
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-1 .thumb-img img + img {display:block;margin-top:11px;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-2 .thumb-img {margin-top:27px;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-2 .summary {position:relative;padding-top:25px;margin:35px 0 0 0;text-align:center;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-2 .summary:after {content:"";display:block;position:absolute;top:0;left:50%;margin-left:-66px;width:132px;height:1px;background-color:#bab1a4;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .thumb-img {margin-top:27px;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .summary {position:relative;padding-top:25px;margin:35px 0 0 0;text-align:center;}
+	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .summary:after {content:"";display:block;position:absolute;top:0;left:50%;margin-left:-66px;width:132px;height:1px;background-color:#bab1a4;}
+	/* 신(新) 모델의 장점 */
+	.container.introduction .franchise-wrap.intro-adv h4 {padding:0;}
+	.container.introduction .franchise-wrap.intro-adv h4:after {content:"";display:block;clear:both;background-color:transparent;}
+	.container.introduction .franchise-wrap.intro-adv h4.stit-adv01 {background-position:0 -680px;}
+	.container.introduction .franchise-wrap.intro-adv h4.stit-adv02 {background-position:0 -720px;}
+	.container.introduction .franchise-wrap.intro-adv h4.stit-adv03 {background-position:0 -760px;}
+	.container.introduction .franchise-wrap.intro-adv h4.stit-adv04 {background-position:0 -800px;}
+
+/* 창업 성공 스토리 */
+	.franchise-wrap.story .tab-cont {padding:20px 0 60px 0;background-color:transparent;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap {position:relative;margin-bottom:40px;width:100%;height:472px;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap:after {content:"";display:block;clear:both;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap h4 {position:absolute;bottom:0;left:0;padding:20px 10px;width:580px;height:95px;font-size:24px;line-height:28px;text-align:center;color:#000;background-color:#dad4bc;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .vod {float:left;width:600px;height:337px;background-color:#000;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .caption {float:right;overflow-y:auto;padding:20px 15px;width:350px;height:432px;font-size:13px;line-height:24px;text-align:center;color:#444;background-color:#fff;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .caption .store {padding:20px;font-size:16px;line-height:24px;text-align:center;color:#444;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .caption dl dt {font-size:15px;font-weight:bold;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .caption dl dd + dt {margin-top:20px;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .caption dl dd p + p {margin-top:10px;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .btn-area {position:absolute;bottom:20px;left:0;width:600px;text-align:center;}
+	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .btn-area a.btn {display:inline-block;margin:0 8px;width:224px;height:44px;line-height:44px;font-size:17px;}
+
+/* 창업 준비하기 */
+	/* 창업 준비 절차 */
+	.franchise-wrap.process .cont-wrap .cont-box {margin-top:28px;}
+	/* 창업 투자비 */
+	.franchise-wrap.investment .cont-wrap .cont-box {margin-top:27px;}
+	.franchise-wrap.investment .cont-wrap .data-table {margin-bottom:15px;}
+	.franchise-wrap.investment .cont-wrap h4 {margin:15px 0 4px 0;font-size:14px;color:#000;}
+	/* 창업 대출안내 */
+	.franchise-wrap.loan-info .cont-wrap .cont-box {margin-top:27px;}
+	.franchise-wrap.loan-info .cont-wrap .data-table thead th {padding:0;height:52px;line-height:52px;font-size:15px;}
+	.franchise-wrap.loan-info .cont-wrap .data-table tbody th {padding:16px 0 13px 0;font-size:15px;line-height:19px;text-align:center;border-top:0 none;}
+	.franchise-wrap.loan-info .cont-wrap .data-table tbody td {font-size:15px;line-height:19px;border-top:0 none;vertical-align:top;}
+	.franchise-wrap.loan-info .cont-wrap .list_1 {margin-top:30px;}
+	/* 창업 FAQ */
+	.franchise-wrap.often-faq .cont-wrap .cont-box {margin-top:28px;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader {margin:0 0 20px 0;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader:after {content:"";display:block;clear:both;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader li {width:80px;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader li + li {float:left;width:650px;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody {padding:0 0 13px 0;min-height:auto;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li {position:relative;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.q {cursor:pointer;background:url("/static/images/franchise/bg_faq_hide.png") no-repeat 100% 50%;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li.show div.q {background:url("/static/images/franchise/bg_faq_show.png") no-repeat 100% 50%;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.q a {overflow:hidden;display:block;padding:17px 0;font-size:14px;color:#666;text-decoration:none !important;text-align:center;cursor:pointer;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.q .q_tit {display:block;float:left;width:80px;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.q .q_txt {display:block;float:left;width:650px;text-align:left;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.a {position:relative;margin:4px 0 0 0;padding:19px 20px 17px 80px;min-height:50px;border:1px solid #e1dddd;font-size:13px;line-height:26px;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.a .a_tit {display:block;position:absolute;top:29px;left:0;width:80px;font-size:18px;text-align:center;}
+	.franchise-wrap.often-faq .cont-wrap .faq .faqBody li div.a .a_txt {display:block;padding:0;margin:0;width:100%;line-height:26px;font-size:13px;text-align:left;}
+	.franchise-wrap.often-faq .cont-wrap .faq .data-table {border:1px solid #eaeaea;}
+	.franchise-wrap.often-faq .cont-wrap .faq .data-table thead th {padding:10px 0;border-left:1px solid #d9dbd1;}
+	.franchise-wrap.often-faq .cont-wrap .faq .data-table thead th:first-child {border-left:0 none;}
+	.franchise-wrap.often-faq .cont-wrap .faq .data-table tbody td {border-left:1px solid #eaeaea;}
+	.franchise-wrap.often-faq .cont-wrap .faq .data-table tbody td:first-child {border-left:0 none;}
+	/* 창업 상담 */
+	.franchise-wrap.consultation .cont-wrap .cont-box {margin-top:28px;font-size:13px;line-height:17px;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box {position:relative;padding:50px 0;background:#fff url("/static/images/franchise/bg_ex_consultation.png") no-repeat 82px 52px;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box dl {padding-left:204px;margin:0;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box dl dt {font-size:18px;line-height:22px;color:#010101;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box dl dt span {font-size:13px;color:#666;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box dl dd .tel {font-size:40px;line-height:44px;font-weight:bold;color:#f36928;font-family:"arial";letter-spacing:-0.05em;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box p {position:absolute;top:55px;left:490px;padding:0;margin:0;font-size:13px;line-height:18px;color:#010101;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box p strong {display:block;font-weight:bold;}
+	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box p span {display:block;color:#666;}
+	.franchise-wrap.consultation .cont-wrap h4 {position:relative;font-size:18px;line-height:22px;text-align:center;color:#010101;}
+	.franchise-wrap.consultation .cont-wrap h4 span {padding-bottom:2px;border-bottom:1px solid #010101;}
+	.franchise-wrap.consultation .cont-wrap .form-field {padding:40px 30px;margin-top:20px;border:1px solid #e8e6e2;}
+	.franchise-wrap.consultation .cont-wrap .counsel {padding:0 18px 25px 18px;margin-top:36px;border-bottom:1px solid #e8e6e2;}
+	.franchise-wrap.consultation .cont-wrap .counsel .txtArea {width:550px;}
+	.franchise-wrap.consultation .cont-wrap .counsel + h4 {padding-top:40px;}
+	.franchise-wrap.consultation .cont-wrap .agree-cont {padding:0;margin:33px 0 0 0;border:0 none;font-family:"Nanum Barun Gothic";}
+	.franchise-wrap.consultation .cont-wrap .agree-cont h5 {margin:10px 0;font-size:13px;line-height:17px;color:#010101;}
+	.franchise-wrap.consultation .cont-wrap .agree-cont h5:first-child {margin-top:0;}
+	.franchise-wrap.consultation .cont-wrap .agree-cont h6 {padding:0 14px;margin:10px 0;font-size:13px;line-height:17px;color:#010101;}
+	.franchise-wrap.consultation .cont-wrap .txt-caution {margin-top:13px;}
+	/* 창업 문의 연락처 */
+	.franchise-wrap.contact .cont-wrap .cont-box {margin-top:28px;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box {position:relative;padding:40px 0 28px 0;background:#fff url("/static/images/franchise/bg_ex_consultation.png") no-repeat 82px 34px;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box dl {padding-left:204px;margin:0 0 20px 0;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box dl dt {font-size:18px;line-height:22px;color:#010101;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box dl dt span {font-size:13px;color:#666;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box dl dd .tel {font-size:40px;line-height:44px;font-weight:bold;color:#f36928;font-family:"arial";letter-spacing:-0.05em;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box p {position:absolute;top:44px;left:490px;padding:0;margin:0;font-size:13px;line-height:18px;color:#010101;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box p strong {display:block;font-weight:bold;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box p span {display:block;color:#666;}
+	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box p + p {overflow:hidden;position:relative;top:auto;left:auto;padding-top:20px;margin:0 30px;font-size:14px;line-height:18px;color:#666;text-align:center;letter-spacing:-0.05em;border-top:1px solid #e8e6e2;}
+	.franchise-wrap.contact .cont-wrap h4 {margin:40px 0 18px 0;color:#010101;font-size:20px;font-weight:normal;}
+	.franchise-wrap.contact .cont-wrap .search-form {padding:10px 0;}
+	.franchise-wrap.contact .cont-wrap .search-form label {margin:0 10px 0 150px;}
+	.franchise-wrap.contact .cont-wrap .search-results .data-table {border-collapse:collapse !important;}
+	.franchise-wrap.contact .cont-wrap .search-results .data-table tbody td {border-top:0 none;border-left:0 none;border-right:1px solid #eaeaea;}
+	.franchise-wrap.contact .cont-wrap .search-results .data-table tbody td.last {border-right:0 none;}
+
+
+	/* 창업 설명회 */
+	.franchise-wrap.briefing .cont-wrap .cont-box {margin-top:20px;}
+	.franchise-wrap.briefing .cont-wrap h4 {margin-top:40px;height:50px;line-height:50px;font-size:20px;font-weight:normal;text-align:center;color:#174e38;background-color:#eaeaea;}
+	.franchise-wrap.briefing .cont-wrap .info-box {position:relative;padding:35px 0 30px 0;}
+	.franchise-wrap.briefing .cont-wrap .info-box:after {content:"";display:block;clear:both;}
+	.franchise-wrap.briefing .cont-wrap .info-box dl {padding:0 0 0 52px;margin-left:50px;background:url("/static/images/franchise/bg_info_box.png") no-repeat 0 50%;}
+	.franchise-wrap.briefing .cont-wrap .info-box dl:after {content:"";display:block;clear:both;}
+	.franchise-wrap.briefing .cont-wrap .info-box dl dt {float:left;padding-left:8px;font-size:13px;line-height:25px;background:url("/static/images/franchise/bg_bullet01.gif") no-repeat 0 9px;}
+	.franchise-wrap.briefing .cont-wrap .info-box dl dd {float:left;margin-left:4px;font-size:13px;line-height:25px;}
+	.franchise-wrap.briefing .cont-wrap .info-box dl dd + dt {clear:both;}
+	.franchise-wrap.briefing .cont-wrap .info-box .btn-area {position:absolute;top:50%;left:435px;margin-top:-24px;}
+	.franchise-wrap.briefing .cont-wrap .info-box .btn-area .btn {width:232px; height:46px; font-size:17px}

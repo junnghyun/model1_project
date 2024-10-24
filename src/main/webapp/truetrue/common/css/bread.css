@@ -1,0 +1,99 @@
+@charset "euc-kr";
+
+html.history {margin:0;height:auto;background:none}
+body {width:100%}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+#wrap {width:100%}
+#header {width:100%}
+.container.is-bread {width:100%; padding:147px 0 0 0; margin:0 auto; text-align:center}
+.is-bread #content {width:100%; min-width:1000px}
+#footer {width:100%}
+.page_top .page_title.bread_talk {width:390px; max-width:390px; height:28px; margin:0 auto; padding:80px 0 0 0}
+.page_top .page_title.bread_talk .tit_bread_talk {width:390px;height:28px;}
+.page_top .page_title.bread_talk:after {content:"";position:relative;top:auto;left:auto;background-color:transparent}
+#back-top {display:none}
+
+.bread-wrap {width:100%}
+.bread-wrap .vod-visual {overflow:hidden; width:100%;}
+.bread-wrap .vod-slide {width:900%}
+.bread-wrap .vod-slide li {position:relative; float:left; width:11.11%}
+
+.bread-wrap .vod-slide video {position:absolute; top:0; left:0; width:100%; height:100%; vertical-align:top}
+.bread-wrap .bx-pager {position:absolute; bottom:9.96%; left:50%; width:300px; margin-left:-150px}
+.bread-wrap .bx-pager .bx-pager-item {display:inline-block; width:12px; height:12px; margin:0 9px}
+.bread-wrap .bx-pager .bx-pager-item a {display:block; width:12px; height:12px; background:url("../images/bread/slide_nav.png") no-repeat 0 0; text-indent:-9999px}
+.bread-wrap .bx-pager .bx-pager-item a.active {background-position:-12px 0}
+
+.bread-wrap .bx-controls {display:none}
+.bread-wrap .bx-controls-direction a {display:block; overflow:hidden; position:absolute; top:50%; width:111px;height:317px; margin-top:-130px; text-indent:-999px; background:url("../images/bread/slide_controls.png") no-repeat 0 0}
+.bread-wrap .bx-controls-direction a:hover,
+.bread-wrap .bx-controls-direction .active {background-image:url("../images/bread/slide_controls_active.png")}
+.bread-wrap .bx-controls-direction .disabled {display:none !important}
+
+.bread-wrap .bx-controls-direction .bx-prev {left:0;background-position:0px 0px}
+.bread-wrap .bx-controls-direction .bx-next {right:0;background-position:-121px 0px}
+
+.bread-wrap .btn-play {display:none; overflow:hidden; position:absolute; right:105px; bottom:9.96%; width:33px; height:37px; background:url("../images/bread/video_controls.png") no-repeat -50px 0; text-indent:-9999px}
+.bread-wrap .btn-play span {position:absolute; top:-10px; left:-10px; overflow:hidden; width:1px; height:1px; font-size:1%}
+.bread-wrap .btn-play.pause {background-position:0 0}
+
+.bread-wrap .default-img img {width:100%}
+
+/* 자막 */
+.bread-wrap .vod-slide .caption {position:absolute; bottom:0; left:0; width:532px; height:44px}
+.bread-wrap .vod-slide .caption:after {content:""; display:block; clear:both}
+.bread-wrap .vod-slide .caption button {display:block; float:left; width:60px; height:44px; background:url("../images/bread/caption_btn.png") no-repeat 0 0; cursor:pointer} /*[DD]*/
+.bread-wrap .vod-slide .caption button.close {background-position:0 -44px;}
+.bread-wrap .vod-slide .caption .text {overflow:hidden; float:left; width:0; height:44px; margin-left:2px; background:url("../images/bread/bg_caption_text.png") repeat 0 0}
+.bread-wrap .vod-slide .caption .text div.inner {padding:6px 10px}
+.bread-wrap .vod-slide .caption .text div.inner > div {overflow:scroll; overflow-x:hidden; width:440px; height:32px; padding-right:10px; color:#929292; font-size:12px; line-height:16px; text-align:left}
+.bread-wrap .vod-slide .caption .text div.inner .txt-cont .tit-txt {margin-bottom:10px}
+
+.bread-wrap .btn-play-link {position:absolute; top:50%; left:50%; margin:-47px 0 0 -65px}
+.bread-wrap .vod-slide .caption .text div.inner > div::-webkit-scrollbar {
+	width:13px;
+	background-color:transparent;
+}
+
+.bread-wrap .vod-slide .caption .text div.inner > div::-webkit-scrollbar-button:vertical:increment {
+	width:13px;height:8px;
+	background-image:url("../images/bread/caption_text_scroll_bottom.png");
+}
+.bread-wrap .vod-slide .caption .text div.inner > div::-webkit-scrollbar-button:vertical:decrement {
+	width:13px;height:8px;
+	background-image:url("../images/bread/caption_text_scroll_top.png");
+}
+/*
+.bread-wrap .vod-slide .caption .text div.inner > div{
+	scrollbar-face-color:transparent;
+	scrollbar-shadow-color:transparent;
+	scrollbar-highlight-color:transparent;
+	scrollbar-3dlight-color:transparent;
+	scrollbar-darkshadow-color:transparent;
+	scrollbar-track-color:transparent;
+	scrollbar-arrow-color:transparent;
+}
+*/
+
+/* New 뚜레쥬르 살펴보기 */
+.look-tlj-wrap .look-intro {text-align:center}
+.look-tlj-wrap .look-intro p {position:relative; padding-top:20px; margin-top:35px; line-height:28px; font-size:22px; color:#000}
+.look-tlj-wrap .look-intro p:after {content:""; display:block; position:absolute; top:0; left:50%; margin-left:-67px; width:132px; height:1px; background-color:#bab1a4}
+.look-tlj-wrap .look-intro p em {display:block; margin-top:15px; font-style:normal; color:#f26b24}
+.look-tlj-wrap .look-cont h3 {position:relative; padding-left:17px; margin:63px 0 17px 0}
+.look-tlj-wrap .look-cont h3:after {content:""; display:block; position:absolute; top:1px; left:0; width:4px; height:19px; background-color:#2f6d56}
+.look-tlj-wrap .look-cont .thumb-img {text-align:center}
+.look-tlj-wrap .look-cont ul.thumb-img {margin:0 auto; width:783px}
+.look-tlj-wrap .look-cont ul.thumb-img li {float:left}
+.look-tlj-wrap .look-cont p.summary {position:relative; margin-bottom:23px; line-height:23px; font-size:13px; color:#444; letter-spacing:-0.01em}
+.look-tlj-wrap .look-cont .nth-1 p.summary {padding-top:20px; margin:35px 0 0 0; text-align:center}
+.look-tlj-wrap .look-cont .nth-1 p.summary:after {content:""; display:block; position:absolute; top:0; left:50%; margin-left:-67px; width:132px; height:1px; background-color:#bab1a4}
+.look-tlj-wrap .look-cont .nth-2 p.summary {padding-top:20px; margin:35px 0 0 0; text-align:center}
+.look-tlj-wrap .look-cont .nth-2 p.summary:after {content:""; display:block; position:absolute; top:0; left:50%; margin-left:-67px; width:132px; height:1px; background-color:#bab1a4}
+.look-tlj-wrap .look-cont .nth-4 ul li {margin-bottom:7px}
+.look-tlj-wrap .look-cont .nth-4 ul li.nth-4 {float:right}
+.look-tlj-wrap .look-cont .nth-4 ul li.nth-6 {float:right}
