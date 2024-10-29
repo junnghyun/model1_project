@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info="매장 안내 "%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -179,12 +180,6 @@
         <div class="search-section">
             <form class="search-form">
                 <div>
-                    <label>구분</label>
-                    <select>
-                        <option>전체</option>
-                    </select>
-                </div>
-                <div>
                     <label>지역</label>
                     <select>
                         <option>광역시/도</option>
@@ -196,7 +191,7 @@
                 <input type="text" placeholder="매장명">
                 <button type="submit" class="search-btn">검색</button>
             </form>
-            <p class="notice">* NEW 뚜레쥬르 매장안내: 새로운 뚜레쥬르와 즐거운 가치를 공유 하고싶은 고객님들을 환영합니다.</p>
+            <p class="notice">* NEW 뚜르뚜르 매장안내: 새로운 뚜르뚜르와 즐거운 가치를 공유 하고싶은 고객님들을 환영합니다.</p>
         </div>
 
         <div class="content">
@@ -209,16 +204,6 @@
                         <h3>뚜레쥬르 강남점</h3>
                         <p>서울특별시 강남구 테헤란로 180 (역삼동,강남무역센터빌딩1층)</p>
                         <p>02-6447-0404</p>
-                    </div>
-                    <div class="store-item">
-                        <h3>뚜레쥬르 명동점</h3>
-                        <p>서울특별시 강남구 테헤란로 845-1 (역삼동,삼창빌딩1층)</p>
-                        <p>02-677-5555</p>
-                    </div>
-                    <div class="store-item">
-                        <h3>뚜레쥬르 안양점</h3>
-                        <p>경기도 안양시 동안구 관평로 180 (인덕원동) 1층</p>
-                        <p>031-424-6661</p>
                     </div>
                 </div>
                 <div class="pagination">
