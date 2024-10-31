@@ -1,19 +1,91 @@
+$(function() {
+    // 페이지 로드시 검색창 초기화
+    initializeSearchInput();
+    
+    // Enter key event handler for search input
+    $("#store-name").keyup(function(evt) {
+        if (evt.which == 13) {
+            searchStores();
+        }
+    });
+});
 
-// 매장 검색 기능
-function searchStores() {
-  const keyword = document.getElementById('store-name').value.trim();
-  const url = new URL(window.location.href);
-  url.searchParams.set('page', 1);
-  url.searchParams.set('keyword', keyword);
-  window.location.href = url.toString();
+/**
+ * 검색창 초기값 설정 및 null 처리
+ */
+function initializeSearchInput() {
+    const searchInput = $("#store-name");
+    const currentValue = searchInput.val();
+    
+    // null, undefined, "null" 문자열 처리
+    if (!currentValue || currentValue === "null" || currentValue === "undefined") {
+        searchInput.val("");
+    }
 }
 
-// 검색 필터 초기화
+/**
+ * 검색어 유효성 검사
+ */
+function validateSearchInput() {
+    const keyword = $("#store-name").val();
+    
+    // null, 빈 문자열 처리
+    if (!keyword || keyword.trim() === "") {
+        resetFilters();
+        return false;
+    }
+    
+    // 공백 제거 후 길이 체크
+    if (keyword.trim().length < 2) {
+        alert("검색어는 2글자 이상 입력해주세요.");
+        $("#store-name").focus();
+        return false;
+    }
+    
+    // 특수문자 체크
+    if (/[<>%]/.test(keyword)) {
+        alert("특수문자는 검색할 수 없습니다.");
+        $("#store-name").focus();
+        return false;
+    }
+    
+    return true;
+}
+
+/**
+ * 매장 검색 실행
+ */
+function searchStores() {
+    const searchInput = $("#store-name");
+    const keyword = searchInput.val();
+    
+    // null이거나 빈 문자열인 경우 초기화
+    if (!keyword || keyword.trim() === "") {
+        resetFilters();
+        return;
+    }
+    
+    if (!validateSearchInput()) {
+        return;
+    }
+    
+    const currentUrl = new URL(window.location.href);
+    
+    // 검색 파라미터 설정
+    currentUrl.searchParams.set('currentPage', '1');
+    currentUrl.searchParams.set('keyword', keyword.trim());
+    currentUrl.searchParams.set('field', 'store_name');
+    
+    window.location.href = currentUrl.toString();
+}
+
+/**
+ * 검색 필터 초기화
+ */
 function resetFilters() {
-  const url = new URL(window.location.href);
-  url.searchParams.delete('keyword');
-  url.searchParams.set('page', 1);
-  window.location.href = url.toString();
+    $("#store-name").val('');
+    const baseUrl = window.location.pathname;
+    window.location.href = baseUrl;
 }
 
 // 페이지 변경 기능
@@ -45,48 +117,9 @@ function downloadExcel() {
 // 매장 삭제 기능
 function deleteStore(storeId) {
   if (confirm('정말로 이 매장을 삭제하시겠습니까?')) {
-    fetch(`/admin/store/${storeId}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        alert('매장이 성공적으로 삭제되었습니다.');
-        window.location.reload();
-      } else {
-        throw new Error('매장 삭제에 실패했습니다.');
-      }
-    })
-    .catch(error => {
-      alert(error.message);
-      console.error('Error:', error);
-    });
+    // JSP로 이동하여 삭제 처리
+    location.href = 'delete_store.jsp?store_id=' + storeId;
   }
-} 
-
-// 주소 검색 기능
-function searchZipcode(modalType) {
-  new daum.Postcode({
-    oncomplete: function(data) {
-      const modalId = modalType === 'add' ? '#storeAddModal' : '#storeEditModal';
-      const modal = document.querySelector(modalId);
-      const addressInput = modal.querySelector('#address');
-
-      if (addressInput) {
-        addressInput.value = data.roadAddress;
-
-        const geocoder = new kakao.maps.services.Geocoder();
-        geocoder.addressSearch(data.roadAddress, function(result, status) {
-          if (status === kakao.maps.services.Status.OK) {
-            const lat = result[0].y;
-            const lng = result[0].x;
-
-            modal.querySelector('#lat').value = lat;
-            modal.querySelector('#lng').value = lng;
-          }
-        });
-      }
-    }
-  }).open();
 }
 
 // TailwindCSS 로드
@@ -106,49 +139,131 @@ function openStoreAddModal() {
   document.getElementById('storeAddModal').style.display = 'block';
 }
 
-// 매장 수정 모달 열기
-function openStoreEditModal(storeId) {
-  loadTailwindCSS();
+// 매장 수정 모달 열기 함수 수정
+function openStoreEditModal(store_id) {
+    if (!store_id) {
+        alert("매장 ID가 없습니다. 확인해 주세요.");
+        return;
+    }
+    
+    // 기존 모달이 있다면 제거
+    let existingModal = document.getElementById('storeEditModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // 새로운 모달 컨테이너 생성
+    const modalContainer = document.createElement('div');
+    modalContainer.id = 'storeEditModal';
+    modalContainer.style.display = 'none';
+    document.body.appendChild(modalContainer);
 
-  fetch(`/admin/store/${storeId}`)
-    .then(response => response.json())
-    .then(data => {
-      const modal = document.getElementById('storeEditModal');
-      modal.querySelector('#store_id').value = data.store_id;
-      modal.querySelector('#store_name').value = data.store_name;
-      modal.querySelector('#store_phone').value = data.store_phone;
-      modal.querySelector('#address').value = data.store_address;
-      modal.querySelector('#store_status').value = data.store_status;
-      modal.querySelector('#lat').value = data.lat;
-      modal.querySelector('#lng').value = data.lng;
-
-      modal.style.display = 'block';
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('매장 정보를 불러오는데 실패했습니다.');
-    });
+    // TailwindCSS 로드
+    loadTailwindCSS();
+    
+    // Fetch API를 사용하여 매장 수정 폼을 가져오기
+    fetch(`store_edit_modal.jsp?store_id=${store_id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(html => {
+            modalContainer.innerHTML = html;
+            modalContainer.style.display = 'block';
+            
+            // 주소 검색 이벤트 리스너 다시 설정
+            const addressInput = modalContainer.querySelector('#address');
+            if (addressInput) {
+                addressInput.addEventListener('click', () => searchZipcode('edit'));
+            }
+            
+            // 취소 버튼 이벤트 리스너
+            const cancelBtn = modalContainer.querySelector('button[type="button"]');
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', closeStoreModal);
+            }
+            
+            // 폼 제출 이벤트 처리
+            /**const form = modalContainer.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitEditForm(this, store_id);
+                });
+            }
+            */
+        })
+        .catch(error => {
+            console.error('모달 로드 중 오류 발생:', error);
+            alert('모달을 로드하는 중 오류가 발생했습니다.');
+        });
 }
 
-// 모달 닫기
-function closeStoreModal() {
-  document.getElementById('storeAddModal').style.display = 'none';
-  document.getElementById('storeEditModal').style.display = 'none';
+// 수정 폼 제출 처리 함수
+/**function submitEditForm(form, store_id) {
+    const formData = new FormData(form);
+    fetch(`store_edit_modal.jsp?store_id=${store_id}`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // 응답을 텍스트로 변환
+    })
+    .then(responseText => {
+	    console.log('서버 응답:', responseText); // 서버 응답 로그
+	    if (responseText === "success") {
+	        alert('매장 정보가 성공적으로 수정되었습니다.');
+	        closeStoreModal();
+	    } else {
+	        alert('정보 수정 중 오류가 발생했습니다.');
+	    }
+	})
+    .catch(error => {
+        console.error('폼 제출 중 오류 발생:', error);
+        alert('매장 정보 수정 중 오류가 발생했습니다.');
+    });
+}
+*/
 
-  const tailwindLink = document.getElementById('tailwindCSS');
-  if (tailwindLink) {
-    document.head.removeChild(tailwindLink);
-  }
+// 모달 닫기 함수 개선
+function closeStoreModal() {
+    const modals = ['storeAddModal', 'storeEditModal'];
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+            if (modalId === 'storeEditModal') {
+                modal.remove(); // 완전히 제거
+            }
+        }
+    });
+
+    // TailwindCSS 제거
+    const tailwindLink = document.getElementById('tailwindCSS');
+    if (tailwindLink) {
+        tailwindLink.remove();
+    }
 }
 
 // 모달 외부 클릭 시 닫기
 window.onclick = function(event) {
-  const storeAddModal = document.getElementById('storeAddModal');
-  const storeEditModal = document.getElementById('storeEditModal');
-
-  if (event.target === storeAddModal || event.target === storeEditModal) {
-    closeStoreModal();
-  }
+    const storeAddModal = document.getElementById('storeAddModal');
+    const storeEditModal = document.getElementById('storeEditModal');
+    
+    if (event.target === storeAddModal) {
+        storeAddModal.style.display = 'none';
+    }
+    if (event.target === storeEditModal) {
+        storeEditModal.style.display = 'none';
+    }
+    if (event.target.classList.contains('modal-overlay')) {
+        closeStoreModal();
+    }
 };
 
 // 다음 우편번호 API로 주소 검색

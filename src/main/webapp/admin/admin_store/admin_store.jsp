@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/admin_store.css?after">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="js/admin_store.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
     <jsp:include page="../common/admin.jsp" />
@@ -92,6 +93,7 @@
                 <div class="search-container">
                     <input type="text" 
                            id="store-name" 
+                           name="store-name"
                            class="filter-input" 
                            placeholder="매장명 검색"
                            value="<c:out value='${param.keyword}'/>">
@@ -141,9 +143,9 @@
 						        </td>
 						        <td>
 						            <button class="action-btn" 
-						                    onclick="openStoreEditModal('${store.store_id}')">
-						                편집
-						            </button>
+									        onclick="openStoreEditModal('${store.store_id}')">
+									    편집
+									</button>
 						            <button class="action-btn delete-btn" 
 						                    onclick="deleteStore('${store.store_id}')">
 						                삭제

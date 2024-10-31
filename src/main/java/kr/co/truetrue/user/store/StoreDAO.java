@@ -160,7 +160,7 @@ public class StoreDAO {
      * @return 매장 정보
      * @throws SQLException
      */
-    public StoreVO selectDetailStore(int storeId) throws SQLException {
+    public StoreVO selectDetailStore(int store_id) throws SQLException {
         StoreVO sVO = null;
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -176,7 +176,7 @@ public class StoreDAO {
                            .append("WHERE store_id = ?");
 
             pstmt = con.prepareStatement(selectOneStore.toString());
-            pstmt.setInt(1, storeId);
+            pstmt.setInt(1, store_id);
 
             rs = pstmt.executeQuery();
 
@@ -187,8 +187,8 @@ public class StoreDAO {
                 sVO.setStore_phone(rs.getString("store_phone"));
                 sVO.setStore_address(rs.getString("store_address"));
                 sVO.setStore_status(rs.getString("store_status").charAt(0)); // char 타입으로 변환
-                sVO.setLat(rs.getInt("lat"));
-                sVO.setLng(rs.getInt("lng"));
+                sVO.setLat(rs.getDouble("lat"));
+                sVO.setLng(rs.getDouble("lng"));
             }
         } finally {
             dbCon.dbClose(rs, pstmt, con);
@@ -204,7 +204,6 @@ public class StoreDAO {
     public void updateStore(StoreVO sVO) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
-
         DbConnection dbCon = DbConnection.getInstance();
 
         try {
@@ -224,18 +223,22 @@ public class StoreDAO {
             pstmt.setDouble(6, sVO.getLng());
             pstmt.setInt(7, sVO.getStore_id());
 
-            pstmt.executeUpdate();
+            int affectedRows = pstmt.executeUpdate(); // 업데이트된 행 수를 확인
+            if (affectedRows == 0) {
+                throw new SQLException("매장 정보 수정 실패: 매장 ID가 존재하지 않습니다.");
+            }
         } finally {
             dbCon.dbClose(null, pstmt, con);
         }
     }
+
 
     /**
      * 매장 삭제
      * @param storeId
      * @throws SQLException
      */
-    public void deleteStore(int storeId) throws SQLException {
+    public void deleteStore(int store_id) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
 
@@ -246,7 +249,7 @@ public class StoreDAO {
             String deleteStore = "DELETE FROM store WHERE store_id = ?";
 
             pstmt = con.prepareStatement(deleteStore);
-            pstmt.setInt(1, storeId);
+            pstmt.setInt(1, store_id);
 
             pstmt.executeUpdate();
         } finally {

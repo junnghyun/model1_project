@@ -65,6 +65,14 @@ public class StoreVO {
 	public void setStore_status(char store_status) {
 		this.store_status = store_status;
 	}
+	
+	public String getStoreStatusString() {
+	    return String.valueOf(store_status);
+	}
+	
+	public void setStore_statusString(char store_status) {
+        this.store_status = store_status;
+    }
 
 	public double getLat() {
 		return lat;
@@ -96,8 +104,5 @@ public class StoreVO {
 				+ ", store_phone=" + store_phone + ", store_status=" + store_status + ", lat=" + lat + ", lng=" + lng
 				+ ", date=" + date + "]";
 	}
-
-	
-	
 	
 }
