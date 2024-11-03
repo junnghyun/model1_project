@@ -32,6 +32,8 @@ try {
     return;
 }
 
+
+
 double latitude = sVO.getLat(); // StoreVO에서 위도 가져오기
 double longitude = sVO.getLng(); // StoreVO에서 경도 가져오기
 
@@ -93,12 +95,14 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
 
                     <div class="input-group md:col-span-2">
                         <label for="address" class="block text-sm font-medium text-gray-700 mb-1">주소</label>
-                        <input type="text" id="address" name="address" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" value="${sVO.store_address.split(' ', 2)[0]}" placeholder="기본 주소를 입력해주세요" required>
+                        <input type="text" id="address" name="address" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" 
+                        		value="${sVO.store_address.replaceAll('^(.*?\\s\\d+)(\\s.*)', '$1').trim()}" placeholder="기본 주소를 입력해주세요" required>
                     </div>
 
                     <div class="input-group md:col-span-2">
                         <label for="address_detail" class="block text-sm font-medium text-gray-700 mb-1">상세주소</label>
-                        <input type="text" id="address_detail" name="address_detail" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" value="${sVO.store_address.split(' ', 2)[1]}" placeholder="상세주소를 입력해주세요">
+                        <input type="text" id="address_detail" name="address_detail" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" 
+                        		value="${sVO.store_address.replaceAll('^(.*?\\s\\d+)(\\s.*)', '$2').trim()}" placeholder="상세주소를 입력해주세요">
                     </div>
 
                     <div class="input-group">

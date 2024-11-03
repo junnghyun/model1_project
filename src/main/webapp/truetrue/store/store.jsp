@@ -9,7 +9,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="store.css">
+    <link rel="stylesheet" type="text/css" href="store.css?after">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0f4b38fb42b57cde2b0919f29b1e7215"></script>
+    <script src="js/storeMap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -128,6 +131,7 @@
                     <p>주소: <c:out value="${store.store_address}"/></p>
                     <p>전화번호: <c:out value="${store.store_phone}"/></p>
                 </div>
+                <div id="map"></div>
             </div>
         </div>
     </div>

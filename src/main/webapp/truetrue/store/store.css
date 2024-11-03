@@ -101,7 +101,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     background-color: white;
-    height: 600px; /* 고정 높이 지정 */
+    height: 550px; /* 고정 높이 지정 */
     overflow-y: auto; /* 넘칠 경우 스크롤 가능하도록 설정 */
 }
 
@@ -148,8 +148,8 @@ body {
 }
 
 .map-info {
-    background-color: black;
-    color: white;
+    background-color: #D5D9C7;
+    color: black;
     padding: 15px;
     width: 100%;
 }

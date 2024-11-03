@@ -25,26 +25,16 @@
         sVO.setLng(Double.parseDouble(request.getParameter("longitude")));
 
         StoreDAO sDAO = StoreDAO.getInstance();
-        boolean insertFlag = false;
-
+        
         try {
             sDAO.insertStore(sVO);
-            insertFlag = true; // 성공적으로 삽입됨
+            // 성공적인 업데이트 후 리다이렉트
+            out.print("<script>window.location.href='admin_store.jsp';</script>");
+            return;
         } catch (SQLException e) {
             e.printStackTrace();
+            response.getWriter().write("error"); // 클라이언트에게 오류 메시지 전송
         }
-%>
-        <div>
-            <c:choose>
-                <c:when test="${insertFlag}">
-                    <p>매장 정보가 성공적으로 추가되었습니다.</p>
-                </c:when>
-                <c:otherwise>
-                    <p>매장 정보 추가에 실패했습니다.</p>
-                </c:otherwise>
-            </c:choose>
-        </div>
-<%
     }
 %>
 <div id="storeAddModal" style="display: none;">
@@ -58,7 +48,7 @@
                     </svg>
                 </button>
             </div>
-            <form action="${pageContext.request.requestURI}" method="post" class="p-6 space-y-6">
+            <form action="${pageContext.request.requestURI}" method="post" class="p-6 space-y-6" >
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="input-group md:col-span-2">
                         <label for="store_name" class="block text-sm font-medium text-gray-700 mb-1">매장명</label>
