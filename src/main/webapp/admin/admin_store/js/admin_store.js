@@ -10,15 +10,6 @@ $(function() {
     });
 });
 
-function confirmSave() {
-    if (confirm("저장하시겠습니까?")) {
-        return true; // 저장 진행
-    } else {
-        alert("저장이 취소되었습니다.");
-        return false; // 저장 취소
-    }
-}
-
 /**
  * 검색창 초기값 설정 및 null 처리
  */
@@ -129,6 +120,15 @@ function deleteStore(storeId) {
     // JSP로 이동하여 삭제 처리
     location.href = 'delete_store.jsp?store_id=' + storeId;
   }
+}
+
+function confirmSave() {
+    if (confirm("저장하시겠습니까?")) {
+        return true; // 저장 진행
+    } else {
+        alert("저장이 취소되었습니다.");
+        return false; // 저장 취소
+    }
 }
 
 // TailwindCSS 로드

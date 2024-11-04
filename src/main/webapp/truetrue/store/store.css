@@ -75,6 +75,15 @@ body {
     cursor: pointer;
 }
 
+.reset-btn {
+    background-color: #1b4d3e;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .notice {
     font-size: 13px;
     color: #666;
@@ -108,10 +117,16 @@ body {
 .store-item {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .store-item:last-child {
     border-bottom: none;
+}
+
+.store-item:hover{
+	background-color: #e0f7fa;
+	cursor:pointer;
 }
 
 .store-item h3 {

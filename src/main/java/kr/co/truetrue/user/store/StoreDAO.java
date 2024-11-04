@@ -256,5 +256,140 @@ public class StoreDAO {
             dbCon.dbClose(null, pstmt, con);
         }
     }
+    
+    /**
+     * 'Y' 상태 매장의 총 개수 검색
+     * @param sVO
+     * @return 'Y' 상태 매장의 수
+     * @throws SQLException
+     */
+    public int selectTotalCountY(StoreSearchVO sVO) throws SQLException {
+        int totalCount = 0;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        DbConnection dbCon = DbConnection.getInstance();
+
+        try {
+            con = dbCon.getConn();
+            StringBuilder selectCount = new StringBuilder();
+            selectCount.append("SELECT COUNT(store_id) AS cnt FROM store WHERE store_status = 'Y' ");
+
+            // 지역 조건 추가
+            if (sVO.getProvince() != null && !sVO.getProvince().isEmpty()) {
+                selectCount.append("AND store_address LIKE ?");
+            }
+            if (sVO.getCity() != null && !sVO.getCity().isEmpty()) {
+                selectCount.append(" AND store_address LIKE ?");
+            }
+
+            // 검색 키워드가 있는 경우
+            if (sVO.getKeyword() != null && !sVO.getKeyword().isEmpty()) {
+                selectCount.append(" AND instr(store_name, ?) != 0");
+            }
+
+            pstmt = con.prepareStatement(selectCount.toString());
+            int bindIndex = 0;
+
+            // 지역 조건 설정
+            if (sVO.getProvince() != null && !sVO.getProvince().isEmpty()) {
+                pstmt.setString(++bindIndex, "%" + sVO.getProvince() + "%");
+            }
+            if (sVO.getCity() != null && !sVO.getCity().isEmpty()) {
+                pstmt.setString(++bindIndex, "%" + sVO.getCity() + "%");
+            }
+
+            // 검색 키워드 설정
+            if (sVO.getKeyword() != null && !sVO.getKeyword().isEmpty()) {
+                pstmt.setString(++bindIndex, sVO.getKeyword());
+            }
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                totalCount = rs.getInt("cnt");
+            }
+        } finally {
+            dbCon.dbClose(rs, pstmt, con);
+        }
+        return totalCount;
+    }
+
+    
+    public List<StoreVO> selectStoreY(StoreSearchVO sVO) throws SQLException {
+        List<StoreVO> list = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        DbConnection dbCon = DbConnection.getInstance();
+
+        try {
+            con = dbCon.getConn();
+            StringBuilder selectStore = new StringBuilder();
+            selectStore.append("SELECT store_id, store_name, store_phone, store_address, store_status, lat, lng ") // lat, lng 추가
+                       .append("FROM (SELECT store_id, store_name, store_phone, store_address, store_status, lat, lng, ")
+                       .append("ROW_NUMBER() OVER (ORDER BY store_id) AS rnum ")
+                       .append("FROM store WHERE store_status = 'Y' "); // 매장 상태가 'Y'인 경우만 조회
+
+            // province 필터링
+            if (sVO.getProvince() != null && !sVO.getProvince().isEmpty()) {
+                selectStore.append(" AND store_address LIKE ?");
+            }
+
+            // city 필터링
+            if (sVO.getCity() != null && !sVO.getCity().isEmpty()) {
+                selectStore.append(" AND store_address LIKE ?");
+            }
+
+            // 검색 키워드가 있는 경우
+            if (sVO.getKeyword() != null && !"".equals(sVO.getKeyword())) {
+                selectStore.append(" AND instr(store_name, ?) != 0");
+            }
+
+            selectStore.append(") WHERE rnum BETWEEN ? AND ?");
+
+            pstmt = con.prepareStatement(selectStore.toString());
+            int bindIndex = 0;
+
+            // province 필터링을 위한 바인딩
+            if (sVO.getProvince() != null && !sVO.getProvince().isEmpty()) {
+                pstmt.setString(++bindIndex, "%" + sVO.getProvince() + "%");
+            }
+
+            // city 필터링을 위한 바인딩
+            if (sVO.getCity() != null && !sVO.getCity().isEmpty()) {
+                pstmt.setString(++bindIndex, "%" + sVO.getCity() + "%");
+            }
+
+            // 검색 키워드를 위한 바인딩
+            if (sVO.getKeyword() != null && !"".equals(sVO.getKeyword())) {
+                pstmt.setString(++bindIndex, sVO.getKeyword());
+            }
+
+            pstmt.setInt(++bindIndex, sVO.getStartNum());
+            pstmt.setInt(++bindIndex, sVO.getEndNum());
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                StoreVO sVOResult = new StoreVO();
+                sVOResult.setStore_id(rs.getInt("store_id"));
+                sVOResult.setStore_name(rs.getString("store_name"));
+                sVOResult.setStore_phone(rs.getString("store_phone"));
+                sVOResult.setStore_address(rs.getString("store_address"));
+                sVOResult.setStore_status(rs.getString("store_status").charAt(0)); // char 타입으로 변환
+                
+                // 위경도 추가
+                sVOResult.setLat(rs.getDouble("lat"));
+                sVOResult.setLng(rs.getDouble("lng"));
+
+                list.add(sVOResult);
+            }
+        } finally {
+            dbCon.dbClose(rs, pstmt, con);
+        }
+        return list;
+    }
 
 }

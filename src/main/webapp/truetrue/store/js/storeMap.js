@@ -1,27 +1,49 @@
-window.onload = function() {
-    // 지도 표시할 div 요소
-    var mapContainer = document.getElementById('map'); 
+$(document).ready(function() {
+    // 페이지 로드 시 첫 번째 매장 정보를 표시
+    const firstStore = $('.store-item').first();
+    if (firstStore.length) {
+        updateMapInfo(firstStore);
+    }
 
-    // 지도 옵션 설정
-    var mapOption = { 
-        center: new kakao.maps.LatLng(37.5665, 126.9780), // 지도 중심좌표 (서울 시청 좌표)
-        level: 3 // 확대 수준
-    };
-
-    // 지도 생성
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-
-    // 마커를 표시할 위치 설정
-    var markerPosition  = new kakao.maps.LatLng(37.5665, 126.9780); 
-
-    // 마커 생성
-    var marker = new kakao.maps.Marker({
-        position: markerPosition
+    // 매장 리스트에서 클릭 시 매장 정보 업데이트
+    $('.store-item').on('click', function() {
+        updateMapInfo($(this));
     });
 
-    // 지도에 마커 표시
-    marker.setMap(map);
-};
+    function updateMapInfo(storeElement) {
+        const storeName = storeElement.find('h3').text();
+        const storeAddress = storeElement.find('p:nth-child(2)').text();
+        const storePhone = storeElement.find('p:nth-child(3)').text();
+        const lat = storeElement.data('lat');
+        const lng = storeElement.data('lng');
+
+        $('#map-store-name').text(storeName);
+        $('#map-store-address').text(storeAddress);
+        $('#map-store-phone').text(storePhone);
+
+        // 지도 업데이트
+        updateMap(lat, lng);
+    }
+
+    // 지도를 업데이트하는 함수
+    function updateMap(lat, lng) {
+        const mapContainer = document.getElementById('map');
+        const mapOption = {
+            center: new kakao.maps.LatLng(lat, lng), // 매장 위치로 중심좌표 설정
+            level: 3 // 확대 수준
+        };
+
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+        const markerPosition = new kakao.maps.LatLng(lat, lng);
+
+        const marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        marker.setMap(map);
+    }
+});
+
 
 
 $(document).ready(function() {
@@ -39,4 +61,5 @@ $(document).ready(function() {
         $(window).resize(function() {
             adjustMapHeight(); // 창 크기가 변경될 때 높이 조정
         });
+        
     });
