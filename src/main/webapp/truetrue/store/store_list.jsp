@@ -10,6 +10,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <title>매장안내</title>
     <link rel="stylesheet" type="text/css" href="store.css?after">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0f4b38fb42b57cde2b0919f29b1e7215"></script>
@@ -157,5 +158,8 @@
             </div>
         </div>
     </div>
+    
+    <jsp:include page="../common/jsp/footer.jsp"/>
+    
 </body>
 </html>

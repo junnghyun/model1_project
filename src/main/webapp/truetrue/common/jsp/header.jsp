@@ -43,10 +43,10 @@ font-family:'Nanum Barun Gothic';
  z-index: 1;
 }
 #store_find{
- background-image: "truetrue/common/images/trz.png";
+ background-image: "${pageContext.request.contextPath}/truetrue/common/images/trz.png";
 }
 .store_find{
- background-image: "truetrue/common/images/trz.png";
+ background-image: "${pageContext.request.contextPath}/truetrue/common/images/trz.png";
 }
 
 	</style>
@@ -55,7 +55,7 @@ font-family:'Nanum Barun Gothic';
 		<div class="gnb_dim"></div>
 		<div class="gnb_dim2"></div>
 		<div class="headerWrap">
-			<h1 class="logo"><a href="링크넣어야됨"><img src="truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
+			<h1 class="logo"><a href="링크넣어야됨"><img src="${pageContext.request.contextPath}/truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
 			<ul class="top_search">
 				<li>
 
@@ -65,7 +65,7 @@ font-family:'Nanum Barun Gothic';
 							<label for="prod_name">
 								<input type="text" id="prod_name" name="prod_name" value="" style="width:100;" class="ipt02" autocomplete="off" title="제품명 입력" placeholder="제품명을 입력해 주세요."  />
 							</label>
-							<a href="#prod_name" id="btnSearch" class="btn_search" onclick="prodSrch(srch); return false"><img src="truetrue/common/images/btn_search1.png" title="검색" alt="검색" /></a>
+							<a href="#prod_name" id="btnSearch" class="btn_search" onclick="prodSrch(srch); return false"><img src="${pageContext.request.contextPath}/truetrue/common/images/btn_search1.png" title="검색" alt="검색" /></a>
 							<span class="btn_close"><a href="#btnSearch" title="닫기">닫기</a></span>
 						</form>
 					</fieldset>
@@ -103,9 +103,9 @@ font-family:'Nanum Barun Gothic';
 			</ul>
 			<ul class="tnb">
 				<li style="/*display:none;*/">
-					<a href="매장안내링크넣어주세요" class="tnb_store"><img src="truetrue/common/images/info_market.png"></a>
-					<a href="고객센터링크넣어주세요" class="tnb_customer"><img src="truetrue/common/images/faq.png"></a>
-					<a href="로그인링크넣어주세요" class="tnb_login"><img src="truetrue/common/images/login_btn.png"></a>
+					<a href="매장안내링크넣어주세요" class="tnb_store"><img src="${pageContext.request.contextPath}/truetrue/common/images/info_market.png"></a>
+					<a href="고객센터링크넣어주세요" class="tnb_customer"><img src="${pageContext.request.contextPath}/truetrue/common/images/faq.png"></a>
+					<a href="로그인링크넣어주세요" class="tnb_login"><img src="${pageContext.request.contextPath}/truetrue/common/images/login_btn.png"></a>
 				</li>
 			</ul>
 			<!-- //TopNavigationBar -->
@@ -152,5 +152,5 @@ font-family:'Nanum Barun Gothic';
 
 </div>
 	<p id="back-top">
-		<a href="#top"><img src="truetrue/common/images/top.png" style="opacity: 50%; outline: none; border: none; display: block;"><span></span></a>
+		<a href="#top"><img src="${pageContext.request.contextPath}/truetrue/common/images/top.png" style="opacity: 50%; outline: none; border: none; display: block;"><span></span></a>
 	</p>
