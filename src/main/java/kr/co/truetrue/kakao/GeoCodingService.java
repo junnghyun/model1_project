@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Properties;
@@ -20,7 +21,8 @@ public class GeoCodingService {
     
     public JSONObject getGeoLocation(String address) throws Exception {
         String encodedAddress = URLEncoder.encode(address, "UTF-8");
-        URL url = new URL(KAKAO_API_URL + "?query=" + encodedAddress);
+        URI uri = new URI(KAKAO_API_URL + "?query=" + encodedAddress);
+        URL url = uri.toURL();
         
         HttpURLConnection conn = null;
         BufferedReader br = null;
