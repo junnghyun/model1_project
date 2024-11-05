@@ -8,7 +8,11 @@ $(function() {
             searchStores();
         }
     });
-});
+});	
+
+document.getElementById("store").onclick = function() {
+    window.location.href = "admin_store.jsp";
+};
 
 /**
  * 검색창 초기값 설정 및 null 처리
@@ -279,45 +283,53 @@ window.onclick = function(event) {
 function searchZipcode(modalType) {
     new daum.Postcode({
         oncomplete: function(data) {
-            // 현재 활성화된 모달 찾기
             const modalId = modalType === 'add' ? '#storeAddModal' : '#storeEditModal';
             const modal = document.querySelector(modalId);
             const addressInput = modal.querySelector('#address');
             const addressDetail = modal.querySelector('#address_detail');
+            const latitudeInput = modal.querySelector('#latitude');
+            const longitudeInput = modal.querySelector('#longitude');
 
-            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-            var roadAddr = data.roadAddress; // 도로명 주소 변수
-            var extraRoadAddr = ''; // 참고 항목 변수
+            var roadAddr = data.roadAddress;
+            var extraRoadAddr = '';
 
-            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동명이 있을 경우 추가
             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
                 extraRoadAddr += data.bname;
             }
-            // 건물명이 있고, 공동주택일 경우 추가한다.
+            // 건물명이 있고, 공동주택일 경우 추가
             if(data.buildingName !== '' && data.apartment === 'Y'){
                 extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
             }
-            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만듦
             if(extraRoadAddr !== ''){
                 extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
 
-            // 콘솔로그로 디버깅
-            console.log('모달 타입:', modalType);
-            console.log('모달 요소:', modal);
-            console.log('주소 입력 필드:', addressInput);
-            console.log('선택된 주소:', roadAddr);
-
             // 주소 정보 입력
             if (addressInput) {
                 addressInput.value = roadAddr;
-                // 값이 변경된 후 강제로 이벤트 발생시키기
+                
+                // 주소가 입력되면 위도/경도 가져오기
+                getGeoLocation(roadAddr)
+                    .then(location => {
+                        if (location && location.latitude && location.longitude) {
+                            latitudeInput.value = location.latitude;
+                            longitudeInput.value = location.longitude;
+                        } else {
+                            console.warn('위도/경도 정보를 찾을 수 없습니다.');
+                            clearGeoLocation(latitudeInput, longitudeInput);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('위도/경도 조회 중 오류:', error);
+                        clearGeoLocation(latitudeInput, longitudeInput);
+                        showError('주소의 위도/경도를 가져오는데 실패했습니다.');
+                    });
+
+                // input 이벤트 발생
                 const event = new Event('input', { bubbles: true });
                 addressInput.dispatchEvent(event);
-                
-                console.log('주소 입력 완료:', addressInput.value);
-            } else {
-                console.error('주소 입력 필드를 찾을 수 없습니다.');
             }
 
             // 상세주소 필드로 포커스 이동
@@ -326,4 +338,48 @@ function searchZipcode(modalType) {
             }
         }
     }).open();
+}
+
+// 위도/경도 가져오는 함수
+function getGeoLocation(address) {
+    return new Promise(function(resolve, reject) {
+        fetch("/model1_project/api/geocode?address=" + encodeURIComponent(address), {
+            method: "GET",
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            }
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("HTTP error! status: " + response.status);
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            resolve({
+                latitude: parseFloat(data.latitude),
+                longitude: parseFloat(data.longitude)
+            });
+        })
+        .catch(function(error) {
+            console.error("Error in getGeoLocation:", error);
+            reject(error);
+        });
+    });
+}
+
+// 위도/경도 입력 필드 초기화
+function clearGeoLocation(latitudeInput, longitudeInput) {
+    if (latitudeInput) latitudeInput.value = '';
+    if (longitudeInput) longitudeInput.value = '';
+}
+
+// 에러 메시지 표시
+function showError(message) {
+    alert(message);
 }

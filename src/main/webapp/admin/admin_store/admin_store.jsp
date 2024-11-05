@@ -20,7 +20,7 @@
     <jsp:include page="../common/admin.jsp" />
     
     <div class="common_admin">
-        <h1>매장관리</h1>
+        <div class="store" id="store"><h1>매장관리</h1></div>
         <jsp:useBean id="sVO" class="kr.co.truetrue.user.store.StoreSearchVO" scope="page"/>
         <jsp:setProperty property="*" name="sVO"/>
         <%
@@ -98,7 +98,6 @@
                            placeholder="매장명 검색"
                            value="<c:out value='${param.keyword}'/>">
                     <button class="filter-btn" onclick="searchStores()">검색</button>
-                    <button class="reset-btn" onclick="resetFilters()">초기화</button>
                 </div>
                 
                 <div class="add-store-btn">

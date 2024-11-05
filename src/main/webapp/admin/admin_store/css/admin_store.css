@@ -104,6 +104,10 @@
     cursor: pointer;
 }
 
+#store:hover {
+	cursor:pointer;
+}
+
 /* 버튼 호버 효과 */
 .filter-btn:hover,
 .reset-btn:hover,

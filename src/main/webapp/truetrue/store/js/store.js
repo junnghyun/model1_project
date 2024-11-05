@@ -102,32 +102,6 @@ $(document).ready(function() {
         $('#map-store-address').text(storeAddress);
         $('#map-store-phone').text(storePhone);
 
-        // Kakao Map을 업데이트하는 함수 호출 (선택사항)
-        updateMap(storeAddress);
-    }
-
-    // Kakao Map을 업데이트하는 함수 (선택사항)
-    function updateMap(address) {
-        // Kakao 지도 API를 사용하여 주소로 위치를 검색하고 지도를 업데이트
-        const geocoder = new kakao.maps.services.Geocoder();
-
-        geocoder.addressSearch(address, function(result, status) {
-            if (status === kakao.maps.services.Status.OK) {
-                const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                const mapContainer = document.getElementById('map');
-                const mapOption = { 
-                    center: coords, 
-                    level: 3
-                };
-
-                const map = new kakao.maps.Map(mapContainer, mapOption);
-                const marker = new kakao.maps.Marker({ 
-                    map: map, 
-                    position: coords
-                });
-            }
-        });
     }
 });
 
