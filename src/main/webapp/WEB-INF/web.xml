@@ -10,4 +10,13 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
+  <servlet>
+  	<servlet-name>GeoCodingController</servlet-name>
+  	<servlet-class>kr.co.truetrue.kakao.GeoCodingController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GeoCodingController</servlet-name>
+  	<url-pattern>/model1_project/api/geocode</url-pattern>
+  </servlet-mapping>
 </web-app>
