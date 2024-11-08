@@ -167,6 +167,7 @@ body {
     color: black;
     padding: 15px;
     width: 100%;
+    position: relative; /* 버튼 위치를 위한 상대 위치 설정 */
 }
 
 .map-info h3 {
@@ -176,4 +177,19 @@ body {
 .map-info p {
     font-size: 14px;
     margin-bottom: 4px;
+}
+
+.square-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 0; /* 사각형 모양 */
+    border: 1px solid #000;
+    cursor: pointer;
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 15px; /* 하단에서 15px 떨어진 위치 */
+    right: 15px;  /* 오른쪽에서 15px 떨어진 위치 */
+    background-color: transparent; /* 투명 배경 */
 }

@@ -44,8 +44,6 @@ $(document).ready(function() {
     }
 });
 
-
-
 $(document).ready(function() {
         // map-info의 높이를 제외한 나머지 map-section의 높이를 구하여 map의 height 설정
         function adjustMapHeight() {

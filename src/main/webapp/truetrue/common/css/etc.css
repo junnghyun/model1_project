@@ -1,6 +1,6 @@
-@charset "euc-kr";
+@charset "UTF-8";
 
-/* 고객센터 */
+/* 怨�媛��쇳�� */
 .customer .box_wrap {padding:50px;background:#fff;}
 .customer .box_wrap .box_type1 {margin-bottom:39px;text-align:center;}
 .customer .box_wrap .box_type1 h3 {margin-bottom:13px;font-size:22px;color:#563c27;text-align:center;}
@@ -25,9 +25,9 @@
 .column_type1 .faq dt.ico01 {background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-551px -377px;}
 .column_type1 .consult dt.ico02 {background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-792px -377px;}
 .column_type1 .consult_list dt.ico03 {background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-1010px -377px;}
-.column_type1 .faq dt.ico04 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-432px -622px;}/* 마이페이지 */
-.column_type1 .consult dt.ico05 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-726px -622px;}/* 마이페이지 */
-.column_type1 .consult_list dt.ico06 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-1012px -517px;}/* 마이페이지 */
+.column_type1 .faq dt.ico04 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-432px -622px;}/* 留��댄���댁� */
+.column_type1 .consult dt.ico05 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-726px -622px;}/* 留��댄���댁� */
+.column_type1 .consult_list dt.ico06 {padding-top:93px;background:url("/static/images/etc/customer.png") left top no-repeat;background-position:-1012px -517px;}/* 留��댄���댁� */
 .customer .box_wrap .box_type1 li.list_type{position: relative;}
 .customer .box_wrap .box_type1 li.list_type .call{position: absolute;right: 0px;top:0px;margin: 0}
 .customer .box_wrap .box_type1 li.list_type .call dd{font-size: 0}
@@ -44,7 +44,7 @@
 .srch_tit {padding:48px 0 13px 0;font-size:16px;color:#563c27;}
 .srch_txt {padding:0 0 45px 0;font-size:13px;color:#777777;line-height:22px;}
 .customer .inner {padding:0 50px;background:#fff;}
-.customer .inner .agree-cont .table_h_3 td > .mark {font-size:1.2em;font-weight:700;text-decoration:underline;}/* 2023-04-30 추가 */
+.customer .inner .agree-cont .table_h_3 td > .mark {font-size:1.2em;font-weight:700;text-decoration:underline;}/* 2023-04-30 異�媛� */
 /* faq */
 .faq {margin:0 0 23px 0;border-bottom:1px solid #d7d4d0;}
 .faqHeader {overflow:hidden;margin:0 0 20px 0;}
@@ -95,8 +95,8 @@
 .faq.online .a .a_txt {float:left;display:block;width:690px;padding:0 0 0 0px;text-align:justify;}
 .faq.online .a .a_txt strong {display:block;color:#443016;}
 .faq.online .a .a_txt strong.date {text-align:right;}
-.faq.foundation .a {position:relative;margin:4px 0 0 0;padding:19px 20px 17px 71px;border:1px solid #e1dddd;font-size:13px;line-height:26px;}/* 창업faq */
-.faq.foundation .a .a_txt {display:inline-block;width:702px;padding:0 0 0 82px;}/* 창업faq */
+.faq.foundation .a {position:relative;margin:4px 0 0 0;padding:19px 20px 17px 71px;border:1px solid #e1dddd;font-size:13px;line-height:26px;}/* 李쎌��faq */
+.faq.foundation .a .a_txt {display:inline-block;width:702px;padding:0 0 0 82px;}/* 李쎌��faq */
 .customer .inner.final {padding:50px;}
 .inner .box_type1 {padding:2px;border:2px solid #e8e6e2;}
 .inner .box_type1 .in {padding:61px 50px 45px 50px;border:1px solid #e8e6e2;}
@@ -104,13 +104,13 @@
 .tit_online span {display:block;width:97px;height:90px;margin:0 0 22px 366px;background:url("/static/images/etc/customer.png") no-repeat -354px -358px;}
 .txt_online {padding:0 0 26px 0;font-size:16px;color:#563c27;}
 .add_online {padding:18px 0 0 0;font-size:13px;color:#777777;}
-/* 온라인 상담 */
+/* �⑤�쇱�� ���� */
 dl.txt_cusl dt {margin-top:-5px;padding:0 0 17px 0;font-size:22px;font-weight:bold;color:#563c27;text-align:center;}
 dl.txt_cusl dd.txt_1 {padding:0 0 10px 0;font-size:16px;line-height:24px;color:#563c27;text-align:center;}
 dl.txt_cusl dd.txt_2 {padding:0 0 13px 0;font-size:13px;line-height:24px;color:#777777;text-align:center;}
 dl.txt_cusl dd.txt_3 {padding:0 0 13px 0;font-size:13px;line-height:18px;color:#777777;text-align:center;}
 dl.txt_cusl + .btn-area {margin-bottom:50px;text-align:center;}/* 201607 */
-/* 온라인 상담내역 */
+/* �⑤�쇱�� ���대�댁�� */
 .txt_online_2 {margin-top:-2px;padding:0 0 16px 0;font-size:16px;color:#563c27;text-align:center;}
 .srch_txt_2 {padding:0 0 55px 0;font-size:13px;color:#777;text-align:center;}
 .counsel-info02 {overflow:hidden;}
@@ -122,8 +122,8 @@ dl.txt_cusl + .btn-area {margin-bottom:50px;text-align:center;}/* 201607 */
 .select03 {height:28px;padding:1px 0 1px 3px;border:1px solid #e0dcd7;line-height:28px;}
 .counsel-info02 + .btn-area {margin-top:-56px;text-align:right;}/* 201607 */
 .counsel-info02 + .btn-area .btn {width:134px;}/* 201607 */
-/* 유틸 */
-.terms {width:931px;height:445px;padding:35px 30px 35px 37px;border:1px solid #c9c2ba;font-family:"돋움";font-size:12px;line-height:19px;overflow-y:hidden;background:#FFF;}
+/* ���� */
+.terms {width:931px;height:445px;padding:35px 30px 35px 37px;border:1px solid #c9c2ba;font-family:"����";font-size:12px;line-height:19px;overflow-y:hidden;background:#FFF;}
 .terms dl dt {font-weight:bold;}
 .terms dl dd {margin:0 0 20px 0;}
 .terms .table_h table th {padding:10px 0 10px 0;background:#eae7e2;font-size:11px;color:#000;font-weight:bold;text-align:center;}
@@ -131,7 +131,7 @@ dl.txt_cusl + .btn-area {margin-bottom:50px;text-align:center;}/* 201607 */
 .terms ol li {margin:0 0 10px 0;}
 .terms p {margin:0 0 30px 0;}
 ul.fw_b li {margin:0 0 10px 0;font-weight:bold;}
-/* 지도스킵관련 */
+/* 吏����ㅽ�듦��� */
 .skipMap {position:relative;z-index:9999;margin:0;padding:0;}
 .skipMap a {position:absolute;left:-200em;width:34em;padding:0 0.5em;display:inline;text-decoration:none;line-height:1.5em;z-index:1000;}
 .skipMap a:focus,
@@ -152,57 +152,18 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 
 .str_tit {padding:0 0 13px 0;font-size:17px;color:#000;}
 .str_tit .no {color:#f26b24;}/* 20160804 */
-.str_rst {overflow-y:auto; width:364px; height:417px; margin:0 0 38px 0; border-top:1px solid #d7d4d0; border-bottom:1px solid #d7d4d0; font-family:"돋움", dotum}
+.str_rst {overflow-y:auto; width:364px; height:417px; margin:0 0 38px 0; border-top:1px solid #d7d4d0; border-bottom:1px solid #d7d4d0; font-family:"����", dotum}
 .str_rst table {width:335px;}
 .str_rst table th {padding:0 0 0 12px;font-weight:bold;border-bottom:1px solid #d7d4d0;}
 .str_rst table td {padding:13px 0 10px 0;border-bottom:1px solid #d7d4d0;line-height:17px;}
 .str_rst table tr:hover th,
 .str_rst table tr:hover td {background:#f7f7f7;}
-.str_rst table tr.delivery th {padding:13px 0 0 8px;vertical-align:top;} /* 2016-03-28 추가 */
-.str_rst table .icon_delivery {display:block;width:76px;height:26px;line-height:26px;padding-left:38px;vertical-align:middle;margin-bottom:5px;background:url(/images/community/event_tpl/common/store.png) no-repeat 0 0;font-size:12px;font-family:"Nanum Barun Gothic" !important;color:#3b3838;letter-spacing:-0.5px;font-weight:normal} /* 2016-03-28 추가 */
+.str_rst table tr.delivery th {padding:13px 0 0 8px;vertical-align:top;} /* 2016-03-28 異�媛� */
+.str_rst table .icon_delivery {display:block;width:76px;height:26px;line-height:26px;padding-left:38px;vertical-align:middle;margin-bottom:5px;background:url(/images/community/event_tpl/common/store.png) no-repeat 0 0;font-size:12px;font-family:"Nanum Barun Gothic" !important;color:#3b3838;letter-spacing:-0.5px;font-weight:normal} /* 2016-03-28 異�媛� */
 .str_rst .tel {padding:0 0 0 16px;background:url("/static/images/common/common.png") no-repeat -704px -583px;}
 
-.store_list {float:left; position:relative; width:384px; height:570px; padding:90px 0 0 50px}
-.store_list .tab-area {position:absolute; top:0; left:0; width:100%; border-bottom:2px solid #174e38}
-.store_list .tab-area ul {*zoom:1}
-.store_list .tab-area ul li {float:left; width:216px}
-.store_list .tab-area ul li + li {margin-left:2px}
-.store_list .tab-area ul li a {display:block; height:52px; padding:18px 0 0 94px; background:#f4f4f4 url("/static/images/common/bg_bi_new.png") no-repeat 38px 50%; border:1px solid #c9c9c9; border-bottom:0}
-.store_list .tab-area ul li a:hover {text-decoration:none}
-.store_list .tab-area ul li a.on {background-color:#174e38; background-image:url("/static/images/common/bg_bi_new_on.png"); border-color:#174e38}
-.store_list .tab-area ul li a.on .ico {border-color:#f26a25; color:#f26a25}
-.store_list .tab-area ul li a.on .tit {color:#fff}
-.store_list .tab-area ul li + li a {height:42px; padding-top:28px; background-image:url("/static/images/common/bg_bi_old.png"); background-position:29px 50%}
-.store_list .tab-area ul li + li a.on {background-image:url("/static/images/common/bg_bi_old_on.png")}
-.store_list .tab-area ul li a .ico {display:inline-block; margin:2px; padding:0 4px 1px; border:1px solid #7d7d7d; border-radius:1px; color:#7d7d7d; font-family:tahoma; font-size:11px; line-height:14px; *zoom:1; *display:inline}
-.store_list .tab-area ul li a .tit {color:#7d7d7d; font-size:13px}
-
-.store_list .paging {width:364px;}
-.store_map {position:relative;float:right;width:566px;height:619px;}
-.map_area {position:absolute;left:0;top:0;z-index:100;}
-
-.store_info {position:absolute; top:39px; left:42px; width:481px; height:197px; background:url("/static/images/common/bg_store_search_detail.jpg") no-repeat 0 0; border:1px solid #fff; z-index:120}
-.store_info.is-old {background:url("/static/images/common/bg_store_search_detail_old.jpg") no-repeat 0 0}
-.store_info .in {padding-left:30px}
-.store_info .store_table {padding-top:30px}
-.store_info_bg {float:left;width:133px;height:99px;margin:49px 10px 0 0;background:url("/static/images/common/stamp_st_02.png") no-repeat 0 0;}/* 201607 */
-.store_info .store_info_bg {display:none}
-.store_info .store_info_bg span {display:none} /* 2016-03-28 추가 */
-.store_info .delivery .store_info_bg {display:block; width:122px;height:150px; margin:-3px 15px 0 0;background:url("/static/images/common/store.png") no-repeat 0 -50px;} /* 2016-03-28 추가 */
-.store_info .delivery .store_info_bg span {display:block;padding:127px 0 0 10px;font-size:12px;line-height:14px;color:#fff;text-align:center} /* 2016-03-28 추가 */
-.store_info table {float:left; width:100%}
-.store_info .delivery table {width:295px}
-.store_info table th {width:80px; height:42px; padding:0; padding-left:12px; background:url("/static/images/common/bg_bullet01.png") no-repeat 0 2px; vertical-align:top; color:#fff; font-size:12px; font-weight:bold}
-.store_info table td {height:42px; padding:0; vertical-align:top; color:#fff; font-size:12px}
-.store_info table th.first,
-.store_info table td.first {font-size:16px}
-.store_info table th.first {background-position:0 4px}
-.store_info table th.last,
-.store_info table td.last {height:21px;}
-.store_info .btn_more {position:absolute;bottom:18px;right:18px;width:33px;height:32px;}
-
-/* 사이트맵 */
-/* 2023-03-27 수정 S */
+/* �ъ�댄�몃㏊ */
+/* 2023-03-27 ���� S */
 .sitemap_bg {position:absolute;left:550px;top:170px;width:653px;height:330px;background:url("/static/images/etc/bg_sitemap.png?v230327") no-repeat right bottom;z-index:0;}
 /* .sitemap {overflow:hidden;width:1000px;padding:36px 0 0 0;font-size:12px} */
 .sitemap {display: flex;justify-content: space-between;flex-wrap: wrap;margin-top: 35px;font-size: 12px;}
@@ -218,26 +179,25 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 .sitemap .menu09 {width:109px;height:195px} */
 /* .sitemap dl {float:left;} */
 /* .sitemap dl + dl {margin-left:103px;} */
-/* 2023-03-27 수정 E */
+/* 2023-03-27 ���� E */
 .sitemap dl dt {font-weight:bold;margin:0 0 12px 0;}
 /* 20160810 start */
-.sitemap dl dt span {display:inline-block;height:16px;font-size:12px;background:url("/static/images/common/tit_sitemap.png?v230327") no-repeat left top;text-indent:-999em;*text-indent:0;*font-size:0;*line-height:0;}
-.sitemap dl dt .tit_brandstory {width:88px;background-position:0px 0px;} /* 브랜드스토리 */
-.sitemap dl dt .tit_productinfo {width:56px;background-position:0px -40px;}/* 제품안내 */
-.sitemap dl dt .tit_ingredientstory {width:116px;background-position:0px -80px;} /* 새로워진 뚜레쥬르 */
-.sitemap dl dt .tit_event_membership {width:109px;background-position:0px -120px;} /* 이벤트&할인혜택 *//* 2023-03-27 수정 */
-.sitemap dl dt .tit_giftcard {width:140px;background-position:0px -360px;} /* 제휴혜택 & 기프트카드 */
-.sitemap dl dt .tit_shoppingmall {width:162px;background-position:0px -161px;} /* 뚜레쥬르 앱&온라인 쇼핑몰 *//* 2023-03-27 수정 */
-.sitemap dl dt .tit_recruit {width:87px;padding:0;background-position:0px -201px;} /* 제빵기사 채용안내 */
-.sitemap dl dt .tit_foundation {width:56px;background-position:0px -241px;} /* 창업안내 */
-.sitemap dl dt .tit_storeinfo {width:55px;background-position:0px -281px;} /* 매장안내 */
-.sitemap dl dt .tit_cs {width:56px;background-position:0px -320px;} /* 고객센터 */
+.sitemap dl dt .tit_brandstory {width:88px;background-position:0px 0px;} /* 釉������ㅽ��由� */
+.sitemap dl dt .tit_productinfo {width:56px;background-position:0px -40px;}/* �������� */
+.sitemap dl dt .tit_ingredientstory {width:116px;background-position:0px -80px;} /* ��濡���吏� ����伊щⅤ */
+.sitemap dl dt .tit_event_membership {width:109px;background-position:0px -120px;} /* �대깽��&���명���� *//* 2023-03-27 ���� */
+.sitemap dl dt .tit_giftcard {width:140px;background-position:0px -360px;} /* ���댄���� & 湲고���몄뭅�� */
+.sitemap dl dt .tit_shoppingmall {width:162px;background-position:0px -161px;} /* ����伊щⅤ ��&�⑤�쇱�� �쇳��紐� *//* 2023-03-27 ���� */
+.sitemap dl dt .tit_recruit {width:87px;padding:0;background-position:0px -201px;} /* ��鍮듦린�� 梨��⑹���� */
+.sitemap dl dt .tit_foundation {width:56px;background-position:0px -241px;} /* 李쎌������ */
+.sitemap dl dt .tit_storeinfo {width:55px;background-position:0px -281px;} /* 留ㅼ�μ���� */
+.sitemap dl dt .tit_cs {width:56px;background-position:0px -320px;} /* 怨�媛��쇳�� */
 .sitemap dl dd {font-size:13px;font-weight:bold;line-height:24px;}
 .sitemap dl dd a:hover {background-color:#ecefe4;color:#f26b24;font-weight:bold;}/* 20160826 */
 .sitemap dl dt a:focus {display:inline-block;width:100%;background:#c6bfb3;color:#563c27;}
 .sitemap dl dd a:focus {display:inline-block;width:100%;background:#c6bfb3;color:#563c27;}
 /* //20160810 end */
-/* 창업안내 */
+/* 李쎌������ */
 .foundation_title {width:1000px;height:20px;margin:9px 0 39px 0;background:url("/static/images/etc/bg_common_3.png") no-repeat 0 -625px;text-indent:-999em;}
 .foundation_main {overflow:hidden;padding:0 0 20px 0;}
 .foundation_main dl {float:left;width:304px;margin:0 44px 45px 0;}
@@ -276,18 +236,18 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 .dl_frc dt {padding:0 0 1px 0;font-size:15px;}
 .dl_frc dd {padding:0 0 8px 0;font-size:12px;color:#777;}
 .frc {padding:0 0 28px 0;border-bottom:1px solid #d7d4d0;}
-.frc.no-border {border-bottom:none;padding-bottom:0} /* 2016-06-23 추가 */
+.frc.no-border {border-bottom:none;padding-bottom:0} /* 2016-06-23 異�媛� */
 .frc table {width:100%;}
-.frc table th {height:52px;background:#eae7e2;font-size:15px;color:#000;text-align:center;border-left:1px solid #e2dacc} /* 2016-06-23 수정 */
-.frc table th:first-child {border-left:none} /* 2016-06-23 추가 */
+.frc table th {height:52px;background:#eae7e2;font-size:15px;color:#000;text-align:center;border-left:1px solid #e2dacc} /* 2016-06-23 ���� */
+.frc table th:first-child {border-left:none} /* 2016-06-23 異�媛� */
 .frc table .first td {padding:5px 0 5px 20px}
 .frc table .first td:first-child {padding:18px 0 0 35px;font-size:15px;vertical-align:top;border-left:none}
 .frc table td {padding:5px 0 5px 20px;font-size:13px;letter-spacing:-1px;border-bottom:1px solid #eae7e2;border-left:1px solid #eae7e2}
 .tit_frc_2 {padding:0 0 19px 0;text-align:center;font-size:28px;color:#fff;}
 .tit_frc_3 {padding:0 0 19px 0;text-align:center;font-size:22px;color:#563c27;}
 .txt_frc_2 {padding:0 0 41px 0;text-align:center;font-size:16px;line-height:20px;color:#563c27;}
-.txt_franchise {height:68px;padding:0;text-align:center;font-size:16px;line-height:20px;color:#fff;}/* 창업설명회탭 */
-.txt_franchise_2 {height:78px;padding:0;text-align:center;font-size:16px;line-height:20px;color:#fff;}/* 온라인문의탭 */
+.txt_franchise {height:68px;padding:0;text-align:center;font-size:16px;line-height:20px;color:#fff;}/* 李쎌���ㅻ����� */
+.txt_franchise_2 {height:78px;padding:0;text-align:center;font-size:16px;line-height:20px;color:#fff;}/* �⑤�쇱�몃Ц���� */
 .txt_franchise_caution {display:block; font-size:14px; text-align:left} /* 2016-08-16 */
 .txt_frc_2_tip {margin:-38px 0 0 0;padding:0 0 21px 0;text-align:center;font-size:13px;line-height:15px;color:#FFF;}
 .tit_frc_faq {padding:0 0 15px 0;text-align:center;font-size:22px;color:#563c27;}
@@ -312,8 +272,8 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 .entry_box {width:492px;height:205px;border:2px solid #e8e6e2;text-align:center;letter-spacing:-1px;}
 .tit_entry {padding:54px 0 8px 0;font-size:21px;color:#000;}
 .txt_entry {padding:0 0 18px 0;font-size:15px;color:#666;}
-.tip_top {padding:18px 0 18px 0;text-align:right;font-family:"돋움";font-size:11px;color:#666;}
-.tip_price {padding-left:9px;font-family:"돋움";font-size:11px;letter-spacing:-1px;}
+.tip_top {padding:18px 0 18px 0;text-align:right;font-family:"����";font-size:11px;color:#666;}
+.tip_price {padding-left:9px;font-family:"����";font-size:11px;letter-spacing:-1px;}
 .center_area {overflow:hidden;padding:50px 0 0 0;}
 .center_map {float:left;width:647px;height:335px;border:1px solid #d6d3cf;background:#d6d3cf;}
 .center_info {float:right;width:242px;height:337px;text-align:left;}
@@ -321,7 +281,7 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 .tit_center_info {padding:0 0 18px 0;font-size:19px;color:#000;text-align:center;}
 .center_info dl dt {padding:0 0 6px 0;font-size:12px;color:#2e2e2e;font-weight:bold;}
 .center_info dl dd {padding:0 0 17px 0;font-size:12px;color:#555555;line-height:16px;}
-/* 가맹문의 연락처 201607 start */
+/* 媛�留밸Ц�� �곕�쎌� 201607 start */
 .store-inquiry {padding-left:135px;margin-left:260px;text-align:left;background:url("/static/images/etc/bg_store_inquiry.png") 0 19px no-repeat;}/* 20160821 */
 .store-inquiry dl.inquiry {margin-top:55px;}
 .store-inquiry dl.inquiry dt {font-size:18px;line-height:22px;color:#010101;}
@@ -330,15 +290,15 @@ label.kd {float:left;padding:9px 12px 0 50px;}
 .store-inquiry dl.inquiry + .info-message {margin:8px 0 55px 0;font-size:13px;line-height:18px;color:#010101;}
 .store-inquiry dl.inquiry + .info-message strong {display:block;font-weight:bold;}
 .store-inquiry dl.inquiry + .info-message span {display:block;color:#666;}
-/* //가맹문의 연락처 201607 end */
-/* 가맹절차 201607 start */
+/* //媛�留밸Ц�� �곕�쎌� 201607 end */
+/* 媛�留뱀��李� 201607 start */
 .process-title {position:relative;padding-bottom:30px;margin:50px 0 35px 0;text-align:center;}
 .process-title:after {content:"";display:block;position:absolute;bottom:0;left:50%;margin-left:-17px;width:34px;height:2px;background-color:#d89873;}
 .process-title dt {font-size:22px;line-height:26px;font-weight:bold;color:#bd8256;}
 .process-title dd {margin-top:10px;font-size:16px;line-height:20px;color:#666;}
 .process-cont {margin:0 auto 74px auto;width:738px;height:291px;text-indent:-10000px;background:url("/static/images/etc/img_process.png?v20170105") 0 0 no-repeat;}
-/* //가맹절차 201607 end */
-/* 창업:온라인문의 테이블 */
+/* //媛�留뱀��李� 201607 end */
+/* 李쎌��:�⑤�쇱�몃Ц�� ���대� */
 table.tbl-x {width:100%;table-layout:fixed;margin:0 0 22px 0;border-bottom:1px solid #d7d4d0;letter-spacing:-1px;}
 table.tbl-x thead th {height:52px;padding:0;background:#ecefe4;color:#000;font-size:15px;text-align:center;vertical-align:middle;}/* 20160818 */
 table.tbl-x td {padding:25px 0 0 0;text-align:center;font-size:15px;}
@@ -375,9 +335,9 @@ table.tbl-x .answer td span {display:inline-block;width:11px;height:11px;margin:
 .tbl_online th {height:33px;background:#eae7e2;color:#6e635c;text-align:center;}
 .tbl_online td {padding:19px 0 13px 0;border-bottom:1px solid #eae7e2;font-size:15px;color:#000;text-align:center;}
 .tbl_online td.left {text-align:left;}
-.tbl_online .txt {padding:34px 40px 63px 40px;border-bottom:0;font-size:12px;text-align:left;color:#777;font-family:"돋움";line-height:24px;}
+.tbl_online .txt {padding:34px 40px 63px 40px;border-bottom:0;font-size:12px;text-align:left;color:#777;font-family:"����";line-height:24px;}
 .franchise .tbl_online + .btn-area {text-align:right;}/* 20160826 */
-/* 가맹점 개설 투자비 */
+/* 媛�留뱀�� 媛��� �ъ��鍮� */
 .tbl-x {margin:30px 0 0 0;}
 .tbl-x table {width:100%;border-bottom:1px solid #d7d4d0;}
 .tbl-x table th {font-size:15px;color:#000;text-align:left;}
@@ -394,7 +354,7 @@ table.tbl-x .answer td span {display:inline-block;width:11px;height:11px;margin:
 .tbl-x table .tr-terms th,
 .tbl-x table .tr-terms td {padding-top:27px;}
 
-/* 창업:신용대출상품 테이블 */
+/* 李쎌��:���⑸��異����� ���대� */
 .table_loan {margin:30px 0 0 0;}
 .table_loan table {width:100%;border-bottom:1px solid #d7d4d0;}
 .table_loan table caption {display:none;}
@@ -421,7 +381,7 @@ dl.lone_date {padding:0 0 21px 0;}
 dl.lone_date dt {padding:0 0 2px 0;font-size:15px;color:#666;}
 dl.lone_date dd {padding:0 0 5px 0;font-size:13px;color:#666;}
 
-/* 창업일정표 */
+/* 李쎌���쇱���� */
 .month {overflow:hidden;padding:7px 0 9px 0;text-align:center;font-size:17px;color:#000;}
 .prev_month {float:left;height:18px;padding:1px 0 0 18px;background:url("/static/images/common/common.png") no-repeat -465px -285px;font-size:14px;}
 .next_month {float:right;height:18px;padding:1px 18px 0 0;background:url("/static/images/common/common.png") no-repeat -421px -309px;font-size:14px;}
@@ -439,10 +399,10 @@ dl.lone_date dd {padding:0 0 5px 0;font-size:13px;color:#666;}
 .tbl_calendar .fst .date {color:#ff0000}
 .tbl_calendar .lst .date {color:#708957}
 .tbl_calendar .holyday .date {color:#c52e00}
-.tbl_calendar .desc {position:absolute;right:0;bottom:6px;width:51px;padding-right:7px;font-weight:normal;font-size:11px;font-family:"돋움", Dotum;line-height:13px;text-align:right;color:#444;letter-spacing:-1px;}/* 20160818 */
-.remark_1 {background-color:#cb9169;}/* 소자본설명회 */
-.remark_2 {background-color:#f1e3b2;}/* 우리동네설명회 */
-.remark_3 {background-color:#f16b22;}/* 정기설명회 */
+.tbl_calendar .desc {position:absolute;right:0;bottom:6px;width:51px;padding-right:7px;font-weight:normal;font-size:11px;font-family:"����", Dotum;line-height:13px;text-align:right;color:#444;letter-spacing:-1px;}/* 20160818 */
+.remark_1 {background-color:#cb9169;}/* ����蹂몄�ㅻ��� */
+.remark_2 {background-color:#f1e3b2;}/* �곕━���ㅼ�ㅻ��� */
+.remark_3 {background-color:#f16b22;}/* ��湲곗�ㅻ��� */
 .legend {margin:0 1px 0 0;padding:6px 13px;color:#444;}/* 201607 */
 /* Event */
 .event .inner {padding:20px 50px 0 50px;background:#fff;}
@@ -476,7 +436,7 @@ dl.lone_date dd {padding:0 0 5px 0;font-size:13px;color:#666;}
 .event_view {background:#fff;}
 .event_view > li {padding:50px;}
 .event_view table {width:100%;border:1px solid #eae7e2;table-layout:fixed;}
-.event_view table thead th {height:32px;background:#ecefe4;border-bottom:1px solid #eae7e2;font-size:12px;font-family:"돋움";text-align:center;}/* 20160818 */
+.event_view table thead th {height:32px;background:#ecefe4;border-bottom:1px solid #eae7e2;font-size:12px;font-family:"����";text-align:center;}/* 20160818 */
 .event_view table thead th.PD_left{padding-left:108px;}
 .event_view table thead .share {font-size:0;}
 .event_view table tbody th,
@@ -487,7 +447,7 @@ dl.lone_date dd {padding:0 0 5px 0;font-size:13px;color:#666;}
 .event_view table tbody .cnt .inquiry input {height:38px;background:#fdefef;border:2px solid #e2d4d4;text-indent:10px;vertical-align:middle;}
 .event_view table tbody .cnt .inquiry .btn_search {display:inline-block;width:92px;height:42px;margin-left:11px;background:red;vertical-align:middle;overflow:hidden;}
 .event_view table tbody .cnt .inquiry .btn_search a {display:inline-block;width:100%;height:100%;}
-.event_view table tbody .link {display:block;font-size:12px;font-family:"돋움",Arial;}
+.event_view table tbody .link {display:block;font-size:12px;font-family:"����",Arial;}
 .event_view table tbody .link a {margin-left:30px;}
 .event_view table tbody .prev th {height:4px;padding:0 0 0 16px;background:url("/static/images/common/common.png") -445px -462px no-repeat;font-size:13px;color:#000;font-weight:700;text-align:left;}
 .event_view table tbody .next th {height:4px;padding:0 0 0 16px;background:url("/static/images/common/common.png") -445px -515px no-repeat;font-size:13px;color:#000;font-weight:700;text-align:left;}
@@ -499,7 +459,7 @@ dl.lone_date dd {padding:0 0 5px 0;font-size:13px;color:#666;}
 .event_view .btn-area .btn:hover,
 .event_view .btn-area .btn.on {color:#ffffff;border:1px solid #184f3b;background-color:#184f3b;}/* 201607 */
 .srch_area .srch_item {float:left;height:32px;margin:0 10px 0 280px;font-size:14px;color:#302216;}
-/* 웹진 */
+/* �뱀� */
 .webzine {overflow:hidden;width:744px;margin:0 auto;padding:0 0 70px 0;}
 .book {overflow:hidden;float:left;width:560px;height:685px;margin:0 49px 0 0;}
 .book_list {float:left;position:relative;width:135px;height:622px;padding:63px 0 0 0;}
@@ -551,7 +511,7 @@ a#prev_page_button:focus {border:1px solid #563c27;}
 .webzine_news .table_h_3 table td {padding:11px 0 8px 0;}
 .btn_pos {position:absolute;right:-60px;top:20px;}
 .btn_pos li {position:relative;z-index:11;}
-/* 브랜드스토리 20160804 start */
+/* 釉������ㅽ��由� 20160804 start */
 .container.brand-story {padding:230px 0 50px 0;margin:0;text-align:left;}/* 20160818 */
 .container.brand-story #content {width:1000px;}/* 20160818 */
 .container.brand-story .item-list {width:100%;}
@@ -612,8 +572,8 @@ a#prev_page_button:focus {border:1px solid #563c27;}
 .year1998 {position:absolute;left:361px;top:1453px;width:161px;height:75px;padding:29px 0 0 0;background:#cfc6b8;z-index:20;}
 .year1997 {position:absolute;left:1PX;top:1500px;width:360px;height:261px;background:#dad1c4;z-index:20;}
 .year1997 .img {display:inline-block;width:183px;height:90px;margin:50px 0 26px 100px !important;background:url("/static/images/brand/bg_history.png") no-repeat 0 0;}
-/* //브랜드스토리 20160804 end */
-/* 뚜레쥬르 광고 */
+/* //釉������ㅽ��由� 20160804 end */
+/* ����伊щⅤ 愿�怨� */
 .tv-big_area {overflow:hidden;margin:0 0 30px 0;}
 .tv-big {float:left;width:543px;height:380px;margin:0 11px 0 0;padding:30px 30px 0 30px;background:#b5c9ba;}/* 20160818 */
 .tv_big_tit {overflow:hidden;padding:0 0 5px 0;}
@@ -659,7 +619,7 @@ a#prev_page_button:focus {border:1px solid #563c27;}
 .ad_popup .pop_content {padding:50px;}
 .play_area {overflow:hidden;width:643px;height:392px;margin:0 0 25px 0;}
 .ad_txt_box {width:581px;height:89px;margin:0 0 10px 0;padding:30px;border:1px solid #d6d3cf;background:#f6f6f6;font-size:13px;color:#444;line-height:20px;text-align:center;overflow-y:auto;}
-/* 멤버십혜택 */
+/* 硫ㅻ������� */
 .cj_onecard_box {margin:0 0 49px 0;border:1px solid #e8e6e2}
 .cj_onecard_box .box {overflow:hidden;padding:50px 40px 50px 47px;border:4px double #e8e6e2;}
 .cj_onecard_box .third .btn + .btn {margin:0;}/* 201607 */
@@ -694,8 +654,8 @@ ul.list_cjone li.last .btn.on {color:#ffffff;border:1px solid #184f3b;background
 .bg_bnf_3 {float:left;width:73px;height:83px;margin:0 0 0 10px;background:url("/static/images/etc/bg_common_2.png") no-repeat -687px -847px;}
 .membership {padding:50px;background:#Fff;}
 .tit_membership {padding:0 0 27px 0;font-size:20px;color:#000;}
-.txt_membership {padding:5px 0 0 0;font-size:11px;color:#666;font-family:"돋움";}
-/* 통신사멤버십혜택 및 신용카드제휴혜택 2단 */
+.txt_membership {padding:5px 0 0 0;font-size:11px;color:#666;font-family:"����";}
+/* �듭���щħ踰������� 諛� ���⑹뭅�����댄���� 2�� */
 ul.card_list {clear:both;overflow:hidden;}
 ul.card_list li {position:relative;float:left;width:430px;min-height:274px;margin:0 20px 0 0;padding:29px 0 30px 0;border-top:1px solid #ebe7e0;}
 ul.card_list li.last {float:right;margin:0;}
@@ -706,15 +666,15 @@ ul.card_list li.last {float:right;margin:0;}
 .card_name {display:block;margin:0 0 10px 0;padding:23px 0 10px 0;background:url("/static/images/etc/bg_common_2.png") no-repeat -792px -153px;font-size:20px;font-weight:bold;color:#444;}
 .card_txt {font-size:14px;color:#4c3115;line-height:18px;font-weight:bold;}
 .card_txt .card_txt_ml{display:inline-block;margin-left:52px;}
-.card_info {position:relative;height:54px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"돋움";line-height:27px;letter-spacing:-0.5px;}/* 20160818 */
-.card_info2 {position:relative;height:81px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"돋움";line-height:27px;letter-spacing:-0.5px;}/* 20200605 */
-.membership_card .card_info {position:relative;height:160px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"돋움";line-height:27px;letter-spacing:-1px;}/* 20160821 */
+.card_info {position:relative;height:54px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"����";line-height:27px;letter-spacing:-0.5px;}/* 20160818 */
+.card_info2 {position:relative;height:81px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"����";line-height:27px;letter-spacing:-0.5px;}/* 20200605 */
+.membership_card .card_info {position:relative;height:160px;padding:13px 15px 11px 15px;background:#ecefe4;color:#555;font-family:"����";line-height:27px;letter-spacing:-1px;}/* 20160821 */
 .tip_txt {margin:-4px 0 0 0;padding:0 0 0 9px;font-size:11px;color:#888;line-height:11px;}
 .img_syrop {margin:6px 0 0 0;}
 .img_syrop img {vertical-align:middle;}
 .card_info .btn-area {position:absolute;right:15px;bottom:20px;text-align:right;}/* 201607 */
 .card_logo {position:absolute;right:0;top:29px;}
-/* 포인트보너스적립혜택 1단*/
+/* �ъ�명�몃낫���ㅼ��由쏀���� 1��*/
 ul.card_list.point_card {clear:both;overflow:initial;}
 ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;padding:29px 0 30px 0;border-top:1px solid #ebe7e0;}
 .point_card .card_detail {overflow:hidden;height:auto;padding:0 0 22px 0;}
@@ -722,7 +682,7 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .point_card .card_img {float:left;width:170px;margin:0 0 0 20px; padding-top:0; text-align:center}
 .point_card .card_name {display:block;margin:0 0 10px 0;padding:13px 0 10px 0;background:url("/static/images/etc/bg_common_2.png") no-repeat -792px -160px;font-size:20px;font-weight:bold;color:#444;}
 .point_card .card_txt {font-size:14px;color:#4c3115;line-height:18px;font-weight:bold;}
-.point_card .card_info {position:relative;height:100%;padding:23px 30px 21px 30px;background:#ecefe4;color:#555;font-family:"돋움";line-height:27px;letter-spacing:-0.5px;}/* 20160821 */
+.point_card .card_info {position:relative;height:100%;padding:23px 30px 21px 30px;background:#ecefe4;color:#555;font-family:"����";line-height:27px;letter-spacing:-0.5px;}/* 20160821 */
 .point_card .tip_txt {margin:-4px 0 0 0;padding:0 0 0 9px;font-size:11px;color:#888;line-height:11px;}
 .point_card .img_syrop {margin:6px 0 0 0;}
 .point_card .img_syrop img {vertical-align:middle;}
@@ -730,15 +690,15 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .point_card .card_info .btn_center.bo20 {bottom:20px;}
 .point_card .card_info .btn_center a {height:30px;font-size:13px;letter-spacing:-1px;}
 .point_card .card_logo {position:absolute;right:34px;top:29px;}
-/* 상품권혜택 */
+/* ����沅����� */
 .giftcard_list {clear:both;overflow:hidden;width:933px;}
 .giftcard_list li {float:left;width:235px;height:187px;margin:0 33px 33px 0;padding:20px 21px 0 20px;border:1px solid #e8e6e2;}
 .giftcard_list li dt {height:123px;border-bottom:1px solid #e8e6e2;}
 .giftcard_list li dd {color:#444;font-size:15px;font-weight:bold;text-align:center;}
 .giftcard_list li dd span.line1 {display:inline-block;padding:22px 0 0 0;}
 .giftcard_list li dd span.line2 {display:inline-block;padding:13px 0 0 0;}
-.giftcard_list .tip {display:inline-block;padding:3px 0 0 0;font-family:"돋움";font-size:11px;color:#888;font-weight:normal;}
-/* 라뜰리에 뚜레쥬르 */
+.giftcard_list .tip {display:inline-block;padding:3px 0 0 0;font-family:"����";font-size:11px;color:#888;font-weight:normal;}
+/* �쇰�곕━�� ����伊щⅤ */
 .latelier_info {overflow:hidden;width:850px;padding:58px 74px 85px;margin-bottom: 20px;border:1px solid #bab1a4;font-size:15px;color:#333;line-height:30px;letter-spacing: -0.6px;text-align: center;}
 .latelier_info .latelier_logo{width: 100%;border-bottom: 1px solid #bab1a4;padding-bottom: 20px;margin-bottom: 22px;}
 .latelier_info .latelier_store{margin: 45px 0 40px;}
@@ -752,7 +712,7 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .latelier_wrap .map_info .rate_info dd {color:#555;line-height:18px;}
 .latelier_wrap .map_info .rate_map {width:748px;height:275px;}
 .latelier_wrap .shop_info .share {position:absolute;left:20px;bottom:20px;}
-/* 글로벌뚜레쥬르 */
+/* 湲�濡�踰�����伊щⅤ */
 .global_info {overflow:hidden;width:998px;height:135px;padding:45px 0 0 0;border:1px solid #bab1a4;font-size:15px;color:#333;line-height:25px;}
 .global_info .img {float:left;display:inline-block;width:270px;height:109px;margin:-6px 27px 0 45px;background:url("/static/images/common/tlj_store.png") no-repeat 0 0;}/* 20160822 */
 .global_txt {position:relative;overflow:hidden;margin:60px 0 0 0;}
@@ -789,11 +749,10 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .country_store li .btn-area.is-empty {position:relative; padding-top:40px}
 .country_store li .btn-area.is-empty:before {content:""; display:block; position:absolute; top:20px; left:36px; width:18px; height:1px; background-color:#39654c}
 
-/* 2015-04-09 뚜레쥬르 착한빵 start */
+/* 2015-04-09 ����伊щⅤ 李⑺��鍮� start */
 .goodBread .goodBread_top {border:#bab1a4 solid 1px;height:180px;margin-bottom:48px;}
 .goodBread .goodBread_top .imgGB {
 	background:url("/static/images/etc/bg_common_2.png") no-repeat -816px -777px;
-	height:180px;width:130px;float:left;margin:0 75px 0 100px;*display:inline;
 }
 .goodBread .goodBread_top .txt {
 	float:left;width:650px;font-size:15px;color:#333;line-height:23px;
@@ -806,7 +765,6 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .goodBread .goodBread_farm .imgbox {float:left;width:622px;height:459px;}
 .goodBread .goodBread_farm .txtBox {position:relative;overflow:hidden;float:right;width:328px;height:459px;background-color:#fff}
 .goodBread .goodBread_farm .txtBox h4 {padding-bottom:15px}
-.goodBread .goodBread_farm .txtBox p {padding-bottom:8px;color:#666;font-size:13px;line-height:1.5;*letter-spacing:-1px}
 .goodBread .goodBread_farm .txtBox p strong {font-size:15px;color:#666;}
 .goodBread .goodBread_farm .txtBox p.first {padding-bottom:0;color:#222;font-size:13px;font-weight:700;line-height:1.3}
 .goodBread .goodBread_farm .txtBox .img_product {margin-top:5px}
@@ -817,13 +775,12 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .goodBread .goodBread_farm .txtBox .sub-tit {padding-bottom:5px;color:#ad845e;font-size:15px;line-height:1.3}
 .goodBread .goodBread_farm .txtBox .img_product {margin-top:10px}
 
-.goodBread .goodBread_farm .txtBox .rolling-area {*zoom:1}
 .goodBread .goodBread_farm .txtBox .rolling-area:after {content:"";display:block;clear:both}
 .goodBread .goodBread_farm .txtBox .bx-controls-direction a {display:block;overflow:hidden;position:absolute;top:274px;width:29px;height:41px;text-indent:-9999px}
 .goodBread .goodBread_farm .txtBox .bx-controls-direction a.bx-next {right:0; background:url(/images/community/btn_next.png) no-repeat 0 0}
 .goodBread .goodBread_farm .txtBox .bx-controls-direction a.bx-prev {left:0; background:url(/images/community/btn_prev.png) no-repeat 0 0}
 
-/* 재료이야기 */
+/* �щ��댁�쇨린 */
 #activewidgets.container {padding-top:147px;}/* 201607 */
 .ingredient {display:inline-block;width:100%;padding-bottom:70px;}
 .ingredient .page_title2 {top:202px;right:auto;left:50%;margin-left:-117px;width:234px;height:73px;}/* 201607 */
@@ -885,7 +842,7 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 
 .img_fix {min-width:1024px;width:100%;height:auto;position:fixed;top:0;left:0;}
 
-/* 201607 재료이야기 select menu start */
+/* 201607 �щ��댁�쇨린 select menu start */
 /* select-menu */
 .select-menu {position:absolute;top:210px;left:0;width:100%;z-index:9;}
 .select-menu .evt-tpl {margin:0 auto;width:1000px;}
@@ -914,7 +871,7 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 .select-menu .dropdown select {position:absolute;left:0px;top:0px;}
 .select-menu .dropdown.touch .old {width:100%;height:100%;}
 .select-menu .dropdown.touch select {width:100%;height:100%;opacity:0;}
-/* //201607 재료이야기 select menu end */
+/* //201607 �щ��댁�쇨린 select menu end */
 
 /* content block 4 */
 #mcs4_container {position:absolute;left:50%;top:645px;width:846px;height:150px;margin:0 0 0 -423px;}
@@ -928,14 +885,13 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 #mcs4_container .dragger_pressed {position:absolute;overflow:hidden;width:6px;height:120px;background:#fff;cursor:s-resize;}
 .ingredient #mcs4_container {background:#382f26;border:1px solid #2c2620;border-right:none;font-size:13px;color:#b19f92;line-height:20px;text-align:center;}
 
-/* 기사 채용안내 - 접수 완료 */
+/* 湲곗�� 梨��⑹���� - ���� ��猷� */
 .recruit.complete .box_wrap.bg_recruit {padding-top:250px;}/* 20160819 */
 .recruit.complete .box_wrap.bg_recruit .box_type1 {padding:30px 0;}/* 20160819 */
 
-/* 이벤트 댓글 템플릿 */
+/* �대깽�� ��湲� ����由� */
 .blind {position: absolute;top: 0;left: 0;width: 1px;height: 1px;margin: -1px;border: none;overflow: hidden;clip: rect(0, 0, 0, 0);}
 .dimmed {display:none; position:fixed; top:0; right:0; bottom:0; left:0; background-color:#000; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter:alpha(opacity=80); opacity:.8; z-index:11}
-.clear-obj{*zoom:1}
 .clear-obj:after{content:''; display:block; clear:both}
 
 .evt-tpl {width:798px; line-height:1.5}
@@ -995,9 +951,8 @@ ul.card_list.point_card li {position:relative;float:none;width:100%;margin:0;pad
 
 .evt-tpl .caution-area {padding:34px 40px; background-color:#545351}
 .evt-tpl .caution-area .is-list {margin-top:20px}
-.evt-tpl .caution-area .is-list li {margin-top:3px; padding-left:13px; text-indent:-13px; color:#ccc; font-family:"굴림", gulim, "돋움", dotum; font-size:13px}
+.evt-tpl .caution-area .is-list li {margin-top:3px; padding-left:13px; text-indent:-13px; color:#ccc; font-family:"援대┝", gulim, "����", dotum; font-size:13px}
 .evt-tpl .sns-area {position:relative; margin-top:30px; padding:25px 31px; background-color:#e1dddd}
-.evt-tpl .sns-area .tip-wrap {*zoom:1}
 .evt-tpl .sns-area .tip-wrap:after {content:""; display:block; clear:both}
 .evt-tpl .sns-area .tip-wrap dt,
 .evt-tpl .sns-area .tip-wrap dd {float:left}

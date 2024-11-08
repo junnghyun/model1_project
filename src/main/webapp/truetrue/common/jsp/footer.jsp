@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info="footer_project_1"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/truetrue/common/css/common.css?after" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/truetrue/common/css/main.css?after" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/truetrue/common/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/truetrue/common/js/menu.js"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=euc-kr" />
