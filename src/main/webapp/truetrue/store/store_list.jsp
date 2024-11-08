@@ -154,13 +154,24 @@
                     <h3>매장명: <span id="map-store-name"></span></h3>
                     <p>주소: <span id="map-store-address"></span></p>
                     <p>전화번호: <span id="map-store-phone"></span></p>
+                    <input type="button" id="add-store-btn" value="+" class="square-btn" onclick="openMap()" />
                 </div>
                 <div id="map"></div>
             </div>
         </div>
     </div>
-    
+	
     <jsp:include page="../common/jsp/footer.jsp"/>
     
+    <div id="modal" class="modal">
+	    <div class="modal-content">
+	        <!-- X 버튼 -->
+	        <span class="close">&times;</span> 
+	        <h3>매장명: <span id="modal-store-name"></span></h3>
+	        <p>주소: <span id="modal-store-address"></span></p>
+	        <p>전화번호: <span id="modal-store-phone"></span></p>
+	        <div id="modal-map" style="width: 100%; height: 300px; background-color: #ddd;">지도 영역</div>
+	    </div>
+	</div>
 </body>
 </html>

@@ -103,7 +103,7 @@ font-family:'Nanum Barun Gothic';
 			</ul>
 			<ul class="tnb">
 				<li style="/*display:none;*/">
-					<a href="매장안내링크넣어주세요" class="tnb_store"><img src="${pageContext.request.contextPath}/truetrue/common/images/info_market.png"></a>
+					<a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" class="tnb_store"><img src="${pageContext.request.contextPath}/truetrue/common/images/info_market.png"></a>
 					<a href="고객센터링크넣어주세요" class="tnb_customer"><img src="${pageContext.request.contextPath}/truetrue/common/images/faq.png"></a>
 					<a href="로그인링크넣어주세요" class="tnb_login"><img src="${pageContext.request.contextPath}/truetrue/common/images/login_btn.png"></a>
 				</li>
@@ -116,7 +116,7 @@ font-family:'Nanum Barun Gothic';
         <a style="font-size: 15px" >&nbsp;</a>
       </li>
 	  <li>
-        <a href="매장안내링크" style="font-size: 15px" >매장안내</a>
+        <a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" style="font-size: 15px" >매장안내</a>
       </li>
       <li>
         <a href="제품링크" style="font-size: 15px">제품</a>

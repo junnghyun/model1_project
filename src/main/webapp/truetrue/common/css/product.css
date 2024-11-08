@@ -1,4 +1,4 @@
-@charset "euc-kr";
+@charset "UTF-8";
 .srch_result {margin-bottom:15px;padding-bottom:15px;font-size:14px;color:#000;font-family:"NanumGothic";font-weight:700;border-bottom:1px solid #d2cac2;}
 .srch_result_none {padding:150px 0;font-size:15px;color:#000;font-weight:700;text-align:center;}
 /* New Product List */
@@ -32,8 +32,7 @@
 .character .tab_menu4 li {margin-left:0;}
 .character .tab_menu4 li a {padding:18px 40px 16px 40px;}
 
-/* ������ ��泥대낫湲� �щ�쇱�대�� */
-.new_list .bx-wrapper {position:relative;padding:0;*zoom:1;}
+/* 占쏙옙占쏙옙占쏙옙 占쏙옙筌ｋ���ユ묾占� 占싼�占쎌�깍옙��占쏙옙 */
 .new_list .bx-wrapper img {max-width:100%;display:block;}
 .new_list .bx-wrapper .bx-pager {display:none;}
 .new_list #bx-prev,.new_list #bx-next {font-size:0;}
@@ -267,7 +266,7 @@ z-index:10;
 .product_detail .left_area .item_wrap .txt_shape {font-size:15px;}
 .product_detail .left_area .item_wrap .txt_shape:after {padding-left:5px;background-position:-241px -409px;}
 .product_detail .left_area .item_wrap .name {display:block;height:26px;font-size:26px;color:#655245;text-align:center;line-height:29px;padding-top:13px;}
-.product_detail .left_area .p_desc1 {margin-bottom:10px;font-size:11px;font-family:"����";text-align:left;}
+.product_detail .left_area .p_desc1 {margin-bottom:10px;font-size:11px;font-family:"占쏙옙占쏙옙";text-align:left;}
 .product_detail .left_area .p_desc2 {margin-bottom:50px;background:#f0f0f0;color:#655245;font-size:15px;line-height:20px;}
 .product_detail .left_area .p_desc2 ul {padding:25px 45px;}
 .product_detail .left_area .p_desc2 .tit {display:inline-block;width:273px;height:13px;margin-bottom:14px;background:url("../images/common.png") -602px -17px no-repeat;font-size:0;overflow:hidden;}
@@ -277,10 +276,10 @@ z-index:10;
 .product_detail .hit {float:left;width:78px;text-align:left;display:inline-block;}
 .f_like {position:relative;width:78px;height:20px;background:url("../images/common/common.png") -783px -609px no-repeat;}
 .f_like .btn_f_like {display:inline-block;position:absolute;left:0;top:0;}
-.f_like .num {display:inline-block;position:absolute;right:0;top:0;width:24px;height:20px;font-size:12px;color:#555;font-weight:bold;font-family:"����";line-height:22px;text-align:center;}
+.f_like .num {display:inline-block;position:absolute;right:0;top:0;width:24px;height:20px;font-size:12px;color:#555;font-weight:bold;font-family:"占쏙옙占쏙옙";line-height:22px;text-align:center;}
 .g_plus {position:relative;width:67px;height:26px;background:url("../images/common/common.png") -680px -78px no-repeat;}
 .g_plus .btn_g_plus {display:inline-block;position:absolute;left:0;top:0;}
-.g_plus .num {display:inline-block;position:absolute;right:0;top:0;width:34px;height:24px;border-top:1px solid #a39e9b;border-right:1px solid #a39e9b;border-bottom:1px solid #a39e9b;font-size:12px;color:#555;font-weight:bold;font-family:"����";line-height:24px;text-align:center;}
+.g_plus .num {display:inline-block;position:absolute;right:0;top:0;width:34px;height:24px;border-top:1px solid #a39e9b;border-right:1px solid #a39e9b;border-bottom:1px solid #a39e9b;font-size:12px;color:#555;font-weight:bold;font-family:"占쏙옙占쏙옙";line-height:24px;text-align:center;}
 .goto {display:inline-block;}
 .goto a {float:left;margin-left:14px;}
 .goto .facebook {display:inline-block;width:8px;height:24px;margin-top:-3px;background:url("../images/common/common.png") -789px -79px no-repeat;font-size:0;overflow:hidden;}
@@ -299,7 +298,7 @@ z-index:10;
 .product_detail .lb_new,.product_detail .lb_best2 {right:10px;}
 .comment {margin-top:20px;padding-bottom:70px;}
 .comment .tit {position:relative;width:1000px;height:42px;background:#184f3b;font-size:20px;color:#fff;text-align:center;line-height:42px;}/* 20160821 */
-.comment .tit .desc {display:inline-block;position:absolute;right:30px;top:0;font-size:11px;color:#eeeadd;font-family:"����";z-index:0;}
+.comment .tit .desc {display:inline-block;position:absolute;right:30px;top:0;font-size:11px;color:#eeeadd;font-family:"占쏙옙占쏙옙";z-index:0;}
 .comment_list {width:1000px;height:468px;background:#ecefe4;overflow:auto;}/* 20160821 */
 .comment_list .floatleft {width:480px;padding:30px 0;background:url("../images/common/bg_comment.png") left top repeat-y;}
 .comment_list .floatleft .c_item {display:inline-block;margin:0 0 20px 14px;}
@@ -311,26 +310,26 @@ z-index:10;
 .comment_list .floatleft .txt > ul {background:#fff;border-radius:3px;}
 .comment_list .floatleft .txt .tit {padding:11px 20px;border-bottom:1px solid #ccc;}
 .comment_list .floatleft .txt .tit .name {display:inline-block;font-size:15px;color:#000;}
-.comment_list .floatleft .txt .tit .date {float:right;display:inline-block;font-size:11px;font-family:"����";color:#b0a99f;font-weight:bold;line-height:20px;}
+.comment_list .floatleft .txt .tit .date {float:right;display:inline-block;font-size:11px;font-family:"占쏙옙占쏙옙";color:#b0a99f;font-weight:bold;line-height:20px;}
 .comment_list .floatleft .txt .cnt {padding:20px;font-size:14px;color:#707070;line-height:22px;}
 .comment_list .floatleft .txt .cnt .im {color:#af6c24;}
 .comment_list .paging {clear:both;display:inline-block;width:100%;margin-top:30px;}
 
-/* �����깅� ���대� */
+/* 占쏙옙占쏙옙占쎄�占� 占쏙옙占쎈��占� */
 .table_nutrition {border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
 .table_nutrition table {width:100%;}
 .table_nutrition table thead {}
 .table_nutrition table thead th {width:110px;padding-top:22px;border-bottom:1px solid #ccc;font-size:15px;font-weight:700;text-indent:30px;vertical-align:top;}
-.table_nutrition table thead td {border-bottom:1px solid #ccc;text-align:right;padding:10px 0;font-size:12px;} /* 2015-01-22 蹂�寃�  */
+.table_nutrition table thead td {border-bottom:1px solid #ccc;text-align:right;padding:10px 0;font-size:12px;} /* 2015-01-22 癰�占썲��占�  */
 .table_nutrition table tbody .first {padding-top:12px;}
 .table_nutrition table tbody .last {padding-bottom:12px;}
 .table_nutrition table tbody th {width:130px;font-size:13px;text-indent:30px}
-.table_nutrition table tbody td {padding:10px 0;font-size:12px;text-align:right;} /* 2015-01-22 蹂�寃�  */
+.table_nutrition table tbody td {padding:10px 0;font-size:12px;text-align:right;} /* 2015-01-22 癰�占썲��占�  */
 
 .table_nutrition table tbody .is-allergy th,
 .table_nutrition table tbody .is-allergy td {padding-top:12px; border-top:1px solid #ccc}
 
-/* 2015-01-20 異�媛�遺� */
+/* 2015-01-20 �곤옙揶�占썽�븝옙 */
 .table_nutrition.newNut table thead td,
 .table_nutrition.newNut table tbody td {line-height:1.3;}
 
@@ -338,10 +337,10 @@ z-index:10;
 /*.txt_shape2:before {content:"";display:inline-block;width:26px;height:9px;padding-right:5px;background:url("../images/common/common.png") -940px -56px no-repeat;vertical-align:middle;}
 .txt_shape2:after {content:"";display:inline-block;width:26px;height:9px;padding-left:5px;background:url("../images/common/common.png") -940px -18px no-repeat;vertical-align:middle;}*//* 20160821 */
 
-/* 2014-11-05 ����紐� ��以� ���� 異�媛� */
+/* 2014-11-05 占쏙옙占쏙옙筌�占� 占쏙옙餓ο옙 占쏙옙占쏙옙 �곤옙揶�占� */
 .product_list2 .item_wrap .name2 {position:relative;top:-12px;display:block;height:20px;margin-bottom:2px;font-size:12px;color:#6e635c;font-weight:bold;text-align:center;line-height:15px;}
 
-/* 2015-04-03 ��媛��� ���� ��濡���諛곕�� start */
+/* 2015-04-03 占쏙옙揶�占쏙옙占� 占쏙옙占쏙옙 占쏙옙嚥∽옙占쏙옙獄�怨�占쏙옙 start */
 .container .floatBanner {position:absolute;top:170px;right:-35px;z-index:90;}
 .container .floatBanner .closeFloat {position:absolute;top:-7px;right:-7px;z-index:100;padding:10px;}
-/* 2015-04-03 ��媛��� ���� ��濡���諛곕�� end  */
+/* 2015-04-03 占쏙옙揶�占쏙옙占� 占쏙옙占쏙옙 占쏙옙嚥∽옙占쏙옙獄�怨�占쏙옙 end  */

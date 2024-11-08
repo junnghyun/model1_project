@@ -1,6 +1,6 @@
-@charset "euc-kr";
+@charset "UTF-8";
 
-/* 공통 */
+/* 怨듯�� */
 .franchise-wrap .tab-cont {position:relative;padding:20px 20px 60px 250px;margin-top:20px;min-height:500px;background-color:#fff;}
 .franchise-wrap .tab-cont .side-menu {position:absolute;top:20px;left:20px;}
 .franchise-wrap .tab-cont .side-menu .snb {display:table;width:210px;height:316px;background:url("/static/images/franchise/bg_snb.gif") no-repeat 0 0;}
@@ -15,7 +15,7 @@
 .franchise-wrap .tab-cont .cont-wrap .cont-intro p{margin-top:7px;font-size:16px;line-height:22px;color:#fff;}
 .franchise-wrap .fixed-banner {position:absolute;top:0;right:-122px;}
 .franchise-wrap .fixed-banner a {display:block;}
-/* 탭메뉴 */
+/* ��硫��� */
 .franchise-wrap .tab-menu {width:1000px;height:72px;}
 .franchise-wrap .tab-menu:after {content:"";display:block;clear:both;}
 .franchise-wrap .tab-menu li {float:left;width:250px;height:72px;background:url("/static/images/franchise/tab_menu.png") no-repeat 0 0;}
@@ -30,7 +30,7 @@
 .franchise-wrap .tab-menu li.menu3.on {background-position:-500px -72px;}
 .franchise-wrap .tab-menu li.menu4 {background-position:-750px 0;}
 .franchise-wrap .tab-menu li.menu4.on {background-position:-750px -72px;}
-/* 테이블 */
+/* ���대� */
 .franchise-wrap .data-table {table-layout:fixed;width:100%;text-align:left;border-bottom:1px solid #eaeaea;}
 .franchise-wrap .data-table caption {margin:0;padding:0;width:1px;height:1px;line-height:0;font-size:0;visibility:hidden;}
 .franchise-wrap .data-table th, td {font-size:13px;line-height:18px;color:#666666;letter-spacing:-0.05em;}
@@ -43,7 +43,7 @@
 .franchise-wrap .data-table tbody td {padding:16px 0 13px 0;text-align:center;border-top:1px solid #eaeaea;background-color:#fff;}
 .franchise-wrap .data-table tbody tr:first-child th,
 .franchise-wrap .data-table tbody tr:first-child td {border-top:0 none;}
-/* 달력 */
+/* �щ�� */
 .franchise-wrap .schedule-wrap {padding:40px 0 50px 0;border:1px solid #e8e6e2;}
 .franchise-wrap .schedule-wrap .month {overflow:hidden;padding:7px 0 9px 0;margin:0 auto;width:635px;text-align:center;font-size:17px;color:#000;}
 .franchise-wrap .schedule-wrap .prev_month {float:left;height:21px;padding:1px 0 0 14px;background:url("/static/images/franchise/btn_month.png") no-repeat 0 0;}
@@ -61,10 +61,10 @@
 .franchise-wrap .schedule-wrap .tbl_calendar .fst .date {color:#ff0000}
 .franchise-wrap .schedule-wrap .tbl_calendar .lst .date {color:#708957}
 .franchise-wrap .schedule-wrap .tbl_calendar .holyday .date {color:#c52e00}
-.franchise-wrap .schedule-wrap .tbl_calendar .desc {position:absolute;right:0;bottom:0;width:100%;padding:0;font-weight:normal;font-size:11px;font-family:"돋움", Dotum;line-height:13px;text-align:right;color:#444;letter-spacing:-1px;}
-.franchise-wrap .schedule-wrap .remark_1 {background-color:#cb9169;}/* 소자본설명회 */
-.franchise-wrap .schedule-wrap .remark_2 {background-color:#f1e3b2;}/* 우리동네설명회 */
-.franchise-wrap .schedule-wrap .remark_3 {background-color:#f16b22;}/* 정기설명회 */
+.franchise-wrap .schedule-wrap .tbl_calendar .desc {position:absolute;right:0;bottom:0;width:100%;padding:0;font-weight:normal;font-size:11px;font-family:"����", Dotum;line-height:13px;text-align:right;color:#444;letter-spacing:-1px;}
+.franchise-wrap .schedule-wrap .remark_1 {background-color:#cb9169;}/* ����蹂몄�ㅻ��� */
+.franchise-wrap .schedule-wrap .remark_2 {background-color:#f1e3b2;}/* �곕━���ㅼ�ㅻ��� */
+.franchise-wrap .schedule-wrap .remark_3 {background-color:#f16b22;}/* ��湲곗�ㅻ��� */
 .franchise-wrap .schedule-wrap .legend {margin:0 1px 0 0;padding:6px 13px;color:#444;}
 .franchise-wrap .schedule-wrap .list_1 {margin:0 0 0 47px;}
 /* select menu custom */
@@ -92,24 +92,24 @@
 .franchise-wrap .select-menu .dropdown select {position:absolute;left:0px;top:0px;}
 .franchise-wrap .select-menu .dropdown.touch .old {width:100%;height:100%;}
 .select-menu .dropdown.touch select {width:100%;height:100%;opacity:0;}
-/* 설명 박스 이중 border */
+/* �ㅻ� 諛��� �댁� border */
 .franchise-wrap .ex-wrap {border:2px solid #e8e6e2;background-color:#f6f5f4;}
 .franchise-wrap .ex-wrap .ex-box {margin:2px;border:1px solid #e8e6e2;background-color:#fff;}
-/* 서브 타이틀 */
+/* ��釉� ���댄�� */
 .franchise-wrap .cont-head h3 {position:relative;padding-left:14px;margin-top:40px;height:24px;background:url("/static/images/franchise/sub_tit.png") no-repeat 0 0;}
 .franchise-wrap .cont-head h3:after {content:"";display:block;position:absolute;top:0;left:0;width:4px;height:21px;background-color:#184f39;}
 .franchise-wrap .cont-head h3 span {overflow:hidden;position:absolute;width:1px;height:1px;font-size:1px;text-indent:101%;white-space:nowrap;}
 .franchise-wrap .cont-head p {margin-top:9px;font-size:13px;line-height:18px;color:#444;}
-.franchise-wrap .cont-head .stit-preparation01 {background-position:0 -120px;}/* 창업 준비 절차 */
-.franchise-wrap .cont-head .stit-preparation02 {background-position:0 -160px;}/* 창업 투자비 */
-.franchise-wrap .cont-head .stit-preparation03 {background-position:0 -200px;}/* 창업 대출안내 */
-.franchise-wrap .cont-head .stit-preparation04 {background-position:0 -240px;}/* 창업 FAQ */
-.franchise-wrap .cont-head .stit-preparation05 {background-position:0 -280px;}/* 창업 상담 */
-.franchise-wrap .cont-head .stit-preparation06 {background-position:0 -320px;}/* 창업 문의 연락처 */
-.franchise-wrap .cont-head .stit-briefing01 {background-position:0 -360px;}/* 정기 창업 설명회 */
-.franchise-wrap .cont-head .stit-briefing02 {background-position:0 -400px;}/* 우리동네 창업 설명회 */
-.franchise-wrap .cont-head .stit-briefing03 {background-position:0 -440px;}/* 주말 창업 설명회 */
-/* 상단 비주얼 슬라이드 */
+.franchise-wrap .cont-head .stit-preparation01 {background-position:0 -120px;}/* 李쎌�� 以�鍮� ��李� */
+.franchise-wrap .cont-head .stit-preparation02 {background-position:0 -160px;}/* 李쎌�� �ъ��鍮� */
+.franchise-wrap .cont-head .stit-preparation03 {background-position:0 -200px;}/* 李쎌�� ��異����� */
+.franchise-wrap .cont-head .stit-preparation04 {background-position:0 -240px;}/* 李쎌�� FAQ */
+.franchise-wrap .cont-head .stit-preparation05 {background-position:0 -280px;}/* 李쎌�� ���� */
+.franchise-wrap .cont-head .stit-preparation06 {background-position:0 -320px;}/* 李쎌�� 臾몄�� �곕�쎌� */
+.franchise-wrap .cont-head .stit-briefing01 {background-position:0 -360px;}/* ��湲� 李쎌�� �ㅻ��� */
+.franchise-wrap .cont-head .stit-briefing02 {background-position:0 -400px;}/* �곕━���� 李쎌�� �ㅻ��� */
+.franchise-wrap .cont-head .stit-briefing03 {background-position:0 -440px;}/* 二쇰� 李쎌�� �ㅻ��� */
+/* ���� 鍮�二쇱�� �щ�쇱�대�� */
 .franchise-wrap .cont-intro-visual .bxslider {position:relative;}
 .franchise-wrap .cont-intro-visual .bx-controls-direction {width:100%;}
 .franchise-wrap .cont-intro-visual .bx-controls-direction a {display:block;position:absolute;top:104px;width:48px;height:51px;text-indent:-9999px;background:url("/static/images/franchise/btn_slide.png") no-repeat 0 0;}
@@ -121,10 +121,10 @@
 .franchise-wrap .cont-intro-visual .bx-pager .bx-pager-item a {display:block;width:29px;height:5px;text-indent:-9999px;background-color:#eaeaea;}
 .franchise-wrap .cont-intro-visual .bx-pager .bx-pager-item a.active {background-color:#184f39;}
 
-/* 창업 안내 메인 */
+/* 李쎌�� ���� 硫��� */
 	.franchise-wrap.main .cont-wrap {margin-top:20px;}
 
-/* 뚜레쥬르 신(新) 모델 소개 */
+/* ����伊щⅤ ��(��) 紐⑤�� ��媛� */
 	.container.introduction {background:url("/static/images/franchise/bg_tlj_cafe.jpg") repeat-x 50% 148px;background-size:100% 720px;}
 	.container.introduction .franchise-wrap {min-height:720px;}
 	.container.introduction .franchise-wrap .tab-cont {padding:0;margin:0 0 50px 0;background-color:transparent;}
@@ -140,12 +140,12 @@
 	.container.introduction .franchise-wrap .cont-box > div {margin-top:70px;}
 	.container.introduction .franchise-wrap .cont-box .summary {margin:15px 0 21px 0;font-size:13px;line-height:20px;color:#444;}
 	.container.introduction .franchise-wrap .cont-box .thumb-img {text-align:center;}
-	/* 새로워진 뚜레쥬르 */
-	.container.introduction .franchise-wrap.intro-new h4.stit-new01 {background-position:0 -480px;}/* 새로워진 뚜레쥬르 매장 */
-	.container.introduction .franchise-wrap.intro-new h4.stit-new02 {background-position:0 -520px;}/* 새로워진 뚜레쥬르 로고와 엠블럼 */
-	.container.introduction .franchise-wrap.intro-new h4.stit-new03 {background-position:0 -560px;}/* 새로워진 뚜레쥬르 브랜드 컬러 */
-	.container.introduction .franchise-wrap.intro-new h4.stit-new04 {background-position:0 -600px;}/* 새로워진 뚜레쥬르 패키지 */
-	.container.introduction .franchise-wrap.intro-new h4.stit-new05 {background-position:0 -640px;}/* 새로워진 뚜레쥬르 유니폼 */
+	/* ��濡���吏� ����伊щⅤ */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new01 {background-position:0 -480px;}/* ��濡���吏� ����伊щⅤ 留ㅼ�� */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new02 {background-position:0 -520px;}/* ��濡���吏� ����伊щⅤ 濡�怨��� ��釉��� */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new03 {background-position:0 -560px;}/* ��濡���吏� ����伊щⅤ 釉����� 而щ�� */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new04 {background-position:0 -600px;}/* ��濡���吏� ����伊щⅤ �⑦�ㅼ� */
+	.container.introduction .franchise-wrap.intro-new h4.stit-new05 {background-position:0 -640px;}/* ��濡���吏� ����伊щⅤ ������ */
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-1 .thumb-img img + img {display:block;margin-top:11px;}
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-2 .thumb-img {margin-top:27px;}
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-2 .summary {position:relative;padding-top:25px;margin:35px 0 0 0;text-align:center;}
@@ -153,7 +153,7 @@
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .thumb-img {margin-top:27px;}
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .summary {position:relative;padding-top:25px;margin:35px 0 0 0;text-align:center;}
 	.container.introduction .franchise-wrap.intro-new .cont-box .nth-3 .summary:after {content:"";display:block;position:absolute;top:0;left:50%;margin-left:-66px;width:132px;height:1px;background-color:#bab1a4;}
-	/* 신(新) 모델의 장점 */
+	/* ��(��) 紐⑤�몄�� �μ�� */
 	.container.introduction .franchise-wrap.intro-adv h4 {padding:0;}
 	.container.introduction .franchise-wrap.intro-adv h4:after {content:"";display:block;clear:both;background-color:transparent;}
 	.container.introduction .franchise-wrap.intro-adv h4.stit-adv01 {background-position:0 -680px;}
@@ -161,7 +161,7 @@
 	.container.introduction .franchise-wrap.intro-adv h4.stit-adv03 {background-position:0 -760px;}
 	.container.introduction .franchise-wrap.intro-adv h4.stit-adv04 {background-position:0 -800px;}
 
-/* 창업 성공 스토리 */
+/* 李쎌�� �깃났 �ㅽ��由� */
 	.franchise-wrap.story .tab-cont {padding:20px 0 60px 0;background-color:transparent;}
 	.franchise-wrap.story .tab-cont .cont-box .vod-wrap {position:relative;margin-bottom:40px;width:100%;height:472px;}
 	.franchise-wrap.story .tab-cont .cont-box .vod-wrap:after {content:"";display:block;clear:both;}
@@ -175,20 +175,20 @@
 	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .btn-area {position:absolute;bottom:20px;left:0;width:600px;text-align:center;}
 	.franchise-wrap.story .tab-cont .cont-box .vod-wrap .btn-area a.btn {display:inline-block;margin:0 8px;width:224px;height:44px;line-height:44px;font-size:17px;}
 
-/* 창업 준비하기 */
-	/* 창업 준비 절차 */
+/* 李쎌�� 以�鍮���湲� */
+	/* 李쎌�� 以�鍮� ��李� */
 	.franchise-wrap.process .cont-wrap .cont-box {margin-top:28px;}
-	/* 창업 투자비 */
+	/* 李쎌�� �ъ��鍮� */
 	.franchise-wrap.investment .cont-wrap .cont-box {margin-top:27px;}
 	.franchise-wrap.investment .cont-wrap .data-table {margin-bottom:15px;}
 	.franchise-wrap.investment .cont-wrap h4 {margin:15px 0 4px 0;font-size:14px;color:#000;}
-	/* 창업 대출안내 */
+	/* 李쎌�� ��異����� */
 	.franchise-wrap.loan-info .cont-wrap .cont-box {margin-top:27px;}
 	.franchise-wrap.loan-info .cont-wrap .data-table thead th {padding:0;height:52px;line-height:52px;font-size:15px;}
 	.franchise-wrap.loan-info .cont-wrap .data-table tbody th {padding:16px 0 13px 0;font-size:15px;line-height:19px;text-align:center;border-top:0 none;}
 	.franchise-wrap.loan-info .cont-wrap .data-table tbody td {font-size:15px;line-height:19px;border-top:0 none;vertical-align:top;}
 	.franchise-wrap.loan-info .cont-wrap .list_1 {margin-top:30px;}
-	/* 창업 FAQ */
+	/* 李쎌�� FAQ */
 	.franchise-wrap.often-faq .cont-wrap .cont-box {margin-top:28px;}
 	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader {margin:0 0 20px 0;}
 	.franchise-wrap.often-faq .cont-wrap .faq .faqHeader:after {content:"";display:block;clear:both;}
@@ -209,7 +209,7 @@
 	.franchise-wrap.often-faq .cont-wrap .faq .data-table thead th:first-child {border-left:0 none;}
 	.franchise-wrap.often-faq .cont-wrap .faq .data-table tbody td {border-left:1px solid #eaeaea;}
 	.franchise-wrap.often-faq .cont-wrap .faq .data-table tbody td:first-child {border-left:0 none;}
-	/* 창업 상담 */
+	/* 李쎌�� ���� */
 	.franchise-wrap.consultation .cont-wrap .cont-box {margin-top:28px;font-size:13px;line-height:17px;}
 	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box {position:relative;padding:50px 0;background:#fff url("/static/images/franchise/bg_ex_consultation.png") no-repeat 82px 52px;}
 	.franchise-wrap.consultation .cont-wrap .ex-wrap .ex-box dl {padding-left:204px;margin:0;}
@@ -230,7 +230,7 @@
 	.franchise-wrap.consultation .cont-wrap .agree-cont h5:first-child {margin-top:0;}
 	.franchise-wrap.consultation .cont-wrap .agree-cont h6 {padding:0 14px;margin:10px 0;font-size:13px;line-height:17px;color:#010101;}
 	.franchise-wrap.consultation .cont-wrap .txt-caution {margin-top:13px;}
-	/* 창업 문의 연락처 */
+	/* 李쎌�� 臾몄�� �곕�쎌� */
 	.franchise-wrap.contact .cont-wrap .cont-box {margin-top:28px;}
 	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box {position:relative;padding:40px 0 28px 0;background:#fff url("/static/images/franchise/bg_ex_consultation.png") no-repeat 82px 34px;}
 	.franchise-wrap.contact .cont-wrap .ex-wrap .ex-box dl {padding-left:204px;margin:0 0 20px 0;}
@@ -249,7 +249,7 @@
 	.franchise-wrap.contact .cont-wrap .search-results .data-table tbody td.last {border-right:0 none;}
 
 
-	/* 창업 설명회 */
+	/* 李쎌�� �ㅻ��� */
 	.franchise-wrap.briefing .cont-wrap .cont-box {margin-top:20px;}
 	.franchise-wrap.briefing .cont-wrap h4 {margin-top:40px;height:50px;line-height:50px;font-size:20px;font-weight:normal;text-align:center;color:#174e38;background-color:#eaeaea;}
 	.franchise-wrap.briefing .cont-wrap .info-box {position:relative;padding:35px 0 30px 0;}

@@ -1,10 +1,10 @@
-@charset "euc-kr";
+@charset "UTF-8";
 
-/* 공통 */
+/* 怨듯�� */
 body {background-color:#f7f0da;}/* 20160824 */
 .blind {position: absolute;top: 0;left: 0;width: 1px;height: 1px;margin: -1px;border: none;overflow: hidden;clip: rect(0, 0, 0, 0);}/* 20220314 */
 
-/* PC 공통 버튼 start */
+/* PC 怨듯�� 踰��� start */
 .btn {
 	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-touch-callout:none;-webkit-user-select:none;
 	display:inline-block;
@@ -84,7 +84,7 @@ button.btn .on {
 .btn-area.third {width:100%;}
 .btn-area.third .btn {display:block;float:left;min-width:auto;width:33.3% !important;box-sizing:border-box;}
 
-/* 버튼 더보기 */
+/* 踰��� ��蹂닿린 */
 .btn_more a {
 	display:inline-block;width:31px;height:30px;padding:0;border:1px solid #99918b;font-size:0;
 	background:transparent url("../images/common/common.png") no-repeat -387px -328px;
@@ -93,7 +93,7 @@ button.btn .on {
 .btn_more a:hover,
 .btn_more a.on {background:#bb7d4f url("../images/common/common.png") no-repeat -387px -298px;border:1px solid #bb7d4f;color:#fff;}/* 20160818 */
 
-/* 버튼 List */
+/* 踰��� List */
 .btn_list {position:absolute;top:5px;left:0;line-height:999px;z-index:10;}
 .btn_list a {
 	display:inline-block;overflow:hidden;width:65px;height:30px;color:#563c27;
@@ -103,18 +103,18 @@ button.btn .on {
 .btn_list a:hover,
 .btn_list a.on {color:#fff;background:url("../images/common/common.png") no-repeat -100px -186px;}
 
-/* 버튼 배송가능 지역 확인 */
+/* 踰��� 諛곗�↔��� 吏��� ���� */
 .btn .delivery {display:inline-block;position:relative;display:block;padding-right:13px;width:131px;line-height:30px;font-weight:bold;color:#2d4f41;background-color:#dadfcb;}/* 20160822 */
 .btn .delivery:after {content:"";display:block;position:absolute;top:10px;right:10px;width:5px;height:9px;background:url("../images/shop/shop.png") 100% -250px no-repeat;}/* 20160821 */
 
-/* 바로가기 링크 버튼 */
+/* 諛�濡�媛�湲� 留��� 踰��� */
 .btn .shortcuts {display:inline-block;position:relative;padding-right:13px;font-weight:bold;}
 .btn .shortcuts:after {content:"";display:block;position:absolute;top:13px;right:0;width:5px;height:9px;background:url("../images/shop/shop.png") 100% -200px no-repeat;}
 
-/* 버튼 선택상품 주문 */
+/* 踰��� �������� 二쇰Ц */
 .btn .select {display:inline-block;position:relative;padding-left:20px;}
 .btn .select:after {content:"";display:block;position:absolute;top:13px;left:0;width:13px;height:7px;background:url("../images/shop/shop.png") -222px -124px no-repeat;}
-/* PC 공통 버튼 end */
+/* PC 怨듯�� 踰��� end */
 
 /* search form start */
 .reform .search-form {padding:10px;margin-bottom:-1px;width:100%;background-color:#dadfcb;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;text-align:center;}/* 20160804 */
@@ -139,7 +139,7 @@ button.btn .on {
 .reform .search-results .data-table tbody td .email {padding:0 15px;text-align:left;}
 /* //table end */
 
-/* 박스스타일 start */
+/* 諛��ㅼ�ㅽ���� start */
 .reform .box-type-out {padding:2px;border:2px solid #e8e6e2;background-color:#f6f5f4;}
 .reform .box-type-in {border:1px solid #e8e6e2;background-color:#fff;}
-/* //박스스타일 end */
+/* //諛��ㅼ�ㅽ���� end */

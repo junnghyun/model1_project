@@ -1,4 +1,4 @@
-@charset "euc-kr";
+@charset "UTF-8";
 
 html.history {margin:0;height:auto;background:none}
 body {width:100%}
@@ -43,7 +43,7 @@ button::-moz-focus-inner {
 
 .bread-wrap .default-img img {width:100%}
 
-/* 자막 */
+/* ��留� */
 .bread-wrap .vod-slide .caption {position:absolute; bottom:0; left:0; width:532px; height:44px}
 .bread-wrap .vod-slide .caption:after {content:""; display:block; clear:both}
 .bread-wrap .vod-slide .caption button {display:block; float:left; width:60px; height:44px; background:url("../images/bread/caption_btn.png") no-repeat 0 0; cursor:pointer} /*[DD]*/
@@ -79,7 +79,7 @@ button::-moz-focus-inner {
 }
 */
 
-/* New 뚜레쥬르 살펴보기 */
+/* New ����伊щⅤ �댄�대낫湲� */
 .look-tlj-wrap .look-intro {text-align:center}
 .look-tlj-wrap .look-intro p {position:relative; padding-top:20px; margin-top:35px; line-height:28px; font-size:22px; color:#000}
 .look-tlj-wrap .look-intro p:after {content:""; display:block; position:absolute; top:0; left:50%; margin-left:-67px; width:132px; height:1px; background-color:#bab1a4}
