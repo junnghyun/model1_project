@@ -18,6 +18,7 @@
     <script src="js/store.js"></script>
 </head>
 <body>
+<jsp:include page="../common/jsp/header.jsp"/>
     <div class="container">
         <div class="header">
             <h1>매장안내</h1>
