@@ -151,6 +151,6 @@ font-family:'Nanum Barun Gothic';
 
 
 </div>
-	<p id="back-top">
+	<!--<p id="back-top">
 		<a href="#top"><img src="${pageContext.request.contextPath}/truetrue/common/images/top.png" style="opacity: 50%; outline: none; border: none; display: block;"><span></span></a>
-	</p>
+	</p> -->

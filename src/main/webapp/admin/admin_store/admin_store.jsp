@@ -20,7 +20,7 @@
     <jsp:include page="../common/admin.jsp" />
     
     <div class="common_admin">
-        <div class="store" id="store"><h1>매장관리</h1></div>
+        <div><h1 class="store" id="store">매장관리</h1></div>
         <jsp:useBean id="sVO" class="kr.co.truetrue.user.store.StoreSearchVO" scope="page"/>
         <jsp:setProperty property="*" name="sVO"/>
         <%
@@ -102,6 +102,7 @@
                 
                 <div class="add-store-btn">
                     <button class="csv-download-btn" onclick="downloadExcel()">Excel로 다운로드</button>
+                    <button class="crawler-btn" onclick="mapcrawler()">매장 정보 가져오기</button>
                     <button class="store-btn" onclick="openStoreAddModal()">매장 정보 추가</button>
                 </div>
             </div>

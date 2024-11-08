@@ -51,6 +51,15 @@
     cursor: pointer;
 }
 
+.crawler-btn {
+	padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(110, 141, 118);
+    color: white;
+    cursor: pointer;
+}
+
 .store-btn {
     padding: 5px 10px;
     border: none;
