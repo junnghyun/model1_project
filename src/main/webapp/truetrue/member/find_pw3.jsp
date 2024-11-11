@@ -2,15 +2,18 @@
     pageEncoding="UTF-8"
     info="my page에서 이동할 수 있는 비밀번호 변경 페이지"
 %>
+<%@ page import="kr.co.truetrue.member.MemberDAO" %>
+<%@ page import="java.sql.*" %>
+<%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title</title>
 <link rel="shorcut icon"
-href="../common/images/paka.jpg">
+href="http://192.168.10.223/jsp_prj/common/images/paka.jpg">
 <link rel="stylesheet" type="text/css"
-href="../common/CSS/main_20240911.css">
+href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -141,18 +144,58 @@ tr {
     transition: border .5s, background .5s, color .5s;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#changePass').on('click', function(e) {
+        e.preventDefault(); // 기본 제출 동작을 막음
+
+        // 비밀번호 입력 필드 가져오기
+        const currentPassword = $('#bef_pwd').val();
+        const newPassword = $('#new_pwd').val();
+        const confirmPassword = $('#new_pwd_check').val();
+
+        // 비밀번호 유효성 검사
+        if (!currentPassword) {
+            alert("현재 비밀번호를 입력해 주세요.");
+            $('#bef_pwd').focus();
+            return;
+        }
+
+        if (!newPassword || newPassword.length < 8 || newPassword.length > 12) {
+            alert("비밀번호는 8자에서 12자 사이여야 합니다.");
+            $('#new_pwd').focus();
+            return;
+        }
+
+        const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!#@~])[A-Za-z0-9!#@~]{8,12}$/;
+        if (!regex.test(newPassword)) {
+            alert("비밀번호는 영문자, 숫자, 특수문자(!#@~)를 포함해야 합니다.");
+            $('#new_pwd').focus();
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            alert("새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+            $('#new_pwd_check').focus();
+            return;
+        }
+
+        // 유효성 검증 통과 후 폼 제출
+        $('#passwordForm').submit();
+    });
+});
+
+</script>
 </head>
 <body>
-<%
-request.setCharacterEncoding("UTF-8");
-String id = request.getParameter("user_id");
-%>
+
 <div class="cont_header">
 	<h1 class="h1_tit">비밀번호 변경</h1>
 	<p class="h_desc">고객님의 소중한 정보를 보호하기 위하여 새로운 비밀번호로 변경 후 서비스를 이용해 주세요.</p>
 </div>
 <div class="cont_area">
 <div class="table_col">
+<form id="passwordForm" action="checkPass.jsp" method="POST" accept-charset="UTF-8">
 <table>
 <caption>비밀번호 변경을 위한 새 비밀번호, 새 비밀번호 확인 입력을 나타냅니다.</caption>
 <colgroup>
@@ -180,6 +223,7 @@ String id = request.getParameter("user_id");
 </tr>
 </tbody>
 </table>
+</form>
 </div>
 <dl class="box_info">
 	<dt>비밀번호 변경 시 유의사항</dt>
@@ -192,43 +236,8 @@ String id = request.getParameter("user_id");
 	</dd>
 </dl>
 <div class="btn_sec">
-	<button type="button" class="btn btn_em" onclick="goChange()">비밀번호 변경</button>
+	<button type="button" class="btn btn_em" id="changePass">비밀번호 변경</button>
 	</div>
 </div>
 </body>
-<script type="text/javascript">
-
-$(function(){
-    // 비밀번호 변경 버튼 클릭 시 호출되는 함수
-    function goChange() {
-        const newPassword = $("#new_pwd").val();
-        const confirmPassword = $("#new_pwd_check").val();
-        // 새 비밀번호와 확인 비밀번호가 같은지 확인
-        if (newPassword !== confirmPassword) {
-            alert("새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-            return false;
-        }//end if
-    	// 비밀번호 길이 확인 (8~12자리)
-        if (newPassword.length < 8 || newPassword.length > 12) {
-            alert("비밀번호는 8자에서 12자 사이여야 합니다.");
-            return false;
-        }//end if
-     	// 영문자, 숫자, 특수문자 조합 확인
-        const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!#@~])[A-Za-z0-9!#@~]{8,12}$/;
-        if (!regex.test(newPassword)) {
-            alert("비밀번호는 영문자, 숫자, 특수문자(!#@~)를 포함해야 합니다.");
-            return false;
-        }//end if
-        // 비밀번호 유효성 검사
-        if (!validatePassword(newPassword, userId)) {
-            return false;
-        }//end if
-        alert("비밀번호가 성공적으로 변경되었습니다.");
-        // 실제로는 서버에 비밀번호 변경 요청을 보내는 코드 추가 필요
-        window.location.href = "https://메인페이지";
-    }//goChange
-    // 버튼에 함수 연결
-    $(".btn.btn_em").on("click", goChange);
-});
-</script>
 </html>

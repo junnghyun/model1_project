@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title</title>
 <link rel="shorcut icon"
-href="../common/images/paka.jpg">
+href="http://192.168.10.223/jsp_prj/common/images/paka.jpg">
 <link rel="stylesheet" type="text/css"
-href="../common/CSS/main_20240911.css">
+href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelsivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- jQuery CDN 시작 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style type="text/css">
@@ -101,7 +101,14 @@ $(document).ready(function(){
             setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
         }//end if
     });
-})
+});
+
+$(function(){
+	$("#loginBtn").click(function(){
+		chkNull();
+	});
+});//ready
+
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
@@ -126,13 +133,29 @@ function getCookie(cookieName) {
     }//end if
     return unescape(cookieValue);
 }//getCookie
+
+function chkNull(){
+	if($("#user_id").val()==""){
+		alert("아이디를 입력해주세요.");
+		$("#user_id").focus();
+		return;
+	}//end if
+	if($("#pass").val()==""){
+		alert("비밀번호를 입력해주세요.");
+		$("#pass").focus();
+		return;
+	}//end if
+	$("#loginForm").submit();
+}//chkNull
+
+
 </script>
 </head>
 <body class=" reform">
 <div class="page_top">
     <h2 class="page_title">로그인</h2>
 </div>
-<form action="loginProcess.jsp" name="loginForm" method="POST" class="login">
+<form action="loginProcess.jsp" id= "loginForm" name="loginForm" method="POST" class="login">
     <div id="login" class="login">
         <h2 class="tit_memberlogin">회원로그인</h2>
         <p>보다 많은 서비스를 위해 로그인 하시기 바랍니다.<br/>뚜르뚜르의 더 많은 혜택과 이벤트를 누리세요!</p>
@@ -150,7 +173,7 @@ function getCookie(cookieName) {
             <span><a href="find_id.jsp">아이디 찾기</a></span>
             <span><a href="find_pw.jsp">비밀번호 찾기</a></span>
         </div>
-<span class="btn_login"><button type=button class="btn" onclick="location.href='loginProcess.jsp'">로그인</button></span>
+<span class="btn_login"><button type=button class="btn" id="loginBtn" name="loginBtn">로그인</button></span>
 <span class="btn_membership"><input type="button" class="btn" value="회원가입" onclick="location.href='membership.jsp'"/></span>
     </div>
 </form>
