@@ -1,5 +1,6 @@
 package kr.co.truetrue.crawler;
 
+import kr.co.truetrue.kakao.GeoCodingService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,18 +18,15 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 public class MapCrawler {
 
     public static void main(String[] args) {
-    	// 운영체제 확인 후 크롬 드라이버 경로 설정
+        // 운영체제 확인 후 크롬 드라이버 경로 설정
         String os = System.getProperty("os.name").toLowerCase();
         String driverPath = "";
 
         if (os.contains("win")) {
-            driverPath = /*경로 수정*/"C:\\Users\\user\\git\\model1_project\\src\\main\\webapp\\truetrue\\common\\chromedriver\\win64_130.0.6723.116\\chromedriver.exe";  // Windows
+            driverPath = "C:\\Users\\user\\git\\model1_project\\src\\main\\webapp\\truetrue\\common\\chromedriver\\win64_130.0.6723.116\\chromedriver.exe";  // Windows
         } else if (os.contains("mac")) {
             driverPath = "/Users/anjeonghyeon/git/model1_project/src/main/webapp/truetrue/common/chromedriver/mac_130.0.6723.116/chromedriver";  // MacOS
         } else {
@@ -50,13 +50,18 @@ public class MapCrawler {
         driver.get(url);
 
         // 검색어 설정 (뚜레쥬르)
-        String keyword = "뚜레쥬르";  
+        String keyword = "뚜레쥬르"+"서울";  
         JSONObject storeData = new JSONObject();
         JSONArray storeList = new JSONArray();
 
+        // GeoCodingService 인스턴스 생성
+        GeoCodingService geoCodingService = new GeoCodingService();
+        // CrawlerDAO 인스턴스 생성
+        CrawlerDAO cDAO = new CrawlerDAO();
+
         try {
             // 검색창 대기 및 입력
-        	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.box_searchbar > input.query")));
             searchBox.sendKeys(keyword);
             searchBox.sendKeys(Keys.ENTER);
@@ -70,7 +75,6 @@ public class MapCrawler {
             // 페이지 탐색 및 크롤링
             int page = 1;
             int page2 = 0;
-            int errorCnt = 0;
 
             while (true) {
                 page2++;
@@ -95,11 +99,27 @@ public class MapCrawler {
                     System.out.println("주소: " + address);
                     System.out.println("연락처: " + phone);
 
+                    // CrawlerDAO를 통해 중복 여부 확인
+                    CrawlerVO existingStore = cDAO.selectDetailStore(address);
+                    boolean isUnique = (existingStore == null);  // 중복이 없으면 true
+
+                    // 주소를 이용해 위도와 경도를 받아옴
+                    JSONObject location = geoCodingService.getGeoLocation(address);
+                    if (location != null) {
+                        System.out.println("위도: " + location.get("latitude"));
+                        System.out.println("경도: " + location.get("longitude"));
+                    } else {
+                        System.out.println("위도와 경도를 찾을 수 없습니다.");
+                    }
+
                     // 데이터 저장
                     JSONObject storeInfo = new JSONObject();
                     storeInfo.put("name", name);
                     storeInfo.put("address", address);
                     storeInfo.put("phone", phone);
+                    storeInfo.put("latitude", location != null ? location.get("latitude") : "N/A");
+                    storeInfo.put("longitude", location != null ? location.get("longitude") : "N/A");
+                    storeInfo.put("flag", isUnique ? true : false); // 중복 여부에 따라 flag 설정
                     storeList.add(storeInfo);
                 }
 

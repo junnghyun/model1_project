@@ -1,79 +1,92 @@
 /**
- * JavaScript code to fetch and display stores.
+ * JavaScript code to fetch and display stores with improved error handling and UI feedback
  */
-
 function initializeStoreFetcher() {
-    var regionSelect = document.getElementById("regionSelect");
-    var fetchButton = document.getElementById("fetchButton");
-    var loader = document.getElementById("loader");
-    var tableBody = document.getElementById("storesTableBody");
-    
+    const regionSelect = document.getElementById("regionSelect");
+    const fetchButton = document.getElementById("fetchButton");
+    const loader = document.getElementById("loader");
+    const tableBody = document.getElementById("storesTableBody");
+    const checkAllBox = document.getElementById("checkAll");
+
     function createTableRow(store) {
-        return "<tr>" +
-               "<td>" + store.id + "</td>" +
-               "<td>" + store.name + "</td>" +
-               "<td>" + store.address + "</td>" +
-               "<td>" + store.phone + "</td>" +
-               "<td>" + store.hours + "</td>" +
-               "</tr>";
+        return `
+            <tr>
+                <td><input type='checkbox' class='storeCheckbox' data-store='${JSON.stringify(store)}'/></td>
+                <td>${store.name}</td>
+                <td>${store.address}</td>
+                <td>${store.phone}</td>
+                <td>${store.lat}</td>
+                <td>${store.lng}</td>
+            </tr>
+        `;
     }
 
-    function showLoading() {
-        fetchButton.disabled = true;
-        loader.style.display = "inline-block";
-        tableBody.innerHTML = "<tr><td colspan='5' class='empty-message'>매장 정보를 불러오는 중...</td></tr>";
+    function updateUI(state, message) {
+        fetchButton.disabled = state === 'loading';
+        loader.style.display = state === 'loading' ? "inline-block" : "none";
+
+        if (message) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan='6' class='empty-message'>${message}</td>
+                </tr>
+            `;
+        }
     }
 
-    function hideLoading() {
-        fetchButton.disabled = false;
-        loader.style.display = "none";
+    function fetchStores(region) {
+        updateUI('loading', '매장 정보를 불러오는 중...');
+
+        fetch(`/model1_project/api/stores/${region}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(stores => {
+                if (!stores || stores.length === 0) {
+                    updateUI('empty', '해당 지역에 매장이 없습니다.');
+                    return;
+                }
+
+                const tableRows = stores.map(store => createTableRow(store)).join('');
+                tableBody.innerHTML = tableRows;
+
+                updateUI('success');
+                initializeCheckboxes();
+            })
+            .catch(error => {
+                console.error("매장 정보 조회 중 오류 발생:", error);
+                updateUI('error', '매장 정보를 가져오는데 실패했습니다.');
+            });
     }
 
-    function showError() {
-        tableBody.innerHTML = "<tr><td colspan='5' class='empty-message'>매장 정보를 가져오는데 실패했습니다.</td></tr>";
+    function initializeCheckboxes() {
+        const checkboxes = document.querySelectorAll('.storeCheckbox');
+
+        checkAllBox.addEventListener('change', (e) => {
+            checkboxes.forEach(checkbox => checkbox.checked = e.target.checked);
+        });
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                checkAllBox.checked = [...checkboxes].every(cb => cb.checked);
+            });
+        });
     }
 
-    function showEmptyMessage() {
-        tableBody.innerHTML = "<tr><td colspan='5' class='empty-message'>해당 지역에 매장이 없습니다.</td></tr>";
-    }
-
-    function handleFetchClick() {
-        var selectedRegion = regionSelect.value;
-
+    fetchButton.addEventListener("click", () => {
+        const selectedRegion = regionSelect.value;
         if (!selectedRegion) {
             alert("지역을 선택해주세요.");
             return;
         }
+        fetchStores(selectedRegion);
+    });
 
-        showLoading();
-
-        fetch("/api/stores/" + selectedRegion)
-            .then(function(response) {
-                if (!response.ok) {
-                    throw new Error("네트워크 응답이 정상적이지 않습니다.");
-                }
-                return response.json();
-            })
-            .then(function(stores) {
-                if (!stores || stores.length === 0) {
-                    showEmptyMessage();
-                    return;
-                }
-
-                var tableRows = "";
-                for (var i = 0; i < stores.length; i++) {
-                    tableRows += createTableRow(stores[i]);
-                }
-                tableBody.innerHTML = tableRows;
-            })
-            .catch(function(error) {
-                console.error("매장 정보 조회 중 오류 발생:", error);
-                showError();
-            })
-            .finally(hideLoading);
-    }
-
-    fetchButton.addEventListener("click", handleFetchClick);
+    // 초기 상태 설정
+    updateUI('initial', '지역을 선택하고 매장 정보를 조회해주세요.');
 }
 
 document.addEventListener("DOMContentLoaded", initializeStoreFetcher);

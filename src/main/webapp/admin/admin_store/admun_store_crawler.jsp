@@ -37,16 +37,17 @@
             <table>
                 <thead>
                     <tr>
-                        <th>매장번호</th>
+                        <th><input type="checkbox" id="checkAll"/></th>
                         <th>매장명</th>
                         <th>주소</th>
                         <th>연락처</th>
-                        <th>영업시간</th>
+                        <th>위도</th>
+                        <th>경도</th>
                     </tr>
                 </thead>
                 <tbody id="storesTableBody">
                     <tr>
-                        <td colspan="5" class="empty-message">
+                        <td colspan="6" class="empty-message">
                             지역을 선택하고 매장 정보를 조회해주세요.
                         </td>
                     </tr>
