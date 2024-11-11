@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title</title>
 <link rel="shorcut icon"
-href="../common/images/paka.jpg">
+href="http://192.168.10.223/jsp_prj/common/images/paka.jpg">
 <link rel="stylesheet" type="text/css"
-href="../common/CSS/main_20240911.css">
+href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -69,15 +69,15 @@ $(document).ready(function(){
     // 생년월일 숫자 및 길이 제한 검증
     $('#birth').on('input', function() {
         this.value = this.value.replace(/[^0-9]/g, ''); // 숫자만 입력되도록 함
-        if (this.value.length > 6) {
-            this.value = this.value.slice(0, 6); // 6자 초과하면 자름
+        if (this.value.length > 8) {
+            this.value = this.value.slice(0, 8); // 8자 초과하면 자름
         }//end if
     });//input
     // 핸드폰 번호 숫자 및 길이 제한 검증
     $('#phone').on('input', function() {
         this.value = this.value.replace(/[^0-9]/g, ''); // 숫자만 입력되도록 함
-        if (this.value.length > 8) {
-            this.value = this.value.slice(0, 8); // 8자 초과하면 자름
+        if (this.value.length > 11) {
+            this.value = this.value.slice(0, 11); // 11자 초과하면 자름
         }//end if
     });//input
     // 이름 필드에서 한글과 영어만 입력되도록 제한
@@ -88,22 +88,24 @@ $(document).ready(function(){
     $('#btnSearch').on('click', function(e) {
         e.preventDefault(); // 기본 동작(폼 전송)을 막음
         const userName = $('#name').val();
-        const birthDate = $('#birth').val();
+        let birthDate = $('#birth').val();
         const mobileNo = $('#phone').val();
         // 입력 필드 검증
         if (!userName || !birthDate || !mobileNo) {
             alert('모든 필드를 입력해주세요.');
             return;
         }//end if
-        if (birthDate.length !== 6) {
-            alert('생년월일은 6자리여야 합니다.');
+        if (birthDate.length !== 8) {
+            alert('생년월일은 8자리여야 합니다.');
             return;
         }//end if
-        if (mobileNo.length < 7 || mobileNo.length > 8) {
-            alert('휴대전화번호는 7~8자리여야 합니다.');
+        if (mobileNo.length < 11 || mobileNo.length > 11) {
+            alert('휴대전화번호는 11자리여야 합니다.');
             return;
         }//end if
-
+    	// 생년월일을 YYYY-MM-DD 형식으로 변환
+        birthDate = birthDate.slice(0, 4) + '-' + birthDate.slice(4, 6) + '-' + birthDate.slice(6);
+        $('#birth').val(birthDate); // 변환된 값 설정
         // 모든 입력이 유효하면 폼 제출
         $('form').submit();
     });//click
@@ -121,15 +123,15 @@ $(document).ready(function(){
 <div class="find_handy">
 	<h2 class="h3_tit">간편 찾기</h2>
 	<p class="desc">입력하신 정보는 아이디 찾기에만 사용되며 <em class="em">저장되지 않습니다.</em></p>
-	<form action="http://192.168.10.223/Tourtour_prj/first_prj/find_id2.jsp" method="POST">
+	<form action="find_id2.jsp" method="POST">
 	<span class="input_txt">
-		<input type="text" class="text" id="name" name="name" placeholder="이름을 입력해주세요." title="이름을 입력해주세요." size=56><br>
+		<input type="text" class="text" id="name" name="name" placeholder="이름을 입력해주세요." size=56><br>
 	</span>
 	<span class="input_txt">
-		<input type="text" class="text" id="birth" name="birth" placeholder="법정생년월일 6자리를 입력해주세요." title="법정생년월일 6자리를 입력해주세요." maxlength="6" size=56><br>
+		<input type="text" class="text" id="birth" name="birth" placeholder="법정생년월일 8자리(YYYYMMDD)를 입력해주세요." maxlength="8" size=56><br>
 	</span>
 	<span class="input_txt">
-		<input type="text" class="text" id="phone" name="phone" placeholder="휴대전화번호 뒤 7~8자리를 입력해주세요. (010 제외)" title="휴대전화번호 뒤 7~8자리를 입력해주세요. (01X 제외)" maxlength="8" size=56><br>
+		<input type="text" class="text" id="phone" name="phone" placeholder="휴대전화번호 010포함 11자리를 입력해주세요." maxlength="11" size=56><br>
 	</span>
 		<div class="btn_sec">
 		<button type="button" class="btn btn_em" id="btnSearch">아이디 찾기</button>
