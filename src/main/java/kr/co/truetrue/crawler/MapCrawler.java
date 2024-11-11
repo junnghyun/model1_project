@@ -26,7 +26,7 @@ public class MapCrawler {
         String driverPath = "";
 
         if (os.contains("win")) {
-            driverPath = /*경로 수정*/"c:/Users/user/git/model1_project/src/main/webapp/truetrue/common/chromedriver/win64_130.0.6723116/chromedriver.exe";  // Windows
+            driverPath = /*경로 수정*/"C:\\Users\\user\\git\\model1_project\\src\\main\\webapp\\truetrue\\common\\chromedriver\\win64_130.0.6723.116\\chromedriver.exe";  // Windows
         } else if (os.contains("mac")) {
             driverPath = "/Users/anjeonghyeon/git/model1_project/src/main/webapp/truetrue/common/chromedriver/mac_130.0.6723.116/chromedriver";  // MacOS
         } else {
@@ -85,7 +85,7 @@ public class MapCrawler {
                 for (int i = 0; i < storeElements.size(); i++) {
                     WebElement nameElement = driver.findElements(By.cssSelector(".head_item > .tit_name > .link_name")).get(i);
                     WebElement addressElement = driver.findElements(By.cssSelector(".info_item > .addr")).get(i);
-                    WebElement phoneElement = driver.findElements(By.cssSelector(".info_item > .contact")).get(i);
+                    WebElement phoneElement = driver.findElements(By.cssSelector(".info_item > .contact > .phone")).get(i);
 
                     String name = nameElement.getText();   // 매장명
                     String address = addressElement.findElements(By.cssSelector("p")).get(0).getText();  // 주소
