@@ -3,6 +3,7 @@
 .project
 .settings/
 /.idea/
+/properties/
 application.properties
 
 .DS_Store
