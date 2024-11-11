@@ -16,7 +16,7 @@ import org.json.simple.parser.JSONParser;
 
 public class GeoCodingService {
 	
-	private static final String KAKAO_API_KEY = "a5ff8121253901a6bd5fea3e7a138290";
+	private static final String KAKAO_API_KEY = "kakaoRest";
     private static final String KAKAO_API_URL = "https://dapi.kakao.com/v2/local/search/address.json";
     
     public JSONObject getGeoLocation(String address) throws Exception {
