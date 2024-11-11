@@ -19,4 +19,14 @@
   	<servlet-name>GeoCodingController</servlet-name>
   	<url-pattern>/model1_project/api/geocode</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>CrawlerController</servlet-name>
+      <servlet-class>kr.co.truetrue.crawler.CrawlerController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>CrawlerController</servlet-name>
+      <url-pattern>/model1_project/api/stores</url-pattern>
+  </servlet-mapping>
 </web-app>
