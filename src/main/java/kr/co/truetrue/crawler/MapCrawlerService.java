@@ -18,11 +18,15 @@ import java.util.concurrent.TimeUnit;
 
 public class MapCrawlerService {
 
-    private WebDriver driver;
     private GeoCodingService geoCodingService;
 
-    // 생성자에서 크롬 드라이버 및 GeoCodingService 초기화
+    // 생성자에서 GeoCodingService 초기화
     public MapCrawlerService() {
+        this.geoCodingService = new GeoCodingService();  // GeoCodingService 초기화
+    }
+
+    // 드라이버를 매번 새로 생성하여 사용하도록 변경
+    private WebDriver createDriver() {
         String os = System.getProperty("os.name").toLowerCase();
         String driverPath = "";
 
@@ -32,7 +36,7 @@ public class MapCrawlerService {
             driverPath = "/Users/anjeonghyeon/git/model1_project/src/main/webapp/truetrue/common/chromedriver/mac_130.0.6723.116/chromedriver";  // MacOS
         } else {
             System.out.println("지원되지 않는 운영체제입니다.");
-            return;
+            return null;
         }
 
         // 크롬 드라이버 설정
@@ -42,8 +46,7 @@ public class MapCrawlerService {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
-        this.driver = new ChromeDriver(options);
-        this.geoCodingService = new GeoCodingService();  // GeoCodingService 초기화
+        return new ChromeDriver(options);  // 매번 새로 생성된 드라이버 반환
     }
 
     // 크롤링 및 중복 확인을 포함한 매장 데이터 수집 메서드
@@ -51,10 +54,20 @@ public class MapCrawlerService {
         JSONArray storeList = new JSONArray();  // 최종 매장 리스트를 담을 배열
         String url = "https://map.kakao.com/";
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url);
-
+        WebDriver driver = null;
         try {
+            // 드라이버 새로 생성
+            driver = createDriver();
+
+            // 드라이버가 제대로 초기화되었는지 확인
+            if (driver == null) {
+                System.out.println("드라이버가 초기화되지 않았습니다.");
+                return storeList;
+            }
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.get(url);
+
             // 검색창 대기 및 입력
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.box_searchbar > input.query")));
@@ -76,8 +89,14 @@ public class MapCrawlerService {
                 System.out.println("페이지: " + page);
 
                 // 페이지 번호 클릭
-                driver.findElement(By.xpath("//*[@id='info.search.page.no" + pageIndex + "']")).sendKeys(Keys.ENTER);
-                TimeUnit.SECONDS.sleep(1);
+                try {
+                    WebElement pageButton = driver.findElement(By.xpath("//*[@id='info.search.page.no" + pageIndex + "']"));
+                    pageButton.sendKeys(Keys.ENTER);
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (Exception e) {
+                    System.out.println("페이지 버튼을 찾을 수 없습니다. 더 이상 페이지가 없습니다.");
+                    break;
+                }
 
                 // 매장 리스트 크롤링
                 List<WebElement> storeElements = driver.findElements(By.cssSelector(".placelist > .PlaceItem"));
@@ -131,7 +150,14 @@ public class MapCrawlerService {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            driver.quit();  // 크롤링 완료 후 드라이버 종료
+            if (driver != null) {
+                try {
+                    // 드라이버 세션 종료
+                    driver.quit();
+                } catch (Exception e) {
+                    System.out.println("드라이버 종료 중 오류 발생: " + e.getMessage());
+                }
+            }
         }
 
         return storeList;  // 수집된 매장 리스트 반환
