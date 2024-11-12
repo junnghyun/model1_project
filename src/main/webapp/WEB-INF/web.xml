@@ -27,6 +27,16 @@
 
   <servlet-mapping>
       <servlet-name>CrawlerController</servlet-name>
-      <url-pattern>/model1_project/api/stores</url-pattern>
+      <url-pattern>/model1_project/crawlStores</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>SaveStoresController</servlet-name>
+      <servlet-class>kr.co.truetrue.crawler.SaveStoresController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>SaveStoresController</servlet-name>
+      <url-pattern>/model1_project/saveStores</url-pattern>
   </servlet-mapping>
 </web-app>
