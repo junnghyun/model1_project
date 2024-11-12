@@ -1,0 +1,10 @@
+/build/
+.classpath
+.project
+.settings/
+/.idea/
+/properties/
+application.properties
+
+.DS_Store
+/target/
