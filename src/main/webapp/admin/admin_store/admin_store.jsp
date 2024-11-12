@@ -15,6 +15,11 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="js/admin_store.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+	    function mapcrawler() {
+	        window.location.href = "admin_store_crawler.jsp";
+	    }
+    </script>
 </head>
 <body>
     <jsp:include page="../common/admin.jsp" />

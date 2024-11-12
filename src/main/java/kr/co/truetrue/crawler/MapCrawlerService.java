@@ -12,16 +12,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MapCrawler {
+public class MapCrawlerService {
 
-    public static void main(String[] args) {
-        // 운영체제 확인 후 크롬 드라이버 경로 설정
+    private WebDriver driver;
+    private GeoCodingService geoCodingService;
+
+    // 생성자에서 크롬 드라이버 및 GeoCodingService 초기화
+    public MapCrawlerService() {
         String os = System.getProperty("os.name").toLowerCase();
         String driverPath = "";
 
@@ -36,26 +37,22 @@ public class MapCrawler {
 
         // 크롬 드라이버 설정
         System.setProperty("webdriver.chrome.driver", driverPath);
-
-        // 옵션 설정 (창 숨기기)
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");  // 브라우저 창 숨기기
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        this.driver = new ChromeDriver(options);
+        this.geoCodingService = new GeoCodingService();  // GeoCodingService 초기화
+    }
 
+    // 크롤링 및 중복 확인을 포함한 매장 데이터 수집 메서드
+    public JSONArray crawlStores(String keyword) {
+        JSONArray storeList = new JSONArray();  // 최종 매장 리스트를 담을 배열
         String url = "https://map.kakao.com/";
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
-
-        // 검색어 설정 (뚜레쥬르)
-        String keyword = "뚜레쥬르"+"서울";  
-        JSONObject storeData = new JSONObject();
-        JSONArray storeList = new JSONArray();
-
-        // GeoCodingService 인스턴스 생성
-        GeoCodingService geoCodingService = new GeoCodingService();
 
         try {
             // 검색창 대기 및 입력
@@ -70,91 +67,73 @@ public class MapCrawler {
             placeTab.sendKeys(Keys.ENTER);
             TimeUnit.SECONDS.sleep(1);
 
-            // 페이지 탐색 및 크롤링
             int page = 1;
-            int page2 = 0;
+            int pageIndex = 0;
 
+            // 페이지 순회하며 크롤링
             while (true) {
-                page2++;
+                pageIndex++;
                 System.out.println("페이지: " + page);
 
                 // 페이지 번호 클릭
-                driver.findElement(By.xpath("//*[@id='info.search.page.no" + page2 + "']")).sendKeys(Keys.ENTER);
+                driver.findElement(By.xpath("//*[@id='info.search.page.no" + pageIndex + "']")).sendKeys(Keys.ENTER);
                 TimeUnit.SECONDS.sleep(1);
 
                 // 매장 리스트 크롤링
                 List<WebElement> storeElements = driver.findElements(By.cssSelector(".placelist > .PlaceItem"));
-                for (int i = 0; i < storeElements.size(); i++) {
-                    WebElement nameElement = driver.findElements(By.cssSelector(".head_item > .tit_name > .link_name")).get(i);
-                    WebElement addressElement = driver.findElements(By.cssSelector(".info_item > .addr")).get(i);
-                    WebElement phoneElement = driver.findElements(By.cssSelector(".info_item > .contact > .phone")).get(i);
+                for (WebElement storeElement : storeElements) {
+                    WebElement nameElement = storeElement.findElement(By.cssSelector(".head_item > .tit_name > .link_name"));
+                    WebElement addressElement = storeElement.findElement(By.cssSelector(".info_item > .addr > p"));
+                    WebElement phoneElement = storeElement.findElement(By.cssSelector(".info_item > .contact > .phone"));
 
-                    String name = nameElement.getText();   // 매장명
-                    String address = addressElement.findElements(By.cssSelector("p")).get(0).getText();  // 주소
-                    String phone = phoneElement.getText(); // 연락처
+                    String name = nameElement.getText();
+                    String address = addressElement.getText();
+                    String phone = phoneElement.getText();
 
                     System.out.println("매장명: " + name);
                     System.out.println("주소: " + address);
                     System.out.println("연락처: " + phone);
 
-                    // 주소를 이용해 위도와 경도를 받아옴
+                    // 주소로 위도와 경도 정보를 받아옴
                     JSONObject location = geoCodingService.getGeoLocation(address);
-                    if (location != null) {
-                        System.out.println("위도: " + location.get("latitude"));
-                        System.out.println("경도: " + location.get("longitude"));
-                    } else {
-                        System.out.println("위도와 경도를 찾을 수 없습니다.");
-                    }
-                    /**
-                    String flag="false";
-                    
+
+                    // 중복 여부 확인을 위한 DAO 호출
                     CrawlerDAO cDAO = new CrawlerDAO();
                     CrawlerVO existingStore = cDAO.selectDetailStore(address);
-                    
-                    if (existingStore == null) {
-                        flag = "true";  // 중복되는 데이터가 없으면 flag를 true로 설정
-                    }
-                    
-                    System.out.println("flag: " + flag);
-                    */
-                    
-                    // 데이터 저장
+                    String flag = (existingStore == null) ? "true" : "false";  // 중복 데이터 여부 확인
+
+                    System.out.println("중복 여부 (flag): " + flag);
+
+                    // 매장 정보 저장
                     JSONObject storeInfo = new JSONObject();
-                    //storeInfo.put("flag", flag);
+                    storeInfo.put("flag", flag);
                     storeInfo.put("name", name);
                     storeInfo.put("address", address);
                     storeInfo.put("phone", phone);
-                    storeInfo.put("latitude", location != null ? location.get("latitude") : "N/A");
-                    storeInfo.put("longitude", location != null ? location.get("longitude") : "N/A");
-                    storeList.add(storeInfo);
+                    storeInfo.put("latitude", location != null ? location.get("latitude") : "0.000000");
+                    storeInfo.put("longitude", location != null ? location.get("longitude") : "0.000000");
+
+                    storeList.add(storeInfo);  // 매장 정보를 리스트에 추가
                 }
 
-                // 다음 페이지로 넘어가기
+                // 더 이상 페이지가 없을 경우 반복 종료
                 if (storeElements.size() < 15) break;
                 if (!driver.findElement(By.xpath("//*[@id='info.search.page.next']")).isEnabled()) break;
-                if (page2 % 5 == 0) {
+
+                // 5페이지씩 묶어 넘어가기
+                if (pageIndex % 5 == 0) {
                     driver.findElement(By.xpath("//*[@id='info.search.page.next']")).sendKeys(Keys.ENTER);
-                    page2 = 0;
+                    pageIndex = 0;
                 }
 
                 page++;
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            driver.quit();
+            driver.quit();  // 크롤링 완료 후 드라이버 종료
         }
 
-        // 수집된 데이터 저장
-        storeData.put("매장정보", storeList);
-        try (FileWriter file = new FileWriter("data/store_data.json")) {
-            file.write(storeData.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("[데이터 수집 완료]");
+        return storeList;  // 수집된 매장 리스트 반환
     }
 }

@@ -2,7 +2,7 @@ package kr.co.truetrue.crawler;
 
 public class CrawlerVO {
 	
-	String store_address, store_name, store_phone;
+	String store_name, store_address, store_phone;
 	double lat, lng;
 	
 	public String getStore_address() {
@@ -36,10 +36,5 @@ public class CrawlerVO {
 		this.lng = lng;
 	}
 	
-	@Override
-	public String toString() {
-		return "CrawlerVO [store_address=" + store_address + ", store_name=" + store_name + ", store_phone="
-				+ store_phone + ", lat=" + lat + ", lng=" + lng + "]";
-	}	
-
+	
 }
