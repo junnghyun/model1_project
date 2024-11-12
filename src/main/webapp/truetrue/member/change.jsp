@@ -154,6 +154,10 @@ if(userId==null || pass==null){
 			session.setAttribute("currentZip_code", zip_code);
 			session.setAttribute("currentAddress", address);
 			session.setAttribute("currentAddress_detail", address_detail);
+			
+			String phone1=phone.substring(0,3);
+			String phone2=phone.substring(3,7);
+			String phone3=phone.substring(7,11);
 		}
 // 		else{
 // 			out.print("<script>alert('해당 아이디 또는 비밀번호가 잘못되었습니다.'); location.href='login.jsp';</script>");
@@ -164,7 +168,6 @@ if(userId==null || pass==null){
 		dbCon.dbClose(rs, pstmt, con);
 	}
 	
-// 	String phone1=phone.substring("-",);
 	
 }
 %>
@@ -184,12 +187,12 @@ if(userId==null || pass==null){
 	<tr>
 	<th>
 		<h3 class="mynameisbaekeonhee">기본정보</h3>
-		<input type="button" class="btnRight" value="회원탈퇴>">
+		<input type="button" class="btnRight" value="회원탈퇴>" onclick="location.href='delete_member.jsp'">
 	</th>
 	</tr>
 	<tr id="topLine">
 		<td id="fCell">이름</td>
-		<td id="sCell"><input type="text" id="name" name="name" style="border: 1px solid #A9A9A9" placeholder="${currentName}"></td>
+		<td id="sCell"><input type="text" id="name" name="name" style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.currentName}"></td>
 	</tr>
 	<tr>
 		<td id="fCell">아이디</td>
@@ -197,7 +200,7 @@ if(userId==null || pass==null){
 	</tr>
 	<tr>
 		<td id="fCell">생년월일</td>
-		<td id="sCell"><input type="date" id="birth" name="birth" style="border: 1px solid #A9A9A9" placeholder="${currentBirth}"></td>
+		<td id="sCell"><input type="date" id="birth" name="birth" style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.currentBirth}"></td>
 	</tr>
 	<tr>
 		<td id="fCell">휴대전화번호</td>
@@ -212,16 +215,16 @@ if(userId==null || pass==null){
 				        <option value="019">019</option>
    					 </select>
 				    -
-				    <input type="text" id="phone2" name="phone2" maxlength="4" size="4" required style="border: 1px solid #A9A9A9">
+				    <input type="text" id="phone2" name="phone2" maxlength="4" size="4" required style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.phone2 }">
 				    -
-				    <input type="text" id="phone3" name="phone3" maxlength="4" size="4" required style="border: 1px solid #A9A9A9">
+				    <input type="text" id="phone3" name="phone3" maxlength="4" size="4" required style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.phone3 }">
 				    <p>주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받을 수 있습니다.</p>
 				 </td>
 	</tr>
 	<tr>
 		<td id="fCell">이메일</td>
 		<td id="sCell">
-		<input type="text" class="emailInput" name="email1" id="email1" placeholder="${email1}"> @ <input type="text" class="emailInput" name="email2" id="email2" placeholder="${email2}">
+		<input type="text" class="emailInput" name="email1" id="email1" placeholder="${sessionScopt.email1}"> @ <input type="text" class="emailInput" name="email2" id="email2" placeholder="${sessionScopt.email2}">
 		<select id="selectEmail">
 			<option value="---" disabled="disabled" selected="selected" style="border: 1px solid #A9A9A9">선택해주세요
 			<option value="">직접 입력
@@ -252,7 +255,7 @@ if(userId==null || pass==null){
 
 </table>
 <div class="center">
-<input type="button" value="변경하기>" class="btnChange">
+<input type="submit" value="변경하기>" class="btnChange">
 </div>
 </div>
 </form>

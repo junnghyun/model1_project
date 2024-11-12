@@ -130,8 +130,11 @@ public class userDAO {
 			if(affectedRows>0) {
 				return uVO.getUser_id();
 			}else {
-				return null;
+				return "fail";
 			}
+		}catch(SQLException se){
+			se.printStackTrace();
+			return "error";
 		}finally {
 			dbCon.dbClose(null, pstmt, con);
 		}
