@@ -66,7 +66,7 @@
                 </div>
                 <div class="input-group">
                     <label for="price" class="block text-sm font-medium text-gray-700 mb-1">가격 (원)</label>
-                    <input type="number" id="price" name="price" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="1500">
+                    <input type="number" i d="price" name="price" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="1500">
                 </div>
                 <div class="input-group md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-1">알레르기 정보</label>

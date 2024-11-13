@@ -2,18 +2,13 @@
 const productTypes = {
     bread: [
         { value: "식빵", label: "식빵" },
-        { value: "건강빵", label: "건강빵" },
         { value: "간식빵", label: "간식빵" },
-        { value: "파이/패스트리", label: "파이/패스트리"},
-        { value: "도넛/고르케", label: "도넛/고르케"}
+        { value: "도넛/고로케", label: "도넛/고로케"}
     ],
     cake: [
         { value: "생크림케이크", label: "생크림케이크" },
-        { value: "스페셜케이크", label: "스페셜케이크" },
-        { value: "무스케이크", label: "무스케이크" },
-        { value: "케릭터케이크", label: "케릭터케이크" },
-        { value: "조각케이크", label: "조각케이크" },
-        { value: "대형케이크", label: "대형케이크" }
+        { value: "캐릭터케이크", label: "캐릭터케이크" },
+        { value: "조각케이크", label: "조각케이크" }
     ]
 };
 
@@ -46,14 +41,76 @@ function openAddProductModal() {
     }
 }
 
-function openEditProductModal() {
-    loadTailwindCSS();
-    const modal = document.getElementById('editProductModal');
-    if (modal) {
-        modal.style.display = 'block';
-        initializeModal(modal);
-    }
+function openEditProductModal(productId) {
+    // AJAX 요청으로 서버에서 제품 정보를 가져오기
+    fetch(`product_detail.jsp?productId=${productId}`)
+        .then(response => response.json())
+        .then(data => {
+            // 제품 정보로 모달 필드 채우기
+            document.getElementById("product_id").value = data.product_id;  // 제품 ID
+            document.getElementById("product_name").value = data.product_name;  // 제품명
+            document.getElementById("description").value = data.detail;  // 제품 설명
+            document.getElementById("total_weight").value = data.total_weight;  // 가격
+            document.getElementById("calories").value = data.calories;  // 가격
+            document.getElementById("sugar").value = data.sugar;  // 가격
+            document.getElementById("protein").value = data.protein;  // 가격
+            document.getElementById("saturated_fat").value = data.saturated_fat;  // 가격
+            document.getElementById("sodium").value = data.sodium;  // 가격
+            document.getElementById("price").value = data.price;  // 가격
+
+            // 카테고리 라디오 버튼 선택 (현재 선택된 카테고리를 확인)
+            const categoryRadio = document.querySelector(`input[name="category"][value="${data.category_id}"]`);
+            if (categoryRadio) categoryRadio.checked = true;  // 해당 카테고리 선택
+
+			// 제품 종류 (type) 드롭다운 설정
+			const productTypeSelect = document.getElementById("product_type");
+			productTypeSelect.innerHTML = "";  // 기존 항목 초기화
+
+			// 데이터에서 카테고리 이름을 가져옵니다 (예: 'bread', 'cake')
+			const category = data.category_id === '1' ? 'bread' : 'cake';  // 예시로 1이 'bread'이고, 다른 값은 'cake'로 설정
+
+			// 해당 카테고리의 제품 옵션을 가져옵니다
+			const productTypesForCategory = productTypes[category];
+
+			// 각 옵션을 드롭다운에 추가
+			productTypesForCategory.forEach(type => {
+			    const option = document.createElement("option");
+			    option.value = type.value;
+			    option.textContent = type.label;
+			    productTypeSelect.appendChild(option);
+			});
+
+			// 기본 값 설정
+			productTypeSelect.value = data.product_type;
+
+
+			// 알레르기 정보 체크박스 설정 (기존 선택된 알레르기 정보)
+			const allergyCheckboxes = document.querySelectorAll("input[type='checkbox']");
+
+			// data.allergy_info 배열이 존재하고 올바른 배열인 경우
+			if (Array.isArray(data.allergy_ingredients)) {
+			         // 알레르기 항목에 해당하는 체크박스 체크
+			        allergyCheckboxes.forEach(checkbox => {
+			            // 체크박스의 value 값이 data.allergy_ingredients 배열에 있는지 확인
+			         checkbox.checked = data.allergy_ingredients.some(ingredient => ingredient.ingredient_name === checkbox.nextElementSibling.innerText);
+			           });
+			   } else {
+			    console.warn("알레르기 정보가 배열이 아닙니다:", data.allergy_info);
+			    allergyCheckboxes.forEach(checkbox => {
+			        checkbox.checked = false; // 알레르기 정보가 없을 경우 기본적으로 체크 해제
+			    });
+			}
+
+
+            // 모달을 화면에 표시
+            document.getElementById("editProductModal").style.display = "block";
+        })
+        .catch(error => console.error("Error:", error));
 }
+
+
+
+
 
 function closeProductModal() {
     const modals = document.querySelectorAll('#addProductModal, #editProductModal');
@@ -126,15 +183,64 @@ function deleteProduct() {
 }
 
 // 폼 제출 처리
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            // 폼 데이터 수집 및 처리 로직
-            const formData = new FormData(this);
-            console.log("폼 데이터가 제출되었습니다.");
-            closeProductModal();
-        });
-    });
-});
+// 저장 버튼 클릭 시 실행되는 함수
+   document.querySelector("#editProductForm").addEventListener("submit", function (e) {
+       e.preventDefault(); // 폼의 기본 동작(페이지 새로 고침)을 방지합니다.
+
+       // 폼 데이터를 JSON 형식으로 변환
+       const formData = new FormData(this);
+       const data = {
+           product_id: formData.get("product_id"),
+           category_id: formData.get("category"),
+           product_name: formData.get("product_name"),
+           product_type: formData.get("product_type"),
+           detail: formData.get("description"),
+           total_weight: formData.get("total_weight"),
+           calories: formData.get("calories"),
+           sugar: formData.get("sugar"),
+           protein: formData.get("protein"),
+           saturated_fat: formData.get("saturated_fat"),
+           sodium: formData.get("sodium"),
+           price: formData.get("price"),
+           allergy_info: [],
+           //product_img: formData.get("product_image")
+       };
+
+       // 알레르기 정보를 체크박스로부터 가져오기
+	   const allergyCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+	   allergyCheckboxes.forEach(function (checkbox) {
+	       // 각 체크박스의 value를 ingredient_name으로 사용
+	       const ingredientName = checkbox.value;
+
+	       // 알레르기 정보를 객체 형태로 추가 (ingredient_name 포함)
+	       data.allergy_info.push({
+	           ingredient_name: ingredientName
+	       });
+	   });
+
+       // JSON 데이터를 콘솔로 확인
+       console.log(data);
+
+       // AJAX 요청으로 데이터를 update_product.jsp에 전송
+       const xhr = new XMLHttpRequest();
+       xhr.open("POST", "update_product.jsp", true);
+       xhr.setRequestHeader("Content-Type", "application/json");
+
+       // JSON 데이터로 전송
+       xhr.send(JSON.stringify(data));
+
+       // 응답 처리
+       xhr.onload = function () {
+           if (xhr.status === 200) {
+               const response = JSON.parse(xhr.responseText);
+               if (response.success) {
+                   alert("제품 정보가 업데이트되었습니다.");
+                   closeProductModal(); // 모달 닫기
+               } else {
+                   alert("제품 정보 업데이트에 실패했습니다.");
+               }
+           } else {
+               alert("서버 오류가 발생했습니다.");
+           }
+       };
+   });
