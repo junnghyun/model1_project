@@ -57,12 +57,14 @@ body {
     color: #563c27;
     padding: 20px;
     padding-bottom: 1px;
+    text-align: center;
 }
 .th2 {
     font-size: 20px;
     color: #563c27;
     padding: 20px;
     padding-bottom: 30px;
+    text-align: center;
 }
 .btn {
     margin: 15px 30px;
@@ -82,6 +84,7 @@ $(function(){
 </script>
 </head>
 <body>
+<jsp:include page="../common/jsp/header.jsp"/>
 <div class="page_top">
     <h2 class="page_title">개인정보관리</h2>
 </div>
@@ -98,12 +101,13 @@ $(function(){
 		<tr>
 			<td><input type = "button" class="btn" value="개인정보 수정" onclick="location.href='edit_member_pw.jsp'"></td>
 			<td><input type = "button" class="btn" value="비밀번호 수정" onclick="location.href='find_pw3.jsp'"></td>
-			<td><input type = "button" class="btn" value="회원탈퇴" onclick="location.href=''"></td>
-			<td><input type = "button" class="btn" value="주문내역" onclick="location.href=''"></td>
+			<td><input type = "button" class="btn" value="회원탈퇴" onclick="location.href='delete_member'"></td>
+			<td><input type = "button" class="btn" value="주문내역" onclick="location.href='../orders/order.jsp'"></td>
 		</tr>
 		</table>
 		</div>
 	</div>
 </div>
+<jsp:include page="../common/jsp/footer.jsp"/>
 </body>
 </html>

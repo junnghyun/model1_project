@@ -64,8 +64,8 @@
 <div class="cont_area">
 <div class="id_find_wrap">
 <div class="find_handy">
-    <form action="main_page.jsp" method="GET">
-    	<img src="pwDone.png">
+    <form action="../../index.jsp" method="GET">
+    	<img src="../common/images/pwDone.png">
         <p class="desc"><em class="em">회원정보가 수정</em>되었습니다.</p>
         <button type="button" class="btn btn_em" id="btnSearch">메인페이지</button>
     </form>
