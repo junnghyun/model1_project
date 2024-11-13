@@ -57,6 +57,16 @@
 
   <servlet-mapping>
       <servlet-name>LogoutServlet</servlet-name>
-      <url-pattern>/model1_project/logout</url-pattern>
+      <url-pattern>/model1_project/admin/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>UserLogoutServlet</servlet-name>
+      <servlet-class>kr.co.turetrue.admin.login.UserLogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>UserLogoutServlet</servlet-name>
+      <url-pattern>/model1_project/user/logout</url-pattern>
   </servlet-mapping>
 </web-app>
