@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="kr.co.truetrue.user.cart.CartDAO"%>
+<%@page import="kr.co.truetrue.user.cart.CartVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+      pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Àå¹Ù±¸´Ï - ¶Ñ·¹Áê¸£</title>
-<!-- bootstrap CDN ½ÃÀÛ-->
+<title>ê±´ê°•í•œ ë°ì¼ë¦¬ ë² ì´ì»¤ë¦¬, ë¹µ, ì¼€ì´í¬, ìƒŒë“œìœ„ì¹˜, ì´ë²¤íŠ¸, ë§¤ì¥ì•ˆë‚´</title>
+<!-- bootstrap CDN ì‹œì‘-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- JQuery CDN ½ÃÀÛ-->
+<!-- JQuery CDN ì‹œì‘-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
     * {
         box-sizing: border-box;
@@ -124,132 +130,275 @@
 </style>
 <script type="text/javascript">
 $(function(){
-	 // ¼ö·® º¯°æ ¹× ±İ¾× °è»ê
-    $('.quantity_control button').click(function() {
-        var row = $(this).closest('tr');
-        var input = row.find('input[type="text"]');
-        var quantity = parseInt(input.val());
+    // ìˆ˜ëŸ‰ ì¦ê°€/ê°ì†Œ ë²„íŠ¼ í´ë¦­ ì‹œ ìˆ˜ëŸ‰ ë³€ê²½ ë° DB ì—…ë°ì´íŠ¸ ì²˜ë¦¬
+    $('.quantity-decrease, .quantity-increase').click(function() {
+        var itemId = $(this).data('item-id');
+        var quantityInput = document.getElementById('quantity_' + itemId);
+        var quantity = parseInt(quantityInput.value);
+        var trElement = this.parentElement.parentElement.parentElement;
         
-        if ($(this).text() === '+') {
+        if ($(this).hasClass('quantity-increase')) {
             quantity++;
         } else if (quantity > 1) {
             quantity--;
         }
         
-        input.val(quantity);
-        updateRowTotal(row);
-        updateTotalOrder();
-    });
-
-    // ÀüÃ¼ ¼±ÅÃ/ÇØÁ¦
-    $('#selectAll').change(function() {
-        $('.cart_table tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
-        updateTotalOrder();
-    });
-
-    // °³º° Ã¼Å©¹Ú½º º¯°æ ½Ã
-    $('.cart_table tbody input[type="checkbox"]').change(function() {
-        updateSelectAllCheckbox();
-        updateTotalOrder();
-    });
-
-    function updateRowTotal(row) {
-        var price = parseInt(row.find('td:eq(2)').text().replace(/[^0-9]/g, ''));
-        var quantity = parseInt(row.find('input[type="text"]').val());
-        var total = price * quantity;
-        row.find('td:eq(4)').text(total.toLocaleString() + '¿ø');
-    }
-
-    function updateTotalOrder() {
-        var total = 0;
-        $('.cart_table tbody tr').each(function() {
-            if ($(this).find('input[type="checkbox"]').prop('checked')) {
-                total += parseInt($(this).find('td:eq(4)').text().replace(/[^0-9]/g, ''));
+        // AJAXë¡œ DB ì—…ë°ì´íŠ¸
+        $.ajax({
+            url: 'update_quantity.jsp',
+            type: 'POST',
+            data: {
+                cart_product_id: itemId,
+                quantity: quantity
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 'success') {
+                    quantityInput.value = quantity;
+                    updateItemTotal(trElement);
+                    calculateTotalPrice();
+                } else {
+                    alert('ìˆ˜ëŸ‰ ë³€ê²½ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.');
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.status + " / " + xhr.statusText);
+                alert('ìˆ˜ëŸ‰ ë³€ê²½ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
             }
         });
-        var shipping = 5000;
-        var grandTotal = total + shipping;
-        $('.total_order').html('ÁÖ¹®±İ¾× ÇÕ°è ' + total.toLocaleString() + '¿ø + ¹è¼Ûºñ ' + shipping.toLocaleString() + '¿ø = ÃÑ ÁÖ¹®±İ¾× <strong>' + grandTotal.toLocaleString() + '¿ø</strong>');
-    }
+    });
 
-    // »õ·Î Ãß°¡µÈ ÇÔ¼ö: °³º° Ã¼Å©¹Ú½º »óÅÂ¿¡ µû¶ó ÀüÃ¼ ¼±ÅÃ Ã¼Å©¹Ú½º ¾÷µ¥ÀÌÆ®
-    function updateSelectAllCheckbox() {
-        var allChecked = $('.cart_table tbody input[type="checkbox"]').length === 
-                         $('.cart_table tbody input[type="checkbox"]:checked').length;
-        $('#selectAll').prop('checked', allChecked);
+    // ì „ì²´ ì„ íƒ/í•´ì œ ì²´í¬ë°•ìŠ¤ ì´ë²¤íŠ¸ ì²˜ë¦¬
+    document.getElementById('selectAllProducts').addEventListener('change', function() {
+        var checkboxes = document.getElementsByClassName('item-checkbox');
+        for(var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = this.checked;
+        }
+        calculateTotalPrice();
+    });
+
+    // ê°œë³„ ìƒí’ˆ ì²´í¬ë°•ìŠ¤ ë³€ê²½ ì‹œ ì „ì²´ì„ íƒ ìƒíƒœ ë° ì´ì•¡ ì—…ë°ì´íŠ¸
+    $('.item-checkbox').change(function() {
+        checkSelectAll();
+        calculateTotalPrice();
+    });
+
+    // ì„ íƒëœ ìƒí’ˆë“¤ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œ ì²˜ë¦¬
+    document.getElementById('deleteSelected').addEventListener('click', function() {
+        if(confirm('ì„ íƒí•œ ìƒí’ˆì„ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?')) {
+            var selectedItems = [];
+            var checkedBoxes = document.querySelectorAll('.item-checkbox:checked');
+            
+            if(checkedBoxes.length > 0) {
+                checkedBoxes.forEach(function(checkbox) {
+                    selectedItems.push(checkbox.value);
+                });
+                
+                $.ajax({
+                    url: 'delete_cart_items.jsp',
+                    type: 'POST',
+                    data: { items: selectedItems.join(',') },
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            } else {
+                alert('ìƒí’ˆì´ ì—†ìŠµë‹ˆë‹¤.');
+            }
+        }
+    });
+
+    // ìƒí’ˆ ëª©ë¡ í˜ì´ì§€ë¡œ ì´ë™
+    document.getElementById('continueShopping').addEventListener('click', function() {
+        location.href = 'product_list.jsp';
+    });
+
+    // ì „ì²´/ì„ íƒ ì£¼ë¬¸ ì²˜ë¦¬ í•¨ìˆ˜ - ì„ íƒëœ ìƒí’ˆë“¤ì˜ ì£¼ë¬¸ ì •ë³´ ìƒì„±
+    function handleOrder(isAll) {
+        var items = [];
+        var checkboxes = isAll ? 
+            document.getElementsByClassName('item-checkbox') : 
+            document.querySelectorAll('.item-checkbox:checked');
+            
+        for(var i = 0; i < checkboxes.length; i++) {
+            var tr = checkboxes[i].parentElement.parentElement;
+            items.push({
+                id: checkboxes[i].value,
+                quantity: tr.querySelector('.quantity-input').value
+            });
+        }
+        
+        if(items.length > 0) {
+            processOrder(items);
+        } else {
+            alert('ì£¼ë¬¸í•  ìƒí’ˆì„ ì„ íƒí•´ì£¼ì„¸ìš”.');
+        }
     }
+    // ì „ì²´ ìƒí’ˆ ì£¼ë¬¸ ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸
+    document.getElementById('orderAll').addEventListener('click', function() {
+        handleOrder(true);
+    });
+    // ì„ íƒ ìƒí’ˆ ì£¼ë¬¸ ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸
+    document.getElementById('orderSelected').addEventListener('click', function() {
+        handleOrder(false);
+    });
+
+    // ì´ˆê¸° í•©ê³„ ê³„ì‚°
+    calculateTotalPrice();
 });
+
+//ê°œë³„ ìƒí’ˆì˜ í•©ê³„ ê¸ˆì•¡ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
+function updateItemTotal(trElement) {
+    var price = parseInt(trElement.querySelector('.product-price').getAttribute('data-price'));
+    var quantity = parseInt(trElement.querySelector('.quantity-input').value);
+    var total = price * quantity;
+    trElement.querySelector('.item-total').textContent = total.toLocaleString() + 'ì›';
+}
+
+//ì„ íƒëœ ìƒí’ˆë“¤ì˜ ì´ ì£¼ë¬¸ê¸ˆì•¡ ê³„ì‚° í•¨ìˆ˜ (ë°°ì†¡ë¹„ í¬í•¨)
+function calculateTotalPrice() {
+    var subtotal = 0;
+    var shipping = 5000;
+    var checkedBoxes = document.querySelectorAll('.item-checkbox:checked');
+    
+    checkedBoxes.forEach(function(checkbox) {
+        var tr = checkbox.parentElement.parentElement;
+        var price = parseInt(tr.querySelector('.product-price').getAttribute('data-price'));
+        var quantity = parseInt(tr.querySelector('.quantity-input').value);
+        subtotal += price * quantity;
+    });
+
+    document.getElementById('subtotal').textContent = subtotal.toLocaleString();
+    document.getElementById('grandTotal').textContent = (subtotal + shipping).toLocaleString();
+}
+
+//ì „ì²´ì„ íƒ ì²´í¬ë°•ìŠ¤ ìƒíƒœ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
+function checkSelectAll() {
+    var totalCheckboxes = document.getElementsByClassName('item-checkbox').length;
+    var checkedBoxes = document.querySelectorAll('.item-checkbox:checked').length;
+    document.getElementById('selectAllProducts').checked = (totalCheckboxes === checkedBoxes);
+}
+
+//ì£¼ë¬¸ ì²˜ë¦¬ë¥¼ ìœ„í•œ í¼ ìƒì„± ë° ì œì¶œ í•¨ìˆ˜
+function processOrder(items) {
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'order_frm.jsp';
+
+    // ì„ íƒëœ ìƒí’ˆì˜ cart_product_idë“¤ì„ ì‰¼í‘œë¡œ êµ¬ë¶„í•˜ì—¬ ì „ë‹¬
+    var cartProductIds = [];
+    for(var i = 0; i < items.length; i++) {
+        cartProductIds.push(items[i].id);
+    }
+    
+    var itemsInput = document.createElement('input');
+    itemsInput.type = 'hidden';
+    itemsInput.name = 'cart_product_ids';
+    itemsInput.value = cartProductIds.join(',');  // ì‰¼í‘œë¡œ êµ¬ë¶„ëœ ë¬¸ìì—´ë¡œ ë³€í™˜
+    form.appendChild(itemsInput);
+
+    document.body.appendChild(form);
+    form.submit();
+}
 </script>
+<%
+String user_id = (String)session.getAttribute("user_id");
+if(user_id == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
+//user_idë¥¼ JavaScriptì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ ì„¤ì •
+request.setAttribute("user_id", user_id);
+
+List<CartVO> cartItems = null;
+try {
+ CartDAO cDAO = CartDAO.getInstance();
+ cartItems = cDAO.selectCartItems(user_id);
+} catch(SQLException se) {
+ se.printStackTrace();
+}
+
+request.setAttribute("cartItems", cartItems);
+%>
 </head>
 <body>
+	<div>
+	<jsp:include page="../common/jsp/header.jsp"/>
+	</div>
     <div class="container">
-        <img src="common/img/Àå¹Ù±¸´Ï1.png" alt="ÁÖ¹® ´Ü°è" class="order_steps_image">
-        <table class="cart_table">
+        <img src="../common/images/cart/ì¥ë°”êµ¬ë‹ˆ1.png" alt="ì£¼ë¬¸ ë‹¨ê³„" class="order_steps_image">
+        <table class="cart_table" id="cartTable">
             <thead>
                 <tr>
-                    <th><input type="checkbox" id="selectAll" checked></th>
-                    <th>»óÇ°Á¤º¸</th>
-                    <th>ÁÖ¹®±İ¾×</th>
-                    <th>¼ö·®</th>
-                    <th>±İ¾×</th>
-                    <th>¹è¼Ûºñ</th>
+                    <th><input type="checkbox" id="selectAllProducts" checked></th>
+                    <th>ìƒí’ˆì •ë³´</th>
+                    <th>ì£¼ë¬¸ê¸ˆì•¡</th>
+                    <th>ìˆ˜ëŸ‰</th>
+                    <th>ê¸ˆì•¡</th>
+                    <th>ë°°ì†¡ë¹„</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox" checked></td>
-                    <td>
-                        <div class="product_info">
-                            <img src="common/img/±âºĞÁÁÀº¼Ò±İ¹öÅÍ½Ä»§.jpg" alt="±âºĞÁÁÀº¼Ò±İ¹öÅÍ½Ä»§">
-                            <p>±âºĞÁÁÀº¼Ò±İ¹öÅÍ½Ä»§</p>
-                        </div>
-                    </td>
-                    <td>9,000¿ø</td>
-                    <td>
-                        <div class="quantity_control">
-                            <button>-</button>
-                            <input type="text" value="1">
-                            <button>+</button>
-                        </div>
-                    </td>
-                    <td>9,000¿ø</td>
-                    <td rowspan="2">5,000¿ø</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" checked></td>
-                    <td>
-                        <div class="product_info">
-                            <img src="common/img/ÃÊÄÚ»ıÅ©¸²ÄÉÀÌÅ©.jpg" alt="ÃÊÄÚ»ıÅ©¸²ÄÉÀÌÅ©">
-                            <p>ÃÊÄÚ»ıÅ©¸²ÄÉÀÌÅ©</p>
-                        </div>
-                    </td>
-                    <td>25,000¿ø</td>
-                    <td>
-                        <div class="quantity_control">
-                            <button>-</button>
-                            <input type="text" value="1">
-                            <button>+</button>
-                        </div>
-                    </td>
-                    <td>25,000¿ø</td>
-                </tr>
+            <tbody id="cartTableBody">
+            <c:choose>
+			    <c:when test="${empty cartItems}">
+			        <tr>
+			            <td colspan="6" class="text-center">ì¥ë°”êµ¬ë‹ˆê°€ ë¹„ì–´ìˆìŠµë‹ˆë‹¤.</td>
+			        </tr>
+			    </c:when>
+			    <c:otherwise>
+                <c:forEach var="item" items="${cartItems}" varStatus="status">
+                    <tr class="cart-item" id="item_${item.cart_product_id}">
+                        <td><input type="checkbox" name="selectedItem" class="item-checkbox" checked 
+                            value="${item.cart_product_id}"></td>
+                        <td>
+                            <div class="product_info">
+								<img src="../common/images/bread/${item.product_img}" alt="${item.product_name}">
+                                <p class="product-name">${item.product_name}</p>
+                            </div>
+                        </td>
+                        <td class="product-price" data-price="${item.price}">
+                            <fmt:formatNumber value="${item.price}" pattern="#,###"/>ì›
+                        </td>
+                        <td>
+                            <div class="quantity_control">
+                                <button class="quantity-decrease" data-item-id="${item.cart_product_id}">-</button>
+                                <input type="text" class="quantity-input" id="quantity_${item.cart_product_id}" 
+                                    value="${item.quantity}" readonly>
+                                <button class="quantity-increase" data-item-id="${item.cart_product_id}">+</button>
+                            </div>
+                        </td>
+                        <td class="item-total">
+                            <fmt:formatNumber value="${item.price * item.quantity}" pattern="#,###"/>ì›
+                        </td>
+                        <c:if test="${not empty cartItems and status.first}">
+						    <td rowspan="${fn:length(cartItems)}">5,000ì›</td>
+						</c:if>
+                    </tr>
+                </c:forEach>
+                </c:otherwise>
+			</c:choose>
             </tbody>
         </table>
         
-        <div class="total_order">
-            ÁÖ¹®±İ¾× ÇÕ°è 34,000¿ø + ¹è¼Ûºñ 5,000¿ø = ÃÑ ÁÖ¹®±İ¾× <strong>39,000¿ø</strong>
+        <div class="total_order" id="orderSummary">
+            ì£¼ë¬¸ê¸ˆì•¡ í•©ê³„ <span id="subtotal">0</span>ì› + 
+            ë°°ì†¡ë¹„ <span id="shipping">5,000</span>ì› = 
+            ì´ ì£¼ë¬¸ê¸ˆì•¡ <strong><span id="grandTotal">0</span>ì›</strong>
         </div>
         
         <div class="buttons">
             <div>
-                <button class="btn_brown">¼±ÅÃ»èÁ¦</button>
+                <button class="btn_brown" id="deleteSelected">ì„ íƒì‚­ì œ</button>
             </div>
             <div>
-                <button class="btn_white">¼îÇÎ°è¼ÓÇÏ±â</button>
-                <button class="btn_green">ÀüÃ¼»óÇ° ÁÖ¹®</button>
-                <button class="btn_green">¼±ÅÃ»óÇ° ÁÖ¹®</button>
+                <button class="btn_white" id="continueShopping">ì‡¼í•‘ê³„ì†í•˜ê¸°</button>
+                <button class="btn_green" id="orderAll">ì „ì²´ìƒí’ˆ ì£¼ë¬¸</button>
+                <button class="btn_green" id="orderSelected">ì„ íƒìƒí’ˆ ì£¼ë¬¸</button>
             </div>
         </div>
     </div>
+    <div>
+	<jsp:include page="../common/jsp/footer.jsp"/>
+	</div>
 </body>
 </html>
