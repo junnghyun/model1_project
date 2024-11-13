@@ -116,11 +116,31 @@ $(document).ready(function(){
             return;
         }//end if
    		// DB 연결 후 코드 추가
+   		$.ajax({
+   			url:"checkMember.jsp",
+   			type:"POST",
+   			data:{userName:userName,birthDate:birthDate,mobileNo:mobileNo},
+   			dataType:"json",
+   			success:function(response){
+   				if(response.exists){
+   					alert("이미 사용중인 회원정보입니다.");
+   					window.location.href = "login.jsp";
+   				}else{
+   					alert("회원가입이 가능합니다.");
+   					window.location.href = "dduru_join_frm.jsp";
+   				}
+   			},
+   			error:function(xhr){
+   				alert("오류가 발생했습니다, 다시시도해주세요");
+   			}
+   		});
+        
+        
    		// 가입된 정보가 있을 시 membership_member로,
     	// 가입된 정보가 없을 시 회원가입 정보 입력 페이지로
     	// 수정 필요
         // 회원가입 여부에 따라 다른 페이지로 이동
-         if (isRegistered) {
+         /* if (isRegistered) {
             // 회원가입 되어 있을 경우
             RequestDispatcher dispatcher = request.getRequestDispatcher("membership_member.jsp");
             dispatcher.forward(request, response);
@@ -128,7 +148,7 @@ $(document).ready(function(){
             // 회원가입 안되어 있을 경우
             RequestDispatcher dispatcher = request.getRequestDispatcher("dduru_join_frm.jsp");
             dispatcher.forward(request, response);
-        } 
+        }  */
   });
 });
 </script>
