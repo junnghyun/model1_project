@@ -27,7 +27,16 @@ tr{border-top-color: #E9E9E9; border-bottom-color:#E9E9E9;border-style: solid;bo
 	
 }
 </style>
+<script type="text/javascript">
 
+$(function(){
+	$("#selectEmail").change(function(){
+		$("#email2").val($("#selectEmail").val());
+	});
+});//ready
+
+
+</script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 다음 우편번호 API시작 -->
 <script type="text/javascript">
@@ -36,6 +45,77 @@ window.onload=function(){
 	document.getElementById("findZipcode").addEventListener("click",searchZipcode);
 
 	$("#btnSubmit").click(function(){
+		const phone1=$("#phone1").val();
+		const phone2=$("#phone2").val();
+		const phone3=$("#phone3").val();
+		
+		const phoneNum=($("#phone1").val())+($("#phone2").val())+($("#phone3").val());
+		const regex=/^[0-9]+$/;
+		const regex1 = /^[a-zA-Z0-9]+$/;
+		const regex2 = /^[a-zA-Z0-9!@#$%^&*()_\-=\{\}\[\]|;:,.<>?]+$/;
+		const regex3 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+		const pass=$("#pass").val();
+		const chk_pass=$("#chk_pass").val();
+		const userId=$("#id").val();
+		const birth=$("#birthday").val();
+		const name=$("#name").val();
+		const email=$("#email").val()+"@"+$("#email2").val();
+		
+		if(name == null || name === ""){
+			alert("이름은 필수입력사항입니다.");
+			return false;
+		}
+		if(userId == null || userId === ""){
+			alert("아이디는 필수입력사항입니다.");
+			return false;
+		}
+		if(pass!=chk_pass){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		if(pass == null || pass === ""){
+			alert("비밀번호는 필수입력사항입니다.");
+			return false;
+		}
+		if(birth == null || birth === ""){
+			alert("생년월일은 필수선택사항입니다.");
+			return false;
+		}
+		if(!regex1.test(userId)){
+			alert("아이디에는 영어와 숫자만 사용가능합니다.");
+			return false;
+		}
+		if(userId.length < 5 || userId.length > 20){
+			alert("아이디는 최소 5자리 이상, 최대 20자리까지 가능합니다.");
+			return false;
+		}
+		if(!regex3.test(email)){
+			alert("이메일에는 영어와 숫자만 사용가능합니다.");
+			return false;
+		}
+		if(!regex2.test(pass)){
+			alert("비밀번호에는 영어와 숫자 그리고 허용된 일부 특수문자만 사용가능합니다.");
+			return false;
+		}
+
+		if(pass.length < 8 || pass.length > 15){
+			alert("비밀번호는 최소 8자리 이상, 최대 15자리 이하까지 가능합니다.");
+			return false;
+		}
+		if((phone2==null || phone2==="")&&(phone3==null||phone3==="")){
+			alert("전화번호를 둘다쓰던지 아예쓰지말던지");
+			return false;
+		}
+		if(!regex.test(phoneNum)){
+			alert("전화번호에는 숫자만 입력가능합니다.");
+			return false;
+		}
+		
+		if(!$("#btnChk").prop("checked")) {
+	        alert("약관에 동의해주세요.");
+	        return false;
+	    }
+		
 		$("#memberFrm").submit();
 	});//click
 }//onload
@@ -47,7 +127,7 @@ function idDup2(){
 	var left=window.screenX+350;
 	var top=window.screenY+200;
 	//1.현재창에 아이디를 가져와서
-	
+	var id=$("#id");
 	//2. query String 만들어서 팝업을 띄운다.
 	var id=document.memberFrm.id.value;
 	
@@ -90,7 +170,8 @@ new daum.Postcode({
     }
 }).open();
 }
-</script>
+
+</script>	
 </head>
 <body>
 
@@ -144,7 +225,8 @@ new daum.Postcode({
 				<td class="b1"><span class="required">*</span>휴대전화</td>
 				<td>
    					 <select id="phone1" name="phone1">
-				        <option value="010">010</option>
+				        <option value="">직접 입력</option>
+				        <option value="010" selected="selected">010</option>
 				        <option value="011">011</option>
 				        <option value="016">016</option>
 				        <option value="017">017</option>
@@ -164,13 +246,14 @@ new daum.Postcode({
 				<td>
 					
 					<input type="email" name="email" id="email" class="inputBox" style="width:170px"> @
-					<input type="email" name="email3" id="email3" class="inputBox" style="width:170px">
-					<select size="1" name="email2" class="inputBox">
-						<option value="none">선택해주세요</option>
-						<option value="gmail.com">지메일</option>
-						<option value="naver.com">네이버 메일</option>
-						<option value="daum.net">다음메일</option>
-						<option value="hotmail.com">핫메일</option>
+					<input type="email" name="email2" id="email2" class="inputBox" style="width:170px">
+					<select size="1" class="inputBox" id="selectEmail">
+						<option value="" selected="selected">선택해주세요</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="naver.com">naver.com</option>
+						<option value="daum.net">daum.net</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="hotmail.com">hotmail.com</option>
 					</select>
 					<p>이메일 주소 입력 시 사용 가능 특수 문자 : -._</p>
 				</td>
@@ -537,10 +620,10 @@ new daum.Postcode({
 		</span>이 약관은<span lang="EN-US"> 2021</span>년<span lang="EN-US"> 01</span>월<span lang="EN-US"> 01</span>일 시행합니다</span><span lang="EN-US"><span style="font-weight: normal;">.</span><o:p></o:p></span></span></p></h5>
 						</div>
 	<div>
-		<input type="checkbox" value="개인정보취급방침">개인정보 취급방침
+		<input type="checkbox" value="개인정보취급방침" id="btnChk" name="btnChk">개인정보 취급방침
 	</div>
 	<div align="center" style="margin-top:30px">
-		<input type="button" value="회원가입" id="btnSubmit" class="btnMySubmit"> 
+		<input type="button" value="회원가입" name="btnSubmit" id="btnSubmit" class="btnMySubmit"> 
 	</div>
 	</form>
 </body>

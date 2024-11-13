@@ -78,8 +78,7 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 
 function validateAndSubmit() {
    	if(confirm("정말로 탈퇴하시겠습니까?")) {
-       alert("탈퇴 완료되었습니다");
-       location.href = 'main_page.jsp';
+
    	}
 }//validateAndSubmit
 </script>

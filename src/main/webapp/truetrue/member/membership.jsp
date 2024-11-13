@@ -120,15 +120,15 @@ $(document).ready(function(){
     	// 가입된 정보가 없을 시 회원가입 정보 입력 페이지로
     	// 수정 필요
         // 회원가입 여부에 따라 다른 페이지로 이동
-        /* if (isRegistered) {
+         if (isRegistered) {
             // 회원가입 되어 있을 경우
             RequestDispatcher dispatcher = request.getRequestDispatcher("membership_member.jsp");
             dispatcher.forward(request, response);
         } else {
             // 회원가입 안되어 있을 경우
-            RequestDispatcher dispatcher = request.getRequestDispatcher("회원가입 정보 입력 페이지");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("dduru_join_frm.jsp");
             dispatcher.forward(request, response);
-        } */
+        } 
   });
 });
 </script>
