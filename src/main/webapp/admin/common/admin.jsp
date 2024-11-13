@@ -3,7 +3,7 @@
 
     <header class="header fixed">
         <div class="user-info">
-        	<form action="<%= request.getContextPath() %>/model1_project/logout" method="post">
+        	<form action="<%= request.getContextPath() %>/model1_project/admin/logout" method="post">
 		        <button type="submit" class="logout-btn">로그아웃</button>
 		    </form>
             <span>admin 관리자님</span>

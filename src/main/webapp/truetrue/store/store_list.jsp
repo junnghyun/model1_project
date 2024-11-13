@@ -153,7 +153,7 @@
                     <h3>매장명: <span id="map-store-name"></span></h3>
                     <p>주소: <span id="map-store-address"></span></p>
                     <p>전화번호: <span id="map-store-phone"></span></p>
-                    <input type="button" id="add-store-btn" value="+" class="square-btn" onclick="openMap()" />
+                    <!-- <input type="button" id="add-store-btn" value="+" class="square-btn" onclick="openMap()" /> -->
                 </div>
                 <div id="map"></div>
             </div>
