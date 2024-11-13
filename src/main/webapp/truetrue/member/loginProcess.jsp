@@ -40,7 +40,7 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
-            window.location.href = "main_fage.jsp"; // 성공 시 main_page.jsp로 이동
+            window.location.href = "main_page.jsp"; // 성공 시 main_page.jsp로 이동
         </script>
 <%
     } else {
