@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -85,6 +86,12 @@
             color: var(--text-color);
             padding: 10px 15px;
             font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -92,24 +99,19 @@
     <button id="toggleMode">라이트/다크 모드</button>
     <div class="login-container">
         <h1>관리자 로그인</h1>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="사용자 이름" required>
-            <input type="password" id="password" placeholder="비밀번호" required>
+        <form action="<%= request.getContextPath() %>/model1_project/admin/login" method="post">
+            <input type="text" id="admin_id" name="admin_id" placeholder="사용자 이름" required>
+            <input type="password" id="pass" name="pass" placeholder="비밀번호" required>
             <button type="submit">로그인</button>
         </form>
+        <!-- 로그인 실패 시 에러 메시지 표시 -->
+        <c:if test="${param.error == 'invalid'}">
+            <p class="error-message">잘못된 사용자 이름 또는 비밀번호입니다.</p>
+        </c:if>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // 여기에 로그인 로직을 구현하세요.
-            console.log('로그인 시도:', username, password);
-            alert('로그인 기능은 백엔드 구현이 필요합니다.');
-        });
-
+        // 다크모드 기능
         const toggleModeButton = document.getElementById('toggleMode');
         toggleModeButton.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
