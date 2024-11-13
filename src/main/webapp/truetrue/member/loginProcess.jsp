@@ -40,14 +40,14 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
-            window.location.href = "change.jsp"; // 성공 시 main_page.jsp로 이동
+            window.location.href = "main_fage.jsp"; // 성공 시 main_page.jsp로 이동
         </script>
 <%
     } else {
 %>
         <script type="text/javascript">
             alert("아이디 또는 비밀번호가 잘못되었습니다. 다시 한 번 확인해주세요."); // 실패 시 경고창 표시
-            window.location.href = "login.jsp?error=invalid"; // 실패 시 login.jsp로 이동
+            window.location.href = "login.jsp"; // 실패 시 login.jsp로 이동
         </script>
 <%
     }
