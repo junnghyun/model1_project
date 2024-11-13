@@ -204,7 +204,7 @@ if (newPassword != null && confirmPassword != null && newPassword.equals(confirm
  }
 
  if (updateSuccess) {
-     out.println("<script>alert('비밀번호가 성공적으로 변경되었습니다.'); location.href='login.jsp';</script>");
+     out.println("<script>alert('비밀번호가 성공적으로 변경되었습니다. 변경된 비밀번호로 로그인해주세요.'); location.href='login.jsp';</script>");
  } else {
      out.println("<script>alert('비밀번호 변경에 실패했습니다. 정보를 확인해 주세요.'); history.back();</script>");
  }
