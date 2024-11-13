@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/session_chk.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>매장 데이터 가져오기</title>
 <link rel="stylesheet" type="text/css" href="css/admin_store_crawler.css?after">
+<script src="js/admin_store_crawler.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>매장 정보 조회</h1>
         <div class="controls">
-            <select id="regionSelect">
+            <select id="region" name="region">
                 <option value="">광역시/도</option>
                 <option value="서울">서울</option>
                 <option value="부산">부산</option>
@@ -30,8 +32,8 @@
                 <option value="경남">경남</option>
                 <option value="제주">제주</option>
             </select>
-            <button id="fetchButton">매장 정보 가져오기</button>
-            <div class="loader" id="loader"></div>
+            <button id="fetchButton" onclick="submitRegion()">매장 정보 가져오기</button>
+            <button id="fetchButton" onclick="saveSelectedStores()">저장하기</button>
         </div>
         <div class="table-container">
             <table>
@@ -45,7 +47,7 @@
                         <th>경도</th>
                     </tr>
                 </thead>
-                <tbody id="storesTableBody">
+                <tbody id="storeTable">
                     <tr>
                         <td colspan="6" class="empty-message">
                             지역을 선택하고 매장 정보를 조회해주세요.
@@ -55,6 +57,10 @@
             </table>
         </div>
     </div>
+    
+    <div id="loadingOverlay" class="overlay">
+    <div class="loading-message">작업 중입니다...</div>
+</div>
 
 </body>
 </html>

@@ -33,16 +33,23 @@ body {
     color: #184F3B;
 }
 #login {
+	position:relative;
     width: 700px;
     height: 500px;
-    margin: 0 auto;
-    padding: 39px 101px 0 103px;
+    margin: 200px auto;
+    padding: 39px 101px 0px;
     border: 1px solid #cbc8c4;
     background: #fff;
+}
+#login2{
+	position: relative;
+	margin-top: 50px;
+
 }
 .tit_memberlogin {
     font-size: 20px;
     color: #000;
+    margin-bottom: 30px;
 }
 h2 {
     display: block;
@@ -57,8 +64,8 @@ h2 {
 .btn{
     display: inline-block;
     position: relative;
-    left: 200px;
-    bottom: 120px;
+    left: 300px;
+    bottom: 130px;
     width: 96px;
     height: 70px;
     font-size: 17px;
@@ -72,7 +79,11 @@ h2 {
     font-size: 13px;
 }
 .item {
+	position:relative;
     padding-bottom: 10px;
+}
+.find{
+	margin-left: 40px;
 }
 
 </style>
@@ -151,31 +162,41 @@ function chkNull(){
 
 </script>
 </head>
-<body class=" reform">
+<div>
+<jsp:include page="../common/jsp/header.jsp"/>
+</div>
 <div class="page_top">
     <h2 class="page_title">로그인</h2>
 </div>
 <form action="loginProcess.jsp" id= "loginForm" name="loginForm" method="POST" class="login">
     <div id="login" class="login">
+    <div id="login2">
         <h2 class="tit_memberlogin">회원로그인</h2>
         <p>보다 많은 서비스를 위해 로그인 하시기 바랍니다.<br/>뚜르뚜르의 더 많은 혜택과 이벤트를 누리세요!</p>
         <fieldset>
         <hr>
         <div class="item">
-           <input type="text" id="user_id" name="user_id" class="user_id" placeholder="아이디"/>
+           <input type="text" id="user_id" name="user_id" class="user_id" placeholder="아이디"
+           style="border: 3px solid #AFAFAF; width: 280px; margin-top: 15px; height: 40px; border-radius: 3px;"/>
         </div>
         <div class="item">
-            <input type="password" id="pass" name="pass" class="pass" placeholder="비밀번호" />
+            <input type="password" id="pass" name="pass" class="pass" placeholder="비밀번호"
+            style="border: 3px solid #AFAFAF; width: 280px; margin-top: 1px; height: 40px; border-radius: 3px;"/>
         </div>                        
         </fieldset>
         <div class="help">
             <input type="checkbox" id="idsave" /><label for="idsave">아이디 저장</label>
-            <span><a href="find_id.jsp">아이디 찾기</a></span>
-            <span><a href="find_pw.jsp">비밀번호 찾기</a></span>
-        </div>
+            <span class="find"><a href="find_id.jsp" style="padding-right: 10px">아이디 찾기</a><a href="find_pw.jsp">비밀번호 찾기</a></span>
+            </div>
 <span class="btn_login"><button type=button class="btn" id="loginBtn" name="loginBtn">로그인</button></span>
 <span class="btn_membership"><input type="button" class="btn" value="회원가입" onclick="location.href='membership.jsp'"/></span>
+        </div>
     </div>
 </form>
+<div>
+</div>
 </body>
+<div>
+<jsp:include page="../common/jsp/footer.jsp"/>
+</div>
 </html>

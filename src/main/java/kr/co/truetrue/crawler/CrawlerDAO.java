@@ -22,30 +22,37 @@ public class CrawlerDAO {
         return cDAO;
     }
 	
-	public void insertStore(CrawlerVO cVO) throws SQLException {
-		Connection con = null;
+	public void insertStore(Connection con, CrawlerVO cVO) throws SQLException {
         PreparedStatement pstmt = null;
 
-        DbConnection dbCon = DbConnection.getInstance();
-        
         try {
-            con = dbCon.getConn();
-            StringBuilder insertStore = new StringBuilder();
-            insertStore.append("INSERT INTO store (store_id, store_name, store_phone, store_address, lat, lng) ")
-                       .append("VALUES (seq_store_id.nextval, ?, ?, ?, ?, ?, ?)");
-
-            pstmt = con.prepareStatement(insertStore.toString());
+            String insertStore = "INSERT INTO store (store_id, store_name, store_phone, store_address, lat, lng) "
+                               + "VALUES (seq_store_id.nextval, ?, ?, ?, ?, ?)";
+            pstmt = con.prepareStatement(insertStore);
             pstmt.setString(1, cVO.getStore_name());
             pstmt.setString(2, cVO.getStore_phone());
             pstmt.setString(3, cVO.getStore_address());
             pstmt.setDouble(4, cVO.getLat());
             pstmt.setDouble(5, cVO.getLng());
 
+            // 바인딩 값 확인 (디버깅용)
+            System.out.println("Store Name: " + cVO.getStore_name());
+            System.out.println("Store Phone: " + cVO.getStore_phone());
+            System.out.println("Store Address: " + cVO.getStore_address());
+            System.out.println("Latitude: " + cVO.getLat());
+            System.out.println("Longitude: " + cVO.getLng());
+
             pstmt.executeUpdate();
         } finally {
-            dbCon.dbClose(null, pstmt, con);
+            if (pstmt != null) {
+                try {
+                    pstmt.close(); // PreparedStatement 자원 해제
+                } catch (SQLException e) {
+                    System.err.println("PreparedStatement 종료 중 오류 발생: " + e.getMessage());
+                }
+            }
         }
-	}
+    }
 	
 	public CrawlerVO selectDetailStore(String store_address) throws SQLException{
 		CrawlerVO cVO=null;
@@ -61,7 +68,7 @@ public class CrawlerDAO {
             StringBuilder selectOneStore = new StringBuilder();
             selectOneStore.append("SELECT store_name, store_phone, store_address, lat, lng ")
                            .append("FROM store ")
-                           .append("WHERE store_id = ?");
+                           .append("WHERE store_address = ?");
 
             pstmt = con.prepareStatement(selectOneStore.toString());
             pstmt.setString(1, store_address);

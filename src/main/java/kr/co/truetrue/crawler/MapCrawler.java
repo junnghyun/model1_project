@@ -56,8 +56,6 @@ public class MapCrawler {
 
         // GeoCodingService 인스턴스 생성
         GeoCodingService geoCodingService = new GeoCodingService();
-        // CrawlerDAO 인스턴스 생성
-        CrawlerDAO cDAO = new CrawlerDAO();
 
         try {
             // 검색창 대기 및 입력
@@ -99,10 +97,6 @@ public class MapCrawler {
                     System.out.println("주소: " + address);
                     System.out.println("연락처: " + phone);
 
-                    // CrawlerDAO를 통해 중복 여부 확인
-                    CrawlerVO existingStore = cDAO.selectDetailStore(address);
-                    boolean isUnique = (existingStore == null);  // 중복이 없으면 true
-
                     // 주소를 이용해 위도와 경도를 받아옴
                     JSONObject location = geoCodingService.getGeoLocation(address);
                     if (location != null) {
@@ -111,15 +105,27 @@ public class MapCrawler {
                     } else {
                         System.out.println("위도와 경도를 찾을 수 없습니다.");
                     }
-
+                    /**
+                    String flag="false";
+                    
+                    CrawlerDAO cDAO = new CrawlerDAO();
+                    CrawlerVO existingStore = cDAO.selectDetailStore(address);
+                    
+                    if (existingStore == null) {
+                        flag = "true";  // 중복되는 데이터가 없으면 flag를 true로 설정
+                    }
+                    
+                    System.out.println("flag: " + flag);
+                    */
+                    
                     // 데이터 저장
                     JSONObject storeInfo = new JSONObject();
+                    //storeInfo.put("flag", flag);
                     storeInfo.put("name", name);
                     storeInfo.put("address", address);
                     storeInfo.put("phone", phone);
                     storeInfo.put("latitude", location != null ? location.get("latitude") : "N/A");
                     storeInfo.put("longitude", location != null ? location.get("longitude") : "N/A");
-                    storeInfo.put("flag", isUnique ? true : false); // 중복 여부에 따라 flag 설정
                     storeList.add(storeInfo);
                 }
 

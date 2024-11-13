@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+.add-tit {
+	padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.ad-summary {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+
+.ad-summary div {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+}
+
+.ad-filter {
+    margin-bottom: 20px;
+}
+
+.ad-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.ad-table th, .ad-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.ad-table th {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prev-page, .next-page {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-ad-btn {
+	float: right; 
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* 삭제 버튼 색상 */
+    margin-left: 5px;
+}
+
+.csv-download-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+/* ad_modal_css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content { 
+    background-color: white;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+}
+.input-group {
+    transition: all 0.3s ease;
+}
+
+#ad_number, #advertiser_name, #ad_start_date, #ad_end_date, #advertiser_contact, #ad_cost, #ad_content, #ad_image {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.input-group:focus-within {
+    transform: translateY(-2px);
+}

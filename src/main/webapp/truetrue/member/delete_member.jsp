@@ -78,31 +78,7 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 
 function validateAndSubmit() {
    	if(confirm("정말로 탈퇴하시겠습니까?")) {
-   		$.ajax({
-   			url:'delete_member_process.jsp',
-   			type:'POST',
-   			data: {userId: '<%=session.getAttribute("user_id") %>'},
-   			success: function(response){
-   				if(response.trim() === 'success'){
-   					alert("탈퇴가 완료되었습니다.");
-					location.href = 'main_page.jsp';
-   				}else if(response.trim() === 'fail'){
-   					alert("탈퇴처리에 실패했습니다.");
-					location.href = 'main_page.jsp';
-   				}else if(response.trim() === 'error'){
-   					alert("서버와의 오류가 발생했습니다.");
-					location.href = 'main_page.jsp';
-   				}else{
-   					alert("탈퇴처리중 오류가 발생했습니다. 다시시도해주세요.");
-					location.href = 'main_page.jsp';
-   				}
-   			},
-   			error: function(){
-   				alert("서버와의 통신오류가 발생했습니다.");
-				location.href = 'main_page.jsp';
-   				
-   			}
-   		})
+
    	}
 }//validateAndSubmit
 </script>

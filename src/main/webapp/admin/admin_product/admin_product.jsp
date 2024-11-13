@@ -1,5 +1,18 @@
+<%@page import="kr.co.truetrue.admin.prd.AdminPrdVO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.truetrue.admin.prd.AdminPrdDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	AdminPrdDAO adminPrdDAO=AdminPrdDAO.getInstance();
+	List<AdminPrdVO> productList = adminPrdDAO.selectAllProducts();
+
+	int totalCount=adminPrdDAO.getTotalProductCount();
+	int breadCount=adminPrdDAO.getCategoryProductCount('1');
+	int cakeCount=adminPrdDAO.getCategoryProductCount('2');
+	
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +29,15 @@
 <div class="product-summary">
 	<div class="total-products">
     	<span>총 제품 수:</span>
-        <strong id="total-count">null</strong>
+        <strong id="total-count"><%=totalCount %></strong>
     </div>
     <div class="total-stock">
         <span>빵:</span>
-        <strong id="total-stock">null</strong>
+        <strong id="total-stock"><%=breadCount %></strong>
     </div>
     <div class="total-categories">
         <span>케이크:</span>
-        <strong id="total-categories">null</strong>
+        <strong id="total-categories"><%=cakeCount %></strong>
     </div>
 </div>
 <div class="order-management">
@@ -34,7 +47,7 @@
     <button class="reset-btn" onclick="resetFilters()">초기화</button>
     <button class="add-product-btn" onclick="openAddProductModal()">제품 정보 추가</button>
 </div>
-			
+				
 <table class="product-table">
     <thead>
         <tr>
@@ -54,22 +67,26 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="action-btn" onclick="openEditProductModal('PROD001')">편집</button>
-                <button class="action-btn delete-btn" onclick="deleteProduct()">삭제</button>
-            </td>
-        </tr>
-        <!-- 추가 제품 항목은 여기 추가 -->
+   		 <% 
+            for (AdminPrdVO product : productList) { 
+         %>
+           <tr>
+                <td><%= product.getProduct_id() %></td>
+                <td><%= product.getCategory_id()=='1'?"빵" : "케이크" %></td>
+                <td><%= product.getProduct_name() %></td>
+                <td><%= product.getInput_date() %></td>
+                <td><%= product.getPrice() %>원</td>
+                <td><%= product.getDelete_flag()=='N' ? "삭제됨" : "판매중" %></td>
+            	<td>
+              		<button class="action-btn" onclick="openEditProductModal(<%=product.getProduct_id()%>)">편집</button>
+              		<button class="action-btn delete-btn" onclick="deleteProduct()">삭제</button>
+          		</td>
+       	   </tr>
+        <% 
+            } 
+        %>
     </tbody>
 </table>
-			
 <div class="pagination">
     <button class="prev-page">◀</button>
     <span>null / null</span>
