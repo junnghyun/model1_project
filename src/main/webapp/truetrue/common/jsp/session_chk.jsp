@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${ empty userData }">
-<c:redirect url="index.jsp"/>
+<c:redirect url="/truetrue/member/login.jsp"/>
 </c:if>
 
 <%

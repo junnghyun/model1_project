@@ -574,7 +574,7 @@ public class OrderDAO {
 	            .append("        o.recipient, o.recipient_phone, ")
 	            .append("        o.zip_code, o.address, o.address_detail, ")
 	            .append("        o.request, o.delivery_status, o.payment_date, ")
-	            .append("        p.product_name, p.product_img, ")
+	            .append("        p.product_name, p.product_img,p.price, ")
 	            .append("        cp.quantity ")
 	            .append(" FROM orders o ")
 	            .append(" JOIN cart_product cp ON o.cart_product_id = cp.cart_product_id ")
@@ -605,7 +605,8 @@ public class OrderDAO {
 	            order.setProduct_name(rs.getString("product_name"));
 	            order.setProduct_img(rs.getString("product_img"));
 	            order.setQuantity(rs.getInt("quantity"));
-	            
+	            order.setPrice(rs.getInt("price")); 
+
 	            orderDetails.add(order);
 	        }
 	    } finally {

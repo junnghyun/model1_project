@@ -167,7 +167,7 @@ font-family:'Nanum Barun Gothic';
         </ul>
       </li>
       <li>
-        <a href="장바구니링크" style="font-size: 15px;" >장바구니</a>
+        <a href="${pageContext.request.contextPath}/truetrue/orders/cart.jsp" style="font-size: 15px;" >장바구니</a>
       </li>
 				</ul>
 			</div>

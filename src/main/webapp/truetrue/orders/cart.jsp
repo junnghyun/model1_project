@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
       pageEncoding="UTF-8"%>
+<%@ include file="../common/jsp/session_chk.jsp" %>
 <html>
 <head>
 <meta charset="UTF-8">

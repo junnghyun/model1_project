@@ -237,10 +237,10 @@ th:nth-child(3), td:nth-child(3) {
                             </div>
                         </td>
                         <td><%= order.getQuantity() %>개</td>
-                        <td class="payment-amount">
-                            <%= String.format("%,d", order.getTotal_price()) %>원
-                        </td>
-                    </tr>
+						<td class="payment-amount">
+						    <%= String.format("%,d", order.getPrice() * order.getQuantity()) %>원
+						</td>                    
+					</tr>
                 <% }
                 } %>
             </tbody>
@@ -278,7 +278,7 @@ th:nth-child(3), td:nth-child(3) {
             </div>
         </div>
         
-        <button class="confirm-btn" onclick="location.href='cart.jsp'">메인으로</button>
+        <button class="confirm-btn" onclick="location.href='../../index.jsp'">메인으로</button>
     </div>
 
     <div class="footer-container">

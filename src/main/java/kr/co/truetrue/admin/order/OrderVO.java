@@ -1,7 +1,7 @@
 package kr.co.truetrue.admin.order;
 
 public class OrderVO {
-	private int order_id, cart_product_id, total_price,quantity;
+	private int order_id, cart_product_id, total_price,quantity,price;
     private String user_id, payment_date, delivery_date, 
                    zip_code, address, address_detail, 
                    delivery_status, product_info, order_id_list,
@@ -18,8 +18,19 @@ public class OrderVO {
         this.quantity = quantity;
         this.product_name = product_name;
      }
+     
     
-    public int getQuantity() {
+    public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public int getQuantity() {
 		return quantity;
 	}
 
