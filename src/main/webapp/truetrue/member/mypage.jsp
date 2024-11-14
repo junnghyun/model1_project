@@ -101,7 +101,7 @@ $(function(){
 		<tr>
 			<td><input type = "button" class="btn" value="개인정보 수정" onclick="location.href='edit_member_pw.jsp'"></td>
 			<td><input type = "button" class="btn" value="비밀번호 수정" onclick="location.href='find_pw3.jsp'"></td>
-			<td><input type = "button" class="btn" value="회원탈퇴" onclick="location.href='delete_member'"></td>
+			<td><input type = "button" class="btn" value="회원탈퇴" onclick="location.href='delete_member.jsp'"></td>
 			<td><input type = "button" class="btn" value="주문내역" onclick="location.href='../orders/order.jsp'"></td>
 		</tr>
 		</table>
