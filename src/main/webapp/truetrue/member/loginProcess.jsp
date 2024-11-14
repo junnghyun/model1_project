@@ -35,7 +35,6 @@
     boolean isValidUser = lDAO.validateUser(lVO);
     
     if (isValidUser) {
-        // 세션 생성 및 사용자 정보 저장
 
 %>
         <script type="text/javascript">
