@@ -36,6 +36,7 @@
     
     if (isValidUser) {
         // 세션 생성 및 사용자 정보 저장
+        session.setAttribute("userData", lVO); // 로그인 성공 시 사용자 정보 저장
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
