@@ -76,9 +76,9 @@ function loadCities() {
 }
 
 function resetFilters() {
-    $("#store-name").val('');
-    const baseUrl = window.location.pathname;
-    window.location.href = baseUrl;
+    document.querySelector('select[name="province"]').value = "";
+    document.querySelector('select[name="city"]').value = "";
+    document.querySelector('input[name="keyword"]').value = "";
 }
 
 $(document).ready(function() {
