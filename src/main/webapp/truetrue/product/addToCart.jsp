@@ -2,13 +2,10 @@
 <%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="kr.co.truetrue.user.prd.UserPrdDAO" %>
 <%@ page import="kr.co.truetrue.prd.algyingrdnt.AllergyIngredientVO" %>
-
+<%@ include file="../common/jsp/session_chk.jsp" %>
 <%
-    String userId = request.getParameter("userId");
+	String userId = (String)session.getAttribute("user_id");
     int productId = Integer.parseInt(request.getParameter("productId"));
-    
-   
-    userId="user1";
     
     System.out.println("User ID: " + userId);
     System.out.println("Product ID: " + productId);

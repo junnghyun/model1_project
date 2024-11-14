@@ -84,7 +84,7 @@ font-family:'Nanum Barun Gothic';
 		<div class="gnb_dim"></div>
 		<div class="gnb_dim2"></div>
 		<div class="headerWrap">
-			<h1 class="logo"><a href="링크넣어야됨"><img src="${pageContext.request.contextPath}/truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
+			<h1 class="logo"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
 			<ul class="top_search">
 				<li>
 
@@ -127,6 +127,16 @@ font-family:'Nanum Barun Gothic';
 						$(function(){
 							
 						});
+						function lgout() {
+					        // 로그아웃 처리하는 폼 제출
+					        var logoutForm = document.createElement('form');
+					        logoutForm.method = 'POST';
+					        logoutForm.action = '$/model1_project/user/logout'; // 로그아웃 서블릿 경로
+					        
+					        // 폼을 자동으로 제출
+					        document.body.appendChild(logoutForm);
+					        logoutForm.submit();
+					    }
 					</script>
 				</li>
 			</ul>
@@ -140,9 +150,9 @@ font-family:'Nanum Barun Gothic';
 			        <c:otherwise>
 			            <li>
 			                <div class="user-menu">
-			                    <a href="${pageContext.request.contextPath}/truetrue/member/mypage.jsp" class="mypage-btn">Mypage</a>
+			                    <a href="${pageContext.request.contextPath}/truetrue/member/mypage.jsp" class="mypage-btn" style="color: white;">Mypage</a>
 			                    <form action="<%= request.getContextPath() %>/model1_project/user/logout" method="post">
-			                    	<button type="submit" class="logout-btn" onclick="lgout()">Logout</button>
+			                    	<button class="logout-btn" onclick="lgout()">Logout</button>
 			                    </form>
 			                </div>
 			            </li>
@@ -160,10 +170,10 @@ font-family:'Nanum Barun Gothic';
         <a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" style="font-size: 15px" >매장안내</a>
       </li>
       <li>
-        <a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">제품</a>
+        <a href="${pageContext.request.contextPath}/truetrue/product/bread.jsp" style="font-size: 15px">제품</a>
         <ul class="submenu">
-          <li><a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">빵</a></li>
-          <li><a href="http://localhost/model1_project/truetrue/product/cake.jsp" style="font-size: 15px">케이크</a></li>
+          <li><a href="${pageContext.request.contextPath}/truetrue/product/bread.jsp" style="font-size: 15px">빵</a></li>
+          <li><a href="${pageContext.request.contextPath}/truetrue/product/cake.jsp" style="font-size: 15px">케이크</a></li>
         </ul>
       </li>
       <li>
