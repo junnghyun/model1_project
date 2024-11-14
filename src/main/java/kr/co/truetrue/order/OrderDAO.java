@@ -44,7 +44,8 @@ public class OrderDAO {
             pstmt.setString(1, userId);
             pstmt.setDate(2, startDate);
             pstmt.setDate(3, endDate);
-
+            
+            System.out.println(query);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {

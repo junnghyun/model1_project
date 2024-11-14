@@ -1,3 +1,4 @@
+<%@page import="kr.co.truetrue.member.LoginVO"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" info="매장 안내 "%>
 <%@ page import="java.sql.*, java.util.*" %>
@@ -313,13 +314,17 @@
 <div class="store_result_area" style="height: 800px">
  <%
 // 사용자 ID는 세션에서 가져오는 예시 (로그인 상태를 가정)
-String userId = (String) session.getAttribute("user_id");
+/* String userId = (String)session.getAttribute("userData"); */
+LoginVO lVO = (LoginVO) session.getAttribute("userData");
+String userId = null;
+userId = lVO.getUserId();
 
 // 폼에서 전달된 검색 조건 가져오기
 String startDateStr = request.getParameter("start_date");
 String endDateStr = request.getParameter("end_date");
 String productName = request.getParameter("keyword");
     
+System.out.println(userId);
 
 if (userId != null && startDateStr != null && endDateStr != null) {
 	try {
@@ -328,18 +333,15 @@ if (userId != null && startDateStr != null && endDateStr != null) {
 	Date startDate = new Date(sdf.parse(startDateStr).getTime());
 	Date endDate = new Date(sdf.parse(endDateStr).getTime());
 	
-	
 	// OrderDAO 인스턴스 생성 및 데이터 검색
 	OrderDAO orderDAO = OrderDAO.getInstance();
 	List<OrderVO> orderList = orderDAO.getOrdersByUserAndDateRange(userId, startDate, endDate);
-	
-	
 	
 	// 제품명 필터링 적용
 	if (productName != null && !productName.trim().isEmpty()) {
 	    orderList.removeIf(order -> !order.getProductNames().contains(productName));
 	}//end if
-	
+	System.out.println("Order List Size: " + orderList.size());//디버깅
 	if (!orderList.isEmpty()) {
 %>
 <!-- 주문 목록 테이블 -->
