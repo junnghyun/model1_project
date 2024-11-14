@@ -1,4 +1,5 @@
-
+<%@page import="kr.co.truetrue.member.LoginVO"%>
+<%@page import="kr.co.truetrue.member.LoginDAO"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -45,7 +46,8 @@
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
-
+            window.location.href = "../../index.jsp";
+            
         </script>
 <%
     } else {

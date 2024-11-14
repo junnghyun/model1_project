@@ -9,5 +9,5 @@
 <%
 String remoteIp=request.getRemoteAddr();
 
-String sessionId=((LoginVO)session.getAttribute("userData")).getUser_id();
+String sessionId=((LoginVO)session.getAttribute("userData")).getUserId();
 %>
