@@ -42,7 +42,8 @@
     
     if (isValidUser) {
         // 세션 생성 및 사용자 정보 저장
-        session.setAttribute("user_id", userId); // 세션에 사용자 ID 저장
+        session.setAttribute("userData", lVO); // 세션에 사용자 ID 저장
+        session.setMaxInactiveInterval(1800);
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
