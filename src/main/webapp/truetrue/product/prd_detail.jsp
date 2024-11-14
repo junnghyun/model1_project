@@ -7,6 +7,7 @@
 <%  
 
 // 매개변수 받아오기
+String userId = (String) session.getAttribute("userId");
 String productNum = request.getParameter("productId");
 String categoryId = request.getParameter("categoryId");
 String pathFlag = "";
@@ -155,7 +156,7 @@ request.setAttribute("product", product);
 							<!-- 201607 start -->
 							<div class="btn-area">
 								<a href="javascript:history.back()" class="btn large st8">목록</a>
-								<a href="javascript:putCart(${product.product_id});" class="btn large st8">장바구니 담기</a>
+								<a href="javascript:putCart(${product.product_id},'<%=userId %>');" class="btn large st8">장바구니 담기</a>
 							</div>
 						
 							
@@ -170,8 +171,26 @@ request.setAttribute("product", product);
 	</div>
 </div>
 <script type="text/javascript">
-function putCart(productId){
-	location.href=/*장바구니 주소 */?productId;
+function putCart(productId,userId){
+	$.ajax({
+        url: 'addToCart.jsp',  // JSP 경로
+        type: 'POST',
+        data: {
+            productId: productId,
+            userId: userId
+        },
+        success: function(response) {
+			
+            if (response.success) {
+                alert("장바구니에 상품이 담겼습니다.");
+            } else {
+                alert("장바구니 추가에 실패했습니다. 다시 시도해주세요.");
+            }
+        },
+        error: function() {
+            alert("서버와의 통신 중 오류가 발생했습니다.");
+        }
+    });
 }
 </script>
 	<div>

@@ -160,10 +160,10 @@ font-family:'Nanum Barun Gothic';
         <a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" style="font-size: 15px" >매장안내</a>
       </li>
       <li>
-        <a href="제품링크" style="font-size: 15px">제품</a>
+        <a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">제품</a>
         <ul class="submenu">
-          <li><a href="빵링크" style="font-size: 15px">빵</a></li>
-          <li><a href="케이크링크" style="font-size: 15px">케이크</a></li>
+          <li><a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">빵</a></li>
+          <li><a href="http://localhost/model1_project/truetrue/product/cake.jsp" style="font-size: 15px">케이크</a></li>
         </ul>
       </li>
       <li>

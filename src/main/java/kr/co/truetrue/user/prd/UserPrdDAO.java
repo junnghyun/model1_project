@@ -274,13 +274,68 @@ public class UserPrdDAO {
 	    return productList;
 	}
 	
-	public void addProductToCart(int cartId, String userId, int productId) throws SQLException {
-        // CartProductDAO 인스턴스 생성
-		
-		//********장바구니 DAO랑 비교해서 데이터형 맞춰야함**********
-		//CartProductDAO cartProductDAO = CartProductDAO.getInstance();
+	
+	public void addProductToCart(int productId, String userId) throws SQLException {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
 
-        // 장바구니에 제품 추가
-        //cartProductDAO.addProductToCart(cartId, userId, productId);
-    }
+	    DbConnection dbCon = DbConnection.getInstance();
+
+	    try {
+	        con = dbCon.getConn();
+
+	        // 1. 사용자 ID가 유효한지 확인
+	        String checkUserQuery = "SELECT user_id FROM users WHERE user_id = ?";
+	        pstmt = con.prepareStatement(checkUserQuery);
+	        pstmt.setString(1, userId);
+	        rs = pstmt.executeQuery();
+
+	        if (!rs.next()) {
+	            throw new SQLException("유효한 사용자 ID가 없습니다.");
+	        }
+
+//	        // 2. 카트 ID가 유효한지 확인
+//	        String checkCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
+//	        pstmt = con.prepareStatement(checkCartQuery);
+//	        pstmt.setString(1, userId);
+//	        rs = pstmt.executeQuery();
+//
+//	        if (!rs.next()) {
+//	            throw new SQLException("사용자의 카트가 존재하지 않습니다.");
+//	        }
+//
+//	        int cartId = rs.getInt("cart_id");
+
+	        // 3. 제품이 유효한지 확인
+	        String checkProductQuery = "SELECT product_id FROM product WHERE product_id = ?";
+	        pstmt = con.prepareStatement(checkProductQuery);
+	        pstmt.setInt(1, productId);
+	        rs = pstmt.executeQuery();
+
+	        if (!rs.next()) {
+	            throw new SQLException("유효한 제품 ID가 없습니다.");
+	        }
+
+	        // 4. 카트에 제품 추가 (수량을 1로 고정)
+	        String addProductQuery = "INSERT INTO cart_product (cart_product_id, cart_id, user_id, product_id, quantity, order_flag) "
+	                                + "VALUES (seq_cart_product_id.NEXTVAL, ?, ?, ?, 1, 'B')";
+	        pstmt = con.prepareStatement(addProductQuery);
+	        String numericPart = userId.replaceAll("[^\\d]", ""); // "숫자"만 남김
+
+	        // 숫자 부분을 정수로 변환하여 pstmt에 설정
+	        pstmt.setInt(1, Integer.parseInt(numericPart));
+	        pstmt.setString(2, userId);
+	        pstmt.setInt(3, productId);
+
+	        pstmt.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        throw new SQLException("카트에 제품 추가 실패", e);
+	    } finally {
+	        dbCon.dbClose(rs, pstmt, con);
+	    }
+	}
+
 }//class

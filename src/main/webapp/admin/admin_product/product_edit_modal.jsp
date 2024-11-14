@@ -89,55 +89,55 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">알레르기 정보</label>
                     <div class="flex space-x-4">
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="wheat" value="wheat" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="밀" value="밀" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">밀</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="soy" value="soy" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="대두" value="대두" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">대두</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="milk" value="milk" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="우유" value="우유" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">우유</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="egg" value="egg" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="계란" value="계란" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">계란</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="tomato" value="tomato" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="토마토" value="토마토" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">토마토</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="chicken" value="chicken" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="닭고기" value="닭고기" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">닭고기</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="pork" value="pork" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="돼지고기" value="돼지고기" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">돼지고기</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="beef" value="beef" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="쇠고기" value="쇠고기" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">쇠고기</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="sulfites" value="sulfites" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="아황산류" value="아황산류" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">아황산류</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="shrimp" value="shrimp" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="새우" value="새우" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">새우</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="shellfish" value="shellfish" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="조개류" value="조개류" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">조개류</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="peanut" value="peanut" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="땅콩" value="땅콩" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">땅콩</span>
 						</label>
 						<label class="inline-flex items-center">
-						    <input type="checkbox" name="walnut" value="walnut" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
+						    <input type="checkbox" name="호두" value="호두" class="form-checkbox text-indigo-600 focus:ring-indigo-500">
 						    <span class="ml-2 text-sm">호두</span>
 						</label>
 
@@ -146,7 +146,7 @@
                 <div class="input-group md:col-span-2">
                     <label for="product_image" class="block text-sm font-medium text-gray-700 mb-1">제품 이미지</label>
                     <div class="flex items-center space-x-4">
-                        <img src="../../common/images/bread/x" alt="현재 제품 이미지" class="w-20 h-20 object-cover rounded-md">
+                        <img id="imagePreview" src="http://localhost/model1_project/truetrue/common/images/bread/default.jpg" alt="현재 제품 이미지" class="w-20 h-20 object-cover rounded-md">
                         <input type="file" id="product_image" name="product_image" accept="image/*" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                 </div>

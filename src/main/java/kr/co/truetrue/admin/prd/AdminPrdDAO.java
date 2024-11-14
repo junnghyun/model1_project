@@ -1,17 +1,15 @@
 package kr.co.truetrue.admin.prd;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.truetrue.dao.DbConnection;  // DbConnection 사용
 import kr.co.truetrue.prd.algyingrdnt.AllergyIngredientVO;
-import kr.co.truetrue.user.prd.UserPrdDAO;
-import kr.co.truetrue.user.prd.UserPrdVO;
 
 public class AdminPrdDAO {
 
@@ -90,13 +88,12 @@ private static AdminPrdDAO aDAO;
         try {
             con = dbCon.getConn();
             String sql = """
-                SELECT p.product_id, p.category_id, p.product_name, p.detail, p.price, p.input_date, 
-                       p.delete_flag, i.ingredient_name
-                FROM product p
-                LEFT JOIN allergy a ON p.product_id = a.product_id
-                LEFT JOIN ingredient i ON a.ingredient_id = i.ingredient_id
-                WHERE p.product_name LIKE ?
-            """;
+                SELECT product_id, category_id, product_name, price, input_date, delete_flag
+				from product
+				WHERE product_name
+				LIKE ?
+            	""";
+            
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "%" + productName + "%");
             rs = pstmt.executeQuery();
@@ -106,17 +103,9 @@ private static AdminPrdDAO aDAO;
                 product.setProduct_id(rs.getInt("product_id"));
                 product.setCategory_id(rs.getString("category_id").charAt(0));
                 product.setProduct_name(rs.getString("product_name"));
-                product.setDetail(rs.getString("detail"));
                 product.setPrice(rs.getInt("price"));
                 product.setInput_date(rs.getDate("input_date"));
                 product.setDelete_flag(rs.getString("delete_flag").charAt(0));
-                
-                String ingredientName = rs.getString("ingredient_name");
-                if (ingredientName != null) {
-                    AllergyIngredientVO ingredient = new AllergyIngredientVO();
-                    ingredient.setIngredientName(ingredientName);
-                    product.getAllergyIngredients().add(ingredient);
-                }
                 
                 productList.add(product);
             }
@@ -127,24 +116,29 @@ private static AdminPrdDAO aDAO;
         return productList;
     }
 
-    // 4. 새 제품 추가
-    public void insertProduct(AdminPrdVO product) throws SQLException {
+    public int insertProduct(AdminPrdVO product) throws SQLException {
+        int insertCnt = 0;
         Connection con = null;
         PreparedStatement pstmt = null;
+        PreparedStatement insertPstmt = null;
+        ResultSet rs = null;
         
         DbConnection dbCon = DbConnection.getInstance();
         
         try {
             con = dbCon.getConn();
+
+            // 제품 기본 정보 삽입
             String sql = """
-                INSERT INTO product (product_id, category_id, product_name, detail, total_weight, calories, 
-                                     sugar, protein, saturated_fat, sodium, price, product_img)
+                INSERT INTO product(category_id, product_name, product_type, detail, total_weight, calories, 
+                    sugar, protein, saturated_fat, sodium, price, product_img)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """;
-            pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, product.getProduct_id());
-            pstmt.setString(2, String.valueOf(product.getCategory_id()));
-            pstmt.setString(3, product.getProduct_name());
+            pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);  // 키를 반환받기 위해서 이 옵션을 사용
+
+            pstmt.setString(1, String.valueOf(product.getCategory_id()));
+            pstmt.setString(2, product.getProduct_name());
+            pstmt.setString(3, product.getProduct_type());
             pstmt.setString(4, product.getDetail());
             pstmt.setInt(5, product.getTotal_weight());
             pstmt.setInt(6, product.getCalories());
@@ -154,13 +148,44 @@ private static AdminPrdDAO aDAO;
             pstmt.setInt(10, product.getSodium());
             pstmt.setInt(11, product.getPrice());
             pstmt.setString(12, product.getProduct_img());
+
+            // 쿼리 실행
+            insertCnt = pstmt.executeUpdate();
             
-            pstmt.executeUpdate();
+            // 생성된 product_id 가져오기
+            rs = pstmt.getGeneratedKeys();  // 생성된 키를 가져옵니다.
+            if (rs.next()) {
+                int generatedProductId = rs.getInt(1);  // 첫 번째 컬럼에 생성된 키가 들어 있습니다.
+                product.setProduct_id(generatedProductId); // 생성된 product_id를 product 객체에 설정
+            }
+
+            // 새로운 알레르기 정보 추가
+            String insertAllergySql = "INSERT INTO allergy (product_id, ingredient_id) VALUES (?, ?)";
+            insertPstmt = con.prepareStatement(insertAllergySql);
+            
+            for (AllergyIngredientVO allergyIngredient : product.getAllergyIngredients()) {
+                int ingredientId = allergyIngredient.getIngredientId();
+                if (ingredientId > 0) {
+                    insertPstmt.setInt(1, product.getProduct_id());  // 생성된 product_id 사용
+                    insertPstmt.setInt(2, ingredientId);
+                    insertPstmt.addBatch();
+                }
+            }
+            
+            // 배치 실행
+            insertPstmt.executeBatch();
+            
         } finally {
             dbCon.dbClose(null, pstmt, con);
+            dbCon.dbClose(null, insertPstmt, null);
+            if (rs != null) rs.close(); // ResultSet을 닫아줍니다.
         }
+        
+        return insertCnt;
     }
 
+
+    
     // 5. 제품 정보 수정
     public int updateProduct(AdminPrdVO product) throws SQLException {
     	int updateCnt=0;
@@ -212,6 +237,7 @@ private static AdminPrdDAO aDAO;
             for (AllergyIngredientVO allergyIngredient : product.getAllergyIngredients()) {
                 // AllergyIngredientVO에서 ingredient_id를 가져옵니다
                 int ingredientId = allergyIngredient.getIngredientId();  // ingredient_id를 AllergyIngredientVO에서 가져옴
+                System.out.println(ingredientId);
                 if (ingredientId > 0) {
                     insertPstmt.setInt(1, product.getProduct_id());
                     insertPstmt.setInt(2, ingredientId);
@@ -237,8 +263,9 @@ private static AdminPrdDAO aDAO;
         ResultSet rs = null;
         int ingredientId = -1;
 
-        String sql = "SELECT ingredient_id FROM ingredient WHERE ingredient_name = ?";
         DbConnection dbCon = DbConnection.getInstance();
+        
+        String sql = "SELECT ingredient_id FROM ingredient WHERE ingredient_name = ?";
         
         try {
             con = dbCon.getConn();
