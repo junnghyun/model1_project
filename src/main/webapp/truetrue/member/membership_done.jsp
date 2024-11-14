@@ -76,7 +76,7 @@ href="../common/CSS/main_20240911.css">
 	<p class="cong"><span class="em">회원가입</span>을 축하합니다.</p><br>
 	<p class="desc">잠시후 메인페이지로 이동합니다. [바로가기]버튼을 클릭하시면 바로 이동됩니다.</p>
 	<div class="btn_sec">
-	<button type="button" class="btn btn_em" id="btnSearch" onclick="location.href='메인페이지'">바로가기</button>
+	<button type="button" class="btn btn_em" id="btnSearch" onclick="location.href='../../index.jsp'">바로가기</button>
 	</div>
 </form>
 </div>
