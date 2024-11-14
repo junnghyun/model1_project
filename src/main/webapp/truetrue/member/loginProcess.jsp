@@ -1,4 +1,4 @@
-<%@page import="kr.co.truetrue.dao.LoginDAO"%>
+
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -24,10 +24,21 @@
 
     // 로그인 DAO 인스턴스 생성
     LoginDAO lDAO = new LoginDAO();
-
+    LoginVO lVO = new LoginVO(userId, password);
+    
+    lVO.setUserId(userId);
+    lVO.setPassword(password);
+    
+    /* System.out.println("UserID: " + lVO.getUserId());
+    System.out.println("Password: " + lVO.getPassword()); */
+	
     // 사용자 검증
-    boolean isValidUser = lDAO.validateUser(userId, password);
-
+    boolean isValidUser = lDAO.validateUser(lVO);
+	
+    /* System.out.println(userId);
+    System.out.println(password);//디버깅 */
+    
+    
     if (isValidUser) {
         // 세션 생성 및 사용자 정보 저장
         session.setAttribute("user_id", userId); // 세션에 사용자 ID 저장
