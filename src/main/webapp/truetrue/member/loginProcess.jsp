@@ -35,7 +35,6 @@
     boolean isValidUser = lDAO.validateUser(lVO);
     
     if (isValidUser) {
-
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
