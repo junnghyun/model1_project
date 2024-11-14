@@ -69,4 +69,14 @@
       <servlet-name>UserLogoutServlet</servlet-name>
       <url-pattern>/model1_project/user/logout</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>SalesServlet</servlet-name>
+      <servlet-class>kr.co.truetrue.order.SalesServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>SalesServlet</servlet-name>
+      <url-pattern>/model1_project/getMonthlySales</url-pattern>
+  </servlet-mapping>
 </web-app>
