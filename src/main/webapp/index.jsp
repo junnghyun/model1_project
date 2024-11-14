@@ -41,9 +41,8 @@
 	</div>
 	<div align="center">
 		
-					<jsp:include page=""/>
-<%-- 			<jsp:include page="../project_tr/product_bread.jsp"/>  --%>
-			<%-- <jsp:include page="../project_tr/coin_slider.html"/> --%>
+			<jsp:include page="truetrue/common/jsp/coin_slider.jsp"/>
+			<jsp:include page="truetrue/common/jsp/product_bread.jsp"/>
 		<ul>
 			<li>
 				<a href="장바구니">

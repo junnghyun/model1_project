@@ -56,13 +56,13 @@
 <div class="slider">
     <div class="slides" id="slides">
     	<a href="https://example.com/link1" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images//images/2024-9-25_event.jpg" alt="Image 1">
+        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-9-25_event.jpg" alt="Image 1">
         </a>
         <a href="https://example.com/link2" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images//images/2024-10-2_event(2).jpg" alt="Image 2">
+        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-10-2_event(2).jpg" alt="Image 2">
         </a>
         <a href="https://example.com/link3" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images//images/2024-10-10_event(2).jpg" alt="Image 3">
+        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-10-10_event(2).jpg" alt="Image 3">
         </a>
     </div>
 </div>

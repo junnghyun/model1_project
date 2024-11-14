@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info="footer_project_1"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/truetrue/common/css/common.css?after" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/truetrue/common/css/main.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/truetrue/common/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/truetrue/common/js/menu.js"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=euc-kr" />
@@ -8,6 +9,7 @@
 <meta property="og:image" content="${pageContext.request.contextPath}/truetrue/common/images/sns_tlj_logo.jpg" />
 <meta name="keywords" content="뚜레쥬르, 신선함, 갓구운, 베이커리, 빵, 케이크, 커피, 샌드위치, 케익, 뚜레쥬르매장, 이벤트, 할인혜택, 쇼핑몰, 배송, 뚜레쥬르 창업" />
 <meta name="description" content="건강한 데일리 베이커리, 빵, 케이크, 샌드위치, 이벤트, 매장안내" />
+<title>건강한 데일리 베이커리, 빵, 케이크, 샌드위치, 이벤트, 매장안내</title>
 <link rel="alternate" href="http://m.tlj.co.kr/">
 <link rel="canonical" href="http://www.tlj.co.kr/">
 <link rel="SHORTCUT ICON" href="/favicon.ico" />

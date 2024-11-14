@@ -456,4 +456,33 @@ public class userDAO {
 		return status;
 	}
 	
+	public boolean selectId(String id)throws SQLException{
+		boolean resultFlag=false;
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		//1.JNDI사용객체 생성
+		//2.DBCP에서 DataSource 얻기
+		DbConnection dbCon=DbConnection.getInstance();
+		//3.Connection얻기
+		try {
+		con=dbCon.getConn();
+		//4.쿼리문 생성객체 얻기
+		String selectId="select user_id from users where user_id=?";
+		pstmt=con.prepareStatement(selectId);
+		//5.바인드에 변수 값 설정
+		pstmt.setString(1, id);
+		//6.쿼리문 수행 후 결과얻기
+		rs=pstmt.executeQuery();
+		
+		resultFlag=rs.next();//아이디가 존재하면 true, false
+		
+		}finally {
+		//7.연결끊기
+			dbCon.dbClose(rs, pstmt, con);
+		}//end finally
+		
+		return resultFlag;
+	}//selectId 
 }//class
