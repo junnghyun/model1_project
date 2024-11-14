@@ -11,10 +11,6 @@
 <!-- 세션에 user_id가 있는지 확인하고 없다면 login페이지로 이동 -->
 <%
 String user_id = (String)session.getAttribute("user_id");
-if(user_id == null) {
-    response.sendRedirect("login.jsp");
-    return;
-}
 
 List<CartVO> cartItems = null;
 try {
