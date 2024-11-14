@@ -62,7 +62,7 @@
   
   <servlet>
       <servlet-name>UserLogoutServlet</servlet-name>
-      <servlet-class>kr.co.turetrue.admin.login.UserLogoutServlet</servlet-class>
+      <servlet-class>kr.co.truetrue.user.log.UserLogoutServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

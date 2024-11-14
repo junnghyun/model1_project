@@ -185,6 +185,7 @@ function putCart(productId,userId){
                 alert("장바구니에 상품이 담겼습니다.");
             } else {
                 alert("장바구니 추가에 실패했습니다. 다시 시도해주세요.");
+                window.location.href ="../member/login.jsp"
             }
         },
         error: function() {
