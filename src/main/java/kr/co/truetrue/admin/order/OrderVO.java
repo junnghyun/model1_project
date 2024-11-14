@@ -8,6 +8,16 @@ public class OrderVO {
                    recipient, recipient_phone, request,
                    product_name, product_img;
     
+    public OrderVO() {
+        super();
+     }
+
+
+     public OrderVO( String product_name,int quantity) {
+        super();
+        this.quantity = quantity;
+        this.product_name = product_name;
+     }
     
     public int getQuantity() {
 		return quantity;

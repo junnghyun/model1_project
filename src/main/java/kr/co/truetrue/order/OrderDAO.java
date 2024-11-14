@@ -1,7 +1,14 @@
 package kr.co.truetrue.order;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import kr.co.truetrue.dao.DbConnection;
 
@@ -58,4 +65,48 @@ public class OrderDAO {
 
         return orderList;
     }
+    
+ // 최근 6개월의 월별 매출 조회
+    public Map<String, Double> getMonthlySales() {
+        Map<String, Double> monthlySales = new HashMap<>();
+        String query = "SELECT TO_CHAR(payment_date, 'YYYY-MM') AS month, SUM(total_price) AS monthly_total " +
+                "FROM orders " +
+                "WHERE payment_date >= ADD_MONTHS(SYSDATE, -6) " +
+                "GROUP BY TO_CHAR(payment_date, 'YYYY-MM') " +
+                "ORDER BY month";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String month = rs.getString("month");
+                Double total = rs.getDouble("monthly_total");
+                monthlySales.put(month, total);
+            }
+
+            // 현재 월부터 6개월 전까지의 모든 월을 추가하고 매출이 없는 경우 0으로 설정
+            for (int i = 5; i >= 0; i--) {
+                String monthKey = LocalDate.now().minusMonths(i).format(DateTimeFormatter.ofPattern("yyyy-MM"));
+                monthlySales.putIfAbsent(monthKey, 0.0);
+            }
+            
+         // 역순으로 정렬
+            monthlySales = monthlySales.entrySet()
+                                       .stream()
+                                       .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                                       .collect(Collectors.toMap(
+                                           Map.Entry::getKey,
+                                           Map.Entry::getValue,
+                                           (e1, e2) -> e1,
+                                           LinkedHashMap::new
+                                       ));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return monthlySales;
+    }
+
+
 }
