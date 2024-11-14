@@ -42,6 +42,7 @@ function openAddProductModal() {
 }
 
 function openEditProductModal(productId) {
+	loadTailwindCSS();
     // AJAX 요청으로 서버에서 제품 정보를 가져오기
     fetch(`product_detail.jsp?productId=${productId}`)
         .then(response => response.json())
@@ -171,6 +172,20 @@ document.addEventListener('DOMContentLoaded', function() {
             initializeModal(modal);
         }
     });
+	const productImageInput = document.getElementById("product_image");
+	   const imagePreview = document.getElementById("imagePreview");
+
+	   // 파일 선택 시 미리보기 이미지 업데이트
+	   productImageInput.addEventListener("change", function () {
+	       const file = this.files[0];
+	       if (file) {
+	           const reader = new FileReader();
+	           reader.onload = function (e) {
+	               imagePreview.src = e.target.result; // 선택된 이미지를 미리보기로 설정
+	           };
+	           reader.readAsDataURL(file);
+	       }
+	   });
 });
 
 // 제품 삭제 함수
@@ -183,7 +198,7 @@ function deleteProduct() {
 }
 
 // 폼 제출 처리
-// 저장 버튼 클릭 시 실행되는 함수
+// 저장 버튼 클릭 시 실행되는 업데이트용 함수
    document.querySelector("#editProductForm").addEventListener("submit", function (e) {
        e.preventDefault(); // 폼의 기본 동작(페이지 새로 고침)을 방지합니다.
 
@@ -203,7 +218,7 @@ function deleteProduct() {
            sodium: formData.get("sodium"),
            price: formData.get("price"),
            allergy_info: [],
-           //product_img: formData.get("product_image")
+           product_img: formData.get("product_image")
        };
 
        // 알레르기 정보를 체크박스로부터 가져오기
@@ -217,17 +232,16 @@ function deleteProduct() {
 	           ingredient_name: ingredientName
 	       });
 	   });
-
+		formData.append('data',JSON.stringify(data));
        // JSON 데이터를 콘솔로 확인
        console.log(data);
 
        // AJAX 요청으로 데이터를 update_product.jsp에 전송
        const xhr = new XMLHttpRequest();
        xhr.open("POST", "update_product.jsp", true);
-       xhr.setRequestHeader("Content-Type", "application/json");
 
        // JSON 데이터로 전송
-       xhr.send(JSON.stringify(data));
+       xhr.send(formData);
 
        // 응답 처리
        xhr.onload = function () {
@@ -244,3 +258,138 @@ function deleteProduct() {
            }
        };
    });
+   
+   // 저장 버튼 클릭 시 실행되는 제품추가용 함수
+   document.querySelector("#addProductForm").addEventListener("submit", function (e) {
+          e.preventDefault(); // 폼의 기본 동작(페이지 새로 고침)을 방지합니다.
+
+          // 폼 데이터를 JSON 형식으로 변환
+          const formData = new FormData(this);
+          const data = {
+              product_id: formData.get("product_id"),
+              category_id: formData.get("category"),
+              product_name: formData.get("product_name"),
+              product_type: formData.get("product_type"),
+              detail: formData.get("description"),
+              total_weight: formData.get("total_weight"),
+              calories: formData.get("calories"),
+              sugar: formData.get("sugar"),
+              protein: formData.get("protein"),
+              saturated_fat: formData.get("saturated_fat"),
+              sodium: formData.get("sodium"),
+              price: formData.get("price"),
+              allergy_info: [],
+              product_img: formData.get("product_image")
+          };
+
+          // 알레르기 정보를 체크박스로부터 가져오기
+   	   const allergyCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+   	   allergyCheckboxes.forEach(function (checkbox) {
+   	       // 각 체크박스의 value를 ingredient_name으로 사용
+   	       const ingredientName = checkbox.value;
+
+   	       // 알레르기 정보를 객체 형태로 추가 (ingredient_name 포함)
+   	       data.allergy_info.push({
+   	           ingredient_name: ingredientName
+   	       });
+   	   });
+   		formData.append('data',JSON.stringify(data));
+          // JSON 데이터를 콘솔로 확인
+          console.log(data);
+
+          // AJAX 요청으로 데이터를 update_product.jsp에 전송
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "insert_product.jsp", true);
+
+          // JSON 데이터로 전송
+          xhr.send(formData);
+
+          // 응답 처리
+          xhr.onload = function () {
+              if (xhr.status === 200) {
+                  const response = JSON.parse(xhr.responseText);
+                  if (response.success) {
+                      alert("제품 정보가 추가되었습니다.");
+                      closeProductModal(); // 모달 닫기
+                  } else {
+                      alert("제품 정보 추가에 실패했습니다.");
+                  }
+              } else {
+                  alert("서버 오류가 발생했습니다.");
+              }
+          };
+      });
+	  
+   function searchProducts() {
+       const productName = document.getElementById("product-name").value.trim();  // 제품명 입력값 가져오기
+
+       if (productName === "") {
+           alert("검색어를 입력해주세요.");
+           return;
+       }
+
+       // 서버에 AJAX 요청 보내기
+       fetch(`search_product.jsp?productName=${encodeURIComponent(productName)}`, {
+           method: "GET",  // HTTP GET 요청
+           headers: {
+               "Content-Type": "application/json"  // 요청 헤더 설정
+           }
+       })
+       .then(response => response.json())  // JSON 형식으로 응답받기
+       .then(data => {
+			
+           const products = data.products;
+           if (products && products.length > 0) {
+               updateProductTable(products);  // 검색된 제품 목록을 테이블에 업데이트
+           } else {
+               alert("검색 결과가 없습니다.");
+               clearProductTable();  // 검색 결과가 없으면 테이블 비우기
+           }
+       })
+
+   }
+
+
+
+   // 검색된 제품 목록을 테이블에 표시하는 함수
+   function updateProductTable(products) {
+		const productTableBody = document.querySelector(".product-table tbody");  // 제품 목록을 표시할 테이블 tbody
+	    productTableBody.innerHTML = "";  // 기존 테이블 내용 비우기
+
+
+       products.forEach(product => {
+           const row = document.createElement("tr");
+
+           row.innerHTML = `
+               <td>${product.product_id}</td>
+               <td>${product.category}</td>
+               <td>${product.product_name}</td>
+               <td>${product.input_date}</td>
+               <td>${product.price}원</td>
+               <td>${product.delete_flag}</td>
+               <td>
+                   <button class="action-btn" onclick="openEditProductModal(${product.product_id})">편집</button>
+                   <button class="action-btn delete-btn" onclick="deleteProduct(${product.product_id})">삭제</button>
+               </td>
+           `;
+           
+           productTableBody.appendChild(row);  // 테이블에 행 추가
+       });
+   }
+
+   // 테이블을 초기화하는 함수
+   function clearProductTable() {
+	  const productTableBody = document.querySelector(".product-table tbody");
+	  productTableBody.innerHTML = "";  // 모든 행 삭제
+   }
+   //초기화 버튼 
+   function resetFilters() {
+       document.getElementById("product-name").value = "";  // 검색어 초기화
+	   fetch('getall_product.jsp')  // JSP 페이지 URL
+	           .then(response => response.json())
+	           .then(data => {
+	               updateProductTable(data.products);
+	           })
+	           .catch(error => console.error('Error fetching products:', error));
+	   
+	 }

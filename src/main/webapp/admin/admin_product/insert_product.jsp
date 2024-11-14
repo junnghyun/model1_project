@@ -83,11 +83,11 @@
     }
 
     // DB 업데이트
-    int updateResult = adminPrdDAO.updateProduct(product);
+    int insertResult = adminPrdDAO.insertProduct(product);
 
     // JSON 응답 생성
     JSONObject result = new JSONObject();
-    result.put("success", updateResult != 0);
-    result.put("message", updateResult != 0 ? "업데이트 성공" : "업데이트 실패");
+    result.put("success", insertResult != 0);
+    result.put("message", insertResult != 0 ? "업데이트 성공" : "업데이트 실패");
     out.print(result.toJSONString());
 %>

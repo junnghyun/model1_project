@@ -77,7 +77,7 @@ try {
 	<jsp:include page="../common/jsp/header.jsp"/>
 	<div class="page_top">
 		<div class="path"></div>
-		<h2 class="page_title"><span class="tit_cake">Cake</span></h2>
+		<h2 class="page_title"><span class="tit_cake">케이크</span></h2>
 	</div>
 	</div>
 	<!-- container -->

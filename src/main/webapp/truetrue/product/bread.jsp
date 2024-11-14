@@ -111,7 +111,7 @@ try {
 
 				<div class="recomm product_list2" style="overflow:visible;"><!-- 2015-06-11 스타일추가 -->
 
-					<span class="lb_recomm"><img src="../common/images/lb_recomm.png" alt="추천제품"></span>
+					<span class="lb_recomm"><img src="../common/images/lb_recomm.png" alt="신규제품"></span>
 					    <ul class="left_area">
         <!-- left_area에 하나의 제품 표시 -->
         <c:if test="${not empty productTypeLatestList}">
