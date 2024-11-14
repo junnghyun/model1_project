@@ -13,6 +13,7 @@
     <div class="container">
         <h1>매장 정보 조회</h1>
         <div class="controls">
+        	<button id="backButton" onclick="history.back()">이전 페이지로</button>
             <select id="region" name="region">
                 <option value="">광역시/도</option>
                 <option value="서울">서울</option>
