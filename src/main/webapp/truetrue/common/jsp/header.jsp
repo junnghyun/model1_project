@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info="header_project_1"%>
-    <style type="text/css">
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">	
 .gnb_brand > li {
   align-content: center;
   width: 20%; /*20*5=100%*/
@@ -22,6 +22,35 @@
 .store_find > h2 {
 font-family:'Nanum Barun Gothic';
 
+}
+
+.login-btn {
+	background-color: transparent;
+	border: 1px solid white;
+	color: white;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.user-menu {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.logout-btn {
+	background-color: transparent;
+	border: 1px solid white;
+	color: white;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.mypage-btn {
+	color: white;
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 .submenu {
@@ -102,11 +131,23 @@ font-family:'Nanum Barun Gothic';
 				</li>
 			</ul>
 			<ul class="tnb">
-				<li style="/*display:none;*/">
-					<a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" class="tnb_store"><img src="${pageContext.request.contextPath}/truetrue/common/images/info_market.png"></a>
-					<a href="고객센터링크넣어주세요" class="tnb_customer"><img src="${pageContext.request.contextPath}/truetrue/common/images/faq.png"></a>
-					<a href="로그인링크넣어주세요" class="tnb_login"><img src="${pageContext.request.contextPath}/truetrue/common/images/login_btn.png"></a>
-				</li>
+			    <c:choose>
+			        <c:when test="${ empty sessionScope.userData }">
+			            <li>
+			                <button class="login-btn" onclick="window.location.href='${pageContext.request.contextPath}/truetrue/member/login.jsp'">Login</button>
+			            </li>
+			        </c:when>
+			        <c:otherwise>
+			            <li>
+			                <div class="user-menu">
+			                    <a href="${pageContext.request.contextPath}/truetrue/member/mypage.jsp" class="mypage-btn">Mypage</a>
+			                    <form action="<%= request.getContextPath() %>/model1_project/user/logout" method="post">
+			                    	<button type="submit" class="logout-btn" onclick="lgout()">Logout</button>
+			                    </form>
+			                </div>
+			            </li>
+			        </c:otherwise>
+			    </c:choose>
 			</ul>
 			<!-- //TopNavigationBar -->
 			<!-- GNB -->
@@ -119,10 +160,10 @@ font-family:'Nanum Barun Gothic';
         <a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" style="font-size: 15px" >매장안내</a>
       </li>
       <li>
-        <a href="제품링크" style="font-size: 15px">제품</a>
+        <a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">제품</a>
         <ul class="submenu">
-          <li><a href="빵링크" style="font-size: 15px">빵</a></li>
-          <li><a href="케이크링크" style="font-size: 15px">케이크</a></li>
+          <li><a href="http://localhost/model1_project/truetrue/product/bread.jsp" style="font-size: 15px">빵</a></li>
+          <li><a href="http://localhost/model1_project/truetrue/product/cake.jsp" style="font-size: 15px">케이크</a></li>
         </ul>
       </li>
       <li>

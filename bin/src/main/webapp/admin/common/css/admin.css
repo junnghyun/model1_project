@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed; /* 헤더 고정 */
+    top: 0;
+    left: 0;
+    right: 0; /* 전체 너비 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.order-management {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}	
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    margin-right: 10px;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+.admin-text {
+	font-size: 20px;
+}
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    position: fixed; /* 사이드바 고정 */
+    top: 50px; /* 헤더 아래에 위치 */
+    bottom: 0; /* 아래쪽 끝까지 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+    transition: width 0.3s;
+}
+.sidebar.hidden {
+    width: 60px;
+    padding: 20px 0;
+}
+
+.common_admin {
+    margin-top: 60px; /* 헤더 높이 */
+    margin-left: 230px; /* 사이드바 기본 너비 */
+    padding: 20px; /* 패딩 추가 */
+    transition: margin-left 0.3s; /* 여백 변화 애니메이션 */
+}
+
+.sidebar.hidden + .common_admin {
+    margin-left: 60px; /* 사이드바가 줄어들 때의 여백 */
+}
+
+.sidebar.hidden .sidebar-content {
+    display: none;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+}
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.sidebar ul li a:hover {
+    background-color: #555; /* 호버 시 회색으로 변경 */
+}
+.sidebar h2 {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle-btn {
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all 0.3s;
+}
+.hidden .toggle-btn {
+    transform: rotate(180deg);
+    right: 20px;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+} 
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}

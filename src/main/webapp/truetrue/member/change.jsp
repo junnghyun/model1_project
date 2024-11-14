@@ -1,5 +1,12 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="kr.co.truetrue.dao.DbConnection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="kr.co.truetrue.dao.userVO"%>
+<%@page import="kr.co.truetrue.dao.userDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" info=""%>
+    pageEncoding="UTF-8" info="" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +27,7 @@
 .tableChange td {margin: 0 auto; font-size: 25px; }
 #fCell{width: 270px; height: 63px; font-size: 15px; padding: 20px; background-color: #F8F8F8; border-bottom:1px solid #E3E3E3; }
 #sCell{width: 800px; height: 63px; font-size: 15px; padding: 20px; border-bottom:1px solid #E3E3E3; }
-#topLine{border-top: 3px solid #333;}
+#topLine{border-top: 3px solid #A9A9A9;}
 .btnChange{width: 100px; height: 40px; font-size: 16px; padding: 4px; border-radius: 3px; background-color: #ffffff; border: 1px solid #A9A9A9 }
 .btnZipcode{width: 100px; height: 35px; font-size: 13px; padding: 3px; border-radius: 3px; background-color: #ffffff; border: 1px solid #A9A9A9 }
 .btnRight{position:relative; top: -15px; left: 960px; width: 100px; height: 40px; font-size: 16px; padding: 4px; border-radius: 3px; background-color: #ffffff; border: 1px solid #A9A9A9;}
@@ -86,10 +93,89 @@ $(function(){
 	})
 });//ready
 </script>
+<script type="text/javascript">
+window.onload=function(){
+	const regex=/^[0-9]+$/;
+	const regex3 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+	
+	if (phone !== "" && !phoneRegex.test(phone)) {
+        alert("전화번호는 숫자만 입력 가능합니다.");
+        return false;
+    }
+	if (email !== "" && !emailRegex.test(email)) {
+        alert("이메일은 영어와 특수문자만 허용됩니다. 한글은 사용할 수 없습니다.");
+        return false;
+    }
+	return true;
+}
+</script>
+<%
+String userId=(String)session.getAttribute("user_id");
+String pass=(String)session.getAttribute("pass");
+
+if(userId==null || pass==null){
+// 	response.sendRedirect("login.jsp");
+// }else{
+	Connection con=null;
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	DbConnection dbCon=DbConnection.getInstance();
+	try{
+		con=dbCon.getConn();
+		
+		String changeSql="	select * from users where user_id = ? and pass = ?	";
+		pstmt=con.prepareStatement(changeSql);
+		
+		pstmt.setString(1, userId);
+		pstmt.setString(2, pass);
+		
+		rs=pstmt.executeQuery();
+		
+		if(rs.next()){
+			String name=rs.getString("name");
+			String birth=rs.getString("birth");
+			String phone=rs.getString("phone");
+			String email=rs.getString("email");
+			String zip_code=rs.getString("zip_code");
+			String address=rs.getString("address");
+			String address_detail=rs.getString("address_detail");
+			
+			int emailIndex=email.indexOf("@");
+			
+			String email1=email.substring(0,emailIndex);
+			String email2=email.substring(emailIndex+1);
+			
+			session.setAttribute("currentName", name);
+			session.setAttribute("currentBirth", birth);
+			session.setAttribute("currentPhone", phone);
+			session.setAttribute("email1", email1);
+			session.setAttribute("email2", email2);
+			session.setAttribute("currentEmail", email);
+			session.setAttribute("currentZip_code", zip_code);
+			session.setAttribute("currentAddress", address);
+			session.setAttribute("currentAddress_detail", address_detail);
+			
+			String phone1=phone.substring(0,3);
+			String phone2=phone.substring(3,7);
+			String phone3=phone.substring(7,11);
+		}
+// 		else{
+// 			out.print("<script>alert('해당 아이디 또는 비밀번호가 잘못되었습니다.'); location.href='login.jsp';</script>");
+// 		}
+	}catch(SQLException se){
+		se.printStackTrace();
+	}finally{
+		dbCon.dbClose(rs, pstmt, con);
+	}
+	
+	
+}
+%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<form name="changeFrm" id="changeFrm" method="post" action="change_frm_process.jsp">
 <div id="wrap">
 	<div class="center">
 	<h2 class="mainTitle">회원정보 수정</h2>
@@ -101,31 +187,46 @@ $(function(){
 	<tr>
 	<th>
 		<h3 class="mynameisbaekeonhee">기본정보</h3>
-		<input type="button" class="btnRight" value="회원탈퇴>">
+		<input type="button" class="btnRight" value="회원탈퇴>" onclick="location.href='delete_member.jsp'">
 	</th>
 	</tr>
 	<tr id="topLine">
 		<td id="fCell">이름</td>
-		<td id="sCell"></td>
+		<td id="sCell"><input type="text" id="name" name="name" style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.currentName}"></td>
 	</tr>
 	<tr>
 		<td id="fCell">아이디</td>
-		<td id="sCell"></td>
+		<td id="sCell"><input type="text" id="id" name="id" style="border: 1px solid #A9A9A9" placeholder="${userId}"></td>
 	</tr>
 	<tr>
 		<td id="fCell">생년월일</td>
-		<td id="sCell"></td>
+		<td id="sCell"><input type="date" id="birth" name="birth" style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.currentBirth}"></td>
 	</tr>
 	<tr>
 		<td id="fCell">휴대전화번호</td>
-		<td id="sCell"></td>
+		<td id="sCell">
+   					 <select id="phone1" name="phone1" style="border: 1px solid #A9A9A9">
+				        <option value="">직접 입력</option>
+				        <option value="010" selected="selected">010</option>
+				        <option value="011">011</option>
+				        <option value="016">016</option>
+				        <option value="017">017</option>
+				        <option value="018">018</option>
+				        <option value="019">019</option>
+   					 </select>
+				    -
+				    <input type="text" id="phone2" name="phone2" maxlength="4" size="4" required style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.phone2 }">
+				    -
+				    <input type="text" id="phone3" name="phone3" maxlength="4" size="4" required style="border: 1px solid #A9A9A9" placeholder="${sessionScopt.phone3 }">
+				    <p>주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받을 수 있습니다.</p>
+				 </td>
 	</tr>
 	<tr>
 		<td id="fCell">이메일</td>
 		<td id="sCell">
-		<input type="text" class="emailInput" name="email1" id="email1"> @ <input type="text" class="emailInput" name="email2" id="email2">
+		<input type="text" class="emailInput" name="email1" id="email1" placeholder="${sessionScopt.email1}"> @ <input type="text" class="emailInput" name="email2" id="email2" placeholder="${sessionScopt.email2}">
 		<select id="selectEmail">
-			<option value="---" disabled="disabled" selected="selected">선택해주세요
+			<option value="---" disabled="disabled" selected="selected" style="border: 1px solid #A9A9A9">선택해주세요
 			<option value="">직접 입력
 			<option value="naver.com">naver.com
 			<option value="gmail.com">gmail.com
@@ -144,18 +245,19 @@ $(function(){
 	<tr>
 		<td id="fCell">주소</td>
 		<td id="sCell">
-			<input type="text" class="addrInputZipcode" id="sample6_postcode" placeholder="우편번호">
+			<input type="text" class="addrInputZipcode" id="sample6_postcode" name="zipcode" placeholder="${currentZip_code}">
 			<input type="button" class="btnZipcode" onclick="sample6_execDaumPostcode()" value="우편번호 검색"><br>
-			<input type="text" class="addrInput" id="sample6_address" placeholder="주소"><br>
-			<input type="text" class="addrInput" id="sample6_detailAddress" placeholder="상세주소">
+			<input type="text" class="addrInput" id="sample6_address" name="addr1" placeholder="${currentAddress}"><br>
+			<input type="text" class="addrInput" id="sample6_detailAddress" name="addr2" placeholder="${currentAddress_detail}">
 		</td>
 	</tr>
 
 
 </table>
 <div class="center">
-<input type="button" value="변경하기>" class="btnChange">
+<input type="submit" value="변경하기>" class="btnChange">
 </div>
 </div>
+</form>
 </body>
 </html>
