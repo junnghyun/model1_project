@@ -21,15 +21,7 @@
 // 	SimpleDateFormat sdf=new SimpleDateFormat("yy/mm/dd");
     String phone=phone1+phone2+phone3;
 	
-	out.print(user_id);
-	out.print(name);
-	out.print(pass);
-	out.print(birth);
-	out.print(phone);
-	out.print(email);
-	out.print(zip_code);
-	out.print(address);
-	out.print(address_detail);
+	
 	
     userVO uVO=new userVO();
     uVO.setUser_id(user_id);
@@ -47,6 +39,7 @@
 	try{
 		uDAO.joinInfo(uVO);
 		uDAO.cartId(uVO);
+		response.sendRedirect("login.jsp");
 	}catch(SQLException se){
 		se.printStackTrace();
 	}
