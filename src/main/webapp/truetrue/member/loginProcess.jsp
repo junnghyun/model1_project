@@ -1,4 +1,5 @@
-<%@page import="kr.co.truetrue.dao.LoginDAO"%>
+<%@page import="kr.co.truetrue.member.LoginVO"%>
+<%@page import="kr.co.truetrue.member.LoginDAO"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -11,14 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title</title>
-<link rel="shortcut icon"
-href="http://192.168.10.223/jsp_prj/common/images/paka.jpg">
-<link rel="stylesheet" type="text/css"
-href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
-<!-- bootstrap CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
@@ -30,17 +25,21 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 
     // 로그인 DAO 인스턴스 생성
     LoginDAO lDAO = new LoginDAO();
-
+    LoginVO lVO = new LoginVO(userId, password); // 초기화 시 사용자 ID와 비밀번호 설정
+    
+    // 디버깅용 출력
+    System.out.println("UserID: " + lVO.getUserId());
+    System.out.println("Password: " + lVO.getPassword());
+    
     // 사용자 검증
-    boolean isValidUser = lDAO.validateUser(userId, password);
-
+    boolean isValidUser = lDAO.validateUser(lVO);
+    
     if (isValidUser) {
-        // 세션 생성 및 사용자 정보 저장
-        session.setAttribute("user_id", userId); // 세션에 사용자 ID 저장
+    	session.setAttribute("userData", lVO); // 로그인 성공 시 사용자 정보 저장
 %>
         <script type="text/javascript">
             alert("로그인에 성공하셨습니다! 메인페이지로 이동합니다.");
-
+            window.location.href = "../../index.jsp"; // 로그인 성공 후 메인 페이지로 이동
         </script>
 <%
     } else {
