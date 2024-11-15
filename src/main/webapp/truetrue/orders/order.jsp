@@ -4,6 +4,7 @@
 <%@ page import="java.sql.*, java.util.*" %>
 <%@ page import="kr.co.truetrue.dao.DbConnection" %>
 <%@ page import="java.util.*, java.text.*, kr.co.truetrue.order.OrderDAO, kr.co.truetrue.order.OrderVO" %>
+<%@ include file="../common/jsp/session_chk.jsp" %>
 
 <!DOCTYPE html>
 <html>
