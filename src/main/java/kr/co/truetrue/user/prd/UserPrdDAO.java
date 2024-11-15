@@ -23,7 +23,53 @@ public class UserPrdDAO {
 		}//end if
 		return uDAO;
 	}//getInstance
+	
+	public List<UserPrdVO> searchProductsByName(String productName) throws SQLException {
+        List<UserPrdVO> productList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
+        // DB 연결 객체 가져오기
+        DbConnection dbCon = DbConnection.getInstance();
+
+        try {
+            con = dbCon.getConn();
+
+            // SQL 쿼리: 제품 이름에 검색어가 포함된 제품 검색
+            String sql = "SELECT p.product_id, p.category_id, p.product_name, p.product_type, p.detail, " +
+                         "p.price, p.product_img, p.input_date " +
+                         "FROM product p " +
+                         "WHERE LOWER(p.product_name) LIKE LOWER(?)";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + productName + "%");  // 부분 검색을 위해 와일드카드 사용
+
+            rs = pstmt.executeQuery();
+
+            // 결과 처리
+            while (rs.next()) {
+                UserPrdVO product = new UserPrdVO();
+                product.setProduct_id(rs.getInt("product_id"));
+                product.setCategory_id(rs.getString("category_id").charAt(0));
+                product.setProduct_name(rs.getString("product_name"));
+                product.setProduct_type(rs.getString("product_type"));
+                product.setDetail(rs.getString("detail"));
+                product.setPrice(rs.getInt("price"));
+                product.setProduct_img(rs.getString("product_img"));
+                product.setInput_date(rs.getDate("input_date"));
+
+                productList.add(product);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbCon.dbClose(rs, pstmt, con);
+        }
+
+        return productList;
+    }
+	
 	public UserPrdVO selectPrdDetail(int productId) throws SQLException {
 	    UserPrdVO productDetail = null;
 	    Connection con = null;

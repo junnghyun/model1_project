@@ -17,12 +17,18 @@ function updateProductType(category) {
     // 모든 product_type select 요소를 찾습니다
     const typeSelects = document.querySelectorAll('#product_type');
     
-    typeSelects.forEach(typeSelect => {
+	// 선택된 카테고리 값 가져오기
+    const categoryId = category;
+
+	// hidden input의 값 업데이트
+	document.getElementById('hiddenCategoryId').value = categoryId;
+   
+	 typeSelects.forEach(typeSelect => {
         // 기존 옵션 제거
         typeSelect.innerHTML = '<option value="">선택하세요</option>';
         
         // 선택된 카테고리에 따라 새로운 옵션 추가
-        productTypes[category].forEach(option => {
+        productTypes[category==="1"?"bread":"cake"].forEach(option => {
             const optionElement = document.createElement('option');
             optionElement.value = option.value;
             optionElement.textContent = option.label;
@@ -58,7 +64,15 @@ function openEditProductModal(productId) {
             document.getElementById("saturated_fat").value = data.saturated_fat;  // 가격
             document.getElementById("sodium").value = data.sodium;  // 가격
             document.getElementById("price").value = data.price;  // 가격
-
+            
+			const imagePreview = document.getElementById("imagePreview");
+			       if (data.product_img) {
+			           imagePreview.src = `http://localhost/model1_project/truetrue/common/images/bread/${data.product_img}`;
+			       } else {
+			           // 이미지가 없는 경우 기본 이미지 설정
+			           imagePreview.src = "http://localhost/model1_project/truetrue/common/images/bread/bread1.jpg";
+			       }
+			
             // 카테고리 라디오 버튼 선택 (현재 선택된 카테고리를 확인)
             const categoryRadio = document.querySelector(`input[name="category"][value="${data.category_id}"]`);
             if (categoryRadio) categoryRadio.checked = true;  // 해당 카테고리 선택
@@ -134,7 +148,7 @@ function initializeModal(modal) {
     // 카테고리 변경 이벤트 리스너 설정
     const categoryInputs = modal.querySelectorAll('input[name="category"]');
     categoryInputs.forEach(input => {
-        input.addEventListener('change', (e) => updateProductType(e.target.value));
+        input.addEventListener('change', (e) => updateProductType(e.target.value==="1"?"bread":"cake"));
     });
 }
 
@@ -172,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initializeModal(modal);
         }
     });
-	const productImageInput = document.getElementById("product_image");
+		const productImageInput = document.getElementById("product_image");
 	   const imagePreview = document.getElementById("imagePreview");
 
 	   // 파일 선택 시 미리보기 이미지 업데이트
@@ -189,11 +203,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // 제품 삭제 함수
-function deleteProduct() {
-    const userConfirmed = confirm("삭제하시겠습니까?");
-    if (userConfirmed) {
-        // 실제 삭제 로직 구현
-        console.log("제품이 삭제되었습니다.");
+function deleteProduct(prdId) {
+    if (confirm("정말로 이 제품을 삭제하시겠습니까?")) {
+        // AJAX 요청으로 삭제 처리
+        fetch('delete_product.jsp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'productId=' + prdId // productId를 POST로 전송
+        })
+        .then(response => response.text())
+        .then(data => {
+			alert(data);
+			location.reload(); // 페이지 새로고침
+        })
+        .catch(error => {
+            console.error('삭제 중 오류 발생:', error);
+            alert("오류가 발생했습니다.");
+        });
     }
 }
 
@@ -265,9 +293,15 @@ function deleteProduct() {
 
           // 폼 데이터를 JSON 형식으로 변환
           const formData = new FormData(this);
-          const data = {
-              product_id: formData.get("product_id"),
-              category_id: formData.get("category"),
+		  
+		  const categoryId=document.getElementById('hiddenCategoryId').value;
+			
+		  console.log(categoryId);
+		  
+
+		  
+		   const data = {
+              category_id: categoryId,
               product_name: formData.get("product_name"),
               product_type: formData.get("product_type"),
               detail: formData.get("description"),

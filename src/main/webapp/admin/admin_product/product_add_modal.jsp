@@ -25,12 +25,13 @@
                 <div class="input-group">
                     <label for="category_number" class="block text-sm font-medium text-gray-700 mb-1">카테고리</label>
                     <div class="flex space-x-4">
+                    <input type="hidden" id="hiddenCategoryId" name="category_id" value="">
                         <label class="inline-flex items-center">
-                            <input type="radio" id="category" name="category" value="bread" class="form-radio text-indigo-600 focus:ring-indigo-500" checked onchange="updateProductType(this.value)">
+                            <input type="radio" id="category" name="category" value="1" class="form-radio text-indigo-600 focus:ring-indigo-500" checked data-category-id="1" onchange="updateProductType(this.value)">
                             <span class="ml-2 text-sm">빵</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="radio" id="category" name="category" value="cake" class="form-radio text-indigo-600 focus:ring-indigo-500" onchange="updateProductType(this.value)">
+                            <input type="radio" id="category" name="category" value="2" class="form-radio text-indigo-600 focus:ring-indigo-500" data-category-id="2" onchange="updateProductType(this.value)">
                             <span class="ml-2 text-sm">케이크</span>
                         </label>
                     </div>
@@ -65,12 +66,12 @@
                 
                 <div class="input-group">
                     <label for="sugar" class="block text-sm font-medium text-gray-700 mb-1">당류 (g)</label>
-                    <input type="number" id="sugar" name="sugar" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="10.5">
+                    <input type="number" id="sugar" name="sugar" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="10">
                 </div>
                
                 <div class="input-group">
                     <label for="protein" class="block text-sm font-medium text-gray-700 mb-1">단백질 (g)</label>
-                    <input type="number" id="protein" name="protein" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="5.2">
+                    <input type="number" id="protein" name="protein" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="5">
                 </div>
                 <div class="input-group">
                     <label for="saturated_fat" class="block text-sm font-medium text-gray-700 mb-1">포화지방 (g)</label>

@@ -23,7 +23,7 @@
     productJson.put("price", product.getPrice());
     productJson.put("category_id", String.valueOf(product.getCategory_id()));
     productJson.put("product_type", product.getProduct_type());
-
+	productJson.put("product_img",product.getProduct_img());
     // 알레르기 정보를 JSON 배열로 변환하여 추가
     JSONArray allergyArray = new JSONArray();
     List<AllergyIngredientVO> allergyIngredients = product.getAllergyIngredients();

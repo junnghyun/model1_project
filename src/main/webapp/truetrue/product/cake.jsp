@@ -103,7 +103,7 @@ try {
 				<div class="img_mobile_gift">
 				
 
-					<a href="/shop/shopping/goodsList.asp?cate=13&ordType=B" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
+					<a href="http://localhost/model1_project/truetrue/orders/cart.jsp" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
 				</div>
 				<!-- //20160808 배너링크 수정 -->
 
@@ -119,7 +119,7 @@ try {
             <li class="item_wrap">
                 <a href="#">
                     <span class="img">
-                        <img src="../common/images/cake/${productTypeLatestList[0].product_img}" alt="${productTypeLatestList[0].product_name}" />
+                        <img src="../common/images/bread/${productTypeLatestList[0].product_img}" alt="${productTypeLatestList[0].product_name}" />
                         <span class="lb_best3">Best</span> <!-- 필요에 따라 Best, New 등을 설정할 수 있습니다. -->
                     </span>
                     <span class="info">
@@ -146,7 +146,7 @@ try {
             <li class="item_wrap">
                 <a href="#">
                     <span class="img">
-                        <img src="../common/images/cake/${prd.product_img}" onerror='this.src="/static/images/common/img_none.png"' alt="${prd.product_name}" width="160" height="158" />
+                        <img src="../common/images/bread/${prd.product_img}" onerror='this.src="/static/images/common/img_none.png"' alt="${prd.product_name}" width="160" height="158" />
                         <span class="lb_best2">Best</span> <!-- 필요에 따라 Best, New 등을 설정할 수 있습니다. -->
                     </span>
                     <span class="info">
@@ -183,7 +183,7 @@ try {
 			                        <span class="txt_shape">${product.price}원</span>
 			                    </span>
 			                    <span class="img">
-			                        <img src="../common/images/cake/${product.product_img}" alt="${product.product_name}" width="160" height="160" />
+			                        <img src="../common/images/bread/${product.product_img}" alt="${product.product_name}" width="160" height="160" />
 			                    </span>
 			                </a>
 			                <!-- 상세정보 -->
@@ -208,8 +208,8 @@ try {
 
 <script type="text/javascript">
 
-function viewDetail(productId,categoryId){
-	location.href = "prd_detail.jsp?productId="+productId+"&categoryId="+categoryId;
+function viewDetail(productId){
+	location.href = "prd_detail.jsp?productId="+productId;
 }
 </script>
 

@@ -65,12 +65,12 @@
                 
                 <div class="input-group">
                     <label for="sugar" class="block text-sm font-medium text-gray-700 mb-1">당류 (g)</label>
-                    <input type="number" id="sugar" name="sugar" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="10.5">
+                    <input type="number" id="sugar" name="sugar" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="10">
                 </div>
                
                 <div class="input-group">
                     <label for="protein" class="block text-sm font-medium text-gray-700 mb-1">단백질 (g)</label>
-                    <input type="number" id="protein" name="protein" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="5.2">
+                    <input type="number" id="protein" name="protein" step="0.1" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" value="5">
                 </div>
                 <div class="input-group">
                     <label for="saturated_fat" class="block text-sm font-medium text-gray-700 mb-1">포화지방 (g)</label>

@@ -30,7 +30,6 @@
     JSONObject json = (JSONObject) new JSONParser().parse(mr.getParameter("data")); // JSON 데이터는 formData로 보내진 `jsonData`에서 가져옴
 
     // 제품 정보 추출
-    int productId = Integer.parseInt((String) json.get("product_id"));
     String productName = (String) json.get("product_name");
     String detail = (String) json.get("detail");
     int totalWeight = Integer.parseInt((String) json.get("total_weight"));
@@ -42,7 +41,7 @@
     int price = Integer.parseInt((String) json.get("price"));
     char categoryId = ((String) json.get("category_id")).charAt(0);
     String productType = (String) json.get("product_type");
-
+    System.out.println("category_id: " + json.get("category_id"));
     // 알레르기 정보 처리
     JSONArray allergyArray = (JSONArray) json.get("allergy_info");
     List<AllergyIngredientVO> allergyIngredients = new ArrayList<>();
@@ -62,7 +61,6 @@
 
     // 제품 객체 생성 후 DB 업데이트 수행
     AdminPrdVO product = new AdminPrdVO();
-    product.setProduct_id(productId);
     product.setProduct_name(productName);
     product.setDetail(detail);
     product.setTotal_weight(totalWeight);
@@ -88,6 +86,6 @@
     // JSON 응답 생성
     JSONObject result = new JSONObject();
     result.put("success", insertResult != 0);
-    result.put("message", insertResult != 0 ? "업데이트 성공" : "업데이트 실패");
+    result.put("message", insertResult != 0 ? "제품 추가 성공" : "제품 추가 실패");
     out.print(result.toJSONString());
 %>

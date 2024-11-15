@@ -102,7 +102,7 @@ try {
 				<div class="img_mobile_gift">
 				
 
-					<a href="/shop/shopping/goodsList.asp?cate=13&ordType=B" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
+					<a href="http://localhost/model1_project/truetrue/orders/cart.jsp" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
 				</div>
 				<!-- //20160808 배너링크 수정 -->
 
@@ -207,9 +207,9 @@ try {
 
 
 <script type="text/javascript">
-	function viewDetail(productId,categoryId){
-		location.href = "prd_detail.jsp?productId=" + productId+"&categoryId";
-	}
+function viewDetail(productId){
+	location.href = "prd_detail.jsp?productId="+productId;
+}
 </script>
 
 	<div>
