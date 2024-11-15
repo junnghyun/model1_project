@@ -1,5 +1,6 @@
 package kr.co.truetrue.admin.prd;
 
+import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -122,21 +123,21 @@ private static AdminPrdDAO aDAO;
         PreparedStatement pstmt = null;
         PreparedStatement insertPstmt = null;
         ResultSet rs = null;
-        
+
         DbConnection dbCon = DbConnection.getInstance();
-        
+
         try {
             con = dbCon.getConn();
 
             // 제품 기본 정보 삽입
             String sql = """
-                INSERT INTO product(category_id, product_name, product_type, detail, total_weight, calories, 
+                INSERT INTO product(product_id,category_id, product_name, product_type, detail, total_weight, calories, 
                     sugar, protein, saturated_fat, sodium, price, product_img)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (seq_product_id.NEXTVAL,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """;
-            pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);  // 키를 반환받기 위해서 이 옵션을 사용
+            pstmt = con.prepareStatement(sql);
 
-            pstmt.setString(1, String.valueOf(product.getCategory_id()));
+            pstmt.setCharacterStream(1, new StringReader(String.valueOf(product.getCategory_id())));
             pstmt.setString(2, product.getProduct_name());
             pstmt.setString(3, product.getProduct_type());
             pstmt.setString(4, product.getDetail());
@@ -149,40 +150,44 @@ private static AdminPrdDAO aDAO;
             pstmt.setInt(11, product.getPrice());
             pstmt.setString(12, product.getProduct_img());
 
-            // 쿼리 실행
+            // 제품 정보 삽입 쿼리 실행
             insertCnt = pstmt.executeUpdate();
-            
-            // 생성된 product_id 가져오기
-            rs = pstmt.getGeneratedKeys();  // 생성된 키를 가져옵니다.
-            if (rs.next()) {
-                int generatedProductId = rs.getInt(1);  // 첫 번째 컬럼에 생성된 키가 들어 있습니다.
-                product.setProduct_id(generatedProductId); // 생성된 product_id를 product 객체에 설정
+
+            // seq_product_id.CURRVAL를 통해 최근 생성된 product_id를 가져옴
+            String getIdSql = "SELECT seq_product_id.CURRVAL FROM dual";
+            try (Statement stmt = con.createStatement();
+                 ResultSet rsId = stmt.executeQuery(getIdSql)) {
+                if (rsId.next()) {
+                    int generatedProductId = rsId.getInt(1);
+                    product.setProduct_id(generatedProductId);  // 생성된 product_id 설정
+                }
             }
 
             // 새로운 알레르기 정보 추가
             String insertAllergySql = "INSERT INTO allergy (product_id, ingredient_id) VALUES (?, ?)";
             insertPstmt = con.prepareStatement(insertAllergySql);
-            
+
             for (AllergyIngredientVO allergyIngredient : product.getAllergyIngredients()) {
                 int ingredientId = allergyIngredient.getIngredientId();
                 if (ingredientId > 0) {
-                    insertPstmt.setInt(1, product.getProduct_id());  // 생성된 product_id 사용
+                    insertPstmt.setInt(1, product.getProduct_id());  // 새로 생성된 product_id 사용
                     insertPstmt.setInt(2, ingredientId);
                     insertPstmt.addBatch();
                 }
             }
-            
+
             // 배치 실행
             insertPstmt.executeBatch();
-            
+
         } finally {
             dbCon.dbClose(null, pstmt, con);
             dbCon.dbClose(null, insertPstmt, null);
             if (rs != null) rs.close(); // ResultSet을 닫아줍니다.
         }
-        
+
         return insertCnt;
     }
+
 
 
     
@@ -285,22 +290,37 @@ private static AdminPrdDAO aDAO;
    
 
     // 6. 제품 삭제
-    public void deleteProduct(int productId) throws SQLException {
+    public boolean updateProductDeleteFlag(int productId) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
-        
+        boolean result = false;  // 기본값은 false (실패)
+
         DbConnection dbCon = DbConnection.getInstance();
-        
+
+        // 업데이트 쿼리문
+        String sql = "UPDATE product SET delete_flag = 'N' WHERE product_id = ?";
+
         try {
+            // 데이터베이스 연결
             con = dbCon.getConn();
-            String sql = "DELETE FROM product WHERE product_id = ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, productId);
             
-            pstmt.executeUpdate();
+            // PreparedStatement 준비
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, productId);  // productId를 쿼리에 바인딩
+
+            // 쿼리 실행
+            int rowsAffected = pstmt.executeUpdate();
+
+            // 만약 업데이트된 행이 1개 이상이면 성공
+            if (rowsAffected > 0) {
+                result = true;
+            }
         } finally {
+            // 자원 해제
             dbCon.dbClose(null, pstmt, con);
         }
+
+        return result;  // 성공이면 true, 실패면 false
     }
     
  // 7. 모든 제품 정보를 조회하는 메서드

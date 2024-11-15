@@ -58,10 +58,8 @@
             <th style="width: 100px;">가격</th>
             <th style="width: 90px;">제품 상태</th>
             <th style="width: 150px;">
-            	<div class="pagination">
-				    <button class="prev-page">◀</button>
-				    <span>null / null</span>
-				    <button class="next-page">▶</button>
+            	<div>
+				    <span>관리</span>
 				</div>
             </th>
         </tr>
@@ -79,7 +77,7 @@
                 <td><%= product.getDelete_flag()=='N' ? "삭제됨" : "판매중" %></td>
             	<td>
               		<button class="action-btn" onclick="openEditProductModal(<%=product.getProduct_id()%>)">편집</button>
-              		<button class="action-btn delete-btn" onclick="deleteProduct()">삭제</button>
+              		<button class="action-btn delete-btn" onclick="deleteProduct(<%=product.getProduct_id()%>)">삭제</button>
           		</td>
        	   </tr>
         <% 
@@ -89,7 +87,7 @@
 </table>
 <div class="pagination">
     <button class="prev-page">◀</button>
-    <span>null / null</span>
+    <span>1/1</span>
     <button class="next-page">▶</button>
 </div>
 </div>
