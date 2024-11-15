@@ -56,7 +56,7 @@
                                                     <span class="txt_shape">${product.price}원</span>
                                                 </span>
                                                 <span class="img">
-                                                    <img src="http://localhost/model1_project/truetrue/common/images/bread/${product.product_img}" 
+                                                    <img src="${pageContext.request.contextPath}/truetrue/common/images/bread/${product.product_img}" 
                                                          onerror='this.src="/static/images/common/img_none.png"' 
                                                          alt="${product.product_name}" width="160" height="160" />
                                                     <c:if test="${product.input_date != null}">
