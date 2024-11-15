@@ -1,11 +1,61 @@
 @charset "UTF-8";
 
+/* 공통 스타일 초기화 */
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+/* 버튼 스타일 */
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    margin: 0 2px;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* 삭제 버튼 색상 */
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* 테이블 스타일 */
+.ad-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.ad-table th, .ad-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.ad-table th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* 페이지 제목 스타일 */
 .add-tit {
-	padding: 20px;
+    padding: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+/* 광고 요약 스타일 */
 .ad-summary {
    display: flex;
    justify-content: space-between;
@@ -20,26 +70,25 @@
     width: 30%;
 }
 
+/* 필터 및 다운로드 버튼 스타일 */
 .ad-filter {
     margin-bottom: 20px;
 }
 
-.ad-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+.add-ad-btn {
+    float: right; 
 }
 
-.ad-table th, .ad-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+.csv-download-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
 }
 
-.ad-table th {
-    background-color: #f2f2f2;
-}
-
+/* 페이지 네비게이션 스타일 */
 .pagination {
     display: flex;
     justify-content: center;
@@ -53,35 +102,7 @@
     cursor: pointer;
 }
 
-.add-ad-btn {
-	float: right; 
-}
-
-.edit-btn, .delete-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    background-color: #007bff;
-    cursor: pointer;
-}
-
-.delete-btn {
-    background-color: #dc3545; /* 삭제 버튼 색상 */
-    margin-left: 5px;
-}
-
-.csv-download-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-}
-
-/* ad_modal_css */
-
+/* 모달 스타일 */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -94,6 +115,7 @@
     align-items: center;
     z-index: 1000;
 }
+
 .modal-content { 
     background-color: white;
     border-radius: 1rem;
@@ -103,6 +125,8 @@
     overflow-y: auto;
     z-index: 1001;
 }
+
+/* 입력 필드 스타일 */
 .input-group {
     transition: all 0.3s ease;
 }

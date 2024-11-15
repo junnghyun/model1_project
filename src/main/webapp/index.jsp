@@ -97,8 +97,7 @@
     </div>
     <div align="center">
         <div class="my1" id="my1">
-            <jsp:include page="truetrue/common/jsp/coin_slider.jsp"/>
-            <jsp:include page="truetrue/common/jsp/product_bread.jsp"/>
+            
         </div>
         <ul>
             <li>

@@ -24,7 +24,10 @@ UserPrdVO product = null;
 try {
     // 제품 상세 정보 가져오기
     product = userPrdDAO.selectPrdDetail(productId); // selectPrdDetail 메서드 호출
-
+    	pathFlag="bread";	//이미지 경로 기본값 bread
+    if(product.getCategory_id()=='2'){ // 케이크 일때 이미지 경로 cake 
+    	pathFlag="cake";
+    }
 } catch (SQLException e) {
     e.printStackTrace();
 }
@@ -56,7 +59,7 @@ request.setAttribute("product", product);
 							<ul>
 								<li class="item_wrap">
 									<span class="img">
-										<img src="../common/images/bread/<%= product.getProduct_img() %>" onerror='this.src="/static/images/common/img_none.png"' alt="<%= product.getProduct_name() %>" width="350" height="350" />
+										<img src="../common/images/<%=pathFlag %>/<%= product.getProduct_img() %>" onerror='this.src="/static/images/common/img_none.png"' alt="<%= product.getProduct_name() %>" width="350" height="350" />
 									</span>
 									<div class="p_desc1">* 상기 이미지는 실제 제품과 다소 차이가 있을 수 있습니다.</div>
 									
