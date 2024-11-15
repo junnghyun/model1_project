@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="http://192.168.10.222/jsp_prj/html_prj/common/css/main_20240911.css">
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -56,13 +55,13 @@
 <div class="slider">
     <div class="slides" id="slides">
     	<a href="https://example.com/link1" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-9-25_event.jpg" alt="Image 1">
+        <img class="slide" src="${pageContext.request.contextPath}/truetrue/common/images/2024-9-25_event.jpg" alt="Image 1">
         </a>
         <a href="https://example.com/link2" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-10-2_event(2).jpg" alt="Image 2">
+        <img class="slide" src="${pageContext.request.contextPath}/truetrue/common/images/2024-10-2_event(2).jpg" alt="Image 2">
         </a>
         <a href="https://example.com/link3" target="_blank">
-        <img class="slide" src="http://192.168.10.222/model1_project/truetrue/common/images/2024-10-10_event(2).jpg" alt="Image 3">
+        <img class="slide" src="${pageContext.request.contextPath}/truetrue/common/images/2024-10-10_event(2).jpg" alt="Image 3">
         </a>
     </div>
 </div>
