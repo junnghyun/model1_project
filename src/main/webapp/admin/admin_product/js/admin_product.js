@@ -68,10 +68,10 @@ function openEditProductModal(productId) {
             
 			const imagePreview = document.getElementById("imagePreview");
 			       if (data.product_img) {
-			           imagePreview.src = `http://localhost/model1_project/truetrue/common/images/bread/${data.product_img}`;
+			           imagePreview.src = `${pageContext.request.contextPath}/truetrue/common/images/bread/${data.product_img}`;
 			       } else {
 			           // 이미지가 없는 경우 기본 이미지 설정
-			           imagePreview.src = "http://localhost/model1_project/truetrue/common/images/bread/bread1.jpg";
+			           imagePreview.src = "${pageContext.request.contextPath}/truetrue/common/images/bread/bread1.jpg";
 			       }
 			
             // 카테고리 라디오 버튼 선택 (현재 선택된 카테고리를 확인)

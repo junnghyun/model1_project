@@ -147,7 +147,7 @@
                 <div class="input-group md:col-span-2">
                     <label for="product_image" class="block text-sm font-medium text-gray-700 mb-1">제품 이미지</label>
                     <div class="flex items-center space-x-4">
-                        <img id="imagePreview" src="http://localhost/model1_project/truetrue/common/images/bread/default.jpg" alt="현재 제품 이미지" class="w-20 h-20 object-cover rounded-md">
+                        <img id="imagePreview" src="${pageContext.request.contextPath}/truetrue/common/images/bread/default.jpg" alt="현재 제품 이미지" class="w-20 h-20 object-cover rounded-md">
                         <input type="file" id="product_image" name="product_image" accept="image/*" class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                 </div>

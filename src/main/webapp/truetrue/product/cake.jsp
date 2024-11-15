@@ -103,7 +103,7 @@ try {
 				<div class="img_mobile_gift">
 				
 
-					<a href="http://localhost/model1_project/truetrue/orders/cart.jsp" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
+					<a href="${pageContext.request.contextPath}/truetrue/orders/cart.jsp" target="_blank" title="새창 열림"><img src="../common/images/shopping_basket.png" alt="장바구니" /></a>
 				</div>
 				<!-- //20160808 배너링크 수정 -->
 
