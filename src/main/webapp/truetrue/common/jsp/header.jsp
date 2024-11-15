@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info="header_project_1"%>
-    <style type="text/css">
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">	
 .gnb_brand > li {
   align-content: center;
   width: 20%; /*20*5=100%*/
@@ -22,6 +22,35 @@
 .store_find > h2 {
 font-family:'Nanum Barun Gothic';
 
+}
+
+.login-btn {
+	background-color: transparent;
+	border: 1px solid white;
+	color: white;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.user-menu {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.logout-btn {
+	background-color: transparent;
+	border: 1px solid white;
+	color: white;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.mypage-btn {
+	color: white;
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 .submenu {
@@ -55,13 +84,13 @@ font-family:'Nanum Barun Gothic';
 		<div class="gnb_dim"></div>
 		<div class="gnb_dim2"></div>
 		<div class="headerWrap">
-			<h1 class="logo"><a href="링크넣어야됨"><img src="${pageContext.request.contextPath}/truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
+			<h1 class="logo"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/truetrue/common/images/logo.png" alt="뚜레쥬르 로고" /></a></h1><!-- 201607 -->
 			<ul class="top_search">
 				<li>
 
 					<fieldset>
 						<legend>제품검색</legend>
-						<form name="srch" method="get" action="/product/result.asp" onsubmit="return srchCheck(srch);" style="margin-left: -120px;">
+						<form name="srch" method="get" action="${pageContext.request.contextPath}/truetrue/product/searchProduct.jsp" onsubmit="return srchCheck(srch);" style="margin-left: -120px;">
 							<label for="prod_name">
 								<input type="text" id="prod_name" name="prod_name" value="" style="width:100;" class="ipt02" autocomplete="off" title="제품명 입력" placeholder="제품명을 입력해 주세요."  />
 							</label>
@@ -98,15 +127,37 @@ font-family:'Nanum Barun Gothic';
 						$(function(){
 							
 						});
+						function lgout() {
+					        // 로그아웃 처리하는 폼 제출
+					        var logoutForm = document.createElement('form');
+					        logoutForm.method = 'POST';
+					        logoutForm.action = '$/model1_project/user/logout'; // 로그아웃 서블릿 경로
+					        
+					        // 폼을 자동으로 제출
+					        document.body.appendChild(logoutForm);
+					        logoutForm.submit();
+					    }
 					</script>
 				</li>
 			</ul>
 			<ul class="tnb">
-				<li style="/*display:none;*/">
-					<a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" class="tnb_store"><img src="${pageContext.request.contextPath}/truetrue/common/images/info_market.png"></a>
-					<a href="고객센터링크넣어주세요" class="tnb_customer"><img src="${pageContext.request.contextPath}/truetrue/common/images/faq.png"></a>
-					<a href="로그인링크넣어주세요" class="tnb_login"><img src="${pageContext.request.contextPath}/truetrue/common/images/login_btn.png"></a>
-				</li>
+			    <c:choose>
+			        <c:when test="${ empty sessionScope.userData }">
+			            <li>
+			                <button class="login-btn" onclick="window.location.href='${pageContext.request.contextPath}/truetrue/member/login.jsp'">Login</button>
+			            </li>
+			        </c:when>
+			        <c:otherwise>
+			            <li>
+			                <div class="user-menu">
+			                    <a href="${pageContext.request.contextPath}/truetrue/member/mypage.jsp" class="mypage-btn" style="color: white;">Mypage</a>
+			                    <form action="<%= request.getContextPath() %>/model1_project/user/logout" method="post">
+			                    	<button class="logout-btn" onclick="lgout()">Logout</button>
+			                    </form>
+			                </div>
+			            </li>
+			        </c:otherwise>
+			    </c:choose>
 			</ul>
 			<!-- //TopNavigationBar -->
 			<!-- GNB -->
@@ -119,14 +170,14 @@ font-family:'Nanum Barun Gothic';
         <a href="${pageContext.request.contextPath}/truetrue/store/store_list.jsp" style="font-size: 15px" >매장안내</a>
       </li>
       <li>
-        <a href="제품링크" style="font-size: 15px">제품</a>
+        <a href="${pageContext.request.contextPath}/truetrue/product/bread.jsp" style="font-size: 15px">제품</a>
         <ul class="submenu">
-          <li><a href="빵링크" style="font-size: 15px">빵</a></li>
-          <li><a href="케이크링크" style="font-size: 15px">케이크</a></li>
+          <li><a href="${pageContext.request.contextPath}/truetrue/product/bread.jsp" style="font-size: 15px">빵</a></li>
+          <li><a href="${pageContext.request.contextPath}/truetrue/product/cake.jsp" style="font-size: 15px">케이크</a></li>
         </ul>
       </li>
       <li>
-        <a href="장바구니링크" style="font-size: 15px;" >장바구니</a>
+        <a href="${pageContext.request.contextPath}/truetrue/orders/cart.jsp" style="font-size: 15px;" >장바구니</a>
       </li>
 				</ul>
 			</div>

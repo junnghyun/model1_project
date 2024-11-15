@@ -35,16 +35,9 @@ $(function(){
 });//ready
 
 function useId(){
-	//자식창의 아이디를 가져와서
 	var id=$("#id").val();
-	//부모창에 전달한 후
 	opener.window.document.memberFrm.id.value=id;
-	//1.부모창에 중복확인한 상태를 저장할수 있는 HTML Form Control(hidden)을 만들고
-	// 값을 설정 한 후 
-	//2.가입 버튼 눌렀을 때 중복확인한 상태의 아이디인지를 검사 한 후 
-	//3.회원가입 페이지로 이동
-	opener.window.document.memberFrm.idDupFlag.value='Y';
-	//자식창 닫기
+// 	opener.window.document.memberFrm.idDupFlag.value='Y';
 	self.close();
 }//useId
 

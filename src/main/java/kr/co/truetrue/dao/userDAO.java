@@ -178,6 +178,7 @@ public class userDAO {
 
 	    StringBuilder joinInfoVal = new StringBuilder("insert into users (user_id, name, pass, birth");
 	    
+	    
 	    if (uVO.getPhone() != null) {
 	        joinInfoVal.append(", phone");
 	    }
@@ -485,4 +486,25 @@ public class userDAO {
 		
 		return resultFlag;
 	}//selectId 
+	
+	public void cartId(userVO uVO)throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		DbConnection dbCon=DbConnection.getInstance();
+		
+		try {
+			con=dbCon.getConn();
+			String insertCart="insert into cart(cart_id,user_id)values (seq_cart_id.NEXTVAL , ? )";
+			pstmt=con.prepareStatement(insertCart);
+			pstmt.setString(1, uVO.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+		}catch(SQLException se){
+			se.printStackTrace();
+		}finally {
+			dbCon.dbClose(null, pstmt, con);
+		}
+	}
 }//class

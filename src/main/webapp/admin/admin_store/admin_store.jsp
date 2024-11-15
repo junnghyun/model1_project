@@ -5,6 +5,7 @@
 <%@page import="kr.co.truetrue.user.store.StoreDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../common/session_chk.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,11 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="js/admin_store.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+	    function mapcrawler() {
+	        window.location.href = "admin_store_crawler.jsp";
+	    }
+    </script>
 </head>
 <body>
     <jsp:include page="../common/admin.jsp" />
@@ -101,7 +107,6 @@
                 </div>
                 
                 <div class="add-store-btn">
-                    <button class="csv-download-btn" onclick="downloadExcel()">Excel로 다운로드</button>
                     <button class="crawler-btn" onclick="mapcrawler()">매장 정보 가져오기</button>
                     <button class="store-btn" onclick="openStoreAddModal()">매장 정보 추가</button>
                 </div>

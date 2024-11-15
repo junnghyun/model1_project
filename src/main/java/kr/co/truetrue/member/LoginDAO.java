@@ -4,25 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import kr.co.truetrue.dao.DbConnection;
 
-
 public class LoginDAO {
+    private static LoginDAO lDAO;
     private DbConnection dbConnection;
 
     public LoginDAO() {
         dbConnection = DbConnection.getInstance();
     }
 
-    /**
-     * 사용자 로그인 확인 메서드
-     *
-     * @param userId 사용자 ID
-     * @param password 사용자 비밀번호
-     * @return 로그인 성공 여부
-     */
-    public boolean validateUser(String userId, String pass) {
+    public static LoginDAO getInstance() {
+        if (lDAO == null) {
+            lDAO = new LoginDAO();
+        }
+        return lDAO;
+    }
+
+    // 사용자 로그인 확인 메서드
+    public boolean validateUser(LoginVO lVO) {
         boolean isValidUser = false;
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -35,24 +35,25 @@ public class LoginDAO {
                 return false;
             }
 
-            // SQL 쿼리 작성: user_id와 pass가 일치하는지 확인
-            StringBuilder select=new StringBuilder();
-			select
-			.append("	select user_id, pass	")
-			.append("	from users	")
-			.append("	where user_id=? and pass=?	");
-			
-			pstmt=conn.prepareStatement(select.toString());
-            pstmt.setString(1, userId);
-            pstmt.setString(2, pass);
+            // SQL 쿼리 작성
+            StringBuilder select = new StringBuilder();
+            select.append("	SELECT user_id, pass ")
+                  .append("	FROM users ")
+                  .append("	WHERE user_id=? AND pass=?	");
 
+            pstmt = conn.prepareStatement(select.toString());
+            pstmt.setString(1, lVO.getUserId());
+            pstmt.setString(2, lVO.getPassword());
+            
+            System.out.println(select);
+            
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 isValidUser = true;
                 System.out.println("로그인 성공");
-            }else {
-            System.out.println("로그인 실패: 사용자 정보가 일치하지 않습니다.");
+            } else {
+                System.out.println("로그인 실패: 사용자 정보가 일치하지 않습니다.");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -64,7 +64,7 @@
     color: green;
 }
 
-.action-btn {
+.start-btn {
     margin-right: 5px;
     padding: 5px 10px;
     border: none;
@@ -73,10 +73,22 @@
     background-color: #007bff;
     cursor: pointer;
 }
-#start_btn { 
+.complete-btn { 
+	margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
 	background-color: #509458;
 }
-.action-btn:last-child {
+.cancel-btn{
+	margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
     background-color: #dc3545; /* 주문 취소 버튼 색상 */
 }
 

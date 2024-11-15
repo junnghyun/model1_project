@@ -7,14 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title</title>
-<link rel="shorcut icon"
-href="http://192.168.10.223/jsp_prj/common/images/paka.jpg">
-<link rel="stylesheet" type="text/css"
-href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
-<!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- jQuery CDN 시작 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style type="text/css">
 .cont_header {
@@ -78,31 +72,8 @@ href="http://192.168.10.223/jsp_prj/common/CSS/main_20240911.css">
 
 function validateAndSubmit() {
    	if(confirm("정말로 탈퇴하시겠습니까?")) {
-   		$.ajax({
-   			url:'delete_member_process.jsp',
-   			type:'POST',
-   			data: {userId: '<%=session.getAttribute("user_id") %>'},
-   			success: function(response){
-   				if(response.trim() === 'success'){
-   					alert("탈퇴가 완료되었습니다.");
-					location.href = 'main_page.jsp';
-   				}else if(response.trim() === 'fail'){
-   					alert("탈퇴처리에 실패했습니다.");
-					location.href = 'main_page.jsp';
-   				}else if(response.trim() === 'error'){
-   					alert("서버와의 오류가 발생했습니다.");
-					location.href = 'main_page.jsp';
-   				}else{
-   					alert("탈퇴처리중 오류가 발생했습니다. 다시시도해주세요.");
-					location.href = 'main_page.jsp';
-   				}
-   			},
-   			error: function(){
-   				alert("서버와의 통신오류가 발생했습니다.");
-				location.href = 'main_page.jsp';
-   				
-   			}
-   		})
+   		alert("탈퇴 완료되었습니다");
+        location.href = '../../index.jsp';
    	}
 }//validateAndSubmit
 </script>
