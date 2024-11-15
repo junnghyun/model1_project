@@ -11,7 +11,7 @@
     List<AdminPrdVO> filteredProducts = adminPrdDAO.searchProductsByName(productName);
 
     // JSON 응답 생성
-    JSONArray productList = new JSONArray();
+    JSONArray productList = new JSONArray(); 
     for (AdminPrdVO product : filteredProducts) {
         JSONObject productJson = new JSONObject();
         productJson.put("product_id", product.getProduct_id());

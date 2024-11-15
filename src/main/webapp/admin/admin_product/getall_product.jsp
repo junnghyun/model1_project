@@ -11,7 +11,7 @@
     AdminPrdDAO adminPrdDAO = AdminPrdDAO.getInstance();
     List<AdminPrdVO> allProducts = adminPrdDAO.selectAllProducts();  // 모든 제품 가져오기
 
-    // JSON 응답 생성
+    // JSON 응답 생성 
     JSONArray productList = new JSONArray();
     for (AdminPrdVO product : allProducts) {
         JSONObject productJson = new JSONObject();
