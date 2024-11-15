@@ -61,7 +61,7 @@ font-family:'Nanum Barun Gothic';
 
 					<fieldset>
 						<legend>제품검색</legend>
-						<form name="srch" method="get" action="/product/result.asp" onsubmit="return srchCheck(srch);" style="margin-left: -120px;">
+						<form name="srch" method="get" action="${pageContext.request.contextPath}/truetrue/product/searchProduct.jsp" onsubmit="return srchCheck(srch);" style="margin-left: -120px;">
 							<label for="prod_name">
 								<input type="text" id="prod_name" name="prod_name" value="" style="width:100;" class="ipt02" autocomplete="off" title="제품명 입력" placeholder="제품명을 입력해 주세요."  />
 							</label>
