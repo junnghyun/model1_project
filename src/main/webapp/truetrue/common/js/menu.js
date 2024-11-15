@@ -216,6 +216,15 @@ var MenuInfo =[
 	}
 ];
 
+function searchStore() {
+    var keyword = document.getElementById("keyword").value;
+    if (keyword.trim() === '') {
+        alert("매장명이나 시/군/구 명을 입력하세요.");
+        return false;
+    }
+    window.location.href = '/truetrue/store/store_list.jsp?keyword=' + encodeURIComponent(keyword);
+}
+
 /*
  * 프론트 MENU 정보 표시 (type T:페이지 타이틀, L:라인맵)
  */
