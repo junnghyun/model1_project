@@ -68,7 +68,7 @@ function openEditProductModal(productId) {
             
 			const imagePreview = document.getElementById("imagePreview");
 			       if (data.product_img) {
-			           imagePreview.src = `${pageContext.request.contextPath}/truetrue/common/images/bread/${data.product_img}`;
+			           imagePreview.src = "${pageContext.request.contextPath}/truetrue/common/images/bread/${data.product_img}";
 			       } else {
 			           // 이미지가 없는 경우 기본 이미지 설정
 			           imagePreview.src = "${pageContext.request.contextPath}/truetrue/common/images/bread/bread1.jpg";
