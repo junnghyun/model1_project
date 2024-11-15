@@ -132,7 +132,7 @@ function idDup2(){
 	var id=document.memberFrm.id.value;
 	
 	window.open("id_dup.jsp?id="+id,"idDup",
-			"width=460,height=380,left="+left+",top="+top);
+			"width=460,height=180,left="+left+",top="+top);
 }//idDup
 
 

@@ -46,8 +46,10 @@
 	
 	try{
 		uDAO.joinInfo(uVO);
+		uDAO.cartId(uVO);
 	}catch(SQLException se){
 		se.printStackTrace();
 	}
+	
 	
 	%>

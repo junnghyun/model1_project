@@ -41,9 +41,8 @@
 	</div>
 	<div align="center">
 		
-		<div id="slider_tr">
-		
-		</div>
+			<jsp:include page="truetrue/common/jsp/coin_slider.jsp"/>
+			<jsp:include page="truetrue/common/jsp/product_bread.jsp"/>
 		<ul>
 			<li>
 				<a href="장바구니">
