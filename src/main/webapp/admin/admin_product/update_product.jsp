@@ -12,7 +12,7 @@
     String uploadDirPath = "C:/Users/user/git/model1_project/src/main/webapp/truetrue/common/images/bread";
     File saveDir = new File(uploadDirPath);
     
-    // 만약 경로가 존재하지 않으면, 디렉토리를 생성합니다.
+    // 만약 경로가 존재하지 않으면, 디렉토리� �� 생성합니다.
     if (!saveDir.exists()) {
         saveDir.mkdirs();
     }
