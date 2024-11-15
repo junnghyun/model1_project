@@ -103,7 +103,7 @@
 
             <!-- 누적 사용자 차트 -->
             <div class="dashboard-item" id="box4">
-                <h2>누적 사용자</h2>
+                <h2>주간 사용자</h2>
                 <div class="chart-container">
                     <canvas id="peopleChart"></canvas>
                 </div>
