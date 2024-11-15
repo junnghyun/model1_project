@@ -60,6 +60,18 @@
     .srch_form {
         margin-top: 100px;
     }
+    .main-slider4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .main-slider4 ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
 </style>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -115,9 +127,9 @@
                                 <legend>매장검색</legend>
                                 <label>
                                     <input type="text" id="keyword" style="width: 150px;" class="ipt02" title="매장명 입력" 
-                                        placeholder="매장명이나 시/군/구 명 입력" 
-                                        onfocus="if(this.value == '매장명이나 시/군/구 명 입력') this.value=''" 
-                                        onblur="if(this.value == '') this.value='매장명이나 시/군/구 명 입력'" />
+                                        placeholder="매장명 입력" 
+                                        onfocus="if(this.value == '매장명 입력') this.value=''" 
+                                        onblur="if(this.value == '') this.value='매장명 입력'" />
                                 </label>
                                 <input type="image" src="truetrue/common/images/btn_search.gif" class="btn_search" title="검색" alt="검색" onclick="searchStore()" />
                             </fieldset>
