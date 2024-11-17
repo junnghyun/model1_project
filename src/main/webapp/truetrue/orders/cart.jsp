@@ -304,7 +304,10 @@ function processOrder(items) {
 </script>
 <%
 String user_id = (String)session.getAttribute("user_id");
-
+if(user_id == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
 //user_id를 JavaScript에서 사용할 수 있도록 설정
 request.setAttribute("user_id", user_id);
 
